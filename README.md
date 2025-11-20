@@ -1,46 +1,147 @@
-# Getting Started with Create React App
+# 🏛️ GeoLookup - Khám phá Địa danh Việt Nam
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ứng dụng web tìm kiếm thông tin về địa danh Việt Nam và những thay đổi hành chính sau tái cấu trúc. Sử dụng AI Gemini để cung cấp thông tin chính xác và cập nhật về các địa danh trên khắp đất nước.
 
-## Available Scripts
+## ✨ Tính năng chính
 
-In the project directory, you can run:
+- 🔍 **Tìm kiếm thông minh**: Sử dụng Google Gemini AI để tìm kiếm thông tin địa danh
+- 📍 **Thông tin địa chỉ**: Hiển thị địa chỉ cũ và mới sau tái cấu trúc hành chính
+- 🖼️ **Hình ảnh thực tế**: Tự động tìm và hiển thị hình ảnh từ internet
+- 🌐 **Giao diện 3D**: Hình cầu 3D với 100+ địa danh nổi tiếng Việt Nam
+- 🗺️ **Bản đồ Việt Nam**: Hiển thị bản đồ với các địa danh được đánh dấu
+- 📱 **Responsive Design**: Tương thích với mọi thiết bị
+
+## 🚀 Công nghệ sử dụng
+
+- **Frontend**: React 18 + TypeScript
+- **AI Integration**: Google Gemini API
+- **Styling**: CSS3 với animations và 3D effects
+- **Build Tool**: Create React App
+- **Package Manager**: npm
+
+## 📦 Cài đặt và chạy dự án
+
+### Yêu cầu hệ thống
+- Node.js >= 16.x
+- npm >= 8.x
+
+### Các bước cài đặt
+
+1. **Clone repository**
+```bash
+git clone git@github.com:ngtranlam/GeoLookup.git
+cd GeoLookup
+```
+
+2. **Cài đặt dependencies**
+```bash
+npm install
+```
+
+3. **Cấu hình API Key**
+- Tạo file `.env` trong thư mục gốc
+- Thêm Google Gemini API key:
+```env
+REACT_APP_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+4. **Chạy ứng dụng**
+```bash
+npm start
+```
+
+Ứng dụng sẽ chạy tại [http://localhost:3000](http://localhost:3000)
+
+## 🛠️ Scripts có sẵn
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Chạy ứng dụng ở chế độ development.\
+Mở [http://localhost:3000](http://localhost:3000) để xem trong trình duyệt.
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Chạy test runner ở chế độ interactive watch.
 
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Build ứng dụng cho production vào thư mục `build`.\
+Tối ưu hóa và minify code để có hiệu suất tốt nhất.
 
 ### `npm run eject`
+**Lưu ý: Đây là thao tác một chiều. Một khi `eject`, bạn không thể quay lại!**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📁 Cấu trúc dự án
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+vietnam-landmarks/
+├── public/
+│   ├── index.html
+│   ├── logo.jpg
+│   ├── vietnam-map.png
+│   └── [các hình ảnh địa danh]
+├── src/
+│   ├── services/
+│   │   └── geminiService.ts    # Tích hợp Gemini AI
+│   ├── App.tsx                 # Component chính
+│   ├── App.css                 # Styles chính
+│   ├── index.tsx              # Entry point
+│   └── index.css              # Global styles
+├── package.json
+└── README.md
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🎯 Cách sử dụng
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. **Tìm kiếm địa danh**: Nhập tên địa danh vào ô tìm kiếm
+2. **Khám phá hình cầu 3D**: Click vào các địa danh trên hình cầu xoay
+3. **Xem thông tin chi tiết**: Click vào kết quả để xem popup với thông tin đầy đủ
+4. **Khám phá địa danh gần bạn**: Xem các địa danh nổi tiếng tại Đắk Lắk
 
-## Learn More
+## 🔧 Tính năng kỹ thuật
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Gemini AI Integration
+- Tự động tìm kiếm thông tin địa danh từ internet
+- Xác thực URL hình ảnh với timeout 5 giây
+- Retry mechanism với tối đa 3 lần thử
+- Fallback data khi API không khả dụng
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3D Sphere Animation
+- CSS 3D transforms
+- Smooth rotation animation
+- Interactive landmark selection
+- 100+ địa danh được tích hợp
+
+### Responsive Design
+- Mobile-first approach
+- Flexible grid layout
+- Touch-friendly interactions
+
+## 🌟 Đóng góp
+
+Chúng tôi hoan nghênh mọi đóng góp! Để đóng góp:
+
+1. Fork repository
+2. Tạo feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Tạo Pull Request
+
+## 📝 License
+
+Dự án này được phát triển bởi học sinh THCS Nguyễn Bình Khiêm.
+
+## 👥 Tác giả
+
+- **THCS Nguyễn Bình Khiêm** - *Học hiện đại – Sáng tương lai*
+
+## 🙏 Lời cảm ơn
+
+- Google Gemini AI cho việc cung cấp API tìm kiếm thông minh
+- Cộng đồng React và TypeScript
+- Các nguồn hình ảnh từ Wikipedia và các trang tin tức Việt Nam
+
+## 📞 Liên hệ
+
+Nếu bạn có câu hỏi hoặc đề xuất, vui lòng tạo issue trên GitHub repository này.
+
+---
+
+Made with ❤️ by Students of THCS Nguyễn Bình Khiêm
