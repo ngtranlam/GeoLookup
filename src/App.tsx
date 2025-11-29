@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { searchLandmarkWithGemini } from './services/geminiService';
+import Quiz from './components/Quiz';
 
 // Mock data cho demo
 const mockResults = [
@@ -26,6 +27,7 @@ function App() {
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
   const [showPopup, setShowPopup] = useState(false);
   const [searchError, setSearchError] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<'explore' | 'quiz'>('explore');
 
   // Detailed place information
   const placeDetails = {
@@ -147,15 +149,29 @@ function App() {
                 <div className="logo-sub">Học hiện đại – Sáng tương lai</div>
               </div>
             </div>
-            <div>
-              <span style={{opacity: 0.8}}>Địa Danh Việt Nam</span>
+            <div className="nav-buttons">
+              <button 
+                className={`nav-btn ${currentPage === 'explore' ? 'nav-btn-active' : ''}`}
+                onClick={() => setCurrentPage('explore')}
+              >
+                Khám phá
+              </button>
+              <button 
+                className={`nav-btn ${currentPage === 'quiz' ? 'nav-btn-active' : ''}`}
+                onClick={() => setCurrentPage('quiz')}
+              >
+                Bài tập
+              </button>
             </div>
           </nav>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="hero">
+      {/* Conditional Content Based on Current Page */}
+      {currentPage === 'explore' ? (
+        <>
+          {/* Hero Section */}
+          <section className="hero">
         <div className="container">
           <h1>Khám phá Địa danh Việt Nam</h1>
           <p>
@@ -366,14 +382,33 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
-        </div>
-      </footer>
+          {/* Footer */}
+          <footer className="footer">
+            <div className="container">
+              <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
+            </div>
+          </footer>
+        </>
+      ) : (
+        /* Quiz Page Content */
+        <>
+          <section className="hero">
+            <div className="container">
+              <Quiz />
+            </div>
+          </section>
+          
+          {/* Footer for Quiz Page */}
+          <footer className="footer">
+            <div className="container">
+              <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
+            </div>
+          </footer>
+        </>
+      )}
 
-      {/* Floating 3D Sphere - Fixed Position */}
+      {/* Floating 3D Sphere - Fixed Position - TEMPORARILY DISABLED */}
+      {/*
       <div className="sphere-container">
         <div className="sphere">
           {[
@@ -409,6 +444,7 @@ function App() {
           ))}
         </div>
       </div>
+      */}
 
       {/* Vietnam Map - Fixed Position Right */}
       <div className="vietnam-map-container-fixed">

@@ -52,6 +52,33 @@ npm start
 
 Ứng dụng sẽ chạy tại [http://localhost:3000](http://localhost:3000)
 
+## 🚀 Deploy lên Render
+
+### Chuẩn bị deploy
+
+1. **Push code lên Git repository** (GitHub, GitLab, hoặc Bitbucket)
+2. **Đảm bảo file `.env` không được commit** (đã có trong `.gitignore`)
+
+### Các bước deploy trên Render
+
+1. **Truy cập [render.com](https://render.com)** và đăng ký/đăng nhập
+2. **Tạo Static Site mới**:
+   - Click **"New"** → **"Static Site"**
+   - Connect với Git repository của bạn
+3. **Cấu hình build**:
+   - **Name**: `vietnam-landmarks` (hoặc tên bạn muốn)
+   - **Build Command**: `npm run build`
+   - **Publish Directory**: `build`
+4. **Thêm Environment Variables**:
+   - Key: `REACT_APP_GEMINI_API_KEY`
+   - Value: API key Gemini của bạn
+5. **Deploy**: Click **"Create Static Site"**
+
+### Sau khi deploy thành công
+
+- Ứng dụng sẽ có URL dạng: `https://your-app-name.onrender.com`
+- Mỗi lần push code mới, Render sẽ tự động rebuild và deploy
+
 ## 🛠️ Scripts có sẵn
 
 ### `npm start`
