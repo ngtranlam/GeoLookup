@@ -13,33 +13,42 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
   const [showReview, setShowReview] = useState(false);
   const [showConfirmPopup, setShowConfirmPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoadingPopup, setShowLoadingPopup] = useState(false);
+  const [quizReady, setQuizReady] = useState(false);
   const [error, setError] = useState<string>('');
   const [quizStarted, setQuizStarted] = useState(false);
 
   const loadQuiz = async () => {
-    setIsLoading(true);
+    setShowLoadingPopup(true);
     setError('');
     
     try {
       console.log('Loading lesson content...');
       const lessons = await loadLessonContent();
+      console.log('Lessons loaded:', lessons.length);
       
-      if (lessons.length === 0) {
-        throw new Error('Không thể tải nội dung bài học');
-      }
-      
-      console.log('Generating quiz from lessons...');
+      console.log('Generating quiz...');
       const quiz = await generateQuizFromLessons(lessons);
+      console.log('Quiz generated:', quiz);
       
-      setQuizData(quiz);
-      setSelectedAnswers(new Array(quiz.totalQuestions).fill(-1));
-      setQuizStarted(true);
+      if (quiz && quiz.questions && quiz.questions.length > 0) {
+        setQuizData(quiz);
+        setSelectedAnswers(new Array(quiz.questions.length).fill(-1));
+        setShowLoadingPopup(false);
+        setQuizReady(true);
+      } else {
+        throw new Error('Không thể tạo câu hỏi từ nội dung bài học');
+      }
     } catch (err) {
       console.error('Error loading quiz:', err);
-      setError(err instanceof Error ? err.message : 'Có lỗi xảy ra khi tải bài tập');
-    } finally {
-      setIsLoading(false);
+      setError(err instanceof Error ? err.message : 'Đã xảy ra lỗi khi tải bài tập');
+      setShowLoadingPopup(false);
     }
+  };
+
+  const startQuiz = () => {
+    setQuizReady(false);
+    setQuizStarted(true);
   };
 
   const handleAnswerSelect = (answerIndex: number) => {
@@ -93,53 +102,103 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
     setShowResults(false);
     setShowReview(false);
     setQuizStarted(false);
+    setQuizReady(false);
+    setShowLoadingPopup(false);
     setError('');
   };
+
+  // Loading popup
+  if (showLoadingPopup) {
+    return (
+      <div className="quiz-container">
+        <div className="loading-popup-overlay">
+          <div className="loading-popup">
+            <div className="loading-content">
+              <div className="loading-spinner-large"></div>
+              <h2>Đang tạo bài tập</h2>
+              <p>Vui lòng chờ trong giây lát...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Quiz ready screen
+  if (quizReady) {
+    return (
+      <div className="quiz-container">
+        <div className="quiz-ready">
+          <div className="ready-header">
+            <h1>10 câu hỏi đã sẵn sàng</h1>
+            <p>Hãy thử thách bản thân với những câu hỏi về quê hương!</p>
+          </div>
+          
+          <div className="questions-preview">
+            {quizData?.questions.map((_, index) => (
+              <div key={index} className="question-item">
+                <span className="question-number">{index + 1}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="ready-actions">
+            <button className="start-quiz-btn" onClick={startQuiz}>
+              Bắt đầu làm bài
+            </button>
+            <button className="back-btn" onClick={resetQuiz}>
+              Quay lại
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!quizStarted) {
     return (
       <div className="quiz-container">
-        <div className="quiz-intro">
-          <div className="quiz-intro-icon">📚</div>
-          <h2>Bài tập trắc nghiệm</h2>
-          <p>Lịch sử Đắk Lắk từ 1930-1945</p>
+        <div className="quiz-intro-modern">
+          <div className="intro-header">
+            <h1 className="intro-title">Luyện tập củng cố</h1>
+            <p className="intro-subtitle">Luyện tập và kiểm tra kiến thức về quê hương xinh đẹp nhé!</p>
+          </div>
           
-          <div className="quiz-info">
-            <div className="info-item">
-              <span className="info-icon">📝</span>
-              <span>10 câu hỏi trắc nghiệm</span>
+          <div className="quiz-info-grid">
+            <div className="info-badge questions">
+              <div className="badge-number">10</div>
+              <div className="badge-text">Câu hỏi</div>
             </div>
-            <div className="info-item">
-              <span className="info-icon">⏱️</span>
-              <span>Không giới hạn thời gian</span>
+            <div className="info-badge time">
+              <div className="badge-number">∞</div>
+              <div className="badge-text">Thời gian</div>
             </div>
-            <div className="info-item">
-              <span className="info-icon">🎯</span>
-              <span>Dựa trên 10 bài học</span>
+            <div className="info-badge content">
+              <div className="badge-number">✓</div>
+              <div className="badge-text">Miễn phí</div>
+            </div>
+            <div className="info-badge format">
+              <div className="badge-number">📝</div>
+              <div className="badge-text">Trắc nghiệm</div>
             </div>
           </div>
 
           {error && (
-            <div className="error-message">
-              <span>⚠️ {error}</span>
+            <div className="error-alert">
+              <div className="alert-content">
+                <strong>Lỗi:</strong> {error}
+              </div>
             </div>
           )}
 
-          <div className="quiz-actions">
+          <div className="start-section">
             <button 
-              className="quiz-btn quiz-btn-primary"
+              className="start-btn"
               onClick={loadQuiz}
-              disabled={isLoading}
             >
-              {isLoading ? (
-                <>
-                  <span className="loading-spinner"></span>
-                  Đang tạo bài tập...
-                </>
-              ) : (
-                'Bắt đầu làm bài'
-              )}
+              Sẵn sàng
             </button>
+            <p className="start-note">Nhấn để bắt đầu luyện tập</p>
           </div>
         </div>
       </div>
