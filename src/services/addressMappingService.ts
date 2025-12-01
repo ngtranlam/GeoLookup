@@ -271,28 +271,40 @@ class AddressMappingService {
 
   // Kiểm tra xem địa danh có thuộc Đắk Lắk hoặc Phú Yên không
   isInTargetProvinces(address: string): boolean {
-    if (!address) return false;
+    if (!address) {
+      console.log('🔍 isInTargetProvinces: Empty address provided');
+      return false;
+    }
     
     const normalizedAddress = this.normalizeText(address);
+    console.log(`🔍 isInTargetProvinces: Checking "${address}" → normalized: "${normalizedAddress}"`);
     
     // Danh sách các từ khóa cho Đắk Lắk và Phú Yên
     const dakLakKeywords = [
-      'dak lak', 'daklak', 'đắk lắk', 'buon ma thuot', 'buôn ma thuột',
-      'buon don', 'buôn đôn', 'krong pak', 'krong buk', 'krong no',
-      'krong ana', 'krong bong', 'lak', 'cu m gar', 'cư m gar',
-      'ea h leo', 'ea hleo', 'ea sup', 'ea kar', 'm drak', 'mdrak'
+      'dak lak', 'daklak', 'đắk lắk', 'dac lac', 'dac lak',
+      'buon ma thuot', 'buôn ma thuột', 'buon ma thuot', 'ban me thuot',
+      'buon don', 'buôn đôn', 'buon don', 'krong pak', 'krong buk', 'krong no',
+      'krong ana', 'krong bong', 'lak', 'cu m gar', 'cư m gar', 'cu mgar',
+      'ea h leo', 'ea hleo', 'ea sup', 'ea kar', 'm drak', 'mdrak',
+      'ea tam', 'tan lap', 'tân lập', 'ea tam', 'hoa phu', 'hòa phú'
     ];
     
     const phuYenKeywords = [
-      'phu yen', 'phú yên', 'tuy hoa', 'tuy hòa', 'dong hoa', 'đông hòa',
-      'tuy an', 'tuy an', 'son hoa', 'sơn hòa', 'song cau', 'sông cầu',
-      'phu hoa', 'phú hòa', 'song hinh', 'sông hinh'
+      'phu yen', 'phú yên', 'phu yen', 'tuy hoa', 'tuy hòa', 'tuy hoa',
+      'dong hoa', 'đông hòa', 'dong hoa', 'tuy an', 'tuy an', 'tuy an',
+      'son hoa', 'sơn hòa', 'son hoa', 'song cau', 'sông cầu', 'song cau',
+      'phu hoa', 'phú hòa', 'phu hoa', 'song hinh', 'sông hinh', 'song hinh'
     ];
     
     const allKeywords = [...dakLakKeywords, ...phuYenKeywords];
     
     // Kiểm tra xem có chứa từ khóa nào không
-    return allKeywords.some(keyword => normalizedAddress.includes(keyword));
+    const matchedKeyword = allKeywords.find(keyword => normalizedAddress.includes(keyword));
+    const isMatch = !!matchedKeyword;
+    
+    console.log(`🔍 isInTargetProvinces: ${isMatch ? '✅ MATCH' : '❌ NO MATCH'} ${matchedKeyword ? `(matched: "${matchedKeyword}")` : ''}`);
+    
+    return isMatch;
   }
 
   // Extract thông tin chi tiết (số nhà, tên đường, quảng trường...) trước cấp xã/phường

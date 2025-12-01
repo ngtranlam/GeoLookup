@@ -38,7 +38,12 @@ export const searchLandmarkWithEnhancedAddress = async (landmarkName: string): P
 
       if (filteredResults.length === 0) {
         console.log('❌ No results found in target provinces (Đắk Lắk/Phú Yên)');
-        continue; // Try next attempt
+        // Nếu Gemini trả về kết quả nhưng không thuộc target provinces, return empty array
+        if (geminiResults.length > 0) {
+          console.log('🚫 Gemini found results but not in target provinces - returning empty array');
+          return [];
+        }
+        continue; // Try next attempt if no results at all
       }
 
       // Step 3: Enhance với local address mapping
@@ -54,18 +59,34 @@ export const searchLandmarkWithEnhancedAddress = async (landmarkName: string): P
       if (attempt === maxRetries) {
         // Fallback: Chỉ dùng local mapping (trong phạm vi Đắk Lắk/Phú Yên)
         const localResults = await searchWithLocalMappingOnly(landmarkName);
-        return localResults.filter(result => 
+        const filteredLocalResults = localResults.filter(result => 
           addressMappingService.isInTargetProvinces(result.oldAddress || result.newAddress || '')
         );
+        
+        // Nếu không có kết quả local nào trong target provinces, return empty array
+        if (filteredLocalResults.length === 0) {
+          console.log('🚫 No local results found in target provinces - returning empty array');
+          return [];
+        }
+        
+        return filteredLocalResults;
       }
     }
   }
 
   // Final fallback (trong phạm vi Đắk Lắk/Phú Yên)
   const finalResults = await searchWithLocalMappingOnly(landmarkName);
-  return finalResults.filter(result => 
+  const filteredFinalResults = finalResults.filter(result => 
     addressMappingService.isInTargetProvinces(result.oldAddress || result.newAddress || '')
   );
+  
+  // Đảm bảo trả về empty array nếu không có kết quả trong target provinces
+  if (filteredFinalResults.length === 0) {
+    console.log('🚫 Final fallback: No results found in target provinces - returning empty array');
+    return [];
+  }
+  
+  return filteredFinalResults;
 };
 
 // Tìm kiếm với Gemini (enhanced prompt for detailed address)
