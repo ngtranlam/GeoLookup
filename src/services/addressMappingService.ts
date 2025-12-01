@@ -233,29 +233,16 @@ class AddressMappingService {
     return `${mapping.don_vi_moi.loai} ${mapping.don_vi_moi.ten}, ${tinhPrefix}${tinhMoi}`;
   }
 
-  // Xử lý địa chỉ thông minh - giữ tên đường, cập nhật phần hành chính
+  // Xử lý địa chỉ thông minh - giữ số nhà/tên đường, cập nhật phần hành chính
   generateSmartNewAddress(geminiAddress: string, mapping: AddressMapping): string {
     if (!geminiAddress) {
       return this.generateNewAddressOnly(mapping);
     }
 
-    // Tách các phần của địa chỉ Gemini
-    const addressParts = geminiAddress.split(',').map(part => part.trim());
+    // Extract thông tin số nhà và tên đường từ địa chỉ Gemini
+    const streetInfo = this.extractStreetInfo(geminiAddress);
     
-    // Tìm phần tên đường/số nhà (thường ở đầu)
-    let streetPart = '';
-    let hasStreetInfo = false;
-    
-    if (addressParts.length > 0) {
-      const firstPart = addressParts[0];
-      // Kiểm tra xem có phải là số nhà/tên đường không
-      if (this.isStreetAddress(firstPart)) {
-        streetPart = firstPart;
-        hasStreetInfo = true;
-      }
-    }
-
-    // Tạo địa chỉ mới
+    // Tạo phần đơn vị hành chính mới
     const newAdminUnit = `${mapping.don_vi_moi.loai} ${mapping.don_vi_moi.ten}`;
     const tinhMoi = this.mappingData?.tong_quan.ten_tinh_moi || 'Đắk Lắk';
     
@@ -263,8 +250,9 @@ class AddressMappingService {
     const tinhPrefix = tinhMoi.toLowerCase().includes('tỉnh') ? '' : 'tỉnh ';
     const fullProvince = `${tinhPrefix}${tinhMoi}`;
     
-    if (hasStreetInfo) {
-      return `${streetPart}, ${newAdminUnit}, ${fullProvince}`;
+    // Kết hợp thông tin đường với đơn vị hành chính mới
+    if (streetInfo && streetInfo.length > 0) {
+      return `${streetInfo}, ${newAdminUnit}, ${fullProvince}`;
     } else {
       return `${newAdminUnit}, ${fullProvince}`;
     }
@@ -279,6 +267,61 @@ class AddressMappingService {
     ];
     
     return streetPatterns.some(pattern => pattern.test(text));
+  }
+
+  // Kiểm tra xem địa danh có thuộc Đắk Lắk hoặc Phú Yên không
+  isInTargetProvinces(address: string): boolean {
+    if (!address) return false;
+    
+    const normalizedAddress = this.normalizeText(address);
+    
+    // Danh sách các từ khóa cho Đắk Lắk và Phú Yên
+    const dakLakKeywords = [
+      'dak lak', 'daklak', 'đắk lắk', 'buon ma thuot', 'buôn ma thuột',
+      'buon don', 'buôn đôn', 'krong pak', 'krong buk', 'krong no',
+      'krong ana', 'krong bong', 'lak', 'cu m gar', 'cư m gar',
+      'ea h leo', 'ea hleo', 'ea sup', 'ea kar', 'm drak', 'mdrak'
+    ];
+    
+    const phuYenKeywords = [
+      'phu yen', 'phú yên', 'tuy hoa', 'tuy hòa', 'dong hoa', 'đông hòa',
+      'tuy an', 'tuy an', 'son hoa', 'sơn hòa', 'song cau', 'sông cầu',
+      'phu hoa', 'phú hòa', 'song hinh', 'sông hinh'
+    ];
+    
+    const allKeywords = [...dakLakKeywords, ...phuYenKeywords];
+    
+    // Kiểm tra xem có chứa từ khóa nào không
+    return allKeywords.some(keyword => normalizedAddress.includes(keyword));
+  }
+
+  // Extract số nhà và tên đường từ địa chỉ đầy đủ
+  extractStreetInfo(fullAddress: string): string {
+    if (!fullAddress) return '';
+
+    const parts = fullAddress.split(',').map(part => part.trim());
+    const streetParts: string[] = [];
+
+    for (const part of parts) {
+      // Kiểm tra xem có phải là số nhà không
+      if (/^số\s*\d+/i.test(part) || /^\d+/.test(part)) {
+        streetParts.push(part);
+        continue;
+      }
+
+      // Kiểm tra xem có phải là tên đường không
+      if (/đường|phố|ngõ|hẻm|quốc lộ|ql|tỉnh lộ|tl/i.test(part)) {
+        streetParts.push(part);
+        continue;
+      }
+
+      // Nếu đã có thông tin đường rồi thì dừng
+      if (streetParts.length > 0) {
+        break;
+      }
+    }
+
+    return streetParts.join(', ');
   }
 
   // Loại bỏ từ lặp trong địa chỉ

@@ -27,45 +27,72 @@ export const searchLandmarkWithEnhancedAddress = async (landmarkName: string): P
       // Step 1: Tìm kiếm với Gemini để lấy thông tin cơ bản
       const geminiResults = await searchWithGemini(landmarkName);
       
-      // Step 2: Enhance với local address mapping
-      const enhancedResults = await enhanceWithLocalMapping(geminiResults, landmarkName);
+      // Step 2: Filter chỉ giữ địa danh thuộc Đắk Lắk và Phú Yên
+      const filteredResults = geminiResults.filter(result => {
+        const isInTarget = addressMappingService.isInTargetProvinces(result.geminiAddress || '');
+        if (!isInTarget) {
+          console.log(`🚫 Filtered out: ${result.name} - not in Đắk Lắk/Phú Yên`);
+        }
+        return isInTarget;
+      });
+
+      if (filteredResults.length === 0) {
+        console.log('❌ No results found in target provinces (Đắk Lắk/Phú Yên)');
+        continue; // Try next attempt
+      }
+
+      // Step 3: Enhance với local address mapping
+      const enhancedResults = await enhanceWithLocalMapping(filteredResults, landmarkName);
       
       if (enhancedResults.length > 0) {
-        console.log(`✅ Found ${enhancedResults.length} enhanced results`);
+        console.log(`✅ Found ${enhancedResults.length} enhanced results in target provinces`);
         return enhancedResults;
       }
 
     } catch (error) {
       console.error(`❌ Attempt ${attempt} failed:`, error);
       if (attempt === maxRetries) {
-        // Fallback: Chỉ dùng local mapping
-        return await searchWithLocalMappingOnly(landmarkName);
+        // Fallback: Chỉ dùng local mapping (trong phạm vi Đắk Lắk/Phú Yên)
+        const localResults = await searchWithLocalMappingOnly(landmarkName);
+        return localResults.filter(result => 
+          addressMappingService.isInTargetProvinces(result.oldAddress || result.newAddress || '')
+        );
       }
     }
   }
 
-  // Final fallback
-  return await searchWithLocalMappingOnly(landmarkName);
+  // Final fallback (trong phạm vi Đắk Lắk/Phú Yên)
+  const finalResults = await searchWithLocalMappingOnly(landmarkName);
+  return finalResults.filter(result => 
+    addressMappingService.isInTargetProvinces(result.oldAddress || result.newAddress || '')
+  );
 };
 
-// Tìm kiếm với Gemini (enhanced prompt for address)
+// Tìm kiếm với Gemini (enhanced prompt for detailed address)
 async function searchWithGemini(landmarkName: string): Promise<LandmarkWithAddress[]> {
-  const prompt = `Tìm thông tin về địa danh "${landmarkName}" ở Việt Nam. Trả về JSON format:
+  const prompt = `Tìm thông tin về địa danh "${landmarkName}" ở tỉnh Đắk Lắk hoặc tỉnh Phú Yên, Việt Nam. Trả về JSON format:
 {
   "results": [
     {
       "name": "Tên địa danh",
-      "currentAddress": "Địa chỉ hiện tại chi tiết (phường/xã, quận/huyện, tỉnh/thành phố)",
+      "currentAddress": "Địa chỉ hiện tại CỰC KỲ CHI TIẾT (số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố)",
       "description": "Mô tả ngắn gọn về địa danh",
       "image": "URL hình ảnh (nếu có)"
     }
   ]
 }
 
-QUAN TRỌNG: 
-- Hãy cung cấp địa chỉ hiện tại chi tiết nhất có thể
-- Bao gồm tên phường/xã, quận/huyện, tỉnh/thành phố
-- Ví dụ: "Phường Tân Lập, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk"`;
+CỰC KỲ QUAN TRỌNG - PHẠM VI TÌM KIẾM:
+- CHỈ tìm địa danh thuộc tỉnh Đắk Lắk hoặc tỉnh Phú Yên
+- KHÔNG trả về địa danh ở các tỉnh khác
+- Nếu không tìm thấy ở 2 tỉnh này, trả về mảng rỗng
+
+ĐỊA CHỈ CHI TIẾT:
+- BẮT BUỘC bao gồm số nhà và tên đường (nếu có)
+- Định dạng: "Số [X] đường [Tên đường], Phường [Tên], [Quận/Huyện], tỉnh [Tên tỉnh]"
+- Ví dụ tốt: "Số 10 đường Nguyễn Du, Phường Tân Lập, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk"
+- Ví dụ tốt: "Đường Trần Hưng Đạo, thị xã Tuy Hòa, tỉnh Phú Yên"
+- Nếu không có số nhà cụ thể, hãy tìm tên đường gần nhất`;
 
   const requestBody = {
     contents: [{ parts: [{ text: prompt }] }],

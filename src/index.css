@@ -3410,6 +3410,28 @@ body {
   margin: 0;
 }
 
+.no-results {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.no-results h3 {
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.no-results p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 /* Mobile Responsive for Address Info */
 @media (max-width: 768px) {
   .address-header {

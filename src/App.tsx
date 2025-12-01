@@ -174,7 +174,7 @@ function App() {
           {/* Hero Section */}
           <section className="hero">
         <div className="container">
-          <h1>Khám phá Địa danh Việt Nam</h1>
+          <h1>Khám phá Địa danh Tỉnh Đắk Lắk</h1>
           <p>
             Tìm kiếm thông tin về địa chỉ cũ và mới của các địa danh sau việc tái cấu trúc hành chính tại Việt Nam
           </p>
@@ -193,7 +193,7 @@ function App() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Nhập tên địa danh, tỉnh thành... (VD: Thủ Đức, Phú Quốc)"
+                  placeholder="Nhập tên địa danh, vị trí cần tìm... (VD: Nhà đày, Tháp Nghinh phong)"
                   className="search-input"
                 />
                 <button 
@@ -217,16 +217,16 @@ function App() {
           {/* Stats */}
           <div className="stats">
             <div className="stat-card">
-              <h3>63</h3>
-              <p>Tỉnh thành</p>
+              <h3>99+</h3>
+              <p>Địa danh nổi tiếng</p>
             </div>
             <div className="stat-card">
-              <h3>100+</h3>
-              <p>Thay đổi hành chính</p>
+              <h3>99+</h3>
+              <p>Đơn vị hành chính cập nhật mới</p>
             </div>
             <div className="stat-card">
               <h3>AI</h3>
-              <p>Hỗ trợ tìm kiếm</p>
+              <p>Tìm kiếm thông minh với AI</p>
             </div>
           </div>
 
@@ -252,14 +252,6 @@ function App() {
       )}
 
       {/* Error Message */}
-      {searchError && (
-        <div className="container">
-          <div className="error-message">
-            <h3>⚠️ Thông báo</h3>
-            <p>{searchError}</p>
-          </div>
-        </div>
-      )}
 
       {/* Enhanced Search Results */}
       {searchResults.length > 0 && (
@@ -270,10 +262,6 @@ function App() {
               {searchError && <span style={{color: '#f59e0b'}}> (Dữ liệu mẫu)</span>}
             </h2>
             
-            {/* Results Summary */}
-            <div className="results-summary">
-              <h3>📊 Tìm thấy {searchResults.length} kết quả</h3>
-            </div>
 
             {/* Enhanced Results with AddressInfo */}
             {searchResults.map((result, index) => (
@@ -283,12 +271,12 @@ function App() {
         </div>
       )}
 
-      {/* No Results */}
+      {/* No Results - Simple Notification */}
       {!isLoading && searchResults.length === 0 && searchQuery && (
         <div className="container">
-          <div className="no-results">
-            <h3>Không tìm thấy kết quả</h3>
-            <p>Không tìm thấy thông tin về "{searchQuery}". Hãy thử với từ khóa khác.</p>
+          <div className="error-message">
+            <h3>⚠️ Thông báo</h3>
+            <p>Địa danh {searchQuery} không thuộc tỉnh Đắk Lắk, hãy tìm kiếm một địa danh khác nhé</p>
           </div>
         </div>
       )}

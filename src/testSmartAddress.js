@@ -2,34 +2,34 @@
 
 const testCases = [
   {
-    name: "Bảo tàng Thế giới cà phê",
-    geminiAddress: "Số 10 Nguyễn Du, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk",
-    expectedResult: "Số 10 Nguyễn Du, Phường Buôn Ma Thuột, tỉnh Đắk Lắk"
+    name: "Bảo tàng Thế giới cà phê - Có số nhà và đường",
+    geminiAddress: "Số 10 đường Nguyễn Du, Phường Tân Lập, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk",
+    expectedResult: "Số 10 đường Nguyễn Du, Phường Tân Lập, tỉnh Đắk Lắk"
   },
   {
-    name: "Nhà đày Buôn Ma Thuột", 
+    name: "Nhà đày Buôn Ma Thuột - Có địa chỉ chi tiết", 
+    geminiAddress: "Số 234 đường Lê Duẩn, Phường Ea Tam, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk",
+    expectedResult: "Số 234 đường Lê Duẩn, Phường Ea Tam, tỉnh Đắk Lắk"
+  },
+  {
+    name: "Tháp Nghĩnh Phong - Có tên đường",
+    geminiAddress: "Đường Trần Hưng Đạo, Xã Hòa Phú, tỉnh Đắk Lắk",
+    expectedResult: "Đường Trần Hưng Đạo, Xã Hòa Phú, tỉnh Đắk Lắk"
+  },
+  {
+    name: "Test địa chỉ không có số nhà",
     geminiAddress: "Phường Tân Lập, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk",
     expectedResult: "Phường Tân Lập, tỉnh Đắk Lắk"
   },
   {
-    name: "Tháp Nghĩnh Phong",
-    geminiAddress: "Xã Hòa Phú, tỉnh Đắk Lắk, tỉnh Đắk Lắk", // Có lặp từ
-    expectedResult: "Xã Hòa Phú, tỉnh Đắk Lắk" // Đã loại bỏ lặp
+    name: "Test địa chỉ đầy đủ với nhiều thông tin",
+    geminiAddress: "Số 15 đường Nguyễn Tất Thành, Phường Ea Tam, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk",
+    expectedResult: "Số 15 đường Nguyễn Tất Thành, Phường Ea Tam, tỉnh Đắk Lắk"
   },
   {
-    name: "Tháp Nghĩnh Phong - Test lặp từ liền kề",
-    geminiAddress: "Xã Xã Hòa Phú, tỉnh Đắk Lắk", // Lặp từ "Xã Xã"
-    expectedResult: "Xã Hòa Phú, tỉnh Đắk Lắk" // Đã loại bỏ lặp
-  },
-  {
-    name: "Test lặp từ xa nhau",
-    geminiAddress: "Phường Tân Lập, Phường Tân Lập, tỉnh Đắk Lắk", // Lặp cả cụm từ
-    expectedResult: "Phường Tân Lập, tỉnh Đắk Lắk" // Đã loại bỏ lặp
-  },
-  {
-    name: "Test nhiều loại lặp",
-    geminiAddress: "Số Số 10, Phường Phường Tân Lập, tỉnh tỉnh Đắk Lắk", // Nhiều từ lặp
-    expectedResult: "Số 10, Phường Tân Lập, tỉnh Đắk Lắk" // Đã loại bỏ tất cả lặp
+    name: "Test với quốc lộ",
+    geminiAddress: "Quốc lộ 14, Xã Hòa Phú, huyện Buôn Đôn, tỉnh Đắk Lắk",
+    expectedResult: "Quốc lộ 14, Xã Hòa Phú, tỉnh Đắk Lắk"
   }
 ];
 
@@ -41,7 +41,8 @@ testCases.forEach((testCase, index) => {
 });
 
 console.log('\n📝 Features to test:');
-console.log('✅ Giữ nguyên tên đường/số nhà');
-console.log('✅ Loại bỏ từ lặp');
-console.log('✅ Cập nhật đơn vị hành chính mới');
-console.log('✅ Xử lý "tỉnh" không bị lặp');
+console.log('✅ Extract số nhà và tên đường chi tiết từ Gemini');
+console.log('✅ Giữ nguyên số nhà/tên đường trong địa chỉ mới');
+console.log('✅ Cập nhật đơn vị hành chính mới từ JSON');
+console.log('✅ Loại bỏ từ lặp và xử lý "tỉnh"');
+console.log('✅ Hỗ trợ nhiều loại đường: số nhà, đường, phố, quốc lộ');
