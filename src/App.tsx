@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { searchLandmarkWithGemini } from './services/geminiService';
+import { searchLandmarkWithEnhancedAddress } from './services/enhancedGeminiService';
 import Quiz from './components/Quiz';
+import AddressInfo from './components/AddressInfo';
 
 // Mock data cho demo
 const mockResults = [
@@ -102,8 +103,8 @@ function App() {
     setSearchError('');
     
     try {
-      // Call Gemini API for real search
-      const results = await searchLandmarkWithGemini(searchQuery.trim());
+      // Call Enhanced Gemini API for real search
+      const results = await searchLandmarkWithEnhancedAddress(searchQuery.trim());
       setSearchResults(results);
       
       if (results.length === 0) {
@@ -260,25 +261,23 @@ function App() {
         </div>
       )}
 
-      {/* Search Results */}
+      {/* Enhanced Search Results */}
       {searchResults.length > 0 && (
-        <div className="container">
+        <div className="container enhanced-results">
           <div className="results">
-            <h2>Kết quả tìm kiếm cho "{searchQuery}" {searchError && '(Dữ liệu mẫu)'}</h2>
+            <h2>
+              🔍 Kết quả tìm kiếm cho "{searchQuery}" 
+              {searchError && <span style={{color: '#f59e0b'}}> (Dữ liệu mẫu)</span>}
+            </h2>
+            
+            {/* Results Summary */}
+            <div className="results-summary">
+              <h3>📊 Tìm thấy {searchResults.length} kết quả</h3>
+            </div>
+
+            {/* Enhanced Results with AddressInfo */}
             {searchResults.map((result, index) => (
-              <div key={index} className="result-card" onClick={() => handleResultClick(result)}>
-                {result.image && (
-                  <div className="result-image">
-                    <img src={result.image} alt={result.name} />
-                  </div>
-                )}
-                <div className="result-content">
-                  <h3>{result.name}</h3>
-                  <p><strong>Địa chỉ cũ:</strong> {result.oldAddress}</p>
-                  <p><strong>Địa chỉ mới:</strong> {result.newAddress}</p>
-                  <p><strong>Mô tả:</strong> {result.description}</p>
-                </div>
-              </div>
+              <AddressInfo key={index} result={result} />
             ))}
           </div>
         </div>
