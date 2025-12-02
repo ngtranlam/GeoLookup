@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { searchLandmarkWithEnhancedAddress } from './services/enhancedGeminiService';
 import Quiz from './components/Quiz';
-import AddressInfo from './components/AddressInfo';
+import LandmarkResult from './components/LandmarkResult';
+import LandmarkDetailPopup from './components/LandmarkDetailPopup';
 
 // Mock data cho demo
 const mockResults = [
@@ -84,15 +85,6 @@ function App() {
     }
   };
 
-  const handleResultClick = (result: any) => {
-    setSelectedPlace(result);
-    setShowPopup(true);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-    setSelectedPlace(null);
-  };
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,6 +101,17 @@ function App() {
       
       if (results.length === 0) {
         setSearchError('Không tìm thấy thông tin về địa danh này.');
+      } else {
+        // Auto scroll to results title after a short delay
+        setTimeout(() => {
+          const resultsTitle = document.getElementById('search-results-title');
+          if (resultsTitle) {
+            resultsTitle.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center'
+            });
+          }
+        }, 300);
       }
     } catch (error) {
       console.error('Search error:', error);
@@ -121,6 +124,19 @@ function App() {
         item.newAddress.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setSearchResults(filtered);
+      
+      // Auto scroll for fallback results too
+      if (filtered.length > 0) {
+        setTimeout(() => {
+          const resultsTitle = document.getElementById('search-results-title');
+          if (resultsTitle) {
+            resultsTitle.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center'
+            });
+          }
+        }, 300);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -199,16 +215,13 @@ function App() {
                 <button 
                   type="submit" 
                   disabled={isLoading}
-                  className="search-btn"
+                  className={`search-btn-icon-only ${isLoading ? 'searching' : ''}`}
+                  title={isLoading ? 'Đang tìm kiếm...' : 'Tìm kiếm'}
                 >
-                  <span className="search-btn-text">
-                    {isLoading ? 'Đang tìm...' : 'Tìm kiếm'}
-                  </span>
-                  <div className="search-btn-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
+                  <svg className="search-magnifier" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2.5"/>
+                    <path d="m21 21-6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                  </svg>
                 </button>
               </div>
             </form>
@@ -232,7 +245,7 @@ function App() {
 
           {/* Info Section */}
           <div style={{textAlign: 'center', padding: '2rem 0'}}>
-            <div className="sphere-title">🏛️ Hơn 100 địa danh nổi tiếng Việt Nam</div>
+            <div className="sphere-title">Hơn 100 địa danh nổi tiếng Việt Nam</div>
             <p style={{fontSize: '1.1rem', opacity: 0.9, maxWidth: '600px', margin: '0 auto 2rem'}}>
               Khám phá hình cầu 3D bên trái với 100+ địa danh nổi tiếng khắp Việt Nam. 
               Click vào bất kỳ địa danh nào để tìm kiếm thông tin chi tiết.
@@ -257,15 +270,22 @@ function App() {
       {searchResults.length > 0 && (
         <div className="container enhanced-results">
           <div className="results">
-            <h2>
-              🔍 Kết quả tìm kiếm cho "{searchQuery}" 
+            <h2 id="search-results-title">
+              Kết quả tìm kiếm cho "{searchQuery}" 
               {searchError && <span style={{color: '#f59e0b'}}> (Dữ liệu mẫu)</span>}
             </h2>
             
 
-            {/* Enhanced Results with AddressInfo */}
+            {/* Enhanced Results */}
             {searchResults.map((result, index) => (
-              <AddressInfo key={index} result={result} />
+              <LandmarkResult 
+                key={index} 
+                result={result}
+                onClick={() => {
+                  setSelectedPlace(result);
+                  setShowPopup(true);
+                }}
+              />
             ))}
           </div>
         </div>
@@ -275,7 +295,7 @@ function App() {
       {!isLoading && searchResults.length === 0 && searchQuery && (
         <div className="container">
           <div className="error-message">
-            <h3>⚠️ Thông báo</h3>
+            <h3>Thông báo</h3>
             <p>Địa danh {searchQuery} không thuộc tỉnh Đắk Lắk, hãy tìm kiếm một địa danh khác nhé</p>
           </div>
         </div>
@@ -284,7 +304,7 @@ function App() {
       {/* Nearby Places Section */}
       <section className="nearby-places">
         <div className="container">
-          <h2 className="section-title">📍 Địa điểm gần bạn</h2>
+          <h2 className="section-title">Địa điểm gần bạn</h2>
           <p className="section-subtitle">Khám phá những địa danh nổi tiếng tại Đắk Lắk</p>
           
           <div className="places-grid">
@@ -292,7 +312,7 @@ function App() {
               <div className="place-image">
                 <img src="/nhadaybuonmathuot.jpg" alt="Nhà đày Buôn Ma Thuột" />
                 <div className="place-overlay">
-                  <span className="place-icon">🏛️</span>
+                  <span className="place-icon"></span>
                 </div>
               </div>
               <div className="place-content">
@@ -434,59 +454,23 @@ function App() {
       */}
 
       {/* Vietnam Map - Fixed Position Right */}
-      <div className="vietnam-map-container-fixed">
+      {/* <div className="vietnam-map-container-fixed">
         <img 
           src="/vietnam-map.png" 
           alt="Bản đồ Việt Nam với các địa danh nổi tiếng" 
           className="vietnam-map"
         />
-      </div>
+      </div> */}
 
       {/* Place Details Popup */}
       {showPopup && selectedPlace && (
-        <div className="popup-overlay" onClick={closePopup}>
-          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={closePopup}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            
-            <div className="popup-header">
-              <div className="popup-image">
-                <img src={selectedPlace.image} alt={selectedPlace.name} />
-              </div>
-              <div className="popup-title">
-                <h2>{selectedPlace.name}</h2>
-              </div>
-            </div>
-            
-            <div className="popup-body">
-              <div className="popup-info">
-                {selectedPlace.oldAddress && (
-                  <div className="info-item">
-                    <h4>📍 Địa chỉ cũ</h4>
-                    <p>{selectedPlace.oldAddress}</p>
-                  </div>
-                )}
-                
-                {selectedPlace.newAddress && (
-                  <div className="info-item">
-                    <h4>📍 Địa chỉ mới</h4>
-                    <p>{selectedPlace.newAddress}</p>
-                  </div>
-                )}
-                
-                {selectedPlace.description && (
-                  <div className="info-item">
-                    <h4>📖 Giới thiệu</h4>
-                    <p>{selectedPlace.description}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+        <LandmarkDetailPopup
+          landmark={selectedPlace}
+          onClose={() => {
+            setShowPopup(false);
+            setSelectedPlace(null);
+          }}
+        />
       )}
     </div>
   );

@@ -35,11 +35,13 @@ interface LandmarkWithAddress {
   newAddress: string;
   description: string;
   image?: string;
+  images?: string[]; // Multiple images for slideshow
   geminiAddress?: string; // Address returned by Gemini
   addressDetails?: {
-    isUpdated: boolean;
+    isUpdated?: boolean;
+    hasMapping?: boolean;
     mappingInfo?: AddressMapping;
-    source: 'gemini' | 'local' | 'hybrid';
+    source: 'gemini' | 'local' | 'hybrid' | 'local_data';
   };
 }
 

@@ -1,4 +1,5 @@
-import { addressMappingService, LandmarkWithAddress, AddressMapping } from './addressMappingService';
+import { addressMappingService, LandmarkWithAddress } from './addressMappingService';
+import { landmarkDataService } from './landmarkDataService';
 
 interface GeminiResponse {
   candidates: Array<{
@@ -16,6 +17,82 @@ const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/
 // Enhanced search function với address mapping
 export const searchLandmarkWithEnhancedAddress = async (landmarkName: string): Promise<LandmarkWithAddress[]> => {
   console.log(`🔍 Searching for: ${landmarkName}`);
+  
+  // STEP 1: Try direct match in local data first (fast path)
+  const directMatch = landmarkDataService.searchLandmark(landmarkName);
+  if (directMatch) {
+    console.log('✅ Direct match found in local landmark data');
+    
+    // Fetch detailed description from Gemini
+    let description = '';
+    try {
+      const geminiDesc = await fetchDescriptionFromGemini(directMatch.name);
+      description = geminiDesc;
+    } catch (error) {
+      console.error('Failed to fetch description from Gemini:', error);
+      description = 'Địa danh lịch sử quan trọng tại tỉnh Đắk Lắk';
+    }
+    
+    return [{
+      name: directMatch.name,
+      oldAddress: directMatch.oldAddress,
+      newAddress: directMatch.newAddress,
+      geminiAddress: directMatch.newAddress,
+      description: description,
+      image: directMatch.thumbnail,
+      images: directMatch.images,
+      addressDetails: {
+        source: 'local_data',
+        hasMapping: false
+      }
+    }];
+  }
+  
+  // STEP 2: Use Gemini to identify the landmark from user query
+  console.log('⚠️ No direct match, using Gemini to identify landmark...');
+  
+  try {
+    const identifiedLandmark = await identifyLandmarkWithGemini(landmarkName);
+    
+    if (identifiedLandmark) {
+      console.log(`✅ Gemini identified: "${identifiedLandmark}"`);
+      
+      // Try to find in local data with identified name
+      const localMatch = landmarkDataService.searchLandmark(identifiedLandmark);
+      
+      if (localMatch) {
+        console.log('✅ Found matching landmark in local data!');
+        
+        // Fetch detailed description
+        let description = '';
+        try {
+          const geminiDesc = await fetchDescriptionFromGemini(localMatch.name);
+          description = geminiDesc;
+        } catch (error) {
+          description = 'Địa danh lịch sử quan trọng tại tỉnh Đắk Lắk';
+        }
+        
+        return [{
+          name: localMatch.name,
+          oldAddress: localMatch.oldAddress,
+          newAddress: localMatch.newAddress,
+          geminiAddress: localMatch.newAddress,
+          description: description,
+          image: localMatch.thumbnail,
+          images: localMatch.images,
+          addressDetails: {
+            source: 'local_data',
+            hasMapping: false
+          }
+        }];
+      }
+    }
+  } catch (error) {
+    console.error('Error identifying landmark with Gemini:', error);
+  }
+  
+  // STEP 3: Search with Gemini for general landmarks (fallback)
+  console.log('⚠️ Not found in local data, searching with Gemini for general landmarks...');
   
   // Ensure mapping data is loaded
   await addressMappingService.loadMappingData();
@@ -88,6 +165,107 @@ export const searchLandmarkWithEnhancedAddress = async (landmarkName: string): P
   
   return filteredFinalResults;
 };
+
+// Identify landmark name from user query using Gemini
+async function identifyLandmarkWithGemini(userQuery: string): Promise<string | null> {
+  // Get all landmark names from local data
+  const allLandmarks = landmarkDataService.getAllLandmarks();
+  const landmarkNames = allLandmarks.map(l => l['Tên địa danh']).join('\n- ');
+  
+  const prompt = `Người dùng đang tìm kiếm: "${userQuery}"
+
+Danh sách các địa danh có sẵn ở Đắk Lắk:
+- ${landmarkNames}
+
+Nhiệm vụ: Xác định xem người dùng đang muốn tìm địa danh NÀO trong danh sách trên.
+
+Yêu cầu:
+- Nếu tìm thấy khớp (có thể viết tắt, thiếu dấu, sai chính tả nhẹ), trả về TÊN CHÍNH XÁC từ danh sách
+- Nếu không khớp với bất kỳ địa danh nào, trả về: NONE
+- CHỈ trả về tên địa danh hoặc NONE, KHÔNG giải thích gì thêm
+
+Ví dụ:
+- "nha day" → "Nhà đày Buôn Ma Thuột"
+- "thap nhinh phong" → "Tháp Nghinh Phong"
+- "ho lak" → "Hồ Lắk"
+- "dia danh khong ton tai" → NONE`;
+
+  const requestBody = {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: {
+      temperature: 0.1,
+      maxOutputTokens: 100,
+    }
+  };
+
+  try {
+    const response = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Gemini API error: ${response.status}`);
+    }
+
+    const data: GeminiResponse = await response.json();
+    const result = data.candidates[0]?.content.parts[0]?.text.trim() || '';
+    
+    console.log(`Gemini identification result: "${result}"`);
+    
+    // Check if result is NONE or empty
+    if (!result || result.toUpperCase() === 'NONE') {
+      return null;
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Error identifying landmark:', error);
+    return null;
+  }
+}
+
+// Fetch detailed description from Gemini
+async function fetchDescriptionFromGemini(landmarkName: string): Promise<string> {
+  const prompt = `Hãy viết một đoạn mô tả chi tiết, sinh động và hấp dẫn về địa danh "${landmarkName}" ở tỉnh Đắk Lắk, Việt Nam.
+
+Yêu cầu:
+- Mô tả phải dài từ 3-5 câu
+- Bao gồm thông tin lịch sử, ý nghĩa văn hóa
+- Nêu bật điểm đặc biệt, độc đáo của địa danh
+- Viết theo phong cách giới thiệu du lịch, thu hút người đọc
+- KHÔNG sử dụng emoji
+- Trả về CHỈ đoạn mô tả, không có tiêu đề hay format khác`;
+
+  const requestBody = {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: {
+      temperature: 0.7,
+      maxOutputTokens: 512,
+    }
+  };
+
+  try {
+    const response = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Gemini API error: ${response.status}`);
+    }
+
+    const data: GeminiResponse = await response.json();
+    const description = data.candidates[0]?.content.parts[0]?.text || '';
+    
+    return description.trim();
+  } catch (error) {
+    console.error('Error fetching description:', error);
+    return `${landmarkName} là một địa danh lịch sử quan trọng tại tỉnh Đắk Lắk, mang đậm dấu ấn văn hóa và lịch sử của vùng đất Tây Nguyên.`;
+  }
+}
 
 // Tìm kiếm với Gemini (enhanced prompt for detailed address)
 async function searchWithGemini(landmarkName: string): Promise<LandmarkWithAddress[]> {
