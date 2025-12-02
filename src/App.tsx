@@ -185,7 +185,7 @@ function App() {
           <nav className="nav">
             <div className="logo">
               <img 
-                src="/logo.jpg" 
+                src="/logo-nbk.png" 
                 alt="Logo THCS Nguyễn Bình Khiêm" 
                 className="logo-image"
               />
