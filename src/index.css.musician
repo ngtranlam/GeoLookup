@@ -1,0 +1,128 @@
+/* Musician-specific styles */
+
+/* Result Section Headers */
+.result-section {
+  margin-bottom: 3rem;
+}
+
+.result-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.result-section-title svg {
+  color: #667eea;
+}
+
+/* Musician Badge on Result Card */
+.musician-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Musician Years Info */
+.musician-years {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.musician-years svg {
+  color: #f59e0b;
+}
+
+/* Musician Birth-Death in Popup */
+.musician-birth-death {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(245, 158, 11, 0.15);
+  border-left: 3px solid #f59e0b;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.musician-birth-death svg {
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+/* Musician Section in Popup */
+.musician-section {
+  margin-bottom: 2rem;
+}
+
+.musician-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.musician-section-title svg {
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.musician-section-content {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  padding-left: 2.25rem;
+  white-space: pre-line;
+}
+
+/* Mobile Responsive for Musician */
+@media (max-width: 768px) {
+  .result-section-title {
+    font-size: 1.25rem;
+  }
+  
+  .musician-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .musician-birth-death {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .musician-section-title {
+    font-size: 1.1rem;
+  }
+  
+  .musician-section-content {
+    font-size: 0.95rem;
+    padding-left: 0;
+  }
+}

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { searchLandmarkWithEnhancedAddress } from './services/enhancedGeminiService';
+import { searchMusicianWithGemini, MusicianResult as MusicianData } from './services/musicianGeminiService';
 import Quiz from './components/Quiz';
 import LandmarkResult from './components/LandmarkResult';
 import LandmarkDetailPopup from './components/LandmarkDetailPopup';
+import MusicianResultCard from './components/MusicianResult';
+import MusicianDetailPopup from './components/MusicianDetailPopup';
 
 // Mock data cho demo
 const mockResults = [
@@ -25,9 +28,12 @@ const mockResults = [
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [musicianResults, setMusicianResults] = useState<MusicianData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
+  const [selectedMusician, setSelectedMusician] = useState<MusicianData | null>(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [showMusicianPopup, setShowMusicianPopup] = useState(false);
   const [searchError, setSearchError] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<'explore' | 'quiz'>('explore');
 
@@ -92,16 +98,18 @@ function App() {
 
     setIsLoading(true);
     setSearchResults([]);
+    setMusicianResults([]);
     setSearchError('');
     
     try {
-      // Call Enhanced Gemini API for real search
-      const results = await searchLandmarkWithEnhancedAddress(searchQuery.trim());
-      setSearchResults(results);
+      // Search musicians first
+      const musicianSearchResults = await searchMusicianWithGemini(searchQuery.trim());
       
-      if (results.length === 0) {
-        setSearchError('Không tìm thấy thông tin về địa danh này.');
-      } else {
+      // If musician found, only show musician results
+      if (musicianSearchResults.length > 0) {
+        setMusicianResults(musicianSearchResults);
+        setSearchResults([]);
+        
         // Auto scroll to results title after a short delay
         setTimeout(() => {
           const resultsTitle = document.getElementById('search-results-title');
@@ -112,6 +120,26 @@ function App() {
             });
           }
         }, 300);
+      } else {
+        // If no musician found, search for landmarks
+        const landmarkResults = await searchLandmarkWithEnhancedAddress(searchQuery.trim());
+        setSearchResults(landmarkResults);
+        setMusicianResults([]);
+        
+        if (landmarkResults.length === 0) {
+          setSearchError('Không tìm thấy thông tin về địa danh hoặc nhạc sĩ này.');
+        } else {
+          // Auto scroll to results title after a short delay
+          setTimeout(() => {
+            const resultsTitle = document.getElementById('search-results-title');
+            if (resultsTitle) {
+              resultsTitle.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center'
+              });
+            }
+          }, 300);
+        }
       }
     } catch (error) {
       console.error('Search error:', error);
@@ -267,7 +295,7 @@ function App() {
       {/* Error Message */}
 
       {/* Enhanced Search Results */}
-      {searchResults.length > 0 && (
+      {(searchResults.length > 0 || musicianResults.length > 0) && (
         <div className="container enhanced-results">
           <div className="results">
             <h2 id="search-results-title">
@@ -275,28 +303,59 @@ function App() {
               {searchError && <span style={{color: '#f59e0b'}}> (Dữ liệu mẫu)</span>}
             </h2>
             
+            {/* Landmark Results */}
+            {searchResults.length > 0 && (
+              <div className="result-section">
+                <h3 className="result-section-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                  </svg>
+                  Địa danh ({searchResults.length})
+                </h3>
+                {searchResults.map((result, index) => (
+                  <LandmarkResult 
+                    key={`landmark-${index}`} 
+                    result={result}
+                    onClick={() => {
+                      setSelectedPlace(result);
+                      setShowPopup(true);
+                    }}
+                  />
+                ))}
+              </div>
+            )}
 
-            {/* Enhanced Results */}
-            {searchResults.map((result, index) => (
-              <LandmarkResult 
-                key={index} 
-                result={result}
-                onClick={() => {
-                  setSelectedPlace(result);
-                  setShowPopup(true);
-                }}
-              />
-            ))}
+            {/* Musician Results */}
+            {musicianResults.length > 0 && (
+              <div className="result-section">
+                <h3 className="result-section-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" fill="currentColor"/>
+                  </svg>
+                  Nhạc sĩ ({musicianResults.length})
+                </h3>
+                {musicianResults.map((result, index) => (
+                  <MusicianResultCard 
+                    key={`musician-${index}`} 
+                    result={result}
+                    onClick={() => {
+                      setSelectedMusician(result);
+                      setShowMusicianPopup(true);
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}
 
       {/* No Results - Simple Notification */}
-      {!isLoading && searchResults.length === 0 && searchQuery && (
+      {!isLoading && searchResults.length === 0 && musicianResults.length === 0 && searchQuery && (
         <div className="container">
           <div className="error-message">
             <h3>Thông báo</h3>
-            <p>Địa danh {searchQuery} không thuộc tỉnh Đắk Lắk, hãy tìm kiếm một địa danh khác nhé</p>
+            <p>Không tìm thấy thông tin về "{searchQuery}" trong cơ sở dữ liệu địa danh và nhạc sĩ</p>
           </div>
         </div>
       )}
@@ -469,6 +528,17 @@ function App() {
           onClose={() => {
             setShowPopup(false);
             setSelectedPlace(null);
+          }}
+        />
+      )}
+
+      {/* Musician Details Popup */}
+      {showMusicianPopup && selectedMusician && (
+        <MusicianDetailPopup
+          musician={selectedMusician}
+          onClose={() => {
+            setShowMusicianPopup(false);
+            setSelectedMusician(null);
           }}
         />
       )}
