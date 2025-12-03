@@ -169,4 +169,95 @@ Lưu ý: correctAnswer là index của đáp án đúng (0=A, 1=B, 2=C, 3=D)`;
   }
 };
 
+// Function to generate quiz for a single lesson
+export const generateQuizForLesson = async (lessonData: any): Promise<QuizData> => {
+  try {
+    // Extract text content from lesson
+    const title = lessonData.tieu_de || 'Bài học';
+    const contentTexts = extractTextContent(lessonData.noi_dung || lessonData);
+    const lessonContent = `${title}\n${contentTexts.join('\n')}`;
+
+    const prompt = `Dựa trên nội dung bài học lịch sử dưới đây, hãy tạo ra 5 câu hỏi trắc nghiệm:
+
+${lessonContent}
+
+YÊU CẦU:
+1. Tạo CHÍNH XÁC 5 câu hỏi trắc nghiệm về nội dung bài học
+2. Mỗi câu hỏi có 4 đáp án A, B, C, D
+3. Câu hỏi phải đa dạng: về sự kiện lịch sử, nhân vật, địa danh, thời gian, ý nghĩa
+4. Độ khó từ dễ đến trung bình, phù hợp học sinh THCS
+5. Đáp án đúng phải rõ ràng và có giải thích chi tiết
+6. KHÔNG sử dụng lời chào, lời mở đầu
+
+Trả về kết quả dưới dạng JSON thuần túy với format sau (KHÔNG thêm markdown, KHÔNG thêm \`\`\`json):
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Câu hỏi...",
+      "options": ["A. Đáp án A", "B. Đáp án B", "C. Đáp án C", "D. Đáp án D"],
+      "correctAnswer": 0,
+      "explanation": "Giải thích chi tiết tại sao đáp án này đúng..."
+    }
+  ]
+}
+
+Lưu ý: correctAnswer là index của đáp án đúng (0=A, 1=B, 2=C, 3=D)`;
+
+    const requestBody = {
+      contents: [{
+        parts: [{
+          text: prompt
+        }]
+      }],
+      generationConfig: {
+        temperature: 0.8,
+        topK: 40,
+        topP: 0.95,
+        maxOutputTokens: 4096,
+      }
+    };
+
+    const response = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Gemini API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (!data.candidates || data.candidates.length === 0) {
+      throw new Error('No response from Gemini API');
+    }
+
+    let responseText = data.candidates[0].content.parts[0].text;
+    
+    // Clean response text
+    responseText = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    
+    // Try to extract JSON from the response
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error('No valid JSON found in response');
+    }
+
+    const quizData = JSON.parse(jsonMatch[0]);
+    
+    return {
+      questions: quizData.questions || [],
+      totalQuestions: quizData.questions?.length || 0
+    };
+
+  } catch (error) {
+    console.error('Error generating quiz for lesson:', error);
+    throw error;
+  }
+};
+
 export type { QuizQuestion, QuizData, LessonContent };
