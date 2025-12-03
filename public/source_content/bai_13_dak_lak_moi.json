@@ -1,0 +1,900 @@
+{
+  "tinh": "Đắk Lắk (Mới)",
+  "tieu_de": "Tổng quan tỉnh Đắk Lắk mới sau khi sáp nhập",
+  "qua_trinh_sap_nhap": {
+    "nghi_quyet": "Số 1660/NQ-UBTVQH15 ngày 16/6/2025 của Ủy ban Thường vụ Quốc hội",
+    "noi_dung": "Tỉnh Đắk Lắk chính thức được hợp nhất với tỉnh Phú Yên thành một đơn vị hành chính mới mang tên tỉnh Đắk Lắk",
+    "trung_tam_hanh_chinh": "Thành phố Buôn Ma Thuột",
+    "so_don_vi_cap_xa_sau_sap_nhap": {
+      "tong_so": 102,
+      "xa": 88,
+      "phuong": 14
+    },
+    "so_don_vi_truoc_sap_nhap": 180,
+    "dac_diem": {
+      "don_vi_thanh_lap_moi": {
+        "xa": 82,
+        "phuong": 14,
+        "phuong_thuc": "Hợp nhất, điều chỉnh địa giới, đổi tên hoặc nâng cấp"
+      },
+      "don_vi_giu_nguyen": {
+        "so_luong": 6,
+        "ly_do": "Đặc điểm dân cư rải rác, vùng sâu - vùng xa, đảm bảo phù hợp thực tiễn quản lý địa phương"
+      }
+    },
+    "danh_gia": "Một trong những cuộc sắp xếp cấp xã quy mô lớn nhất cả nước năm 2025"
+  },
+  "quy_mo": {
+    "dien_tich": {
+      "tong": "18.096,4 km²",
+      "so_sanh_tieu_chuan": "Gấp khoảng 2,26 lần tiêu chuẩn tối thiểu theo quy định của trung ương",
+      "thanh_phan": {
+        "phan_tay": "Phần cao nguyên (nguyên tỉnh Đắk Lắk)",
+        "phan_dong": "Phần đồng bằng - ven biển (nguyên tỉnh Phú Yên)"
+      }
+    },
+    "dan_so": {
+      "tong_so": "3.346.853 người",
+      "vi_tri": "Đứng trong nhóm các tỉnh có quy mô dân số lớn nhất khu vực Nam Trung Bộ và Tây Nguyên",
+      "uu_the": "Phát triển lực lượng lao động trẻ, thị trường tiêu dùng và tạo dư địa quy hoạch đô thị, công nghiệp, dịch vụ, nông nghiệp công nghệ cao",
+      "co_cau": {
+        "vung_cao_nguyen": {
+          "dan_toc": ["Ê-đê", "M'nông", "Gia Rai", "Tày", "Nùng"],
+          "dac_diem": "Cộng đồng dân tộc thiểu số"
+        },
+        "vung_dong_bang_ven_bien": {
+          "dan_toc": "Người Kinh",
+          "dac_diem": "Khu vực đồng bằng ven biển"
+        }
+      }
+    }
+  },
+  "co_cau_to_chuc": {
+    "nguyen_tac_thiet_ke": [
+      "Bảo đảm quy mô dân số hợp lý (trên 10.000 dân/xã đối với nông thôn, trên 15.000 dân/phường đối với đô thị)",
+      "Không gian địa lý kết nối tốt",
+      "Tính kế thừa văn hóa - lịch sử - tên gọi quen thuộc với người dân"
+    ]
+  },
+  "vi_tri_dia_ly": {
+    "dac_diem_chung": "Vị trí địa lý mang tính kết nối liên vùng chiến lược, trải dài từ Tây Nguyên đến Duyên hải Nam Trung Bộ",
+    "he_sinh_thai": "Rừng - núi - cao nguyên - đồng bằng - biển",
+    "phia_dong": "Biển Đông",
+    "phia_tay": "Campuchia",
+    "phia_bac": "Tỉnh Gia Lai",
+    "phia_nam": "Các tỉnh Lâm Đồng và Khánh Hòa",
+    "tiem_nang": [
+      "Xây dựng hệ thống giao thông liên vùng",
+      "Phát triển chuỗi logistics cao nguyên - cảng biển",
+      "Phát triển các khu kinh tế, đô thị vùng trung tâm - ven biển",
+      "Khu công nghiệp - nông nghiệp công nghệ cao",
+      "Du lịch sinh thái, du lịch văn hóa"
+    ],
+    "ky_vong": "Tạo nên một cực tăng trưởng mới, góp phần tái định hình lại trục phát triển chiến lược của khu vực miền Trung - Tây Nguyên"
+  },
+  "danh_sach_don_vi_cap_xa": [
+    {
+      "stt": 1,
+      "don_vi_sap_nhap": ["Xã Hòa Phú", "Hòa Xuân", "Hòa Khánh"],
+      "ten_moi": "Xã Hòa Phú",
+      "loai": "Xã",
+      "dien_tich_km2": 109.07,
+      "dan_so": 48822
+    },
+    {
+      "stt": 2,
+      "don_vi_sap_nhap": ["Phường Thành Công", "Tân Tiến", "Tân Thành", "Tự An", "Tân Lợi", "xã Cư Êbur"],
+      "ten_moi": "Phường Buôn Ma Thuột",
+      "loai": "Phường",
+      "dien_tich_km2": 71.99,
+      "dan_so": 169596
+    },
+    {
+      "stt": 3,
+      "don_vi_sap_nhap": ["Phường Tân An", "xã Ea Tu", "Hòa Thuận"],
+      "ten_moi": "Phường Tân An",
+      "loai": "Phường",
+      "dien_tich_km2": 56.41,
+      "dan_so": 64122
+    },
+    {
+      "stt": 4,
+      "don_vi_sap_nhap": ["Phường Tân Hòa", "Tân Lập", "xã Hòa Thắng"],
+      "ten_moi": "Phường Tân Lập",
+      "loai": "Phường",
+      "dien_tich_km2": 46.70,
+      "dan_so": 73316
+    },
+    {
+      "stt": 5,
+      "don_vi_sap_nhap": ["Phường Khánh Xuân", "Thành Nhất"],
+      "ten_moi": "Phường Thành Nhất",
+      "loai": "Phường",
+      "dien_tich_km2": 32.22,
+      "dan_so": 52466
+    },
+    {
+      "stt": 6,
+      "don_vi_sap_nhap": ["Phường Ea Tam", "xã Ea Kao"],
+      "ten_moi": "Phường Ea Kao",
+      "loai": "Phường",
+      "dien_tich_km2": 60.70,
+      "dan_so": 57070
+    },
+    {
+      "stt": 7,
+      "don_vi_sap_nhap": ["Xã Ea Siên", "Ea Drông"],
+      "ten_moi": "Xã Ea Drông",
+      "loai": "Xã",
+      "dien_tich_km2": 111.13,
+      "dan_so": 23951
+    },
+    {
+      "stt": 8,
+      "don_vi_sap_nhap": ["Phường Đạt Hiếu", "An Bình", "An Lạc", "Thiện An", "Thống Nhất", "Đoàn Kết"],
+      "ten_moi": "Phường Buôn Hồ",
+      "loai": "Phường",
+      "dien_tich_km2": 66.54,
+      "dan_so": 62780
+    },
+    {
+      "stt": 9,
+      "don_vi_sap_nhap": ["Phường Bình Tân", "xã Bình Thuận", "Cư Bao"],
+      "ten_moi": "Phường Cư Bao",
+      "loai": "Phường",
+      "dien_tich_km2": 104.94,
+      "dan_so": 36911
+    },
+    {
+      "stt": 10,
+      "don_vi_sap_nhap": ["Thị trấn Ea Súp", "xã Cư M'Lan", "Ea Lê"],
+      "ten_moi": "Xã Ea Súp",
+      "loai": "Xã",
+      "dien_tich_km2": 418.72,
+      "dan_so": 30762
+    },
+    {
+      "stt": 11,
+      "don_vi_sap_nhap": ["Xã Ia Jlơi", "Cư Kbang", "Ea Rốk"],
+      "ten_moi": "Xã Ea Rốk",
+      "loai": "Xã",
+      "dien_tich_km2": 544.60,
+      "dan_so": 28785
+    },
+    {
+      "stt": 12,
+      "don_vi_sap_nhap": ["Xã Ya Tờ Mốt", "Ea Bung"],
+      "ten_moi": "Xã Ea Bung",
+      "loai": "Xã",
+      "dien_tich_km2": 390.08,
+      "dan_so": 9677
+    },
+    {
+      "stt": 13,
+      "don_vi_sap_nhap": ["Xã Ia Rvê (giữ nguyên)"],
+      "ten_moi": "Xã Ia Rvê",
+      "loai": "Xã",
+      "dien_tich_km2": 217.83,
+      "dan_so": 6847,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 14,
+      "don_vi_sap_nhap": ["Xã Ia Lốp (giữ nguyên)"],
+      "ten_moi": "Xã Ia Lốp",
+      "loai": "Xã",
+      "dien_tich_km2": 194.09,
+      "dan_so": 6502,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 15,
+      "don_vi_sap_nhap": ["Xã Ea Huar", "Tân Hòa", "Ea Wer"],
+      "ten_moi": "Xã Ea Wer",
+      "loai": "Xã",
+      "dien_tich_km2": 184.61,
+      "dan_so": 29708
+    },
+    {
+      "stt": 16,
+      "don_vi_sap_nhap": ["Xã Ea Bar (Buôn Đôn)", "Cuôr Knia", "Ea Nuôl"],
+      "ten_moi": "Xã Ea Nuôl",
+      "loai": "Xã",
+      "dien_tich_km2": 111.74,
+      "dan_so": 43706
+    },
+    {
+      "stt": 17,
+      "don_vi_sap_nhap": ["Xã Krông Na"],
+      "ten_moi": "Xã Buôn Đôn",
+      "loai": "Xã",
+      "dien_tich_km2": 1113.79,
+      "dan_so": 6582
+    },
+    {
+      "stt": 18,
+      "don_vi_sap_nhap": ["Xã Ea Kuêh", "Ea Kiết"],
+      "ten_moi": "Xã Ea Kiết",
+      "loai": "Xã",
+      "dien_tich_km2": 201.83,
+      "dan_so": 20177
+    },
+    {
+      "stt": 19,
+      "don_vi_sap_nhap": ["Xã Quảng Hiệp", "Ea M'nang", "Ea M'Droh"],
+      "ten_moi": "Xã Ea M'Droh",
+      "loai": "Xã",
+      "dien_tich_km2": 134.00,
+      "dan_so": 33268
+    },
+    {
+      "stt": 20,
+      "don_vi_sap_nhap": ["Thị trấn Quảng Phú", "Ea Pốk", "xã Cư Suê", "Quảng Tiến"],
+      "ten_moi": "Xã Quảng Phú",
+      "loai": "Xã",
+      "dien_tich_km2": 111.34,
+      "dan_so": 61104
+    },
+    {
+      "stt": 21,
+      "don_vi_sap_nhap": ["Xã Ea Drơng", "Cuôr Đăng"],
+      "ten_moi": "Xã Cuôr Đăng",
+      "loai": "Xã",
+      "dien_tich_km2": 102.84,
+      "dan_so": 28804
+    },
+    {
+      "stt": 22,
+      "don_vi_sap_nhap": ["Xã Ea H'đing", "Ea Kpam", "Cư M'gar"],
+      "ten_moi": "Xã Cư M'gar",
+      "loai": "Xã",
+      "dien_tich_km2": 114.98,
+      "dan_so": 32368
+    },
+    {
+      "stt": 23,
+      "don_vi_sap_nhap": ["Xã Ea Tar", "Cư Dliê Mnông", "Ea Tul"],
+      "ten_moi": "Xã Ea Tul",
+      "loai": "Xã",
+      "dien_tich_km2": 159.51,
+      "dan_so": 34876
+    },
+    {
+      "stt": 24,
+      "don_vi_sap_nhap": ["Thị trấn Pơng Drang", "xã Ea Ngai", "Tân Lập"],
+      "ten_moi": "Xã Pơng Drang",
+      "loai": "Xã",
+      "dien_tich_km2": 85.03,
+      "dan_so": 30208
+    },
+    {
+      "stt": 25,
+      "don_vi_sap_nhap": ["Xã Cư Né", "Chứ Kbô"],
+      "ten_moi": "Xã Krông Búk",
+      "loai": "Xã",
+      "dien_tich_km2": 134.83,
+      "dan_so": 30822
+    },
+    {
+      "stt": 26,
+      "don_vi_sap_nhap": ["Xã Ea Sin", "Cư Pơng"],
+      "ten_moi": "Xã Cư Pơng",
+      "loai": "Xã",
+      "dien_tich_km2": 137.81,
+      "dan_so": 17687
+    },
+    {
+      "stt": 27,
+      "don_vi_sap_nhap": ["Xã Ea Nam", "Ea Tir", "Ea Khăl"],
+      "ten_moi": "Xã Ea Khăl",
+      "loai": "Xã",
+      "dien_tich_km2": 247.05,
+      "dan_so": 29956
+    },
+    {
+      "stt": 28,
+      "don_vi_sap_nhap": ["Thị trấn Ea Drăng", "xã Ea Ral", "Dliê Yang"],
+      "ten_moi": "Xã Ea Drăng",
+      "loai": "Xã",
+      "dien_tich_km2": 171.34,
+      "dan_so": 54475
+    },
+    {
+      "stt": 29,
+      "don_vi_sap_nhap": ["Xã Cư A Mung", "Cư Mốt", "Ea Wy"],
+      "ten_moi": "Xã Ea Wy",
+      "loai": "Xã",
+      "dien_tich_km2": 213.94,
+      "dan_so": 28567
+    },
+    {
+      "stt": 30,
+      "don_vi_sap_nhap": ["Xã Ea H'leo (giữ nguyên)"],
+      "ten_moi": "Xã Ea H'leo",
+      "loai": "Xã",
+      "dien_tich_km2": 340.06,
+      "dan_so": 16235,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 31,
+      "don_vi_sap_nhap": ["Xã Ea Sol", "Ea Hiao"],
+      "ten_moi": "Xã Ea Hiao",
+      "loai": "Xã",
+      "dien_tich_km2": 361.69,
+      "dan_so": 30796
+    },
+    {
+      "stt": 32,
+      "don_vi_sap_nhap": ["Thị trấn Ea Kar", "xã Cư Prông"],
+      "ten_moi": "Xã Ea Kar",
+      "loai": "Xã",
+      "dien_tich_km2": 91.15,
+      "dan_so": 40031
+    },
+    {
+      "stt": 33,
+      "don_vi_sap_nhap": ["Thị trấn Ea Knốp", "xã Ea Kmút"],
+      "ten_moi": "Xã Ea Knốp",
+      "loai": "Xã",
+      "dien_tich_km2": 146.97,
+      "dan_so": 24063
+    },
+    {
+      "stt": 34,
+      "don_vi_sap_nhap": ["Xã Xuân Phú", "Ea Đar", "Cư Huê"],
+      "ten_moi": "Xã Xuân Phú",
+      "loai": "Xã",
+      "dien_tich_km2": 96.84,
+      "dan_so": 30623
+    },
+    {
+      "stt": 35,
+      "don_vi_sap_nhap": ["Xã Ea Sar", "Ea Sô", "Ea Păl"],
+      "ten_moi": "Xã Ea Sô",
+      "loai": "Xã",
+      "dien_tich_km2": 173.10,
+      "dan_so": 27844
+    },
+    {
+      "stt": 36,
+      "don_vi_sap_nhap": ["Xã Cư Elang", "Cư Ni"],
+      "ten_moi": "Xã Cư Ni",
+      "loai": "Xã",
+      "dien_tich_km2": 149.91,
+      "dan_so": 15177
+    },
+    {
+      "stt": 37,
+      "don_vi_sap_nhap": ["Xã Cư Bông", "Ea Tíh", "Cư Yang"],
+      "ten_moi": "Xã Cư Yang",
+      "loai": "Xã",
+      "dien_tich_km2": 210.03,
+      "dan_so": 24699
+    },
+    {
+      "stt": 38,
+      "don_vi_sap_nhap": ["Xã Ea Ô (giữ nguyên)"],
+      "ten_moi": "Xã Ea Ô",
+      "loai": "Xã",
+      "dien_tich_km2": 150.52,
+      "dan_so": 7695,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 39,
+      "don_vi_sap_nhap": ["Xã Dliê Ya", "Ea Tam"],
+      "ten_moi": "Xã Ea Tam",
+      "loai": "Xã",
+      "dien_tich_km2": 157.79,
+      "dan_so": 25953
+    },
+    {
+      "stt": 40,
+      "don_vi_sap_nhap": ["Thị trấn Krông Năng", "xã Ea Dăh", "Ea Puk"],
+      "ten_moi": "Xã Krông Năng",
+      "loai": "Xã",
+      "dien_tich_km2": 83.17,
+      "dan_so": 46754
+    },
+    {
+      "stt": 41,
+      "don_vi_sap_nhap": ["Xã Ea Hồ", "Cư Klông"],
+      "ten_moi": "Xã Ea Hồ",
+      "loai": "Xã",
+      "dien_tich_km2": 111.46,
+      "dan_so": 19398
+    },
+    {
+      "stt": 42,
+      "don_vi_sap_nhap": ["Xã Ea Tân", "Cư M'gar (Krông Năng)"],
+      "ten_moi": "Xã Ea Tân",
+      "loai": "Xã",
+      "dien_tich_km2": 142.26,
+      "dan_so": 17301
+    },
+    {
+      "stt": 43,
+      "don_vi_sap_nhap": ["Xã Ea Tóh (giữ nguyên)"],
+      "ten_moi": "Xã Ea Tóh",
+      "loai": "Xã",
+      "dien_tich_km2": 85.74,
+      "dan_so": 7368,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 44,
+      "don_vi_sap_nhap": ["Xã Phú Lộc", "Tam Giang"],
+      "ten_moi": "Xã Phú Lộc",
+      "loai": "Xã",
+      "dien_tich_km2": 110.44,
+      "dan_so": 20134
+    },
+    {
+      "stt": 45,
+      "don_vi_sap_nhap": ["Thị trấn Phước An", "xã Ea Phê", "Krông Búk (Krông Pắc)"],
+      "ten_moi": "Xã Krông Pắc",
+      "loai": "Xã",
+      "dien_tich_km2": 86.17,
+      "dan_so": 74651
+    },
+    {
+      "stt": 46,
+      "don_vi_sap_nhap": ["Xã Ea Kly", "Ea Yông"],
+      "ten_moi": "Xã Ea Yông",
+      "loai": "Xã",
+      "dien_tich_km2": 113.64,
+      "dan_so": 42698
+    },
+    {
+      "stt": 47,
+      "don_vi_sap_nhap": ["Thị trấn M'Drắk", "xã Krông Jing", "Ea Lai"],
+      "ten_moi": "Xã M'Drắk",
+      "loai": "Xã",
+      "dien_tich_km2": 151.87,
+      "dan_so": 22808
+    },
+    {
+      "stt": 48,
+      "don_vi_sap_nhap": ["Xã Ea H'Mlay", "Ea M'Doal", "Ea Riêng"],
+      "ten_moi": "Xã Ea Riêng",
+      "loai": "Xã",
+      "dien_tich_km2": 167.56,
+      "dan_so": 15719
+    },
+    {
+      "stt": 49,
+      "don_vi_sap_nhap": ["Xã Cư Króa", "Cư M'ta"],
+      "ten_moi": "Xã Cư M'ta",
+      "loai": "Xã",
+      "dien_tich_km2": 261.06,
+      "dan_so": 13592
+    },
+    {
+      "stt": 50,
+      "don_vi_sap_nhap": ["Xã Cư San", "Krông Á"],
+      "ten_moi": "Xã Krông Á",
+      "loai": "Xã",
+      "dien_tich_km2": 291.60,
+      "dan_so": 12900
+    },
+    {
+      "stt": 51,
+      "don_vi_sap_nhap": ["Xã Ea Pil", "Cư Prao"],
+      "ten_moi": "Xã Cư Prao",
+      "loai": "Xã",
+      "dien_tich_km2": 204.89,
+      "dan_so": 13765
+    },
+    {
+      "stt": 52,
+      "don_vi_sap_nhap": ["Xã Ea Trang (giữ nguyên)"],
+      "ten_moi": "Xã Ea Trang",
+      "loai": "Xã",
+      "dien_tich_km2": 207.40,
+      "dan_so": 6585,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 53,
+      "don_vi_sap_nhap": ["Xã Yang Reh", "Ea Trul", "Hòa Sơn"],
+      "ten_moi": "Xã Hòa Sơn",
+      "loai": "Xã",
+      "dien_tich_km2": 108.55,
+      "dan_so": 25392
+    },
+    {
+      "stt": 54,
+      "don_vi_sap_nhap": ["Xã Hòa Thành (Krông Bông)", "Cư Kty", "Dang Kang"],
+      "ten_moi": "Xã Dang Kang",
+      "loai": "Xã",
+      "dien_tich_km2": 105.91,
+      "dan_so": 21301
+    },
+    {
+      "stt": 55,
+      "don_vi_sap_nhap": ["Thị trấn Krông Kmar", "xã Hòa Lễ", "Khuê Ngọc Điền"],
+      "ten_moi": "Xã Krông Bông",
+      "loai": "Xã",
+      "dien_tich_km2": 166.03,
+      "dan_so": 23168
+    },
+    {
+      "stt": 56,
+      "don_vi_sap_nhap": ["Xã Cư Drăm", "Yang Mao"],
+      "ten_moi": "Xã Yang Mao",
+      "loai": "Xã",
+      "dien_tich_km2": 562.38,
+      "dan_so": 16970
+    },
+    {
+      "stt": 57,
+      "don_vi_sap_nhap": ["Xã Hòa Phong (Krông Bông)", "Cư Pui"],
+      "ten_moi": "Xã Cư Pui",
+      "loai": "Xã",
+      "dien_tich_km2": 314.08,
+      "dan_so": 27561
+    },
+    {
+      "stt": 58,
+      "don_vi_sap_nhap": ["Thị trấn Liên Sơn", "xã Yang Tao", "Bông Krang"],
+      "ten_moi": "Xã Liên Sơn Lắk",
+      "loai": "Xã",
+      "dien_tich_km2": 398.82,
+      "dan_so": 26772
+    },
+    {
+      "stt": 59,
+      "don_vi_sap_nhap": ["Xã Buôn Tría", "Buôn Triết", "Đắk Liêng"],
+      "ten_moi": "Xã Đắk Liêng",
+      "loai": "Xã",
+      "dien_tich_km2": 135.55,
+      "dan_so": 22881
+    },
+    {
+      "stt": 60,
+      "don_vi_sap_nhap": ["Xã Ea Rbin", "Nam Ka"],
+      "ten_moi": "Xã Nam Ka",
+      "loai": "Xã",
+      "dien_tich_km2": 172.86,
+      "dan_so": 6424
+    },
+    {
+      "stt": 61,
+      "don_vi_sap_nhap": ["Xã Đắk Nuê", "Đắk Phơi"],
+      "ten_moi": "Xã Đắk Phơi",
+      "loai": "Xã",
+      "dien_tich_km2": 266.83,
+      "dan_so": 14726
+    },
+    {
+      "stt": 62,
+      "don_vi_sap_nhap": ["Xã Krông Nô (giữ nguyên)"],
+      "ten_moi": "Xã Krông Nô",
+      "loai": "Xã",
+      "dien_tich_km2": 282.01,
+      "dan_so": 10301,
+      "ghi_chu": "Giữ nguyên"
+    },
+    {
+      "stt": 63,
+      "don_vi_sap_nhap": ["Xã Cư Êwi", "Ea Hu", "Ea Ning"],
+      "ten_moi": "Xã Ea Ning",
+      "loai": "Xã",
+      "dien_tich_km2": 86.21,
+      "dan_so": 34175
+    },
+    {
+      "stt": 64,
+      "don_vi_sap_nhap": ["Xã Hòa Hiệp", "Dray Bhăng", "một phần xã Ea Bhốk"],
+      "ten_moi": "Xã Dray Bhăng",
+      "loai": "Xã",
+      "dien_tich_km2": 101.37,
+      "dan_so": 39801
+    },
+    {
+      "stt": 65,
+      "don_vi_sap_nhap": ["Xã Ea Tiêu", "Ea Ktang", "phần còn lại xã Ea Bhốk"],
+      "ten_moi": "Xã Ea Ktur",
+      "loai": "Xã",
+      "dien_tich_km2": 100.72,
+      "dan_so": 54269
+    },
+    {
+      "stt": 66,
+      "don_vi_sap_nhap": ["Thị trấn Buôn Trấp", "xã Bình Hòa", "Quảng Điền"],
+      "ten_moi": "Xã Krông Ana",
+      "loai": "Xã",
+      "dien_tich_km2": 107.23,
+      "dan_so": 48491
+    },
+    {
+      "stt": 67,
+      "don_vi_sap_nhap": ["Xã Băng A Drênh", "Dur Kmăl"],
+      "ten_moi": "Xã Dur Kmăl",
+      "loai": "Xã",
+      "dien_tich_km2": 114.49,
+      "dan_so": 12594
+    },
+    {
+      "stt": 68,
+      "don_vi_sap_nhap": ["Xã Ea Bông", "Dray Sáp", "Ea Na"],
+      "ten_moi": "Xã Ea Na",
+      "loai": "Xã",
+      "dien_tich_km2": 134.18,
+      "dan_so": 42164
+    },
+    {
+      "stt": 69,
+      "don_vi_sap_nhap": ["Phường 1", "2", "4", "5", "7", "một phần Phường 9", "phần còn lại của xã Hòa An", "Hòa Trị"],
+      "ten_moi": "Phường Tuy Hòa",
+      "loai": "Phường",
+      "dien_tich_km2": 33.77,
+      "dan_so": 126118
+    },
+    {
+      "stt": 70,
+      "don_vi_sap_nhap": ["Phường Phú Đông", "Phú Lâm", "Phú Thạnh", "xã Hòa Thành", "một phần phường Hòa Hiệp Bắc", "phần còn lại xã Hòa Bình 1"],
+      "ten_moi": "Phường Phú Yên",
+      "loai": "Phường",
+      "dien_tich_km2": 44.04,
+      "dan_so": 61832
+    },
+    {
+      "stt": 71,
+      "don_vi_sap_nhap": ["Xã An Phú", "Hòa Kiến", "Bình Kiến", "phần còn lại Phường 9"],
+      "ten_moi": "Phường Bình Kiến",
+      "loai": "Phường",
+      "dien_tich_km2": 73.71,
+      "dan_so": 44406
+    },
+    {
+      "stt": 72,
+      "don_vi_sap_nhap": ["Xã Xuân Lâm", "Xuân Thọ 1", "Xuân Thọ 2"],
+      "ten_moi": "Xã Xuân Thọ",
+      "loai": "Xã",
+      "dien_tich_km2": 192.12,
+      "dan_so": 10793
+    },
+    {
+      "stt": 73,
+      "don_vi_sap_nhap": ["Xã Xuân Bình", "Xuân Cảnh"],
+      "ten_moi": "Xã Xuân Cảnh",
+      "loai": "Xã",
+      "dien_tich_km2": 83.81,
+      "dan_so": 23972
+    },
+    {
+      "stt": 74,
+      "don_vi_sap_nhap": ["Xã Xuân Hải", "Xuân Lộc"],
+      "ten_moi": "Xã Xuân Lộc",
+      "loai": "Xã",
+      "dien_tich_km2": 114.01,
+      "dan_so": 27340
+    },
+    {
+      "stt": 75,
+      "don_vi_sap_nhap": ["Phường Xuân Thành", "Xuân Đài"],
+      "ten_moi": "Phường Xuân Đài",
+      "loai": "Phường",
+      "dien_tich_km2": 13.44,
+      "dan_so": 21574
+    },
+    {
+      "stt": 76,
+      "don_vi_sap_nhap": ["Phường Xuân Yên", "Xuân Phú", "xã Xuân Phương", "Xuân Thịnh"],
+      "ten_moi": "Phường Sông Cầu",
+      "loai": "Phường",
+      "dien_tich_km2": 90.49,
+      "dan_so": 38891
+    },
+    {
+      "stt": 77,
+      "don_vi_sap_nhap": ["Xã Hòa Tâm", "Hòa Xuân Đông", "Hòa Xuân Nam"],
+      "ten_moi": "Xã Hòa Xuân",
+      "loai": "Xã",
+      "dien_tich_km2": 129.33,
+      "dan_so": 22962
+    },
+    {
+      "stt": 78,
+      "don_vi_sap_nhap": ["Phường Hòa Vinh", "Hòa Xuân Tây", "xã Hòa Tân Đông"],
+      "ten_moi": "Phường Đông Hòa",
+      "loai": "Phường",
+      "dien_tich_km2": 77.54,
+      "dan_so": 47632
+    },
+    {
+      "stt": 79,
+      "don_vi_sap_nhap": ["Phường Hòa Hiệp Trung", "Hòa Hiệp Nam", "phần còn lại phường Hòa Hiệp Bắc"],
+      "ten_moi": "Phường Hòa Hiệp",
+      "loai": "Phường",
+      "dien_tich_km2": 40.81,
+      "dan_so": 53597
+    },
+    {
+      "stt": 80,
+      "don_vi_sap_nhap": ["Thị trấn Chí Thạnh", "xã An Dân", "An Định"],
+      "ten_moi": "Xã Tuy An Bắc",
+      "loai": "Xã",
+      "dien_tich_km2": 52.32,
+      "dan_so": 26174
+    },
+    {
+      "stt": 81,
+      "don_vi_sap_nhap": ["Xã An Ninh Đông", "An Ninh Tây", "An Thạch"],
+      "ten_moi": "Xã Tuy An Đông",
+      "loai": "Xã",
+      "dien_tich_km2": 46.05,
+      "dan_so": 40108
+    },
+    {
+      "stt": 82,
+      "don_vi_sap_nhap": ["Xã An Hiệp", "Hòa Hòa An", "An Cư"],
+      "ten_moi": "Xã Ô Loan",
+      "loai": "Xã",
+      "dien_tich_km2": 103.48,
+      "dan_so": 40278
+    },
+    {
+      "stt": 83,
+      "don_vi_sap_nhap": ["Xã An Thọ", "Thanh Mỹ", "An Chấn"],
+      "ten_moi": "Xã Tuy An Nam",
+      "loai": "Xã",
+      "dien_tich_km2": 69.99,
+      "dan_so": 29805
+    },
+    {
+      "stt": 84,
+      "don_vi_sap_nhap": ["Xã An Nghiệp", "An Xuân", "An Lĩnh"],
+      "ten_moi": "Xã Tuy An Tây",
+      "loai": "Xã",
+      "dien_tich_km2": 136.20,
+      "dan_so": 12913
+    },
+    {
+      "stt": 85,
+      "don_vi_sap_nhap": ["Thị trấn Phú Hòa", "xã Hòa Thắng", "Hòa Định Đông", "Hòa Định Tây", "Hòa Hội", "một phần xã Hòa An"],
+      "ten_moi": "Xã Phú Hòa 1",
+      "loai": "Xã",
+      "dien_tich_km2": 142.54,
+      "dan_so": null
+    },
+    {
+      "stt": 86,
+      "don_vi_sap_nhap": ["Xã Hòa Quang Nam", "Hòa Quang Bắc", "một phần xã Hòa Trị"],
+      "ten_moi": "Xã Phú Hòa 2",
+      "loai": "Xã",
+      "dien_tich_km2": 95.78,
+      "dan_so": 38691
+    },
+    {
+      "stt": 87,
+      "don_vi_sap_nhap": ["Thị trấn Phú Thứ", "xã Hòa Phong", "Hòa Tân Tây", "một phần xã Hòa Bình 1"],
+      "ten_moi": "Xã Tây Hòa",
+      "loai": "Xã",
+      "dien_tich_km2": 55.14,
+      "dan_so": 49720
+    },
+    {
+      "stt": 88,
+      "don_vi_sap_nhap": ["Xã Đồng", "Hòa Thịnh"],
+      "ten_moi": "Xã Hòa Thịnh",
+      "loai": "Xã",
+      "dien_tich_km2": 30.602,
+      "dan_so": null
+    },
+    {
+      "stt": 89,
+      "don_vi_sap_nhap": ["Xã Hòa Mỹ Đông", "Hòa Mỹ Tây"],
+      "ten_moi": "Xã Hòa Mỹ",
+      "loai": "Xã",
+      "dien_tich_km2": 190.14,
+      "dan_so": 26530
+    },
+    {
+      "stt": 90,
+      "don_vi_sap_nhap": ["Xã Hòa Phú", "Sơn Thành Đông", "Sơn Thành Tây"],
+      "ten_moi": "Xã Sơn Thành",
+      "loai": "Xã",
+      "dien_tich_km2": 218.11,
+      "dan_so": 27838
+    },
+    {
+      "stt": 91,
+      "don_vi_sap_nhap": ["Thị trấn Củng Sơn", "xã Suối Bạc", "Sơn Hà", "Sơn Nguyên", "Sơn Phúc"],
+      "ten_moi": "Xã Sơn Hòa",
+      "loai": "Xã",
+      "dien_tich_km2": 267.39,
+      "dan_so": 40825
+    },
+    {
+      "stt": 92,
+      "don_vi_sap_nhap": ["Xã Sơn Long", "Sơn Xuân", "Sơn Định"],
+      "ten_moi": "Xã Vân Hòa",
+      "loai": "Xã",
+      "dien_tich_km2": 151.47,
+      "dan_so": 6661
+    },
+    {
+      "stt": 93,
+      "don_vi_sap_nhap": ["Xã Sơn Hội", "Cà Lúi", "Phước Tân"],
+      "ten_moi": "Xã Tây Sơn",
+      "loai": "Xã",
+      "dien_tich_km2": 334.62,
+      "dan_so": 11052
+    },
+    {
+      "stt": 94,
+      "don_vi_sap_nhap": ["Xã Ea Chà Rang", "Krông Pa", "Suối Trai"],
+      "ten_moi": "Xã Suối Trai",
+      "loai": "Xã",
+      "dien_tich_km2": 186.95,
+      "dan_so": 11387
+    },
+    {
+      "stt": 95,
+      "don_vi_sap_nhap": ["Xã Ea Lâm", "Ea Ly", "một phần xã Ea Bar"],
+      "ten_moi": "Xã Ea Ly",
+      "loai": "Xã",
+      "dien_tich_km2": 140.35,
+      "dan_so": 12104
+    },
+    {
+      "stt": 96,
+      "don_vi_sap_nhap": ["Xã Bà", "phần còn lại của xã Ea Bar"],
+      "ten_moi": "Xã Ea Bá",
+      "loai": "Xã",
+      "dien_tich_km2": 131.79,
+      "dan_so": 8316
+    },
+    {
+      "stt": 97,
+      "don_vi_sap_nhap": ["Xã Sơn", "Đức Bình Đông", "Đức Bình Tây", "một phần xã Ea Bia"],
+      "ten_moi": "Xã Đức Bình",
+      "loai": "Xã",
+      "dien_tich_km2": 160.36,
+      "dan_so": 15896
+    },
+    {
+      "stt": 98,
+      "don_vi_sap_nhap": ["Thị trấn Hai Riêng", "xã Ea Trol", "Sông Hinh", "phần còn lại xã Ea Bia"],
+      "ten_moi": "Xã Sông Hinh",
+      "loai": "Xã",
+      "dien_tich_km2": 460.13,
+      "dan_so": 23841
+    },
+    {
+      "stt": 99,
+      "don_vi_sap_nhap": ["Xã Đa Lộc", "Xuân Lãnh"],
+      "ten_moi": "Xã Xuân Lãnh",
+      "loai": "Xã",
+      "dien_tich_km2": 174.65,
+      "dan_so": 15933
+    },
+    {
+      "stt": 100,
+      "don_vi_sap_nhap": ["Xã Xuân Quang 1", "Phú Mỡ"],
+      "ten_moi": "Xã Phú Mỡ",
+      "loai": "Xã",
+      "dien_tich_km2": 547.20,
+      "dan_so": 9007
+    },
+    {
+      "stt": 101,
+      "don_vi_sap_nhap": ["Xã Xuân Quang 3", "Xuân Phước"],
+      "ten_moi": "Xã Xuân Phước",
+      "loai": "Xã",
+      "dien_tich_km2": 102.81,
+      "dan_so": 16197
+    },
+    {
+      "stt": 102,
+      "don_vi_sap_nhap": ["Thị trấn La Hai", "xã Xuân Sơn Nam", "Xuân Sơn Bắc", "Xuân Long", "Xuân Quang 2"],
+      "ten_moi": "Xã Đồng Xuân",
+      "loai": "Xã",
+      "dien_tich_km2": 206.26,
+      "dan_so": 26907
+    }
+  ]
+}

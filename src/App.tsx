@@ -6,6 +6,7 @@ import LandmarkResult from './components/LandmarkResult';
 import LandmarkDetailPopup from './components/LandmarkDetailPopup';
 import MusicianResultCard from './components/MusicianResult';
 import MusicianDetailPopup from './components/MusicianDetailPopup';
+import LessonPage from './components/LessonPage';
 
 // Mock data cho demo
 const mockResults = [
@@ -35,7 +36,7 @@ function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [showMusicianPopup, setShowMusicianPopup] = useState(false);
   const [searchError, setSearchError] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<'explore' | 'quiz'>('explore');
+  const [currentPage, setCurrentPage] = useState<'explore' | 'quiz' | 'lessons'>('explore');
 
   // Detailed place information
   const placeDetails = {
@@ -202,6 +203,12 @@ function App() {
                 Khám phá
               </button>
               <button 
+                className={`nav-btn ${currentPage === 'lessons' ? 'nav-btn-active' : ''}`}
+                onClick={() => setCurrentPage('lessons')}
+              >
+                Kiến thức
+              </button>
+              <button 
                 className={`nav-btn ${currentPage === 'quiz' ? 'nav-btn-active' : ''}`}
                 onClick={() => setCurrentPage('quiz')}
               >
@@ -213,7 +220,19 @@ function App() {
       </header>
 
       {/* Conditional Content Based on Current Page */}
-      {currentPage === 'explore' ? (
+      {currentPage === 'lessons' ? (
+        /* Lessons Page Content */
+        <>
+          <LessonPage />
+          
+          {/* Footer for Lessons Page */}
+          <footer className="footer">
+            <div className="container">
+              <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
+            </div>
+          </footer>
+        </>
+      ) : currentPage === 'explore' ? (
         <>
           {/* Hero Section */}
           <section className="hero">

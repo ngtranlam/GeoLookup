@@ -1,0 +1,410 @@
+{
+  "tinh": "Phú Yên",
+  "tieu_de": "Tổng quan về tỉnh Phú Yên trước sát nhập",
+  "gioi_thieu_chung": {
+    "mo_ta": "Tỉnh Phú Yên nằm ở vùng Duyên hải Nam Trung Bộ Việt Nam, có vị trí địa lý quan trọng trong hành lang kinh tế Đông - Tây và ven biển miền Trung.",
+    "dien_tich": "5.045,3 km²",
+    "dan_so": {
+      "tong_so": "874.071 người",
+      "nam": 2020,
+      "phan_bo": "Không đều, chủ yếu tập trung ở vùng đồng bằng và ven biển như TP Tuy Hòa, thị xã Đông Hòa và thị xã Sông Cầu"
+    }
+  },
+  "vi_tri_dia_ly": {
+    "phia_bac": {
+      "giap": "Một phần tỉnh Đắk Lắk và tỉnh Bình Định",
+      "ranh_gioi_tu_nhien": "Dãy núi Cù Mông"
+    },
+    "phia_nam": {
+      "giap": "Tỉnh Đắk Lắk và tỉnh Khánh Hòa",
+      "ranh_gioi_tu_nhien": "Dãy núi Đại Lãnh",
+      "dac_diem": "Đèo Cả - một trong những đèo quan trọng và nổi tiếng trên quốc lộ 1A"
+    },
+    "phia_tay": {
+      "giap": "Các tỉnh Gia Lai và Đắk Lắk",
+      "dia_hinh": "Đồi núi chuyển tiếp, từ vùng cao nguyên xuống vùng trung du và đồng bằng ven biển"
+    },
+    "phia_dong": {
+      "giap": "Biển Đông",
+      "duong_bo_bien": "189 km",
+      "dac_diem": "Thuận lợi cho phát triển kinh tế biển, du lịch và giao thương hàng hải"
+    },
+    "cac_diem_cuc": {
+      "cuc_bac": {
+        "vi_tri": "Xã Xuân Cảnh, thị xã Sông Cầu",
+        "giap": "Bình Định"
+      },
+      "cuc_nam": {
+        "vi_tri": "Gần khu vực Vũng Rô, xã Hòa Xuân Nam, thị xã Đông Hòa",
+        "giap": "Khánh Hòa"
+      },
+      "cuc_tay": {
+        "vi_tri": "Xã Ea Lâm (huyện Sông Hinh)",
+        "giap": "Huyện Krông Pa của tỉnh Gia Lai"
+      },
+      "cuc_dong": {
+        "ten": "Mũi Điện (Mũi Đại Lãnh)",
+        "vi_tri": "Xã Hòa Tâm, thị xã Đông Hòa",
+        "dac_diem": "Một trong những điểm cực đông của đất liền Việt Nam, nơi đón ánh bình minh đầu tiên trên đất liền quốc gia"
+      }
+    }
+  },
+  "dia_hinh": {
+    "dac_diem_chung": "Địa hình đa dạng gồm núi, trung du, đồng bằng và ven biển",
+    "cac_vung": {
+      "vung_nui_trung_du": {
+        "vi_tri": "Phía tây tỉnh",
+        "cac_huyen": ["Sông Hinh", "Sơn Hòa", "Đồng Xuân"],
+        "dac_diem": "Địa hình đồi núi thấp xen lẫn các thung lũng sông, thích hợp phát triển nông lâm nghiệp"
+      },
+      "vung_dong_bang": {
+        "dac_diem": "Kéo dài theo các con sông chính như sông Ba",
+        "vai_tro": "Nơi tập trung dân cư đông đúc và các trung tâm hành chính - kinh tế lớn"
+      },
+      "vung_ven_bien": {
+        "vi_tri": "Phía đông",
+        "bai_bien": ["Tuy Hòa", "Vũng Rô", "Bãi Môn"],
+        "dac_diem": "Hệ thống đầm phá và vịnh nhỏ - thuận lợi cho nuôi trồng thủy sản và phát triển du lịch"
+      }
+    }
+  },
+  "don_vi_hanh_chinh": {
+    "tong_quan_cap_huyen": {
+      "tong_so": 9,
+      "thanh_pho": 1,
+      "thi_xa": 2,
+      "huyen": 6
+    },
+    "tong_quan_cap_xa": {
+      "tong_so": 106,
+      "phuong": 18,
+      "thi_tran": 6,
+      "xa": 82
+    },
+    "danh_sach_chi_tiet": [
+      {
+        "stt": 1,
+        "ten": "Thành phố Tuy Hòa",
+        "loai": "Thành phố",
+        "nam_thanh_lap": 2005,
+        "dien_tich_km2": 106.82,
+        "dan_so": 155920,
+        "don_vi_cap_xa": {
+          "tong_so": 12,
+          "phuong": {
+            "so_luong": 9,
+            "danh_sach": [
+              "Phường 1",
+              "Phường 2",
+              "Phường 4",
+              "Phường 5",
+              "Phường 7",
+              "Phường 9",
+              "Phú Đông",
+              "Phú Lâm",
+              "Phú Thạnh"
+            ]
+          },
+          "xa": {
+            "so_luong": 3,
+            "danh_sach": [
+              "An Phú",
+              "Bình Kiến",
+              "Hòa Kiến"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 2,
+        "ten": "Thị xã Sông Cầu",
+        "loai": "Thị xã",
+        "nam_thanh_lap": 2009,
+        "dien_tich_km2": 492.8,
+        "dan_so": 120780,
+        "don_vi_cap_xa": {
+          "tong_so": 13,
+          "phuong": {
+            "so_luong": 4,
+            "danh_sach": [
+              "Xuân Đài",
+              "Xuân Phú",
+              "Xuân Thành",
+              "Xuân Yên"
+            ]
+          },
+          "xa": {
+            "so_luong": 9,
+            "danh_sach": [
+              "Xuân Bình",
+              "Xuân Cảnh",
+              "Xuân Hải",
+              "Xuân Lâm",
+              "Xuân Lộc",
+              "Xuân Phương",
+              "Xuân Thịnh",
+              "Xuân Thọ 1",
+              "Xuân Thọ 2"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 3,
+        "ten": "Thị xã Đông Hòa",
+        "loai": "Thị xã",
+        "nam_thanh_lap": 2020,
+        "dien_tich_km2": 265.62,
+        "dan_so": 119921,
+        "don_vi_cap_xa": {
+          "tong_so": 10,
+          "phuong": {
+            "so_luong": 5,
+            "danh_sach": [
+              "Hòa Hiệp Bắc",
+              "Hòa Hiệp Nam",
+              "Hòa Hiệp Trung",
+              "Hòa Vinh",
+              "Hòa Xuân Tây"
+            ]
+          },
+          "xa": {
+            "so_luong": 5,
+            "danh_sach": [
+              "Hòa Tâm",
+              "Hòa Tân Đông",
+              "Hòa Thành",
+              "Hòa Xuân Đông",
+              "Hòa Xuân Nam"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 4,
+        "ten": "Huyện Tuy An",
+        "loai": "Huyện",
+        "nam_thanh_lap": null,
+        "dien_tich_km2": 435,
+        "dan_so": 133000,
+        "don_vi_cap_xa": {
+          "tong_so": 16,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Chí Thạnh"
+            ]
+          },
+          "xa": {
+            "so_luong": 15,
+            "danh_sach": [
+              "An Cư",
+              "An Chấn",
+              "An Dân",
+              "An Định",
+              "An Hải",
+              "An Hiệp",
+              "An Hòa Hải",
+              "An Lĩnh",
+              "An Mỹ",
+              "An Nghiệp",
+              "An Ninh Đông",
+              "An Ninh Tây",
+              "An Thạch",
+              "An Thọ",
+              "An Xuân"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 5,
+        "ten": "Huyện Phú Hòa",
+        "loai": "Huyện",
+        "nam_thanh_lap": 2002,
+        "dien_tich_km2": 264.2,
+        "dan_so": 113850,
+        "don_vi_cap_xa": {
+          "tong_so": 9,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Phú Hòa"
+            ]
+          },
+          "xa": {
+            "so_luong": 8,
+            "danh_sach": [
+              "Hòa An",
+              "Hòa Định Đông",
+              "Hòa Định Tây",
+              "Hòa Hội",
+              "Hòa Quang Bắc",
+              "Hòa Quang Nam",
+              "Hòa Thắng",
+              "Hòa Trị"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 6,
+        "ten": "Huyện Tây Hòa",
+        "loai": "Huyện",
+        "nam_thanh_lap": 2005,
+        "dien_tich_km2": 610.43,
+        "dan_so": 127000,
+        "don_vi_cap_xa": {
+          "tong_so": 11,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Phú Thứ"
+            ]
+          },
+          "xa": {
+            "so_luong": 10,
+            "danh_sach": [
+              "Hòa Bình 1",
+              "Hòa Đồng",
+              "Hòa Mỹ Đông",
+              "Hòa Mỹ Tây",
+              "Hòa Phong",
+              "Hòa Phú",
+              "Hòa Tân Tây",
+              "Hòa Thịnh",
+              "Sơn Thành Đông",
+              "Sơn Thành Tây"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 7,
+        "ten": "Huyện Sơn Hòa",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1984,
+        "dien_tich_km2": 950.33,
+        "dan_so": 60290,
+        "don_vi_cap_xa": {
+          "tong_so": 14,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Củng Sơn"
+            ]
+          },
+          "xa": {
+            "so_luong": 13,
+            "danh_sach": [
+              "Cà Lúi",
+              "Ea Chà Rang",
+              "Krông Pa",
+              "Phước Tân",
+              "Sơn Định",
+              "Sơn Hà",
+              "Sơn Hội",
+              "Sơn Long",
+              "Sơn Nguyên",
+              "Sơn Phước",
+              "Sơn Xuân",
+              "Suối Bạc",
+              "Suối Trai"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 8,
+        "ten": "Huyện Sông Hinh",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1985,
+        "dien_tich_km2": 890.2,
+        "dan_so": 58700,
+        "don_vi_cap_xa": {
+          "tong_so": 11,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Hai Riêng"
+            ]
+          },
+          "xa": {
+            "so_luong": 10,
+            "danh_sach": [
+              "Đức Bình Đông",
+              "Đức Bình Tây",
+              "Ea Bá",
+              "Ea Bar",
+              "Ea Bia",
+              "Ea Lâm",
+              "Ea Ly",
+              "Ea Trol",
+              "Sông Hinh",
+              "Sơn Giang"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 9,
+        "ten": "Huyện Đồng Xuân",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1611,
+        "dien_tich_km2": 1065.08,
+        "dan_so": 65300,
+        "don_vi_cap_xa": {
+          "tong_so": 11,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "La Hai"
+            ]
+          },
+          "xa": {
+            "so_luong": 10,
+            "danh_sach": [
+              "Đa Lộc",
+              "Phú Mỡ",
+              "Xuân Lãnh",
+              "Xuân Long",
+              "Xuân Phước",
+              "Xuân Quang 1",
+              "Xuân Quang 2",
+              "Xuân Quang 3",
+              "Xuân Sơn Bắc",
+              "Xuân Sơn Nam"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "giao_thong": {
+    "duong_bo": {
+      "quoc_lo_1A": {
+        "mo_ta": "Tuyến đường huyết mạch chạy dọc qua Phú Yên",
+        "ket_noi": {
+          "phia_bac": "Tỉnh Bình Định",
+          "phia_nam": "Tỉnh Khánh Hòa"
+        },
+        "vai_tro": "Tuyến đường chính phục vụ cho việc di chuyển và vận tải hàng hóa, đi qua thành phố Tuy Hòa, các thị xã và huyện"
+      },
+      "quoc_lo_25": {
+        "ket_noi": "Tỉnh Gia Lai",
+        "vai_tro": "Tạo điều kiện thuận lợi cho giao thương giữa vùng duyên hải Nam Trung Bộ và Tây Nguyên"
+      },
+      "quoc_lo_29": {
+        "ket_noi": "Tỉnh Đắk Lắk",
+        "vai_tro": "Tuyến đường quan trọng cho việc giao thương giữa các khu vực"
+      },
+      "duong_tinh_lo_huyen": "Hệ thống đường tỉnh và đường huyện kết nối các xã, phường, thị trấn, đảm bảo việc di chuyển thuận lợi trong nội tỉnh"
+    },
+    "duong_sat": {
+      "tuyen": "Đường sắt Bắc - Nam",
+      "ga_chinh": "Ga Tuy Hòa",
+      "ga_khac": ["Ga Đông Tác", "Ga Phú Hiệp"],
+      "vai_tro": "Phục vụ cho việc vận chuyển hành khách và hàng hóa, kết nối Phú Yên với các tỉnh từ Bắc vào Nam"
+    }
+  }
+}

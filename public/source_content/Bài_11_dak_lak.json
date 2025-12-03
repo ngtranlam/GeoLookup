@@ -1,0 +1,602 @@
+{
+  "tinh": "Đắk Lắk",
+  "tieu_de": "Tổng quan về tỉnh Đắk Lắk trước sát nhập",
+  "gioi_thieu_chung": {
+    "mo_ta": "Đắk Lắk là tỉnh nằm ở trung tâm vùng Tây Nguyên của Việt Nam, giữ vị trí chiến lược trong tam giác phát triển Việt Nam - Lào - Campuchia.",
+    "dien_tich": "13.125 km²",
+    "thu_tu_dien_tich": "Tỉnh có diện tích lớn thứ tư cả nước",
+    "trung_tam_hanh_chinh": "Thành phố Buôn Ma Thuột",
+    "dan_so": {
+      "tong_so": "1,87 triệu người",
+      "nam": 2024,
+      "so_dan_toc": "Trên 40 dân tộc",
+      "thanh_phan": {
+        "nguoi_kinh": "70%",
+        "dan_toc_ban_dia": ["Ê Đê", "M'Nông", "Gia Rai"],
+        "dan_toc_khac": ["Tày", "Nùng", "Dao", "Mông"]
+      }
+    },
+    "van_hoa": "Không gian văn hóa cồng chiêng Tây Nguyên - Di sản văn hóa phi vật thể của nhân loại"
+  },
+  "vi_tri_dia_ly": {
+    "phia_bac": "Tỉnh Gia Lai",
+    "phia_nam": "Tỉnh Lâm Đồng",
+    "phia_dong": "Các tỉnh Phú Yên, Khánh Hòa",
+    "phia_tay": {
+      "giap": "Tỉnh Mondulkiri (Campuchia)",
+      "bien_gioi": "73 km",
+      "cua_khau": "Bu Prăng"
+    }
+  },
+  "dieu_kien_tu_nhien": {
+    "dia_hinh": {
+      "loai": "Cao nguyên bazan",
+      "do_cao_trung_binh": "400 - 800 m",
+      "dac_diem": "Nhiều đồi núi thoải, xen kẽ các thung lũng và đồng bằng nhỏ",
+      "dat_dai": "Đất màu mỡ, thích hợp cho cây công nghiệp dài ngày như cà phê, cao su, hồ tiêu, điều, ca cao"
+    },
+    "khi_hau": {
+      "loai": "Cận xích đạo",
+      "mua_mua": "Từ tháng 5 đến tháng 10",
+      "mua_kho": "Từ tháng 11 đến tháng 4 năm sau",
+      "nhiet_do_trung_binh": "23 - 25 °C",
+      "luong_mua": "1.800 - 2.200 mm/năm",
+      "dac_diem": "Mát mẻ, ổn định, phù hợp phát triển nông nghiệp chất lượng cao"
+    },
+    "song_ngoi": {
+      "song_lon": [
+        "Sông Sêrêpốk (một nhánh của sông Mekong)",
+        "Sông Krông Ana",
+        "Sông Krông Nô"
+      ],
+      "ho_chua": ["Hồ Lắk", "Hồ Ea Kao", "Hồ Buôn Triết"],
+      "vai_tro": "Cấp nước, thủy điện, nông nghiệp và du lịch"
+    },
+    "tai_nguyen_rung": {
+      "dien_tich": "Hơn 50% diện tích đất tự nhiên",
+      "vi_tri": "Diện tích rừng lớn nhất vùng Tây Nguyên",
+      "he_sinh_thai": "Rừng nhiệt đới gió mùa, nhiều động thực vật quý hiếm"
+    }
+  },
+  "kinh_te": {
+    "nong_nghiep": {
+      "vi_tri": "Một trong những trung tâm sản xuất nông sản hàng đầu cả nước",
+      "ca_phe": {
+        "dien_tich": "~210.000 ha",
+        "thu_hang": "Đứng đầu cả nước về diện tích và sản lượng"
+      },
+      "san_pham_khac": ["Cao su", "Hồ tiêu", "Điều", "Mía", "Lúa gạo", "Rau hoa công nghệ cao"]
+    },
+    "cong_nghiep": {
+      "huong_phat_trien": [
+        "Chế biến nông sản",
+        "Năng lượng tái tạo (điện mặt trời, điện gió)",
+        "Công nghiệp chế biến gỗ"
+      ]
+    },
+    "dich_vu": [
+      "Logistics",
+      "Thương mại biên mậu qua cửa khẩu Bu Prăng",
+      "Du lịch sinh thái - văn hóa"
+    ]
+  },
+  "giao_thong": {
+    "duong_bo": {
+      "quoc_lo_14": "Kết nối Tây Nguyên với Đông Nam Bộ",
+      "quoc_lo_26": "Kết nối Buôn Ma Thuột với Khánh Hòa, cảng biển Nha Trang",
+      "quoc_lo_27": "Kết nối với Lâm Đồng"
+    },
+    "duong_hang_khong": {
+      "san_bay": "Sân bay Buôn Ma Thuột",
+      "tuyen_bay": ["Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Vinh"]
+    },
+    "duong_bien_gioi": {
+      "cua_khau": "Cửa khẩu Bu Prăng",
+      "vi_tri": "Huyện Buôn Đôn",
+      "ket_noi": "Campuchia",
+      "tiem_nang": "Phát triển thương mại biên mậu"
+    }
+  },
+  "don_vi_hanh_chinh": {
+    "tong_quan_cap_huyen": {
+      "tong_so": 15,
+      "thanh_pho": 1,
+      "thi_xa": 1,
+      "huyen": 13
+    },
+    "tong_quan_cap_xa": {
+      "tong_so": 180,
+      "phuong": 18,
+      "thi_tran": 13,
+      "xa": 149
+    },
+    "danh_sach_chi_tiet": [
+      {
+        "stt": 1,
+        "ten": "Thành phố Buôn Ma Thuột",
+        "loai": "Thành phố",
+        "nam_thanh_lap": 1995,
+        "dien_tich_km2": 377.2,
+        "dan_so": 502170,
+        "don_vi_cap_xa": {
+          "tong_so": 19,
+          "phuong": {
+            "so_luong": 11,
+            "danh_sach": [
+              "Ea Tam",
+              "Khánh Xuân",
+              "Tân An",
+              "Tân Hòa",
+              "Tân Lập",
+              "Tân Lợi",
+              "Tân Thành",
+              "Tân Tiến",
+              "Thắng Lợi",
+              "Thành Công",
+              "Tự An"
+            ]
+          },
+          "xa": {
+            "so_luong": 8,
+            "danh_sach": [
+              "Cư Êbur",
+              "Ea Kao",
+              "Ea Tu",
+              "Hòa Khánh",
+              "Hòa Phú",
+              "Hòa Thắng",
+              "Hòa Thuận",
+              "Hòa Xuân"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 2,
+        "ten": "Thị xã Buôn Hồ",
+        "loai": "Thị xã",
+        "nam_thanh_lap": 2008,
+        "dien_tich_km2": 282.1,
+        "dan_so": 127920,
+        "don_vi_cap_xa": {
+          "tong_so": 12,
+          "phuong": {
+            "so_luong": 7,
+            "danh_sach": [
+              "An Bình",
+              "An Lạc",
+              "Bình Tân",
+              "Đạt Hiếu",
+              "Đoàn Kết",
+              "Thiện An",
+              "Thống Nhất"
+            ]
+          },
+          "xa": {
+            "so_luong": 5,
+            "danh_sach": [
+              "Bình Thuận",
+              "Cư Bao",
+              "Ea Blang",
+              "Ea Drông",
+              "Ea Siên"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 3,
+        "ten": "Huyện Buôn Đôn",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1995,
+        "dien_tich_km2": 1412.5,
+        "dan_so": 70650,
+        "don_vi_cap_xa": {
+          "tong_so": 7,
+          "xa": {
+            "so_luong": 7,
+            "danh_sach": [
+              "Cuôr Knia",
+              "Ea Bar",
+              "Ea Huar",
+              "Ea Nuôl",
+              "Ea Wer",
+              "Krông Na",
+              "Tân Hòa"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 4,
+        "ten": "Huyện Cư Kuin",
+        "loai": "Huyện",
+        "nam_thanh_lap": 2007,
+        "dien_tich_km2": 288.3,
+        "dan_so": 103842,
+        "don_vi_cap_xa": {
+          "tong_so": 8,
+          "xa": {
+            "so_luong": 8,
+            "danh_sach": [
+              "Cư Êwi",
+              "Dray Bhăng",
+              "Ea Bhôk",
+              "Ea Hu",
+              "Ea Ktur",
+              "Ea Ning",
+              "Ea Tiêu",
+              "Hòa Hiệp"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 5,
+        "ten": "Huyện Cư M'gar",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1984,
+        "dien_tich_km2": 821,
+        "dan_so": 173024,
+        "don_vi_cap_xa": {
+          "tong_so": 17,
+          "thi_tran": {
+            "so_luong": 2,
+            "danh_sach": [
+              "Quảng Phú",
+              "Ea Pốk"
+            ]
+          },
+          "xa": {
+            "so_luong": 15,
+            "danh_sach": [
+              "Cư Dliê M'nông",
+              "Cư M'gar",
+              "Cư Suê",
+              "Cuôr Đăng",
+              "Ea Drơng",
+              "Ea H'đing",
+              "Ea Kiết",
+              "Ea Kpam",
+              "Ea Kuêh",
+              "Ea M'Drơh",
+              "Ea M'nang",
+              "Ea Tar",
+              "Ea Tul",
+              "Quảng Hiệp",
+              "Quảng Tiến"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 6,
+        "ten": "Huyện Ea H'leo",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1980,
+        "dien_tich_km2": 1335,
+        "dan_so": 128347,
+        "don_vi_cap_xa": {
+          "tong_so": 12,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Ea Drăng"
+            ]
+          },
+          "xa": {
+            "so_luong": 11,
+            "danh_sach": [
+              "Cư A Mung",
+              "Cư Mốt",
+              "Dliê Yang",
+              "Ea Hiao",
+              "Ea H'leo",
+              "Ea Khăl",
+              "Ea Nam",
+              "Ea Ral",
+              "Ea Sol",
+              "Ea Tir",
+              "Ea Wy"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 7,
+        "ten": "Huyện Ea Kar",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1986,
+        "dien_tich_km2": 1021,
+        "dan_so": 150895,
+        "don_vi_cap_xa": {
+          "tong_so": 16,
+          "thi_tran": {
+            "so_luong": 2,
+            "danh_sach": [
+              "Ea Kar",
+              "Ea Knốp"
+            ]
+          },
+          "xa": {
+            "so_luong": 14,
+            "danh_sach": [
+              "Cư Bông",
+              "Cư Elang",
+              "Cư Huê",
+              "Cư Ni",
+              "Cư Prông",
+              "Cư Yang",
+              "Ea Đar",
+              "Ea Kmút",
+              "Ea Ô",
+              "Ea Păl",
+              "Ea Sar",
+              "Ea Sô",
+              "Ea Tíh",
+              "Xuân Phú"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 8,
+        "ten": "Huyện Ea Súp",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1977,
+        "dien_tich_km2": 1750,
+        "dan_so": 67120,
+        "don_vi_cap_xa": {
+          "tong_so": 10,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Ea Súp"
+            ]
+          },
+          "xa": {
+            "so_luong": 9,
+            "danh_sach": [
+              "Cư Kbang",
+              "Cư M'lan",
+              "Ea Bung",
+              "Ea Lê",
+              "Ea Rốk",
+              "Ia JLơi",
+              "Ia Lốp",
+              "Ia Rvê",
+              "Ya Tờ Mốt"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 9,
+        "ten": "Huyện Krông Ana",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1981,
+        "dien_tich_km2": 356.1,
+        "dan_so": 95210,
+        "don_vi_cap_xa": {
+          "tong_so": 8,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Buôn Trấp"
+            ]
+          },
+          "xa": {
+            "so_luong": 7,
+            "danh_sach": [
+              "Băng Adrênh",
+              "Bình Hòa",
+              "Dray Sáp",
+              "Dur Kmăl",
+              "Ea Bông",
+              "Ea Na",
+              "Quảng Điền"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 10,
+        "ten": "Huyện Krông Bông",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1981,
+        "dien_tich_km2": 1257.49,
+        "dan_so": 100900,
+        "don_vi_cap_xa": {
+          "tong_so": 13,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Krông Kmar"
+            ]
+          },
+          "xa": {
+            "so_luong": 12,
+            "danh_sach": [
+              "Cư Đrăm",
+              "Cư Kty",
+              "Dang Kang",
+              "Ea Trul",
+              "Hòa Lễ",
+              "Hòa Phong",
+              "Hòa Sơn",
+              "Hòa Tân",
+              "Hòa Thành",
+              "Khuê Ngọc Điền",
+              "Yang Mao",
+              "Yang Reh"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 11,
+        "ten": "Huyện Krông Búk",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1975,
+        "dien_tich_km2": 358.7,
+        "dan_so": 63850,
+        "don_vi_cap_xa": {
+          "tong_so": 7,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Pơng Drang"
+            ]
+          },
+          "xa": {
+            "so_luong": 6,
+            "danh_sach": [
+              "Cư Kpô",
+              "Cư Né",
+              "Cư Pơng",
+              "Ea Ngai",
+              "Ea Sin",
+              "Krông Búk"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 12,
+        "ten": "Huyện Krông Năng",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1987,
+        "dien_tich_km2": 641.8,
+        "dan_so": 124577,
+        "don_vi_cap_xa": {
+          "tong_so": 12,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Krông Năng"
+            ]
+          },
+          "xa": {
+            "so_luong": 11,
+            "danh_sach": [
+              "Cư Klông",
+              "Cư M'gar",
+              "Dliê Ya",
+              "Ea Dăh",
+              "Ea Hồ",
+              "Ea Puk",
+              "Ea Tam",
+              "Ea Tân",
+              "Ea Tóh",
+              "Phú Lộc",
+              "Tam Giang"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 13,
+        "ten": "Huyện Krông Pắc",
+        "loai": "Huyện",
+        "nam_thanh_lap": null,
+        "dien_tich_km2": 625.8,
+        "dan_so": 207226,
+        "don_vi_cap_xa": {
+          "tong_so": 16,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Phước An"
+            ]
+          },
+          "xa": {
+            "so_luong": 15,
+            "danh_sach": [
+              "Ea Hiu",
+              "Ea Kênh",
+              "Ea Kly",
+              "Ea Knuếc",
+              "Ea Phê",
+              "Ea Uy",
+              "Ea Yông",
+              "Hòa An",
+              "Hòa Đông",
+              "Hòa Tiến",
+              "Krông Búk",
+              "Tân Tiến",
+              "Vụ Bổn",
+              "Ea Yông",
+              "Ea Kênh"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 14,
+        "ten": "Huyện Lắk",
+        "loai": "Huyện",
+        "nam_thanh_lap": null,
+        "dien_tich_km2": 1250,
+        "dan_so": 77390,
+        "don_vi_cap_xa": {
+          "tong_so": 11,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "Liên Sơn"
+            ]
+          },
+          "xa": {
+            "so_luong": 10,
+            "danh_sach": [
+              "Bông Krang",
+              "Buôn Tría",
+              "Đắk Liêng",
+              "Đắk Nuê",
+              "Đắk Phơi",
+              "Đắk Wil",
+              "Ea R'bin",
+              "Krông Nô",
+              "Nam Ka",
+              "Yang Tao"
+            ]
+          }
+        }
+      },
+      {
+        "stt": 15,
+        "ten": "Huyện M'Drắk",
+        "loai": "Huyện",
+        "nam_thanh_lap": 1977,
+        "dien_tich_km2": 1348,
+        "dan_so": 85080,
+        "don_vi_cap_xa": {
+          "tong_so": 13,
+          "thi_tran": {
+            "so_luong": 1,
+            "danh_sach": [
+              "M'Drắk"
+            ]
+          },
+          "xa": {
+            "so_luong": 12,
+            "danh_sach": [
+              "Cư K Róa",
+              "Cư M'ta",
+              "Cư Prao",
+              "Ea H'Mlay",
+              "Ea M'doan",
+              "Ea Pil",
+              "Ea Riêng",
+              "Ea Trang",
+              "Krông Á",
+              "Krông Jing",
+              "Cư San",
+              "Ea Lai"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
