@@ -128,8 +128,8 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
     }
   };
 
-  const renderContent = (content: any): JSX.Element[] => {
-    const elements: JSX.Element[] = [];
+  const renderContent = (content: any): React.ReactElement[] => {
+    const elements: React.ReactElement[] = [];
 
     if (typeof content === 'string') {
       return [<p key="content" className="lesson-paragraph">{content}</p>];
