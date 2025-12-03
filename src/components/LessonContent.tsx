@@ -6,9 +6,9 @@ interface LessonContentProps {
 }
 
 // Simple markdown parser for summary text
-const parseMarkdown = (text: string): JSX.Element[] => {
+const parseMarkdown = (text: string): React.ReactElement[] => {
   const lines = text.split('\n');
-  const elements: JSX.Element[] = [];
+  const elements: React.ReactElement[] = [];
   
   lines.forEach((line, index) => {
     if (!line.trim()) return;
@@ -29,7 +29,7 @@ const parseMarkdown = (text: string): JSX.Element[] => {
     }
     // Handle bullet points
     else if (line.trim().startsWith('*') || line.trim().startsWith('-')) {
-      const content = line.replace(/^\s*[\*\-]\s*/, '');
+      const content = line.replace(/^\s*[*-]\s*/, '');
       // Process bold text within the line
       const processedContent = processBoldText(content);
       elements.push(
@@ -53,8 +53,8 @@ const parseMarkdown = (text: string): JSX.Element[] => {
 };
 
 // Process bold text (**text** or __text__)
-const processBoldText = (text: string): (string | JSX.Element)[] => {
-  const parts: (string | JSX.Element)[] = [];
+const processBoldText = (text: string): (string | React.ReactElement)[] => {
+  const parts: (string | React.ReactElement)[] = [];
   let currentIndex = 0;
   
   // Match **text** or __text__
@@ -87,7 +87,6 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
   const [summary, setSummary] = useState<string>('');
   const [keyPoints, setKeyPoints] = useState<string[]>([]);
   const [isLoadingSummary, setIsLoadingSummary] = useState(false);
-  const [isLoadingKeyPoints, setIsLoadingKeyPoints] = useState(false);
   const [summaryError, setSummaryError] = useState<string>('');
   const [showSummary, setShowSummary] = useState(false);
 
