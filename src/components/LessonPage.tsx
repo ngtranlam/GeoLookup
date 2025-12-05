@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LessonSidebar from './LessonSidebar';
 import LessonContent from './LessonContent';
+import Quiz from './Quiz';
 import { lessons } from '../data/lessons';
 
 const LessonPage: React.FC = () => {
@@ -8,6 +9,7 @@ const LessonPage: React.FC = () => {
   const [lessonData, setLessonData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showComprehensiveExercise, setShowComprehensiveExercise] = useState(false);
 
   useEffect(() => {
     if (selectedLessonId !== null) {
@@ -43,6 +45,13 @@ const LessonPage: React.FC = () => {
 
   const handleSelectLesson = (lessonId: number) => {
     setSelectedLessonId(lessonId);
+    setShowComprehensiveExercise(false);
+  };
+
+  const handleSelectComprehensiveExercise = () => {
+    setSelectedLessonId(null);
+    setLessonData(null);
+    setShowComprehensiveExercise(true);
   };
 
   return (
@@ -51,6 +60,8 @@ const LessonPage: React.FC = () => {
         <LessonSidebar 
           selectedLessonId={selectedLessonId} 
           onSelectLesson={handleSelectLesson} 
+          onSelectComprehensiveExercise={handleSelectComprehensiveExercise}
+          showComprehensiveExercise={showComprehensiveExercise}
         />
         <div className="lesson-main">
           {isLoading && (
@@ -65,8 +76,23 @@ const LessonPage: React.FC = () => {
               <p>{error}</p>
             </div>
           )}
-          {!isLoading && !error && (
+          {!isLoading && !error && showComprehensiveExercise && (
+            <div className="comprehensive-exercise-container">
+              <div className="comprehensive-exercise-header">
+                <h1>Bài tập tổng hợp kiến thức</h1>
+                <p>Kiểm tra toàn bộ kiến thức đã học từ tất cả các bài học</p>
+              </div>
+              <Quiz />
+            </div>
+          )}
+          {!isLoading && !error && lessonData && !showComprehensiveExercise && (
             <LessonContent lessonData={lessonData} />
+          )}
+          {!isLoading && !error && !lessonData && !showComprehensiveExercise && (
+            <div className="lesson-content-empty">
+              <h2>Chọn một bài học để bắt đầu</h2>
+              <p>Vui lòng chọn một bài học từ danh sách bên trái hoặc thử bài tập tổng hợp</p>
+            </div>
           )}
         </div>
       </div>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { searchLandmarkWithEnhancedAddress } from './services/enhancedGeminiService';
 import { searchMusicianWithGemini, MusicianResult as MusicianData } from './services/musicianGeminiService';
-import Quiz from './components/Quiz';
 import LandmarkResult from './components/LandmarkResult';
 import LandmarkDetailPopup from './components/LandmarkDetailPopup';
 import MusicianResultCard from './components/MusicianResult';
 import MusicianDetailPopup from './components/MusicianDetailPopup';
 import LessonPage from './components/LessonPage';
+import DocumentsPage from './components/DocumentsPage';
+import ProvinceDetailPage from './components/ProvinceDetailPage';
 
 // Mock data cho demo
 const mockResults = [
@@ -36,7 +37,8 @@ function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [showMusicianPopup, setShowMusicianPopup] = useState(false);
   const [searchError, setSearchError] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<'explore' | 'quiz' | 'lessons'>('explore');
+  const [currentPage, setCurrentPage] = useState<'explore' | 'lessons' | 'documents' | 'province-detail'>('explore');
+  const [selectedProvince, setSelectedProvince] = useState<string | null>(null);
 
   // Detailed place information
   const placeDetails = {
@@ -181,66 +183,121 @@ function App() {
       </div>
 
       {/* Header */}
-      <header className="header">
-        <div className="container">
-          <nav className="nav">
-            <div className="logo">
-              <img 
-                src="/logo-nbk.png" 
-                alt="Logo THCS Nguyễn Bình Khiêm" 
-                className="logo-image"
-              />
-              <div className="logo-text">
-                <div className="logo-main">THCS Nguyễn Bình Khiêm</div>
-                <div className="logo-sub">Học hiện đại – Sáng tương lai</div>
-              </div>
+      <header className="header header-full-width">
+        <nav className="nav nav-full-width">
+          <div className="logo">
+            <img 
+              src="/logo-nbk.png" 
+              alt="Logo THCS Nguyễn Bình Khiêm" 
+              className="logo-image"
+            />
+            <div className="logo-text">
+              <div className="logo-main">THCS Nguyễn Bình Khiêm</div>
+              <div className="logo-sub">Học hiện đại – Sáng tương lai</div>
             </div>
-            <div className="nav-buttons">
-              <button 
-                className={`nav-btn ${currentPage === 'explore' ? 'nav-btn-active' : ''}`}
-                onClick={() => setCurrentPage('explore')}
-              >
-                Khám phá
-              </button>
-              <button 
-                className={`nav-btn ${currentPage === 'lessons' ? 'nav-btn-active' : ''}`}
-                onClick={() => setCurrentPage('lessons')}
-              >
-                Kiến thức
-              </button>
-              <button 
-                className={`nav-btn ${currentPage === 'quiz' ? 'nav-btn-active' : ''}`}
-                onClick={() => setCurrentPage('quiz')}
-              >
-                Bài tập
-              </button>
-            </div>
-          </nav>
-        </div>
+          </div>
+          <div className="nav-buttons">
+            <button 
+              className={`nav-btn ${currentPage === 'explore' ? 'nav-btn-active' : ''}`}
+              onClick={() => setCurrentPage('explore')}
+            >
+              Khám phá
+            </button>
+            <button 
+              className={`nav-btn ${currentPage === 'lessons' ? 'nav-btn-active' : ''}`}
+              onClick={() => setCurrentPage('lessons')}
+            >
+              Kiến thức
+            </button>
+            <button 
+              className={`nav-btn ${currentPage === 'documents' ? 'nav-btn-active' : ''}`}
+              onClick={() => setCurrentPage('documents')}
+            >
+              Tư liệu
+            </button>
+          </div>
+        </nav>
       </header>
 
       {/* Conditional Content Based on Current Page */}
-      {currentPage === 'lessons' ? (
+      {currentPage === 'province-detail' && selectedProvince ? (
+        /* Province Detail Page */
+        <>
+          <ProvinceDetailPage 
+            provinceId={selectedProvince}
+            onBack={() => {
+              setCurrentPage('explore');
+              setSelectedProvince(null);
+            }}
+          />
+        </>
+      ) : currentPage === 'lessons' ? (
         /* Lessons Page Content */
         <>
           <LessonPage />
-          
-          {/* Footer for Lessons Page */}
-          <footer className="footer">
-            <div className="container">
-              <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
-            </div>
-          </footer>
         </>
-      ) : currentPage === 'explore' ? (
+      ) : currentPage === 'documents' ? (
+        /* Documents Page Content */
+        <>
+          <DocumentsPage 
+            onSelectProvince={(provinceId) => {
+              setSelectedProvince(provinceId);
+              setCurrentPage('province-detail');
+            }}
+          />
+        </>
+      ) : (
         <>
           {/* Hero Section */}
-          <section className="hero">
+          <section className="hero citizenship-hero">
         <div className="container">
-          <h1>Khám phá Địa danh Tỉnh Đắk Lắk</h1>
-          <p>
-            Tìm kiếm thông tin về địa chỉ cũ và mới của các địa danh sau việc tái cấu trúc hành chính tại Việt Nam
-          </p>
+          {/* Citizenship Icons */}
+          <div className="citizenship-icons">
+            <div className="citizenship-icon citizenship-icon-1">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+                <path d="M19 15L19.5 17L21 17.5L19.5 18L19 20L18.5 18L17 17.5L18.5 17L19 15Z" fill="currentColor"/>
+                <path d="M5 15L5.5 17L7 17.5L5.5 18L5 20L4.5 18L3 17.5L4.5 17L5 15Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div className="citizenship-icon citizenship-icon-2">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 5.5V6.5L21 9ZM3 9L9 6.5V5.5L3 7V9ZM15 7.5V9L21 11V13L15 10.5V12L21 14.5V16.5L12 13L3 16.5V14.5L9 12V10.5L3 13V11L9 9V7.5L3 9V7L9 5.5V4C9 2.9 9.9 2 11 2H13C14.1 2 15 2.9 15 4V5.5L21 7V9L15 7.5Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div className="citizenship-icon citizenship-icon-3">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
+                <path d="M8,12V14H16V12H8M8,16V18H13V16H8Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div className="citizenship-icon citizenship-icon-4">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div className="citizenship-icon citizenship-icon-5">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2L3.09,7.26L4.91,8.74L12,4.15L19.09,8.74L20.91,7.26L12,2M5,9V14H7V11H9V14H11V9H5M13,9V14H19V12H15V11H19V9H13M15,13H17V14H15V13Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+
+          <h1 className="citizenship-title">
+            <span className="title-highlight">Bộ tài liệu</span>
+            <span className="title-main">TÔI LÀ CÔNG DÂN ĐẮK LẮK</span>
+          </h1>
+          {/* Interactive Đắk Lắk Map */}
+          <div className="daklak-map-container">
+            <div className="map-wrapper">
+              <img 
+                src="/source_content/daklak_map.png" 
+                alt="Bản đồ tỉnh Đắk Lắk" 
+                className="daklak-map"
+              />
+            </div>
+          </div>
+
 
           {/* Enhanced Search Form */}
           <div className="search-container">
@@ -274,29 +331,39 @@ function App() {
             </form>
           </div>
 
-          {/* Stats */}
-          <div className="stats">
-            <div className="stat-card">
-              <h3>99+</h3>
-              <p>Địa danh nổi tiếng</p>
-            </div>
-            <div className="stat-card">
-              <h3>99+</h3>
-              <p>Đơn vị hành chính cập nhật mới</p>
-            </div>
-            <div className="stat-card">
-              <h3>AI</h3>
-              <p>Tìm kiếm thông minh với AI</p>
-            </div>
-          </div>
 
-          {/* Info Section */}
-          <div style={{textAlign: 'center', padding: '2rem 0'}}>
-            <div className="sphere-title">Hơn 100 địa danh nổi tiếng Việt Nam</div>
-            <p style={{fontSize: '1.1rem', opacity: 0.9, maxWidth: '600px', margin: '0 auto 2rem'}}>
-              Khám phá hình cầu 3D bên trái với 100+ địa danh nổi tiếng khắp Việt Nam. 
-              Click vào bất kỳ địa danh nào để tìm kiếm thông tin chi tiết.
-            </p>
+          {/* Citizenship Education Features */}
+          <div className="citizenship-features">
+            <div className="feature-grid">
+              <div className="feature-card">
+                <div className="feature-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Tra cứu thông tin địa danh trước và sau sáp nhập</h3>
+              </div>
+              
+              <div className="feature-card">
+                <div className="feature-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" fill="currentColor"/>
+                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Tự học và luyện tập thông minh cùng AI</h3>
+              </div>
+              
+              <div className="feature-card">
+                <div className="feature-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
+                    <path d="M8,12V14H16V12H8M8,16V18H13V16H8Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Bộ tư liệu đa dạng và chính xác</h3>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -466,29 +533,6 @@ function App() {
           </div>
         </div>
       </section>
-
-          {/* Footer */}
-          <footer className="footer">
-            <div className="container">
-              <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
-            </div>
-          </footer>
-        </>
-      ) : (
-        /* Quiz Page Content */
-        <>
-          <section className="hero">
-            <div className="container">
-              <Quiz />
-            </div>
-          </section>
-          
-          {/* Footer for Quiz Page */}
-          <footer className="footer">
-            <div className="container">
-              <p>© 2025 THCS Nguyễn Bình Khiêm. Made with ❤️ by Students</p>
-            </div>
-          </footer>
         </>
       )}
 

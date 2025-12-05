@@ -1,0 +1,553 @@
+{
+  "province": {
+    "name": "Đắk Lắk",
+    "slug": "dak-lak",
+    "region": "Tây Nguyên",
+    "capital": "Buôn Ma Thuột"
+  },
+  "overview": {
+    "title": "TỔNG QUAN VỀ TỈNH ĐẮK LẮK TRƯỚC SÁT NHẬP",
+    "description": "Đắk Lắk là tỉnh nằm ở trung tâm vùng Tây Nguyên của Việt Nam, giữ vị trí chiến lược trong tam giác phát triển Việt Nam - Lào - Campuchia.",
+    "area_km2": 13125,
+    "population": 1870000,
+    "year": 2024,
+    "ethnic_groups": "Trên 40 dân tộc, người Kinh chiếm 70%, dân tộc thiểu số gồm Ê Đê, M'Nông, Gia Rai, Tày, Nùng, Dao, Mông...",
+    "heritage": "Không gian văn hóa cồng chiêng Tây Nguyên - Di sản văn hóa phi vật thể của nhân loại"
+  },
+  "geography": {
+    "location": {
+      "north": "Tỉnh Gia Lai",
+      "south": "Tỉnh Lâm Đồng",
+      "east": "Các tỉnh Phú Yên, Khánh Hòa",
+      "west": "Tỉnh Mondulkiri (Campuchia), biên giới dài 73 km, cửa khẩu Bu Prăng"
+    },
+    "terrain": {
+      "type": "Cao nguyên bazan",
+      "elevation": "400-800m",
+      "description": "Đồi núi thoải, xen kẽ thung lũng và đồng bằng nhỏ, đất màu mỡ thích hợp cây công nghiệp dài ngày"
+    },
+    "climate": {
+      "type": "Cận xích đạo",
+      "temperature": "23-25°C",
+      "rainfall": "1800-2200mm/năm",
+      "rainy_season": "Tháng 5-10",
+      "dry_season": "Tháng 11 - Tháng 4 năm sau"
+    },
+    "rivers": [
+      "Sông Sêrêpốk",
+      "Sông Krông Ana",
+      "Sông Krông Nô"
+    ],
+    "lakes": [
+      "Hồ Lắk",
+      "Hồ Ea Kao",
+      "Hồ Buôn Triết"
+    ],
+    "forest_coverage": "Hơn 50% diện tích tự nhiên"
+  },
+  "economy": {
+    "agriculture": {
+      "main_crops": [
+        "Cà phê (~210,000 ha, đứng đầu cả nước)",
+        "Cao su",
+        "Hồ tiêu",
+        "Điều",
+        "Mía",
+        "Lúa gạo"
+      ],
+      "specialty": "Trung tâm sản xuất cà phê hàng đầu Việt Nam"
+    },
+    "industry": [
+      "Chế biến nông sản",
+      "Năng lượng tái tạo (điện mặt trời, điện gió)",
+      "Công nghiệp chế biến gỗ"
+    ],
+    "services": [
+      "Logistics",
+      "Thương mại biên mậu",
+      "Du lịch sinh thái - văn hóa"
+    ]
+  },
+  "transportation": {
+    "roads": [
+      {
+        "name": "Quốc lộ 14",
+        "description": "Kết nối Tây Nguyên với Đông Nam Bộ"
+      },
+      {
+        "name": "Quốc lộ 26",
+        "description": "Kết nối Buôn Ma Thuột với Khánh Hòa, cảng biển Nha Trang"
+      },
+      {
+        "name": "Quốc lộ 27",
+        "description": "Kết nối với Lâm Đồng"
+      }
+    ],
+    "airport": {
+      "name": "Sân bay Buôn Ma Thuột",
+      "routes": [
+        "Hà Nội",
+        "TP. Hồ Chí Minh",
+        "Đà Nẵng",
+        "Hải Phòng",
+        "Vinh"
+      ]
+    },
+    "border_gate": {
+      "name": "Cửa khẩu Bu Prăng",
+      "location": "Huyện Buôn Đôn",
+      "connects_to": "Campuchia"
+    }
+  },
+  "administrative": {
+    "total_districts": 15,
+    "total_communes": 180,
+    "breakdown": {
+      "cities": 1,
+      "towns": 1,
+      "districts": 13
+    },
+    "commune_breakdown": {
+      "wards": 18,
+      "townships": 13,
+      "communes": 149
+    }
+  },
+  "districts": [
+    {
+      "name": "Buôn Ma Thuột",
+      "type": "Thành phố",
+      "established": 1995,
+      "area_km2": 3772.0,
+      "population": 502170,
+      "wards": [
+        "Ea Tam",
+        "Khánh Xuân",
+        "Tân An",
+        "Tân Hòa",
+        "Tân Lập",
+        "Tân Lợi",
+        "Tân"
+      ],
+      "communes": [
+        "Cư Êbur",
+        "Ea Kao",
+        "Ea Tu",
+        "Hòa Khánh",
+        "Hòa Phú",
+        "Hòa Thắng",
+        "Hòa Thuận"
+      ],
+      "towns": [],
+      "image": "images/dak_lak/image3.jpeg",
+      "description": "",
+      "id": "dak_lak_1"
+    },
+    {
+      "name": "Buôn Hồ",
+      "type": "Thị xã",
+      "established": 2008,
+      "area_km2": 2821.0,
+      "population": 127920,
+      "wards": [
+        "An Bình",
+        "An Lạc",
+        "Bình Tân",
+        "Đạt Hiếu",
+        "Đoàn Kết",
+        "Thiện An",
+        "Thống"
+      ],
+      "communes": [
+        "Bình Thuận",
+        "Cư Bao",
+        "Ea Blang",
+        "Ea Drông",
+        "Ea Siên"
+      ],
+      "towns": [],
+      "image": "images/dak_lak/image4.jpeg",
+      "description": "",
+      "id": "dak_lak_2"
+    },
+    {
+      "name": "Buôn Đôn",
+      "type": "Huyện",
+      "established": 1995,
+      "area_km2": 1.4125,
+      "population": 70650,
+      "wards": [],
+      "communes": [],
+      "towns": [],
+      "image": "images/dak_lak/image5.jpeg",
+      "description": "",
+      "id": "dak_lak_3"
+    },
+    {
+      "name": "Cư Kuin",
+      "type": "Huyện",
+      "established": 2007,
+      "area_km2": 2883.0,
+      "population": null,
+      "wards": [],
+      "communes": [],
+      "towns": [],
+      "image": "images/dak_lak/image6.jpeg",
+      "description": "",
+      "id": "dak_lak_4"
+    },
+    {
+      "name": "Cư M\\'gar",
+      "type": "Huyện",
+      "established": 1984,
+      "area_km2": 821.0,
+      "population": null,
+      "wards": [],
+      "communes": [
+        "Cư Dliê M\\'nông",
+        "Cư M\\'gar",
+        "Cư Suê",
+        "Cuôr Đăng",
+        "Ea Drơng",
+        "Ea"
+      ],
+      "towns": [
+        "Quảng Phú",
+        "Ea Pốk.*"
+      ],
+      "image": "images/dak_lak/image7.jpeg",
+      "description": "",
+      "id": "dak_lak_5"
+    },
+    {
+      "name": "Ea H\\'leo",
+      "type": "Huyện",
+      "established": 1980,
+      "area_km2": 1.335,
+      "population": 128347,
+      "wards": [],
+      "communes": [
+        "Cư A Mung",
+        "Cư Mốt",
+        "Dliê Yang",
+        "Ea Hiao",
+        "Ea H\\'leo",
+        "Ea Khăl",
+        "Ea"
+      ],
+      "towns": [
+        "Ea Drăng.*"
+      ],
+      "image": "images/dak_lak/image8.jpeg",
+      "description": "",
+      "id": "dak_lak_6"
+    },
+    {
+      "name": "Ea Kar",
+      "type": "Huyện",
+      "established": 1986,
+      "area_km2": 1.021,
+      "population": null,
+      "wards": [],
+      "communes": [
+        "Cư Bông",
+        "Cư Elang",
+        "Cư Huê",
+        "Cư Ni",
+        "Cư Prông",
+        "Cư Yang",
+        "Ea Đar",
+        "Ea"
+      ],
+      "towns": [
+        "Ea Kar",
+        "Ea Knốp.*"
+      ],
+      "image": "images/dak_lak/image9.jpeg",
+      "description": "",
+      "id": "dak_lak_7"
+    },
+    {
+      "name": "Ea Súp",
+      "type": "Huyện",
+      "established": 1977,
+      "area_km2": 1.75,
+      "population": null,
+      "wards": [],
+      "communes": [
+        "Cư Kbang",
+        "Cư M\\'lan",
+        "Ea Bung",
+        "Ea Lê",
+        "Ea Rốk",
+        "Ia JLơi",
+        "Ia Lốp",
+        "Ia"
+      ],
+      "towns": [
+        "Ea Súp.*"
+      ],
+      "image": "images/dak_lak/image10.jpeg",
+      "description": "",
+      "id": "dak_lak_8"
+    },
+    {
+      "name": "Krông Ana",
+      "type": "Huyện",
+      "established": 1981,
+      "area_km2": 3561.0,
+      "population": 95210,
+      "wards": [],
+      "communes": [
+        "Băng Adrênh",
+        "Bình Hòa",
+        "Dray Sáp",
+        "Dur Kmăl",
+        "Ea Bông",
+        "Ea Na",
+        "Quảng"
+      ],
+      "towns": [
+        "Buôn Trấp.*"
+      ],
+      "image": "images/dak_lak/image11.jpeg",
+      "description": "",
+      "id": "dak_lak_9"
+    },
+    {
+      "name": "Krông Bông",
+      "type": "Huyện",
+      "established": 1981,
+      "area_km2": 1.25749,
+      "population": 100900,
+      "wards": [],
+      "communes": [
+        "Cư Đrăm",
+        "Cư Kty",
+        "Dang Kang",
+        "Ea Trul",
+        "Hòa Lễ",
+        "Hòa Phong",
+        "Hòa Sơn"
+      ],
+      "towns": [
+        "Krông Kmar.*"
+      ],
+      "image": "images/dak_lak/image12.jpeg",
+      "description": "",
+      "id": "dak_lak_10"
+    },
+    {
+      "name": "Krông Búk",
+      "type": "Huyện",
+      "established": 1975,
+      "area_km2": 3587.0,
+      "population": 63850,
+      "wards": [],
+      "communes": [
+        "Cư Kpô",
+        "Cư Né",
+        "Cư Pơng",
+        "Ea Ngai",
+        "Ea Sin",
+        "Krông Búk.*"
+      ],
+      "towns": [
+        "Pơng Drang.*"
+      ],
+      "image": "images/dak_lak/image13.jpeg",
+      "description": "",
+      "id": "dak_lak_11"
+    },
+    {
+      "name": "Krông Năng",
+      "type": "Huyện",
+      "established": 1987,
+      "area_km2": 6418.0,
+      "population": 124577,
+      "wards": [],
+      "communes": [
+        "Cư Klông",
+        "Cư M\\'gar",
+        "Dliê Ya",
+        "Ea Dăh",
+        "Ea Hồ",
+        "Ea Puk",
+        "Ea Tam",
+        "Ea"
+      ],
+      "towns": [
+        "Krông Năng.*"
+      ],
+      "image": "images/dak_lak/image14.jpeg",
+      "description": "",
+      "id": "dak_lak_12"
+    },
+    {
+      "name": "Krông Pắc",
+      "type": "Huyện",
+      "established": null,
+      "area_km2": 6258.0,
+      "population": 207226,
+      "wards": [],
+      "communes": [
+        "Ea Hiu",
+        "Ea Kênh",
+        "Ea Kly",
+        "Ea Knuếc",
+        "Ea Phê",
+        "Ea Uy",
+        "Ea Yông",
+        "Hòa"
+      ],
+      "towns": [
+        "Phước An.*"
+      ],
+      "image": "images/dak_lak/image15.jpeg",
+      "description": "",
+      "id": "dak_lak_13"
+    },
+    {
+      "name": "Lắk",
+      "type": "Huyện",
+      "established": null,
+      "area_km2": 1.25,
+      "population": 77390,
+      "wards": [],
+      "communes": [
+        "Bông Krang",
+        "Buôn Tría",
+        "Đắk Liêng",
+        "Đắk Nuê",
+        "Đắk Phơi",
+        "Đắk Wil",
+        "Ea"
+      ],
+      "towns": [
+        "Liên Sơn.*"
+      ],
+      "image": "images/dak_lak/image16.jpeg",
+      "description": "",
+      "id": "dak_lak_14"
+    },
+    {
+      "name": "M\\'Drắk",
+      "type": "Huyện",
+      "established": 1977,
+      "area_km2": 1.348,
+      "population": null,
+      "wards": [],
+      "communes": [
+        "Cư K Róa",
+        "Cư M\\'ta",
+        "Cư Prao",
+        "Ea H\\'Mlay",
+        "Ea M\\'doan",
+        "Ea Pil",
+        "Ea"
+      ],
+      "towns": [
+        "M\\'Drắk.*"
+      ],
+      "image": "images/dak_lak/image17.jpeg",
+      "description": "",
+      "id": "dak_lak_15"
+    }
+  ],
+  "images": {
+    "overview_map": "images/dak_lak/image1.jpeg",
+    "administrative_map": "images/dak_lak/image2.jpeg",
+    "districts": [
+      {
+        "id": "dak_lak_1",
+        "name": "Buôn Ma Thuột",
+        "type": "Thành phố",
+        "path": "images/image3.jpeg"
+      },
+      {
+        "id": "dak_lak_2",
+        "name": "Buôn Hồ",
+        "type": "Thị xã",
+        "path": "images/image4.jpeg"
+      },
+      {
+        "id": "dak_lak_3",
+        "name": "Buôn Đôn",
+        "type": "Huyện",
+        "path": "images/image5.jpeg"
+      },
+      {
+        "id": "dak_lak_4",
+        "name": "Cư Kuin",
+        "type": "Huyện",
+        "path": "images/image6.jpeg"
+      },
+      {
+        "id": "dak_lak_5",
+        "name": "Cư M\\'gar",
+        "type": "Huyện",
+        "path": "images/image7.jpeg"
+      },
+      {
+        "id": "dak_lak_6",
+        "name": "Ea H\\'leo",
+        "type": "Huyện",
+        "path": "images/image8.jpeg"
+      },
+      {
+        "id": "dak_lak_7",
+        "name": "Ea Kar",
+        "type": "Huyện",
+        "path": "images/image9.jpeg"
+      },
+      {
+        "id": "dak_lak_8",
+        "name": "Ea Súp",
+        "type": "Huyện",
+        "path": "images/image10.jpeg"
+      },
+      {
+        "id": "dak_lak_9",
+        "name": "Krông Ana",
+        "type": "Huyện",
+        "path": "images/image11.jpeg"
+      },
+      {
+        "id": "dak_lak_10",
+        "name": "Krông Bông",
+        "type": "Huyện",
+        "path": "images/image12.jpeg"
+      },
+      {
+        "id": "dak_lak_11",
+        "name": "Krông Búk",
+        "type": "Huyện",
+        "path": "images/image13.jpeg"
+      },
+      {
+        "id": "dak_lak_12",
+        "name": "Krông Năng",
+        "type": "Huyện",
+        "path": "images/image14.jpeg"
+      },
+      {
+        "id": "dak_lak_13",
+        "name": "Krông Pắc",
+        "type": "Huyện",
+        "path": "images/image15.jpeg"
+      },
+      {
+        "id": "dak_lak_14",
+        "name": "Lắk",
+        "type": "Huyện",
+        "path": "images/image16.jpeg"
+      },
+      {
+        "id": "dak_lak_15",
+        "name": "M\\'Drắk",
+        "type": "Huyện",
+        "path": "images/image17.jpeg"
+      }
+    ]
+  }
+}
