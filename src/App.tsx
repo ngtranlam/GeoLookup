@@ -284,7 +284,7 @@ function App() {
           </div>
 
           <h1 className="citizenship-title">
-            <span className="title-highlight">Bộ tài liệu</span>
+            <span className="title-highlight">Bộ tư liệu số</span>
             <span className="title-main">TÔI LÀ CÔNG DÂN ĐẮK LẮK</span>
           </h1>
           {/* Interactive Đắk Lắk Map */}
