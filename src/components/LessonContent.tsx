@@ -36,6 +36,11 @@ interface Section {
 
 // Simple markdown parser for summary text
 const parseMarkdown = (text: string): React.ReactElement[] => {
+  // Add null/undefined check
+  if (!text || typeof text !== 'string') {
+    return [];
+  }
+  
   const lines = text.split('\n');
   const elements: React.ReactElement[] = [];
   
@@ -45,13 +50,13 @@ const parseMarkdown = (text: string): React.ReactElement[] => {
     // Handle headers (## or ###)
     if (line.startsWith('###')) {
       elements.push(
-        <h4 key={index} style={{ fontSize: '1.2rem', fontWeight: '600', marginTop: '1.5rem', marginBottom: '0.75rem' }}>
+        <h4 key={index} style={{ fontSize: '1.1rem', fontWeight: '600', marginTop: '1.2rem', marginBottom: '0.8rem', color: 'rgba(255, 255, 255, 0.98)' }}>
           {line.replace(/^###\s*/, '')}
         </h4>
       );
     } else if (line.startsWith('##')) {
       elements.push(
-        <h3 key={index} style={{ fontSize: '1.4rem', fontWeight: '600', marginTop: '1.5rem', marginBottom: '0.75rem' }}>
+        <h3 key={index} style={{ fontSize: '1.1rem', fontWeight: '600', marginTop: '1.2rem', marginBottom: '0.8rem', color: 'rgba(255, 255, 255, 0.98)' }}>
           {line.replace(/^##\s*/, '')}
         </h3>
       );
@@ -62,7 +67,7 @@ const parseMarkdown = (text: string): React.ReactElement[] => {
       // Process bold text within the line
       const processedContent = processBoldText(content);
       elements.push(
-        <li key={index} style={{ marginBottom: '0.5rem', lineHeight: '1.6' }}>
+        <li key={index} style={{ marginBottom: '0.5rem', lineHeight: '1.6', fontSize: '1rem', color: 'rgba(255, 255, 255, 0.92)' }}>
           {processedContent}
         </li>
       );
@@ -71,7 +76,7 @@ const parseMarkdown = (text: string): React.ReactElement[] => {
     else {
       const processedContent = processBoldText(line);
       elements.push(
-        <p key={index} style={{ marginBottom: '1rem', lineHeight: '1.8' }}>
+        <p key={index} style={{ marginBottom: '1rem', lineHeight: '1.7', fontSize: '1rem', color: 'rgba(255, 255, 255, 0.95)' }}>
           {processedContent}
         </p>
       );
@@ -83,6 +88,11 @@ const parseMarkdown = (text: string): React.ReactElement[] => {
 
 // Process bold text (**text** or __text__)
 const processBoldText = (text: string): (string | React.ReactElement)[] => {
+  // Add null/undefined check
+  if (!text || typeof text !== 'string') {
+    return [];
+  }
+  
   const parts: (string | React.ReactElement)[] = [];
   let currentIndex = 0;
   
@@ -97,7 +107,7 @@ const processBoldText = (text: string): (string | React.ReactElement)[] => {
     }
     // Add bold text
     parts.push(
-      <strong key={match.index} style={{ fontWeight: '700', color: 'rgba(255, 255, 255, 0.95)' }}>
+      <strong key={match.index} style={{ fontWeight: '600', color: 'rgba(255, 255, 255, 1)', fontSize: '1rem' }}>
         {match[2]}
       </strong>
     );
@@ -350,14 +360,19 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
               <tbody>
                 {item.data && item.data.map((row: any, rowIndex: number) => (
                   <tr key={rowIndex}>
-                    <td className="table-category">{row.category}</td>
-                    {row.values && row.values.map((value: string, valueIndex: number) => (
-                      <td key={valueIndex} className="table-value">{value}</td>
-                    ))}
+                    <td className="table-indicator">{row.indicator}</td>
+                    <td className="table-unit">{row.unit}</td>
+                    <td className="table-value">{row['2021']}</td>
+                    <td className="table-value">{row['2022']}</td>
+                    <td className="table-value">{row['2023']}</td>
+                    <td className="table-value">{row.q1_2024}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            {item.source && (
+              <p className="table-source">Nguồn: {item.source}</p>
+            )}
             {item.note && (
               <p className="table-note">{item.note}</p>
             )}
@@ -368,22 +383,33 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
           <div key={`info-box-${index}`} className="lesson-info-box">
             {item.title && <h5 className="info-box-title">{item.title}</h5>}
             <div className="info-box-content">
-              {item.content}
+              {item.content ? parseMarkdown(item.content) : (item.text ? parseMarkdown(item.text) : '')}
             </div>
           </div>
         );
       case 'note':
         return (
           <div key={`note-${index}`} className="lesson-note">
-            {item.content || item.text}
+            {parseMarkdown(item.content || item.text || '')}
           </div>
         );
       case 'list':
         return (
           <div key={`list-${index}`} className="lesson-list">
+            {item.title && <h5 className="list-title">{item.title}</h5>}
             <ul>
-              {item.items && item.items.map((listItem: string, listIndex: number) => (
-                <li key={listIndex}>{listItem}</li>
+              {item.items && item.items.map((listItem: any, listIndex: number) => (
+                <li key={listIndex}>
+                  {typeof listItem === 'string' ? (
+                    listItem
+                  ) : listItem.category && listItem.works ? (
+                    <div className="list-item-category">
+                      <strong>{listItem.category}:</strong> {listItem.works}
+                    </div>
+                  ) : (
+                    JSON.stringify(listItem)
+                  )}
+                </li>
               ))}
             </ul>
           </div>
@@ -481,7 +507,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
       case 'note':
         return (
           <div key={`note-${index}`} className="lesson-note">
-            <p className="note-text">{item.content}</p>
+            <div className="note-text">{parseMarkdown(item.content || item.text || '')}</div>
           </div>
         );
       case 'image_group':
@@ -543,16 +569,14 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
                           <strong>Câu {q.question_number}:</strong> {q.question}
                         </p>
                         <button 
-                          className="reveal-answer-btn"
+                          className="answer-toggle-btn"
                           onClick={() => toggleAnswerReveal(questionId)}
                         >
-                          {isRevealed ? 'Ẩn đáp án' : 'Xem đáp án'}
+                          {isRevealed ? 'Ẩn đáp án' : 'Hiện đáp án'}
                         </button>
                         {isRevealed && (
                           <div className="guide-answer">
-                            {q.answer.split('\n').map((line: string, lineIndex: number) => (
-                              <p key={lineIndex} className="answer-line">{line}</p>
-                            ))}
+                            {parseMarkdown(q.answer)}
                           </div>
                         )}
                       </div>
@@ -564,9 +588,92 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
             {item.remember && (
               <div className="work-remember">
                 <h4 className="remember-title">{item.remember.title}</h4>
-                <p className="remember-content">{item.remember.content}</p>
+                <div className="remember-content">{parseMarkdown(item.remember.content || '')}</div>
               </div>
             )}
+          </div>
+        );
+      case 'music_sheet':
+        return (
+          <div key={`music-sheet-${index}`} className="music-sheet">
+            <div className="sheet-header">
+              <h3 className="sheet-title">{item.title}</h3>
+              <p className="sheet-composer">{item.composer}</p>
+              {item.tempo && <p className="sheet-tempo">Tempo: {item.tempo}</p>}
+            </div>
+            {item.description && (
+              <p className="sheet-description">{item.description}</p>
+            )}
+            {item.image && (
+              <div className="sheet-image">
+                <img 
+                  src={item.image} 
+                  alt={`Sheet nhạc ${item.title}`}
+                  className="sheet-img"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const container = target.parentElement;
+                    if (container) {
+                      const errorDiv = document.createElement('div');
+                      errorDiv.className = 'image-error';
+                      errorDiv.textContent = `Không thể tải sheet nhạc: ${item.title}`;
+                      container.appendChild(errorDiv);
+                    }
+                  }}
+                />
+              </div>
+            )}
+          </div>
+        );
+      case 'question_prompt':
+        return (
+          <div key={`question-prompt-${index}`} className="question-prompt">
+            <div className="prompt-icon">❓</div>
+            <p className="prompt-text">{item.text}</p>
+          </div>
+        );
+      case 'subsection':
+        return (
+          <div key={`subsection-${index}`} className="lesson-subsection">
+            <h6 className="subsection-title">{item.title}</h6>
+            <div className="subsection-content">
+              {Array.isArray(item.content) ? (
+                item.content.map((subItem: any, subIndex: number) => (
+                  typeof subItem === 'string' ? (
+                    <p key={subIndex} className="subsection-paragraph">{processBoldText(subItem)}</p>
+                  ) : subItem.title && subItem.details ? (
+                    <div key={subIndex} className="subsection-item">
+                      <h5 className="item-title">{subItem.title}</h5>
+                      {Array.isArray(subItem.details) ? (
+                        <ul className="item-details-list">
+                          {subItem.details.map((detail: string, detailIndex: number) => (
+                            <li key={detailIndex}>{processBoldText(detail)}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="item-details">{processBoldText(subItem.details)}</p>
+                      )}
+                    </div>
+                  ) : (
+                    <div key={subIndex}>{JSON.stringify(subItem)}</div>
+                  )
+                ))
+              ) : (
+                <div>{parseMarkdown(item.content || '')}</div>
+              )}
+            </div>
+          </div>
+        );
+      case 'recognition':
+        return (
+          <div key={`recognition-${index}`} className="recognition-section">
+            <h6 className="recognition-title">🏆 Các danh hiệu và công nhận</h6>
+            <ul className="recognition-list">
+              {item.items && item.items.map((recognition: string, recIndex: number) => (
+                <li key={recIndex} className="recognition-item">{recognition}</li>
+              ))}
+            </ul>
           </div>
         );
       default:
@@ -648,10 +755,10 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
             )}
             
             <button 
-              className="reveal-answer-btn"
+              className="answer-toggle-btn"
               onClick={() => toggleAnswerReveal(questionId)}
             >
-              {isRevealed ? 'Ẩn đáp án' : 'Xem đáp án'}
+              {isRevealed ? 'Ẩn đáp án' : 'Hiện đáp án'}
             </button>
             {isRevealed && (
               <div className="question-answer">
@@ -681,34 +788,9 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
                   </div>
                 ) : (
                   <div className="answer-content">
-                    {(typeof question.answer === 'string' ? question.answer : '').split('\n').map((line: string, lineIndex: number) => {
-                      if (line.trim() === '') return <br key={lineIndex} />;
-                      
-                      // Handle bullet points
-                      if (line.trim().startsWith('*')) {
-                        return (
-                          <div key={lineIndex} className="answer-bullet-point">
-                            {line.trim().substring(1).trim()}
-                          </div>
-                        );
-                      }
-                      
-                      // Handle section headers (lines ending with colon)
-                      if (line.trim().endsWith(':')) {
-                        return (
-                          <div key={lineIndex} className="answer-section-header">
-                            {line.trim()}
-                          </div>
-                        );
-                      }
-                      
-                      // Regular lines
-                      return (
-                        <div key={lineIndex} className="answer-line">
-                          {line.trim()}
-                        </div>
-                      );
-                    })}
+                    <div className="answer-text">
+                      {parseMarkdown(typeof question.answer === 'string' ? question.answer : '')}
+                    </div>
                   </div>
                 )}
               </div>
@@ -725,7 +807,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
     return (
       <div key={subsectionId} className="lesson-subsection">
         <h4 className="subsection-title">
-          {subsection.subsection_id}. {subsection.title}
+          {subsection.subsection_number || subsection.subsection_id}. {subsection.title}
         </h4>
         
         {/* Handle location and classification for lesson 4 */}
@@ -758,6 +840,46 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
             {subsection.content && (
               <div className="subsection-content">
                 {subsection.content.map((item: any, index: number) => renderContentItem(item, index))}
+              </div>
+            )}
+            
+            {/* Handle attractions structure for tourism lessons */}
+            {subsection.attractions && (
+              <div className="attractions-section">
+                {subsection.attractions.map((attraction: any, attractionIndex: number) => (
+                  <div key={`attraction-${attractionIndex}`} className="attraction-item">
+                    <h5 className="attraction-title">
+                      {attraction.attraction_number} {attraction.name}
+                    </h5>
+                    <div className="attraction-content">
+                      {attraction.content && attraction.content.map((item: any, index: number) => 
+                        renderContentItem(item, index)
+                      )}
+                    </div>
+                    {attraction.question && (
+                      <div className="attraction-question">
+                        <div className="question-header">
+                          <h6 className="question-title">Câu hỏi</h6>
+                          <button
+                            className="answer-toggle-btn"
+                            onClick={() => toggleAnswerReveal(`${subsectionId}-attraction-${attractionIndex}`)}
+                          >
+                            {revealedAnswers.has(`${subsectionId}-attraction-${attractionIndex}`) ? 'Ẩn đáp án' : 'Hiện đáp án'}
+                          </button>
+                        </div>
+                        <p className="question-text">{attraction.question.text}</p>
+                        {revealedAnswers.has(`${subsectionId}-attraction-${attractionIndex}`) && (
+                          <div className="answer-content">
+                            <h6 className="answer-title">Đáp án:</h6>
+                            <div className="answer-text">
+                              {parseMarkdown(attraction.question.answer)}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
           </>
@@ -858,7 +980,12 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
                 
                 {activity.answer && (
                   <div className="activity-answer">
-                    <p className="answer-placeholder">Câu trả lời: {activity.answer}</p>
+                    <div className="answer-placeholder">
+                      <strong>Câu trả lời:</strong>
+                      <div className="answer-text">
+                        {parseMarkdown(activity.answer)}
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -1003,6 +1130,18 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
               <p className="introduction-followup"><strong>Câu hỏi tiếp theo:</strong> {introduction.content.follow_up}</p>
             )}
           </div>
+        ) : introduction.content?.activity && introduction.content?.question ? (
+          /* Handle Phú Yên Topic 5 activity + question structure */
+          <div className="introduction-activity-question">
+            <div className="activity-section">
+              <h4 className="activity-title">Hoạt động:</h4>
+              <p className="activity-description">{introduction.content.activity}</p>
+            </div>
+            <div className="question-section">
+              <h4 className="question-title">Câu hỏi:</h4>
+              <p className="question-text">{introduction.content.question}</p>
+            </div>
+          </div>
         ) : introduction.content?.activity && introduction.content?.sample_program ? (
           /* Handle Phú Yên Topic 3 expert interview structure */
           <div className="introduction-expert-interview">
@@ -1044,6 +1183,33 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
             {introduction.content.task && (
               <p className="introduction-task"><strong>Nhiệm vụ:</strong> {introduction.content.task}</p>
             )}
+          </div>
+        ) : introduction.content && introduction.question ? (
+          /* Handle content + question structure for Topic 7 */
+          <div className="introduction-content-question">
+            <div className="introduction-content">
+              <p>{introduction.content}</p>
+            </div>
+            <div className="introduction-question-section">
+              <div className="question-header">
+                <h4 className="question-title">Câu hỏi</h4>
+                <button
+                  className="answer-toggle-btn"
+                  onClick={() => toggleAnswerReveal('introduction-question')}
+                >
+                  {revealedAnswers.has('introduction-question') ? 'Ẩn đáp án' : 'Hiện đáp án'}
+                </button>
+              </div>
+              <p className="question-text">{introduction.question.text}</p>
+              {revealedAnswers.has('introduction-question') && (
+                <div className="answer-content">
+                  <h6 className="answer-title">Đáp án:</h6>
+                  <div className="answer-text">
+                    {parseMarkdown(introduction.question.answer)}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         ) : introduction.content?.content ? (
           /* Handle nested content object */
