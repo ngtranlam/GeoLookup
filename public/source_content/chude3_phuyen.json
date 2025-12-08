@@ -1,0 +1,210 @@
+{
+  "lesson": {
+    "id": "chude3",
+    "title": "Văn xuôi trên vùng đất Phú Yên",
+    "learning_objectives": [
+      "Khái quát được những thông tin cơ bản về văn xuôi trên vùng đất Phú Yên.",
+      "Cảm nhận được vẻ đẹp của đất và người Phú Yên qua các tác phẩm văn xuôi Phú Yên.",
+      "Nhận diện và phân tích được một số biện pháp tu từ và các phép liên kết trong văn bản văn xuôi Phú Yên.",
+      "Khơi dậy tình yêu quê hương đất nước qua việc đọc, tìm hiểu một số văn bản văn xuôi Phú Yên tiêu biểu.",
+      "Biết cách viết đoạn văn/ bài văn thể hiện cảm nhận về một tác phẩm/ đoạn trích văn xuôi yêu thích."
+    ],
+    "introduction": {
+      "title": "KHỞI ĐỘNG",
+      "content": {
+        "activity": "Phỏng vấn chuyên gia",
+        "description": "Học sinh thực hiện \"Phỏng vấn chuyên gia\". Cụ thể như sau:",
+        "steps": [
+          "Giáo viên giao nội dung phỏng vấn cho học sinh chuẩn bị trước.",
+          "Chọn một học sinh làm người dẫn chương trình, chọn một học sinh khác làm chuyên gia (hoặc giáo viên làm chuyên gia).",
+          "Giáo viên tổ chức lớp tham gia một cuộc toạ đàm ngắn với chuyên gia về những vấn đề liên quan đến bài học, từ đó dẫn dắt vào bài."
+        ],
+        "sample_program": {
+          "title": "CHƯƠNG TRÌNH TOẠ ĐÀM CÙNG CHUYÊN GIA VĂN HỌC PHÚ YÊN",
+          "questions": [
+            {
+              "mc": "Xin chuyên gia giới thiệu một vài nét sơ lược về văn xuôi Phú Yên cho mọi người được biết.",
+              "expert": "Chuyên gia trả lời: ..."
+            },
+            {
+              "mc": "Văn xuôi Phú Yên hình như thành tựu không bằng thơ. Chuyên gia có thể lí giải lí do vì sao không?",
+              "expert": "Chuyên gia trả lời: ..."
+            },
+            {
+              "mc": "Xin chuyên gia chia sẻ đôi điều về một tác phẩm văn xuôi Phú Yên mà chuyên gia tâm đắc nhất.",
+              "expert": "Chuyên gia trả lời:..."
+            },
+            {
+              "mc": "Các cử tọa trong cuộc tọa đàm này có điều gì cần chuyên gia tư vấn, xin mời quí vị trực tiếp trao đổi.",
+              "expert": "Trao đổi nhanh"
+            }
+          ]
+        }
+      }
+    },
+    "main_content": {
+      "title": "KHÁM PHÁ",
+      "sections": [
+        {
+          "section_number": "I",
+          "title": "TRI THỨC ĐỌC HIỂU",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Cùng với thơ, văn xuôi Phú Yên là một bộ phận quan trọng góp phần hoàn thiện bức tranh tổng thể của văn học Phú Yên và có những đóng góp nhất định cho sự phát triển của văn học dân tộc."
+            },
+            {
+              "type": "paragraph",
+              "text": "Tuy thành tựu không phong phú, đa dạng bằng thơ nhưng văn xuôi Phú Yên cũng đạt được những thành tựu đáng ghi nhận. Trước năm 1945, có truyện ngắn của Đặng Ngọc Cư in trên Tiểu thuyết thứ bảy. Giai đoạn 1945 – 1975 có các tác phẩm văn xuôi của Y Điêng, Thanh Quế,... Văn xuôi Phú Yên trong vùng địch tạm chiếm cũng đạt nhiều thành tựu quan trọng với những cây bút như Võ Hồng, Trần Sỹ Huệ,... Đặc biệt, giai đoạn sau 1975, văn xuôi Phú Yên phát triển mạnh mẽ về cả số lượng tác phẩm lẫn chất lượng nghệ thuật với sự xuất hiện của hàng loạt nhà văn như: Đào Minh Hiệp, Trần Quốc Cưỡng, Huỳnh Thạch Thảo, Huỳnh Văn Quốc, Ngô Phan Lưu,..."
+            },
+            {
+              "type": "paragraph",
+              "text": "Văn xuôi Phú Yên đa dạng về thể loại: truyện ngắn, tiểu thuyết, kí sự, tản văn.... tập trung thể hiện vẻ đẹp của vùng đất, con người, văn hoá Phú Yên qua lối viết giản dị, chân thật, trong sáng. Hiện nay, các nhà văn Phú Yên không ngừng tìm tòi, thể nghiệm những lối viết mới, từng bước làm cho văn xuôi Phú Yên trở nên phong phú, sinh động và sâu sắc hơn."
+            }
+          ]
+        },
+        {
+          "section_number": "II",
+          "title": "VĂN BẢN ĐỌC",
+          "content": [
+            {
+              "type": "literary_work",
+              "title": "NGÀY XUÂN ÊM ĐỀM",
+              "author": "Võ Hồng",
+              "text_parts": [
+                "Chiều hôm ấy khi đi học về, An thấy trên ven mép sân vừa trồng một hàng cúc vạn thọ. Mừng quá, An không kịp bỏ mũ sách, nhảy tuốt ra nhà sau tìm chú Ba.",
+                "– Chú Ba ơi! Chú Ba! Chú trồng vạn thọ hả chú? Gần tới Tết rồi hả chú Ba?",
+                "Câu trả lời của chú, An đoán trước được nhưng An vẫn thích hỏi. Còn ai vào đây trồng hoa nữa? Ba, bốn năm nay từ khi An có trí khôn, An thấy cứ gần Tết là chú Ba đi xin cây vạn thọ hoặc ở chùa Châu Lâm hoặc ở vườn thẳng Kiết về trồng một hàng quanh mép sân. An không biết xem lịch vì lịch in bằng chữ Nho, cuốn lịch cha nó treo ở khung cửa sổ bên cạnh cái bàn toán. An cũng không lưu ý tìm xem tháng này là tháng mấy. Đối với tâm hồn ngây thơ của nó, cảnh và vật nói nhiều hơn tháng ngày. Nghe con tu hú kêu nó nghĩ đến những chùm trái dú dẻ chín vàng ngọt lịm và nó nghĩ: \"Tháng Ba. Mùa gặt tới\". Nhìn bà hàng gánh đôi thúng xếp đầy những trái bắp nếp luộc hơi nóng lên nghi ngút, nó cảm nghe mùi ngọt thơm của hột bắp dẻo nghiền tan dưới răng và nó nói thầm: \"Tháng Tám rồi. Sắp mưa lụt\". Còn ngày Tết thì luôn luôn được báo hiệu bằng dãy cúc vạn thọ.",
+                "An nhìn trìu mến dãy hoa vừa trồng. Mỗi cây đứng trong một cái lỗ khoét to bằng cái bát sứ. Cây cao hơn mặt đất không quá hai tấc và đứng gục đầu xuống, lá buông ủ rũ. An có cảm tưởng chúng nhớ đàn nhớ bầy, nhớ cái vạt đất nhỏ nơi đó người ta gieo chúng, nơi đó chúng lớn lên cạnh những anh em của chúng cùng một hoa mẹ sinh ra. Có đổi cây yếu quá tưởng như chúng không thể sống qua đêm nay. Sự lo lắng thương hại của An khiến nó thấy cái thái độ lầm lì lạnh nhạt của chú Ba là đáng ghét. Người lớn trông họ vô tâm đến tàn ác. Mấy cây hoa đau đớn ủ rũ thế kia mà họ vẫn có thể thản nhiên bỏ đứng bơ vơ một mình không săn sóc đến. Đêm đến, khi leo lên bộ ván gõ nằm ngủ, An cứ loay hoay nghĩ về mấy cây hoa đáng thương. Và mới sáng tinh sương khi bừng mắt dậy, nó đã nhảy vội ra sân thăm từng cây hoa. Mừng quá! Dù có cây thân còn cong lại chưa đứng thẳng nổi nhưng cây nào đọt cũng xanh tươi, chỉ những lá gần gốc là héo sẫm lại mà thôi. Dăm ngày sau, cây bén rễ và tới một độ nào đó An không nhớ nữa, những cây hoa lớn vụt thật mau, đâm chồi thật nhiều. Những khoảng cách giữa các cây hoa trước kia trống trải mênh mông, giờ đã bị che mất bởi tàng lá.",
+                "Cùng với sự phát triển của dãy cúc vạn thọ, cái Tết như cũng lớn dần. Manh nha từ đầu tháng Mười một với những cơn mưa nhẹ, mưa gieo cải, cái Tết thấp thoáng mơ hồ với những rò cải, ngò, xà lách, tần ô nằm vuông vắn ở hầu hết mọi sân nhà. Cái Tết lớn lần lên với những bụi hoa, vạn thọ, cúc đại đoá, thược dược phát chồi sum suê và bắt đầu ra nụ. Càng đi sâu vào ngày tháng, cái Tết càng hiện rõ thêm, in dấu vết trên mọi cảnh mọi vật và mọi hoạt động của con người. Chữ Tết được nhắc đi nhắc lại một cách thân mến êm đềm trong mọi trường hợp sinh hoạt ở gia đình. Cha nói: \"Mấy dây dưa leo chắc ra trái không kịp Tết. Bậy quá. Bị mưa làm thúi giống gieo kì trước\". Mẹ nói: \"Thằng Ba coi chừng mấy con gà thiến. Để qua nhà lão Dần chó cắn chết thì nghỉ ăn Tết đó nghe?\". Ở lớp học bạn khoe với nhau: \"Tết này tao được đi thăm cô tao ở Phước Lãnh... Bà ngoại vừa gửi cho mẹ tao một trái bí đao to để làm mứt Tết.\". Ở ngoài đường, chữ Tết len lỏi trong những câu chuyện: \"Chợ Tết mà ế quá, tháng Chạp thiếu, hăm chín lấy làm ba mươi, chạy Tết cũng mệt... Tết năm nay ở Phú Mỹ có bài chòi...\".",
+                "Thôn Quảng Đức đa số làm nghề gốm và buôn vôi thế mà sự sinh hoạt cũng hối hả theo cái đà của ngày Tết cứ sừng sững đến gần. Đồ gốm sản xuất ra, chở đò dọc đem bán ở các chợ xa: chợ Đèo, chợ Đồng Dài, chợ Gò Chai, chợ Gành, chợ Thứ.... Tiếng ốc tù và của chủ đò thúc khách quá giang chuyển hàng cho gấp xuống đò vang lên trong đêm khuya. Càng gần Tết sự mua bán càng hối hả rộn rịp nên chợ nào cũng vãn chậm. Đò xuôi chở khách về cũng mãi khuya mới tới bến. Bến đò thành ra ồn ão rộn rịp suốt đêm. Những cây đèn chai làm bằng một đoạn tre trong tẩm dầu, cháy rực sáng cả bực sông, in ngược bóng xuống nước rung rinh, loé đỏ cả một vùng.",
+                "Trên con đường đi xuyên qua xóm, những dáng người gánh gồng vội vã đi chập choạng theo ngọn đèn chai cầm lắc lư dưới tay. Đèn chai ở đây là một cái đèn dầu nhỏ được một nửa cái chai ụp lên để chắn gió. Tiếng chuyện trò lanh lảnh vang trong đêm, hối hả theo bước chân chuyển từ đầu xóm sang cuối xóm. Trong đêm tối mà mọi vật như xoá nhoà hết cả hình nét để tan vào bóng đen, mà mọi sinh vật đều như mỏi mệt, tiếng nói chuyện tỉnh táo rõ ràng dường giữ đủ cả sắc cạnh. Ở dưới bước chân, bóng người in đen được phóng đại ra, nằm trải xuống mặt đường, nằm vắt qua bờ rào, chập chờn di chuyển theo bước đi.",
+                "Một bữa An thấy chú Ba hí hoáy nắn một vật gì trông tựa cái lưỡi cày mà bằng đất sét. Chú lấy mũi dao liếc thật nhẫn mặt. Chỗ tay cầm cũng được gọt thật đều. An hỏi:",
+                "– Chú làm cái gì vậy?",
+                "– Tao làm cái bàn ủi.",
+                "– Làm bàn ủi để chi vậy chú?",
+                "– Để ủi quần áo chớ chi.",
+                "Giọng nói của chú lơ đãng. Trong giọng ấy còn có vẻ tự phụ vì chú nheo mắt ngắm nghía ra dáng bằng lòng lắm. Rồi chú nói chậm rãi tiếp theo, như nói với cái bàn ủi chứ không phải nói với An:",
+                "– Mốt tới phiên lò ông Hương Lạc đem gởi nung. Chín rồi lấy ra đem ngâm nước. Thế là giặt quần áo để sẵn đó. Đem đặt bàn ủi lên lò than nóng rồi cứ vậy mà ủi lên mặt quần áo. Quần áo dầu cũ mà trông như mới.",
+                "Cũ mà trông như mới! Thật là kì diệu, An nghĩ. Nó nhìn xuống cái áo cũ nó đang mặc, tưởng tượng rằng cái áo ấy sẽ mới và nó ngó sang cái bàn ủi một cách khâm phục. Cái bàn ủi ấy được mang đi nung, điều ấy quả có thật. Chính mắt An nhìn nó chuyễn từ màu xám của đất phơ sang màu hồng nhạt của đất nung. Cũng lại chính tai An lắng nghe tiếng \"boong boong\" khi cầm nó lên để gần tai, cung ngón tay gõ nghe thử. Nhưng chắc chắn là An chưa hề thấy chú Ba dùng nó để ủi cái áo của chú cho từ cũ hpá \"như mới\". Có lẽ chú đã lén thí nghiệm nhưng bị thất bại nên sau đó chú không tuyên bố gì ráo.",
+                "Ngày hăm sáu tháng chạp phiên chợ Hôm, mẹ nói:",
+                "– Hôm nay An có đi chợ Tết không con?",
+                "An vội vàng như sợ ai kịp phản đối:",
+                "– Dạ có. Lát nữa thằng Tòng lại rủ con đi.",
+                "Tòng là bạn học lớp Tư của An. Vì sao mà quen thân nhau, An cũng không nhớ rõ vì nhà Tòng ở mãi tận Hội Tín đi học khác đường mà tính tình thì hai đứa không giống nhau. Cha Tòng làm thầy phù thuỷ. Có lần nó rủ An đến nhà chơi thấy gian nhà giữa đầy những tượng, những hình ông thần, ông tướng, những cờ, những đèn, trống chiêng, thanh la, não bạt khiến An sợ khép nép không dám vào. Cha Tòng có một cái trán quá cao. Nhìn gần thấy chân tóc mọc nên An biết trán cao là vì tóc bị cạo. Sau này lớn lên được biết nhà Tòng vừa làm phù thuỷ vừa hát bội – hai nghề này có họ hàng với nhau vì hò hét điều động âm binh cũng là một cách hát bội – nên cha Tòng phải để trán cao mà đội cái mão. Lúc Tòng lớn, Tòng nghỉ học sớm và kế nghiệp cha. Cái trán của Tòng cũng được cạo lên thật cao và chân đi chữ bát. Lúc nói chuyện là hai tay vung vẫy như múa. Đó là kết quả của nghệ thuật tiêm nhiễm vào cuộc đời.",
+                "An thay quần áo xong thì Tòng đến. Tòng mặc quần trắng và áo cụt lụa màu hồ thuỷ. Những nếp gấp làm hai ống quần lép lại và gãy ra làm ba. Tòng đội một cái khăn lông màu vàng nghệ có chạy sọc xanh đỏ. Úp lên trên khăn lông là cái mũ ka ki. Trông Tòng nửa giống như một chú nhỏ ở trong tranh vẽ, nửa giống như một tên lính Tàu thời cổ. Chắc Tòng chịu ảnh hưởng của những tấm tranh màu treo la liệt trên tường nhà nó.",
+                "Đường xuống chợ có nhiều chỗ lõm thấp xuống, đó là khi con đường đi sát cạnh những cái bàu nước. Mỗi bàu nước mang một tên bí mật: bàu ông Chì, bàu ông Lôi. Mỗi lần đi qua một cái bàu, An khép nép đi sát vào Tòng vừa liếc mắt xuống mặt nước đầy rong, ấu xanh um. Những gốc tre già xám đen, những thân cây sung cong vẹo in bóng xuống mặt nước làm cho các tên ông Chì, ông Lôi được trùm trong một không khí rùng rợn. Người đi và người về tránh nhau trên con đường hẹp. Lũ trẻ con đi chợ về trên tay thế nào cũng có những món đồ chơi, hoặc con gà cồ bằng đất, khi thổi ở lỗ khoét ngang hông thì cất tiếng gáy \"côô...côô\" hoặc con \"chút chít\" khi kéo ra đẩy vào thì phát ra tiếng kêu chút chít. Nhiều đứa hãnh diện cầm những ghim pháo tre, những bó pháo thăng thiên đi cạnh mẹ.",
+                "Đến gần chợ thì nghe tiếng mua bán xì xào vang lên. Thỉnh thoảng có tiếng pháo tre nỗ \"đùng\" khiến trái tim của hai đứa như nhảy cởn lên. Không ai bảo ai mà cả hai đều rảo bước.",
+                "Đến đây rồi, chợ Hôm! Những dãy lều mái bằng tranh rạ cột tre yếu ớt sắp chạy từng dãy. Có nhiều hàng bày bán ở giữa trời, như hàng trái cây, cá mắm. Hai cây đa to toả bóng mát cả một khu chợ. Lá đa dày san sát ở trên từng cao làm thành một vòm xanh lao xao cử động. Tiếng rì rào vừa phát tự dưới đất nơi người ta buôn bán trao đổi vừa phát tự trên cao do gió lay cành lá. An gặp chị Thắm bày bán đồ gốm ở gần gốc đa. Chị Thắm ở cạnh nhà An, hàng ngày vẫn sang giếng nhà An xách nước nhưng sao hôm nay trông chị lạ hẳn đi. Có lẽ vì chị mặc áo dài và đi guốc chăng? Hay vì đặt chị giữa cái khung cảnh lạ mà người chị trông cũng lạ đi. Những đồ gốm: ấm, chậu, hoả lò, lon, vò, cây đèn,... hàng ngày vì quá quen mắt An coi như không có giá trị gì nữa, coi như những đồ chơi vô nghĩa, thế mà người đến xem xét trả giá tấp nập. Chị Thắm đóng vai trò một cách rất nghiêm trang, từ chối rất quyết liệt, thách giá rất chắc chắn. Cái ấm cái chậu bỏ lăn lóc ở xung quanh hè nhà chị Thắm, thỉnh thoàng An lỡ đi vô ý đá phải ngã lăn, nay thấy người mua mặc cả giá từng đồng, móc túi đếm từng tờ bạc để trả và cuối cùng nâng niu xếp lên rổ bưng đi. Tòng nói:",
+                "– Tụi mình ra hàng pháo coi.",
+                "Hai đứa cầm tay nhau đi. Hàng pháo ồn ào nhất nên không mất công tìm. Nó ở cách biệt ra một góc chợ xa những hàng khác vì tiếng nỗ không ai ưa, nhất là những người đi chợ hầu hết là đàn bà. Bác bán pháo là một người đàn ông vạm vỡ. Chỉ bán có pháo tre và pháo thăng thiên, bác đựng trong một cặp bồ lớn. Một số pháo bày làm mẫu được dàn trên một chiếc chiếu nhỏ. Người mua pháo bắt đốt thử. Bác tháo ở gắp tre lấy một chiếc pháo, bóc giấy (miếng giấy xanh đỏ dán đề lên ngòi) rồi đặt lên một tấm gạch cách xa bác một sải tay. Bác cầm cây hương cháy châm lên ngòi. Ngòi pháo xì khói, bác quay mặt sang một bên và một tiếng nổ \"đùng\" rền lên, chát tai. Xác pháo là một vòng nan tre bị cháy xém bay tung lên cao rồi rớt xuống.",
+                "Hàng hoa quả không hấp dẫn bằng ngày thường vì không có những miếng mít múi vàng óng ả, những trái mãng cầu nứt gai chảy mật, những quả ổi thơm, những trái say, trái sim, trái đát. Hôm nay người ta chỉ bày bán những nải chuối xanh mà chuối xanh thì trẻ con không thích vì không ăn ngay được. Trẻ con không có tính kiên nhẫn đợi chờ. Ngày thường mẹ đi chợ về, An lật rổ ra coi mà thấy bí thấy rau thấy cá là An ghét lắm. Kẹo, mít, bánh rán,... mới là những món An hoan nghênh. An và Tòng đưa nhau sang hàng thịt cá. Thật đáng thương hại cho những bà hàng này quanh năm phải bán y một món không thay đổi. Áo quần thì đen đủi, món hàng thì tanh tưởi, thật không có một vẻ Tết vẻ xuân nào cả. Chẳng bù với hàng bánh mứt họ bày bán trong những cái quả sơn quang dầu đỏ thắm trông vui như những đám cưới. Các cô bán mứt đều xinh, tóc vấn trần chải dầu dừa láng mượt, áo dài vải trang đầm bó sát người."
+              ],
+              "source": "(Tuyển tập Võ Hồng, NXB Văn nghệ TP. Hồ Chí Minh, 2023)",
+              "reading_guide": {
+                "title": "Hướng dẫn đọc hiểu",
+                "questions": [
+                  {
+                    "question_number": 1,
+                    "question": "Nêu nhận xét về cốt truyện của văn bản trên.",
+                    "answer": "– Cốt truyện đơn giản, chủ yếu là những sự việc nhỏ diễn ra trong đời sống thường ngày của một cậu bé ở làng quê trước Tết.\n– Các sự việc được kể theo trình tự thời gian: An thấy dãy vạn thọ → An theo dõi cây lớn → không khí Tết đến gần → đi chợ Tết.\n– Truyện không có kịch tính mạnh, mà thiên về miêu tả cảm xúc, ký ức tuổi thơ và cảnh sinh hoạt quê hương."
+                  },
+                  {
+                    "question_number": 2,
+                    "question": "Nhan đề \"Ngày xuân êm đềm\" gợi cho em suy nghĩ gì?",
+                    "answer": "– Gợi cảm giác bình yên, nhẹ nhàng, thanh thản của những ngày giáp Tết ở làng quê.\n– Thể hiện vẻ đẹp êm đềm của mùa xuân, của tuổi thơ hồn nhiên.\n– Cho thấy bầu không khí ấm áp – trong trẻo – vui tươi nhưng không ồn ào."
+                  },
+                  {
+                    "question_number": 3,
+                    "question": "Tình cảm, tâm trạng của nhân vật An đối với dãy cúc vạn thọ và ngày Tết quê hương được thể hiện như thế nào? Nêu nhận xét về tâm hồn nhân vật An.",
+                    "answer": "Đối với dãy cúc vạn thọ:\n– Rất yêu thích và háo hức khi thấy hoa được trồng.\n– Lo lắng, thương hại khi cây còn yếu, héo.\n– Ngày nào cũng chạy ra xem, mừng rỡ khi cây hồi sức và lớn lên.\n\nĐối với ngày Tết quê hương:\n– Mong chờ, háo hức mỗi ngày Tết đến gần.\n– Nhận ra Tết qua cảnh vật: rau cải mọc, hoa nở, không khí mua bán rộn ràng.\n– Thấm thía vẻ đẹp giản dị của ngày Tết quê nhà.\n\nNhận xét tâm hồn An:\n– Hồn nhiên, nhạy cảm, giàu tình cảm.\n– Biết yêu thiên nhiên, yêu quê hương.\n– Tinh tế, biết quan sát và rung động trước những thay đổi nhỏ của đời sống."
+                  },
+                  {
+                    "question_number": 4,
+                    "question": "Chỉ ra những hình ảnh trong văn bản dùng để miêu tả khung cảnh của những ngày sắp Tết. Bức tranh những ngày sắp Tết hiện lên như thế nào?",
+                    "answer": "Những hình ảnh tiêu biểu:\n– Dãy cúc vạn thọ, cúc đại đóa, thược dược ra nụ.\n– Những luống rau cải, ngò, xà lách mọc đầy sân nhà.\n– Tiếng nói chuyện trong xóm toàn nhắc đến \"Tết\".\n– Chợ Tết đông vui, rộn ràng: chợ Hôm, hàng gốm, hàng pháo, hàng mứt,...\n– Bến đò sáng đèn chai, người gánh gồng tất bật suốt đêm.\n– Tiếng tù và, tiếng mua bán xôn xao.\n\nBức tranh ngày sắp Tết:\n– Sống động, rộn ràng nhưng vẫn bình dị.\n– Không khí xuân tràn ngập khắp xóm làng.\n– Mang màu sắc thân quen, ấm áp của miền quê Việt Nam xưa."
+                  },
+                  {
+                    "question_number": 5,
+                    "question": "Nhận xét những đặc sắc nghệ thuật của văn bản.",
+                    "answer": "– Miêu tả tinh tế cảnh vật và đời sống nông thôn.\n– Ngôn ngữ nhẹ nhàng, mộc mạc, đậm chất quê.\n– Nghệ thuật kể chuyện theo dòng cảm xúc của nhân vật An.\n– Khắc họa tâm lý trẻ em chân thật, hồn nhiên.\n– Sử dụng nhiều hình ảnh gợi tả sinh động về mùa xuân và không khí Tết."
+                  },
+                  {
+                    "question_number": 6,
+                    "question": "Nêu chủ đề văn bản trên.",
+                    "answer": "– Ca ngợi vẻ đẹp bình yên, mộc mạc của ngày Tết quê hương.\n– Gợi lại những cảm xúc trong trẻo của tuổi thơ trước mùa xuân.\n– Thể hiện tình yêu thiên nhiên, yêu quê hương của con người Việt Nam."
+                  }
+                ]
+              },
+              "remember": {
+                "title": "Ghi nhớ",
+                "content": "Qua những cảm xúc nhẹ nhàng, tinh tế của nhân vật An, nhà văn dựng nên một bức tranh mùa xuân êm đềm, tươi sáng, qua đó bày tỏ tình yêu sâu nặng, sự gắn bó thiết tha dành cho quê hương."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "language_practice": {
+      "title": "THỰC HÀNH TIẾNG VIỆT",
+      "exercises": [
+        {
+          "exercise_number": 1,
+          "description": "Chỉ ra và nêu tác dụng của biện pháp tu từ trong đoạn văn sau:",
+          "text": "An nhìn trìu mến dãy hoa vừa trồng. Mỗi cây đứng trong một cái lỗ khoét to bằng cái bát sứ. Cây cao hơn mặt đất không quá hai tấc và đứng gục đầu xuống, lá buông ủ rũ. An có cảm tưởng chúng nhớ đàn nhớ bầy, nhớ cái vạt đất nhỏ nơi đó người ta gieo chúng, nơi đó chúng lớn lên cạnh những anh em của chúng cùng một hoa mẹ sinh ra. Có đôi cây yếu quá tưởng như chúng không thể sống qua đêm nay. Sự lo lắng thương hại của An khiến nó thấy cái thái độ lầm lì lạnh nhạt của chú Ba là đáng ghét. Người lớn trông họ vô tâm đến tàn ác. Mấy cây hoa đau đớn ủ rũ thế kia mà họ vẫn có thể thản nhiên bỏ đứng bơ vơ một mình không săn sóc đến.",
+          "source": "(Ngày xuân êm đềm, Võ Hồng)"
+        },
+        {
+          "exercise_number": 2,
+          "description": "Chỉ ra những phép liên kết hình thức trong đoạn văn sau:",
+          "text": "An thay quần áo xong thì Tòng đến. Tòng mặc quần trắng và áo cụt lụa màu hồ thuỷ. Những nếp gấp làm hai ống quần lép lại và gãy ra làm ba. Tòng đội một cái khăn lông màu vàng nghệ có chạy sọc xanh đỏ. Úp lên trên khăn lông là cái mũ ka ki. Trông Tòng nửa giống như một chú nhỏ ở trong tranh vẽ, nửa giống như một tên lính Tàu thời cổ. Chắc Tòng chịu ảnh hưởng của những tấm tranh màu treo la liệt trên tường nhà nó.",
+          "source": "(Ngày xuân êm đềm, Võ Hồng)"
+        }
+      ]
+    },
+    "practice": {
+      "title": "LUYỆN TẬP – VẬN DỤNG",
+      "exercises": [
+        {
+          "exercise_number": 1,
+          "description": "Viết đoạn văn trình bày cảm nhận về một tác phẩm/ đoạn trích văn xuôi Phú Yên mà em yêu thích.",
+          "guidelines": {
+            "title": "Hướng dẫn thực hiện",
+            "steps": [
+              {
+                "step": "a) Chuẩn bị",
+                "tasks": [
+                  "Chọn tác phẩm/ đoạn trích văn xuôi Phú Yên mà em yêu thích.",
+                  "Đọc kĩ tác phẩm/ đoạn trích ấy."
+                ]
+              },
+              {
+                "step": "b) Xác định yêu cầu của đề",
+                "requirements": [
+                  "Yêu cầu hình thức: đảm bảo hình thức một đoạn văn, bắt đầu từ chỗ viết hoa lùi vào đầu dòng cho đến chỗ chấm xuống dòng. Lưu ý: khi viết không được ngắt dòng, xuống dòng.",
+                  "Yêu cầu về nội dung: trình bày được suy nghĩ, cảm xúc của mình khi đọc đoạn trích/ tác phẩm văn xuôi Phú Yên đã chọn."
+                ]
+              },
+              {
+                "step": "c) Dàn ý",
+                "outline": [
+                  "Mở đoạn: giới thiệu một đoạn trích/ tác phẩm văn xuôi Phú Yên; nêu ấn tượng chung của em về đoạn trích/ tác phẩm ấy.",
+                  "Thân đoạn: thể hiện được cảm xúc, suy ngẫm của bản thân về nội dung và nghệ thuật của đoạn trích/ tác phẩm văn xuôi Phú Yên.",
+                  "Kết đoạn: khái quát lại vấn đề, nêu ý nghĩa của đoạn trích/ tác phẩm văn xuôi Phú Yên với bản thân."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "exercise_number": 2,
+          "description": "Sưu tầm, phân loại văn xuôi Phú Yên theo mẫu sau:",
+          "table_format": {
+            "headers": ["STT", "Tên tác phẩm", "Tác giả", "Thời kì/ giai đoạn sáng tác"],
+            "note": "Học sinh tự điền vào bảng"
+          }
+        }
+      ]
+    }
+  }
+}

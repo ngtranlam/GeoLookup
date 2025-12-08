@@ -16,23 +16,30 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({ selectedLessonId, onSelec
         <p className="lesson-count">{lessons.length} bài học</p>
       </div>
       <div className="lesson-list">
-        {lessons.map((lesson: Lesson) => (
-          <div
-            key={lesson.id}
-            className={`lesson-item ${selectedLessonId === lesson.id ? 'lesson-item-active' : ''}`}
-            onClick={() => onSelectLesson(lesson.id)}
-          >
-            <div className="lesson-number">Bài {lesson.id}</div>
-            <div className="lesson-item-title">{lesson.title}</div>
-            {selectedLessonId === lesson.id && (
-              <div className="lesson-active-indicator">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
-                </svg>
-              </div>
-            )}
-          </div>
-        ))}
+        {lessons.map((lesson: Lesson) => {
+          // Parse the title to extract lesson number, province, and lesson name
+          const titleParts = lesson.title.split(': ');
+          const lessonNumberAndProvince = titleParts[0]; // "Bài 1 - Đắk Lắk" or "Chủ đề 1 - Phú Yên"
+          const lessonName = titleParts[1]; // "Đắk Lắk từ năm 1930 đến năm 1945"
+          
+          return (
+            <div
+              key={lesson.id}
+              className={`lesson-item ${selectedLessonId === lesson.id ? 'lesson-item-active' : ''}`}
+              onClick={() => onSelectLesson(lesson.id)}
+            >
+              <div className="lesson-number">{lessonNumberAndProvince}</div>
+              <div className="lesson-item-title">{lessonName}</div>
+              {selectedLessonId === lesson.id && (
+                <div className="lesson-active-indicator">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+                  </svg>
+                </div>
+              )}
+            </div>
+          );
+        })}
         
         {/* Comprehensive Exercise Option */}
         <div className="lesson-divider">

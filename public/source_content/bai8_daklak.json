@@ -1,0 +1,335 @@
+{
+  "lesson": {
+    "id": 8,
+    "title": "ĐỊA LÍ NGÀNH DU LỊCH TỈNH ĐẮK LẮK",
+    "learning_objectives": [
+      "Biết được vai trò, tiềm năng phát triển của ngành du lịch ở Đắk Lắk.",
+      "Trình bày được tình hình phát triển và phân bố ngành du lịch ở Đắk Lắk.",
+      "Sử dụng được bản đồ, tư liệu và bằng tham quan thực tế tại địa phương để phân tích các vấn đề về ngành du lịch của tỉnh."
+    ],
+    "introduction": {
+      "title": "MỞ ĐẦU",
+      "content": {
+        "task": "Lựa chọn các thông tin ở cột A với cột B cho phù hợp.",
+        "matching_exercise": {
+          "image_src": "/images/bai8_matching_le_hoi.png",
+          "alt": "Bài tập ghép lễ hội với địa phương",
+          "column_a": [
+            {
+              "id": 1,
+              "icon": "🌿",
+              "text": "Lễ hội trà"
+            },
+            {
+              "id": 2,
+              "icon": "☕",
+              "text": "Lễ hội cà phê"
+            },
+            {
+              "id": 3,
+              "icon": "🥥",
+              "text": "Lễ hội dừa"
+            },
+            {
+              "id": 4,
+              "icon": "🍊",
+              "text": "Lễ hội cam"
+            }
+          ],
+          "column_b": [
+            "Bến Tre",
+            "Hoà Bình",
+            "Lâm Đồng",
+            "Đắk Lắk"
+          ],
+          "correct_answers": {
+            "Lễ hội trà": "Bến Tre",
+            "Lễ hội cà phê": "Đắk Lắk",
+            "Lễ hội dừa": "Bến Tre",
+            "Lễ hội cam": "Lâm Đồng"
+          }
+        },
+        "follow_up": "Trong các lễ hội trên, em hãy chia sẻ hiểu biết của bản thân về lễ hội đặc trưng truyền thống của Đắk Lắk."
+      }
+    },
+    "main_content": {
+      "title": "KIẾN THỨC MỚI",
+      "sections": [
+        {
+          "section_number": "1",
+          "title": "VAI TRÒ",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Du lịch là ngành có vai trò quan trọng trong việc khai thác các thế mạnh về tài nguyên tự nhiên, nhân văn; tạo nguồn thu nhập đáng kể cho một số địa phương trong tỉnh; đáp ứng nhu cầu nghỉ dưỡng, giải trí đồng thời góp phần tăng cường hiểu biết về tự nhiên, văn hoá của tỉnh đối với người dân nội tỉnh cũng như các tỉnh, thành phố khác trong cả nước."
+            }
+          ],
+          "questions": [
+            {
+              "question_number": 1,
+              "question": "Em hãy lấy dẫn chứng minh hoạ các vai trò trên của ngành du lịch.",
+              "answer": ""
+            }
+          ]
+        },
+        {
+          "section_number": "2",
+          "title": "TIỀM NĂNG PHÁT TRIỂN DU LỊCH",
+          "intro": "Đắk Lắk là tỉnh có tài nguyên du lịch khá đa dạng, bao gồm cả tài nguyên du lịch tự nhiên và tài nguyên du lịch nhân văn. Sự đa dạng về tài nguyên tạo tiền đề quan trọng để thu hút du khách với nhiều loại hình du lịch khác nhau.",
+          "content": [
+            {
+              "type": "diagram",
+              "title": "Tài nguyên du lịch Đắk Lắk",
+              "image_src": "/images/bai8_so_do_tai_nguyen_du_lich.png",
+              "alt": "Sơ đồ tài nguyên du lịch Đắk Lắk",
+              "structure": {
+                "main": "TÀI NGUYÊN DU LỊCH",
+                "branches": [
+                  {
+                    "category": "TỰ NHIÊN",
+                    "subcategories": [
+                      {
+                        "name": "Địa hình – nguồn nước",
+                        "items": [
+                          "Nhiều thác nước đẹp: Krông Kmar, Thuỷ Tiên, Bảy Nhánh, Drai Nur, Bay, Drai K'nao,…",
+                          "Nhiều hồ đẹp: Hồ Lắk, Ea Súp Thượng, Ea Kao,…"
+                        ]
+                      },
+                      {
+                        "name": "Khí hậu – sinh vật",
+                        "items": [
+                          "Khí hậu cao nguyên mát mẻ.",
+                          "Vườn quốc gia: Yok Đôn, Chư Yang Sin,…",
+                          "Khu bảo tồn thiên nhiên: Nam Kar, Ea Sô,…",
+                          "Khu bảo tồn Thông nước Ea Ral, khu rừng lịch sử văn hoá môi trường hồ Lắk,…"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "category": "NHÂN VĂN",
+                    "subcategories": [
+                      {
+                        "name": "Di tích",
+                        "items": [
+                          "Nhà đày Buôn Ma Thuột",
+                          "Đình Lạc Giao",
+                          "Chùa Sắc tứ Khải Đoan",
+                          "Toà giám mục Ban Mê Thuột",
+                          "Hang đá Đắk Tuôr",
+                          "Tháp Yang Prong,…"
+                        ]
+                      },
+                      {
+                        "name": "Lễ hội",
+                        "items": [
+                          "Nhiều lễ hội: lễ hội Đua voi, lễ hội cồng chiêng, lễ hội cà phê, lễ hội cúng Bến nước, lễ hội bỏ mả,…"
+                        ]
+                      },
+                      {
+                        "name": "Bảo tàng",
+                        "items": [
+                          "Bảo tàng Đắk Lắk (Bảo tàng văn hoá các dân tộc)",
+                          "Bảo tàng cách mạng",
+                          "Bảo tàng Thế giới cà phê"
+                        ]
+                      },
+                      {
+                        "name": "Tài nguyên khác",
+                        "items": [
+                          "Kiến trúc: Nhà dài, nhà mồ,…",
+                          "Làng nghề dệt thổ cẩm",
+                          "Các tài nguyên khác"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "questions": [
+            {
+              "question_number": 2,
+              "question": "Căn cứ vào sơ đồ dưới đây, hãy lấy ví dụ minh hoạ về việc khai thác tài nguyên du lịch ở Đắk Lắk.",
+              "answer": ""
+            }
+          ]
+        },
+        {
+          "section_number": "3",
+          "title": "MỘT SỐ ĐỊA ĐIỂM DU LỊCH NỔI TIẾNG",
+          "content": [
+            {
+              "type": "info_box",
+              "title": "Em có biết",
+              "text": "Hồ Lắk là hồ nước ngọt tự nhiên lớn nhất tỉnh Đắk Lắk và hồ tự nhiên lớn thứ hai Việt Nam sau hồ Ba Bể. Xung quanh hồ được bao bọc bởi các dãy núi và cánh rừng nguyên sinh, tạo nên cảnh đẹp vừa hùng vĩ, vừa nên thơ."
+            },
+            {
+              "type": "image_gallery",
+              "images": [
+                {
+                  "src": "/images/ho_lak_bai8.png",
+                  "caption": "Hình 8.1. Hồ Lắk",
+                  "alt": "Hồ Lắk"
+                },
+                {
+                  "src": "/images/vuon_quoc_gia_yok_don.png",
+                  "caption": "Hình 8.2. Vườn quốc gia Yok Đôn",
+                  "alt": "Vườn quốc gia Yok Đôn"
+                },
+                {
+                  "src": "/images/thac_krong_kmar.png",
+                  "caption": "Hình 8.3. Thác Krông Kmar",
+                  "alt": "Thác Krông Kmar"
+                },
+                {
+                  "src": "/images/nha_day_buon_ma_thuot_bai8.png",
+                  "caption": "Hình 8.4. Di tích lịch sử Quốc gia đặc biệt Nhà đày Buôn Ma Thuột",
+                  "alt": "Nhà đày Buôn Ma Thuột"
+                },
+                {
+                  "src": "/images/bao_tang_the_gioi_ca_phe.png",
+                  "caption": "Hình 8.5. Bảo tàng Thế giới cà phê",
+                  "alt": "Bảo tàng Thế giới cà phê"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_number": "4",
+          "title": "TÌNH HÌNH PHÁT TRIỂN VÀ PHÂN BỐ",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Ngành du lịch của tỉnh đang được chú trọng đầu tư và có nhiều chuyển biến tích cực. Ở các địa phương có tiềm năng đã hình thành các khu, điểm du lịch như Khu du lịch Hồ Lắk, Khu du lịch sinh thái Bản Đôn, Trung tâm du lịch Buôn Đôn, Điểm du lịch thác Bảy Nhánh,… với nhiều điểm tham quan hấp dẫn. Cơ sở vật chất phục vụ du lịch (nhà hàng, khách sạn, phương tiện vận tải, ẩm thực, đồ lưu niệm,…) và các dịch vụ đi kèm được cải tiến, đa dạng hoá thu hút ngày càng nhiều khách tham quan và mang lại nguồn doanh thu đáng kể."
+            },
+            {
+              "type": "chart",
+              "title": "Biểu đồ số khách du lịch và doanh thu du lịch của tỉnh Đắk Lắk",
+              "image_src": "/images/bai8_bieu_do_khach_du_lich.png",
+              "caption": "Hình 8.6. Biểu đồ số khách du lịch và doanh thu du lịch của tỉnh Đắk Lắk",
+              "alt": "Biểu đồ số khách du lịch và doanh thu 2010-2019",
+              "data": {
+                "years": ["2010", "2013", "2016", "2019"],
+                "domestic_tourists": ["255.0", "370.0", "563.0", "870.0"],
+                "international_tourists": ["24.5", "40.0", "58.0", "85.0"],
+                "revenue": ["200.0", "310.0", "480.0", "1051.0"],
+                "units": {
+                  "tourists": "nghìn lượt",
+                  "revenue": "tỉ đồng"
+                }
+              }
+            }
+          ],
+          "questions": [
+            {
+              "question_number": 3,
+              "question": "Dựa vào biểu đồ 8.6, nhận xét về số khách du lịch đến và doanh thu du lịch của tỉnh Đắk Lắk trong giai đoạn 2010 – 2019.",
+              "answer": "* Số khách du lịch (nội địa và quốc tế) tăng liên tục qua các năm.\n   * Khách nội địa tăng từ 255 nghìn (2010) lên 870 nghìn (2019).\n   * Khách quốc tế tăng từ 24,5 nghìn lên 85 nghìn.\n* Doanh thu du lịch tăng mạnh, đặc biệt từ 2016 đến 2019.\n   * Từ 200 tỉ đồng (2010) lên 1.051 tỉ đồng (2019).\n* Tốc độ tăng doanh thu nhanh hơn tốc độ tăng số khách, cho thấy chất lượng dịch vụ và chi tiêu du khách được cải thiện."
+            },
+            {
+              "question_number": 4,
+              "question": "Đọc thông tin và quan sát hình 8.7, hãy:",
+              "sub_questions": [
+                "Xác định các khu du lịch, điểm du lịch của Đắk Lắk.",
+                "Nhận xét về sự phân bố tài nguyên du lịch Đắk Lắk."
+              ],
+              "map": {
+                "image_src": "/images/luoc_do_du_lich_dak_lak.png",
+                "caption": "Hình 8.7. Lược đồ du lịch tỉnh Đắk Lắk",
+                "alt": "Lược đồ du lịch tỉnh Đắk Lắk"
+              },
+              "answer": ""
+            }
+          ]
+        },
+        {
+          "section_number": "5",
+          "title": "LOẠI HÌNH DU LỊCH",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Các loại hình du lịch chủ yếu ở Đắk Lắk là: du lịch sinh thái, du lịch cộng đồng, du lịch văn hoá – lịch sử, du lịch tham quan – khám phá, du lịch phượt,…"
+            }
+          ],
+          "questions": [
+            {
+              "question_number": 5,
+              "question": "Lấy một số ví dụ minh chứng cho các loại hình du lịch nêu trên.",
+              "answer": ""
+            }
+          ]
+        },
+        {
+          "section_number": "6",
+          "title": "VAI TRÒ CÔNG NGHỆ",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Những tiến bộ về khoa học công nghệ, đặc biệt là trong lĩnh vực truyền thông, internet thể hiện qua các hoạt động quảng bá, xúc tiến du lịch online, dịch vụ đặt vé online,… hỗ trợ đắc lực cho việc quảng bá và thu hút khách của tỉnh."
+            }
+          ]
+        }
+      ]
+    },
+    "practice": {
+      "title": "LUYỆN TẬP",
+      "exercises": [
+        {
+          "description": "Dựa vào hình 8.6, hãy tính:",
+          "tasks": [
+            "Tổng số lượt du khách tham quan theo từng năm.",
+            "Tính mức chi tiêu bình quân của một lượt khách và rút ra nhận xét."
+          ]
+        }
+      ]
+    },
+    "application": {
+      "title": "VẬN DỤNG",
+      "project": {
+        "title": "Lựa chọn một địa điểm du lịch mà em muốn tham quan, lên kế hoạch tham quan theo gợi ý sau.",
+        "template": {
+          "title": "TÊN ĐIỂM THAM QUAN",
+          "fields": [
+            "Địa chỉ: .............................................................................................",
+            "Thời gian đi, thời gian đến, phương tiện sử dụng: ..........................",
+            "Chi phí: ............................................................................................",
+            "Lộ trình cụ thể: ................................................................................"
+          ]
+        }
+      }
+    },
+    "additional_reading": {
+      "title": "TÌM HIỂU THÊM",
+      "topic": "TIỀM NĂNG DU LỊCH CỦA HUYỆN LẮK",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Huyện Lắk được thiên nhiên ưu đãi với nhiều danh lam thắng cảnh còn giữ nguyên vẻ đẹp hoang sơ, tạo ấn tượng không thể quên mỗi khi du khách tới nơi này. Các điểm du lịch đã và đang thu hút du khách như: Di tích danh lam thắng cảnh thác Bìm Bịp, Khu di tích lịch sử Hang đá Ba tầng, suối đá Đăk Phơi, đỉnh Nam Ka,... Đặc biệt là các điểm du lịch trên Di tích danh thắng hồ Lắk."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hồ Lắk là hồ tự nhiên lớn nhất khu vực miền Trung Tây Nguyên. Về mùa mưa, diện tích mặt nước rộng trên 600ha, được thông với con sông Krông Ana. Xung quanh hồ là những dãy núi cao nên mặt nước hồ luôn phẳng lặng. Được bao bọc bởi những cánh rừng nguyên sinh của đại ngàn Tây Nguyên với diện tích hơn 12 nghìn ha nên khi tham quan hồ Lắk, du khách còn được ngắm nhìn hệ động, thực vật đa dạng."
+        },
+        {
+          "type": "paragraph",
+          "text": "Đến với hồ Lắk, du khách không chỉ khám phá vẻ đẹp tự nhiên, hít thở không khí trong lành cùng những cuộc phiêu lưu hồ nước trên bành voi và thong thả êm ái trên những chiếc thuyền độc mộc được người dân bản địa làm từ thân cây gỗ có tuổi thọ cả trăm năm, hay du ngoạn trên hồ bằng thuyền cao tốc để tìm cảm giác mạnh,… Khi lên bờ, du khách có thể thực hiện những cuộc dã ngoại vào buôn làng Mơ Nông hoặc đi sâu vào rừng dọc theo dòng sông Krông Ana, leo đỉnh chư Yang Lắk, chư Yang Sin, thác Bìm Bịp, dã ngoại tắm suối đá Đăk Phơi hay đi xa hơn đến khu rừng đặc dụng phòng hộ Nam Ka, vào hang đá ba tầng – khu căn cứ kháng chiến xã Krông Nô để khám phá những điều bí ẩn cuộc sống của chim chóc, muông thú. Hồ Lắk còn là một vựa cá lớn của tỉnh, là nguồn cung cấp thuỷ sản dồi dào phục vụ cho đời sống của nhân dân."
+        },
+        {
+          "type": "paragraph",
+          "text": "Một điều không thể thiếu trong các chuyến du lịch của du khách đó là khám phá văn hoá ẩm thực – những món món ăn dân dã và độc đáo được khai thác và chế biến từ nguồn thực phẩm phong phú và đậm bản sắc của núi rừng Tây Nguyên như: cơm lam nấu trong ống tre, chả cá thác lác, gà nướng than củi, canh lá bép đọt mây, canh cà đắng, cá lăng nấu măng rừng, heo rẫy nướng,…"
+        },
+        {
+          "type": "paragraph",
+          "text": "Để phát triển du lịch thành ngành mũi nhọn của huyện trong thời gian tới, trước tiên cần tăng cường công tác giáo dục, truyền thông nâng cao ý thức cộng đồng về bảo vệ bản sắc văn hoá dân tộc, ứng xử thân thiện với môi trường, với du khách; tiếp tục đẩy mạnh phát động phong trào \"mỗi người dân là một hướng dẫn viên du lịch\"; có kế hoạch và xúc tiến quảng bá du lịch của huyện Lắk trên các phương tiện truyền thông, đặc biệt là trên hệ thống Website của địa phương."
+        },
+        {
+          "type": "source",
+          "text": "(Theo https://ttthlak.gov.vn/truyen-hinh/huyen-lak-huong-toi-phat-trien-nganh-du-lich-lau-dai-va-ben-vung)"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "lesson": {
+    "id": 3,
+    "title": "ĐẮK LẮK TỪ NĂM 1975 ĐẾN NAY",
+    "learning_objectives": [
+      "Nêu được tình hình kinh tế – xã hội ở Đắk Lắk sau năm 1975.",
+      "Giới thiệu được những thành tựu tiêu biểu (trên các lĩnh vực kinh tế, văn hoá – xã hội, an ninh – quốc phòng) của công cuộc Đổi mới đất nước từ năm từ 1986 đến năm 2020."
+    ],
+    "introduction": {
+      "title": "MỞ ĐẦU",
+      "content": {
+        "comparison": {
+          "image_before": {
+            "src": "/images/nga_6_buon_ma_thuot_1967.png",
+            "caption": "Hình 3.1. Ngã 6 Buôn Ma Thuột năm 1967",
+            "alt": "Ngã 6 Buôn Ma Thuột năm 1967"
+          },
+          "image_after": {
+            "src": "/images/nga_6_buon_ma_thuot_hien_nay.png",
+            "caption": "Hình 3.2. Ngã 6 thành phố Buôn Ma Thuột ngày nay",
+            "alt": "Ngã 6 thành phố Buôn Ma Thuột ngày nay"
+          },
+          "task": "Quan sát ảnh và miêu tả sự thay đổi của Buôn Ma Thuột trước năm 1975 và hiện nay.",
+          "answer": ""
+        }
+      }
+    },
+    "main_content": {
+      "title": "KIẾN THỨC MỚI",
+      "sections": [
+        {
+          "section_number": "1",
+          "title": "ĐẮK LẮK 10 NĂM ĐẦU SAU NGÀY GIẢI PHÓNG MIỀN NAM (1975 – 1985)",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Sau ngày miền Nam hoàn toàn giải phóng, đồng bào các dân tộc ở Đắk Lắk bắt tay vào xây dựng kinh tế – xã hội với những thuận lợi rất cơ bản nhưng đồng thời cũng gặp những khó khăn, thách thức hết sức to lớn."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thuận lợi là cả nước đã thống nhất, có hoà bình, độc lập và tự do. Thường vụ Tỉnh uỷ sâu sát, lãnh đạo nhân dân thực hiện các nhiệm vụ phát triển kinh tế – xã hội. Nhân dân phấn khởi, tự hào bắt tay vào xây dựng quê hương."
+            },
+            {
+              "type": "paragraph",
+              "text": "Đắk Lắk cũng đứng trước những khó khăn, thử thách to lớn. Đời sống kinh tế của người dân còn thấp. Cơ sở vật chất kĩ thuật nghèo nàn, lạc hậu. Tình hình an ninh chính trị và trật tự xã hội trong những năm đầu sau giải phóng hết sức phức tạp. Lực lượng phản động, đặc biệt là tổ chức FULRO tiếp tục chống phá cách mạng quyết liệt."
+            },
+            {
+              "type": "paragraph",
+              "text": "Dưới sự lãnh đạo của Đảng bộ tỉnh, Nhân dân các dân tộc Đắk Lắk đã thực hiện cải tạo và xây dựng kinh tế, văn hoá, xã hội, làm cho bộ mặt tỉnh bước đầu có sự thay đổi sâu sắc. Về kinh tế, diện tích sản xuất nông nghiệp, khai hoang không ngừng mở rộng. Sản lượng lương thực hằng nằm được nâng cao, cơ bản đáp ứng nhu cầu về lương thực cho nhân dân, đặc biệt đã giải quyết được nạn đói kinh niên của đồng bào các dân tộc tại chỗ. Mức đóng góp lương thực cho nhà nước hằng năm đều tăng."
+            },
+            {
+              "type": "table",
+              "title": "Bảng sản lượng lương thực của tỉnh Đắk Lắk từ năm 1975 đến năm 1982(*)",
+              "headers": ["Năm", "1975", "1977", "1982"],
+              "data": [
+                {
+                  "category": "Lương thực (tấn)",
+                  "values": ["4.700", "10.190", "30.243"]
+                }
+              ],
+              "note": "(*) Ban Tuyên giáo tỉnh uỷ Đắk Lắk, Đề cương tuyên truyền kỉ niệm 100 năm hình thành và phát triển, 30 năm chiến thắng Buôn Ma Thuột, giải phóng tỉnh Đắk Lắk, 2004, tr. 56."
+            },
+            {
+              "type": "paragraph",
+              "text": "Văn hoá, xã hội và y tế có bước phát triển. Nạn mù chữ cơ bản được xoá bỏ trong nhân dân. Năm 1981, ngành giáo dục của tỉnh Đắk Lắk được nhận Huân chương Lao động hạng Ba. Hệ thống khám chữa bệnh từ tỉnh đến các xã, thôn, buôn được cải thiện, giảm được tỉ lệ tử vong do các bệnh sốt rét, dịch hạch và đường ruột. Hệ thống chính trị các cấp ngày càng vững mạnh. Những kết quả đó có ý nghĩa hết sức to lớn, tạo tiền đề cho sự phát triển của tỉnh Đắk Lắk trong thời kì đổi mới."
+            }
+          ],
+          "questions": [
+            {
+              "question": "Sau 10 năm (1975 – 1985) đi lên chủ nghĩa xã hội, nhân dân Đắk Lắk đã đạt được những thành tựu chủ yếu nào và có những khó khăn, thách thức gì?",
+              "answer": "Thành tựu:\n* Hoàn thành cải tạo xã hội chủ nghĩa, xây dựng chính quyền, củng cố an ninh.\n* Khôi phục kinh tế, mở rộng sản xuất nông nghiệp; một số vùng chuyên canh cà phê, cao su bắt đầu hình thành.\n* Cơ sở hạ tầng được xây dựng: đường sá, thủy lợi, trường học, trạm y tế.\n* Văn hóa – xã hội có tiến bộ: tỷ lệ học sinh đến trường tăng, chăm sóc sức khỏe nhân dân được chú trọng.\n* Khối đoàn kết các dân tộc được tăng cường, ổn định cuộc sống sau chiến tranh.\nKhó khăn – thách thức:\n* Xuất phát điểm kinh tế thấp, cơ sở hạ tầng thiếu thốn.\n* Đời sống đồng bào dân tộc còn nhiều khó khăn, sản xuất nhỏ lẻ.\n* Thiếu vốn, thiếu kỹ thuật; năng suất nông nghiệp thấp.\n* An ninh chính trị còn tiềm ẩn phức tạp, tàn quân FULRO hoạt động.\n* Cơ chế quản lý tập trung, bao cấp làm hạn chế động lực phát triển."
+            }
+          ]
+        },
+        {
+          "section_number": "2",
+          "title": "ĐẮK LẮK TRONG THỜI KÌ ĐỔI MỚI (TỪ NĂM 1986 ĐẾN NĂM 2020)",
+          "intro": "35 năm công cuộc đổi mới (1986 – 2020), Đảng bộ tỉnh đã đề ra nhiều chủ trương, giải pháp thích hợp và kịp thời, đưa tỉnh Đắk Lắk vững bước tiến lên theo con đường công nghiệp hoá, hiện đại hoá.",
+          "subsections": [
+            {
+              "subsection_id": "a",
+              "title": "Kinh tế",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Đắk Lắk đã hình thành các vùng sản xuất hàng hoá tập trung, tạo nên những sản phẩm đặc thù có giá trị kinh tế cao như: cao su, cà phê, tiêu, cây ăn trái. Ngành nông nghiệp được triển khai theo hướng ứng dụng công nghệ cao, đưa Đắk Lắk trở thành vùng chuyên canh cây công nghiệp và cây ăn trái lớn của cả nước. Các ngành kinh tế công nghiệp năng lượng, du lịch, dịch vụ có bước phát triển đáng kể. Thu ngân sách, vốn đầu tư toàn xã hội tăng nhanh."
+                },
+                {
+                  "type": "image_group",
+                  "images": [
+                    {
+                      "src": "/images/cay_ca_phe.png",
+                      "caption": "Hình 3.3. Cây cà phê",
+                      "alt": "Cây cà phê"
+                    },
+                    {
+                      "src": "/images/qua_bo.png",
+                      "caption": "Hình 3.4. Quả bơ",
+                      "alt": "Quả bơ"
+                    },
+                    {
+                      "src": "/images/hat_macca.png",
+                      "caption": "Hình 3.5. Hạt macca",
+                      "alt": "Hạt macca"
+                    },
+                    {
+                      "src": "/images/cay_tieu.png",
+                      "caption": "Hình 3.6. Cây tiêu",
+                      "alt": "Cây tiêu"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Cơ cấu kinh tế tỉnh Đắk Lắk có bước chuyển dịch theo hướng tăng tỉ trọng công nghiệp – dịch vụ. Đắk Lắk trở thành một trong những điểm đến hấp dẫn của Tây Nguyên. Địa hình tự nhiên cùng với nền văn hoá độc đáo của cộng đồng các dân tộc đã tạo cho Đắk Lắk nhiều hình thái du lịch phong phú, mới lạ, thu hút khách du lịch trong nước và quốc tế. Ngành công nghiệp năng lượng trên địa bàn tỉnh được đẩy mạnh phát triển với các dự án thuỷ điện tích năng, điện gió và điện mặt trời."
+                },
+                {
+                  "type": "image_group",
+                  "images": [
+                    {
+                      "src": "/images/trung_tam_van_hoa_tinh_dak_lak.png",
+                      "caption": "Hình 3.7. Trung tâm văn hoá tỉnh Đắk Lắk",
+                      "alt": "Trung tâm văn hoá tỉnh Đắk Lắk"
+                    },
+                    {
+                      "src": "/images/cong_trinh_dien_gio_ea_hleo.png",
+                      "caption": "Hình 3.8. Công trình điện gió ở huyện Ea H'leo",
+                      "alt": "Công trình điện gió ở huyện Ea H'leo"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "subsection_id": "b",
+              "title": "Văn hoá – xã hội",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Chất lượng giáo dục và đào tạo có nhiều chuyển biến. Tỉ lệ trẻ đi mẫu giáo, học sinh tiểu học, học sinh dân tộc thiểu số tăng khá. Các huyện, thị xã và thành phố đều có trường dân tộc nội trú. Tỉ lệ giáo viên đạt chuẩn là 98,41%. Năm 2010 tỉnh được công nhận đạt chuẩn phổ cập giáo dục trung học cơ sở. Tỉ lệ lao động qua đào tạo tăng."
+                },
+                {
+                  "type": "image",
+                  "src": "/images/hoc_sinh_thpt_dan_toc_noi_tru.png",
+                  "caption": "Hình 3.9. Học sinh trường THPT dân tộc nội trú Nơ Trang Lơng, thành phố Buôn Ma Thuột",
+                  "alt": "Học sinh trường THPT dân tộc nội trú Nơ Trang Lơng"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Công tác chăm sóc sức khoẻ nhân dân có nhiều tiến bộ. Mạng lưới y tế từ tỉnh đến cơ sở được quan tâm và củng cố. Các chương trình y tế quốc gia, chính sách y tế cho người nghèo được thực hiện đạt kết quả tốt."
+                },
+                {
+                  "type": "image",
+                  "src": "/images/benh_vien_da_khoa_vung_tay_nguyen.png",
+                  "caption": "Hình 3.10. Bệnh viện đa khoa vùng Tây Nguyên",
+                  "alt": "Bệnh viện đa khoa vùng Tây Nguyên"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Nền kinh tế của tỉnh liên tục giữ vững được tốc độ tăng trưởng khá, đời sống vật chất và tinh thần của nhân dân được cải thiện, bộ mặt của đô thị và nông thôn ngày càng khởi sắc, tỉ lệ hộ đói nghèo giảm đáng kể."
+                }
+              ]
+            },
+            {
+              "subsection_id": "c",
+              "title": "Quốc phòng, an ninh",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Thế trận quốc phòng toàn dân gắn với thế trận an ninh nhân dân tiếp tục được tăng cường. Hệ thống quốc phòng, an ninh Đắk Lắk được củng cố, đấu tranh có hiệu quả các loại tội phạm. Quốc phòng, an ninh trên địa bàn tỉnh được giữ vững, ngăn chặn và làm thất bại âm mưu, hoạt động chống phá của bọn phản động và các thế lực thù địch."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Bên cạnh những thành tựu và tiến bộ, chúng ta gặp không ít khó khăn, thách thức, đó là dân cư phân bố không đều, trình độ dân trí chưa cao, có khoảng cách chênh lệch về mức sống giữa một số bộ phận dân cư,…"
+                }
+              ]
+            }
+          ],
+          "questions": [
+            {
+              "question": "Trình bày những thành tựu và khó khăn của 35 năm tiến hành đổi mới (1986 – 2020) ở Đắk Lắk.",
+              "answer": "Thành tựu:\n* Kinh tế tăng trưởng liên tục, cơ cấu chuyển dịch theo hướng CNH–HĐH.\n* Nông nghiệp phát triển mạnh, đặc biệt là cà phê, trở thành vùng sản xuất hàng hóa lớn của cả nước.\n* Công nghiệp – dịch vụ mở rộng, thương mại, du lịch (Buôn Đôn, hồ Lắk…) phát triển.\n* Hạ tầng được cải thiện rõ rệt: giao thông, điện – nước, thông tin, đô thị hóa tăng.\n* Giáo dục – y tế nâng cao, mạng lưới trường học và cơ sở y tế phủ rộng.\n* Đời sống nhân dân nâng lên, tỷ lệ hộ nghèo giảm mạnh.\n* Quốc phòng – an ninh giữ vững, khối đại đoàn kết các dân tộc được củng cố.\nKhó khăn – hạn chế:\n* Kinh tế phát triển chưa đồng đều, chủ yếu dựa vào nông sản.\n* Giá cả cà phê bấp bênh → ảnh hưởng lớn đến thu nhập người dân.\n* Hạ tầng vùng sâu, vùng xa còn yếu.\n* Chênh lệch đời sống giữa các vùng – dân tộc còn lớn.\n* Ô nhiễm môi trường, biến đổi khí hậu, khô hạn ảnh hưởng sản xuất.\n* Một số vấn đề về quản lý đất đai, an ninh nông thôn còn phức tạp."
+            }
+          ]
+        }
+      ]
+    },
+    "practice": {
+      "title": "LUYỆN TẬP",
+      "exercises": [
+        {
+          "exercise_number": 1,
+          "description": "Lập bảng tóm tắt về tình hình kinh tế, văn hoá – xã hội Đắk Lắk trong giai đoạn 1975 – 1985 theo gợi ý sau:",
+          "table": {
+            "title": "Đắk Lắk (1975-1985)",
+            "categories": [
+              {
+                "category": "Tình hình",
+                "items": ["?", "?"]
+              },
+              {
+                "category": "Thành tựu",
+                "items": ["?", "?"]
+              }
+            ]
+          }
+        },
+        {
+          "exercise_number": 2,
+          "description": "Chọn và thuyết trình một thành tựu đổi mới (về Kinh tế/ Văn hoá - xã hội/ Quốc phòng, an ninh) của Đắk Lắk, từ năm 1986 đến năm 2020.",
+          "title": "Đắk Lắk trong thời kì đổi mới (từ năm 1986 đến năm 2020)",
+          "areas": ["Kinh tế", "Văn hoá - xã hội", "Quốc phòng, an ninh"]
+        }
+      ]
+    },
+    "application": {
+      "title": "VẬN DỤNG",
+      "project": {
+        "title": "Sưu tầm tranh ảnh, clip về một số công trình ở địa phương em giai đoạn trước và sau đổi mới (trường học, bệnh viện, chợ,...).",
+        "description": "Thu thập và so sánh hình ảnh các công trình công cộng ở địa phương trước và sau thời kỳ đổi mới để thấy được sự phát triển của quê hương."
+      }
+    }
+  }
+}

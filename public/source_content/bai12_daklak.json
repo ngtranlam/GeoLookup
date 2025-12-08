@@ -1,0 +1,283 @@
+{
+  "lesson": {
+    "id": 12,
+    "title": "MỘT SỐ VẤN ĐỀ VỀ MÔI TRƯỜNG Ở TỈNH ĐẮK LẮK",
+    "learning_objectives": [
+      "Trình bày được một số vấn đề về môi trường ở tỉnh Đắk Lắk.",
+      "Trình bày được một số hoạt động của con người ảnh hưởng đến môi trường ở địa phương.",
+      "Đề xuất được một số ý tưởng bảo vệ môi trường ở địa phương.",
+      "Tích cực tham gia các hoạt động bảo vệ môi trường ở địa phương."
+    ],
+    "introduction": {
+      "title": "MỞ ĐẦU",
+      "content": {
+        "questions": [
+          "Em có nhận xét gì về môi trường trong hình ảnh dưới đây?",
+          "Hãy chia sẻ về môi trường hai bên đường em đi học."
+        ],
+        "images": [
+          {
+            "id": "(a)",
+            "src": "/images/moi_truong_sach_dep.png",
+            "caption": "Hình 12.1. Một số hình ảnh về môi trường (a)",
+            "alt": "Môi trường sạch đẹp"
+          },
+          {
+            "id": "(b)",
+            "src": "/images/moi_truong_o_nhiem.png",
+            "caption": "Hình 12.1. Một số hình ảnh về môi trường (b)",
+            "alt": "Môi trường ô nhiễm"
+          }
+        ]
+      }
+    },
+    "main_content": {
+      "title": "KIẾN THỨC MỚI",
+      "sections": [
+        {
+          "section_number": "1",
+          "title": "MỘT SỐ VẤN ĐỀ MÔI TRƯỜNG Ở TỈNH ĐẮK LẮK",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Tỉnh Đắk Lắk hiện nay đang có sự tăng trưởng nhanh về kinh tế – xã hội và quá trình đô thị hoá, từng bước khẳng định vị thế là trung tâm kinh tế, văn hoá, xã hội của vùng Tây Nguyên. Bên cạnh việc tạo việc làm, nâng cao thu nhập cho người dân tại địa phương, sự phát triển kinh tế cũng tạo nên tác động đối với thành phần môi trường đất, môi trường nước, môi trường không khí."
+            },
+            {
+              "type": "paragraph",
+              "text": "Theo báo cáo đến năm 2020, hiện trạng môi trường tỉnh Đắk Lắk còn khá tốt, diễn biến chất lượng nước và không khí tương đối ổn định, giá trị các thông số phân tích hầu hết nằm trong quy chuẩn cho phép và phù hợp với mục đích sử dụng từng khu vực. Tuy nhiên còn tồn tại một số yếu tố gây tác động xấu đến môi trường, ảnh hưởng hệ sinh thái và sức khoẻ con người như:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Yếu tố gây ô nhiễm môi trường đất: chất thải rắn trong công nghiệp, rác thải sinh hoạt, hoạt động chăn nuôi,…",
+                "Yếu tố gây ô nhiễm môi trường nước: nước thải từ các nhà máy chế biến nông – lâm sản, chăn nuôi, nước thải sinh hoạt, nước thải y tế,…",
+                "Yếu tố gây ô nhiễm môi trường không khí: khí thải, bụi từ sản xuất công nghiệp, giao thông vận tải, xây dựng trong đô thị, đốt rác thải tuỳ tiện,…"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Đặc biệt, tình trạng sử dụng quá mức phân bón hoá học, thuốc bảo vệ thực vật trong sản xuất nông nghiệp là nguyên nhân gây ô nhiễm cả 3 loại môi trường đất, nước và không khí."
+            },
+            {
+              "type": "note",
+              "content": "(Theo Báo cáo hiện trạng môi trường tỉnh Đắk Lắk giai đoạn 2016 – 2020, UBND tỉnh Đắk Lắk)"
+            },
+            {
+              "type": "image_group",
+              "images": [
+                {
+                  "src": "/images/xe_cho_dat_cat.png",
+                  "caption": "Hình 12.2. Xe chở đất cát phục vụ sản xuất gây ô nhiễm môi trường không khí",
+                  "alt": "Xe chở đất cát gây ô nhiễm"
+                },
+                {
+                  "src": "/images/khoi_bui_san_xuat_cong_nghiep.png",
+                  "caption": "Hình 12.3. Khói bụi từ hoạt động sản xuất công nghiệp",
+                  "alt": "Khói bụi từ sản xuất công nghiệp"
+                },
+                {
+                  "src": "/images/rac_thai_sinh_hoat.png",
+                  "caption": "Hình 12.4. Rác thải sinh hoạt chưa được thu gom, xử lí",
+                  "alt": "Rác thải sinh hoạt"
+                },
+                {
+                  "src": "/images/o_nhiem_tieng_on_karaoke.png",
+                  "caption": "Hình 12.5. Ô nhiễm tiếng ồn do hát karaoke trên đường phố Buôn Ma Thuột",
+                  "alt": "Ô nhiễm tiếng ồn karaoke"
+                },
+                {
+                  "src": "/images/vo_thuoc_bao_ve_thuc_vat.png",
+                  "caption": "Hình 12.6. Vỏ thuốc bảo vệ thực vật chưa được thu gom",
+                  "alt": "Vỏ thuốc bảo vệ thực vật"
+                },
+                {
+                  "src": "/images/chat_thai_chan_nuoi.png",
+                  "caption": "Hình 12.7. Chất thải chăn nuôi xả ra môi trường, ảnh hưởng đến môi trường đất, nước",
+                  "alt": "Chất thải chăn nuôi"
+                }
+              ]
+            }
+          ],
+          "activities": [
+            {
+              "activity_id": "a",
+              "instruction": "Đọc thông tin mục 1 và quan sát các hình 12.2 đến 12.7, thực hiện các nhiệm vụ sau:",
+              "tasks": [
+                {
+                  "task_id": "a",
+                  "description": "Liệt kê các vấn đề môi trường ở Đắk Lắk theo gợi ý sau:",
+                  "diagram": {
+                    "type": "circle_chart",
+                    "image": "/images/diagram_van_de_moi_truong.png",
+                    "description": "Biểu đồ 8 vấn đề môi trường xung quanh hình học sinh",
+                    "answer": "8 vấn đề môi trường ở Đắk Lắk:\n1. Ô nhiễm không khí (khí thải, bụi từ giao thông, công nghiệp, xây dựng)\n2. Ô nhiễm nước (nước thải sinh hoạt, công nghiệp, chăn nuôi)\n3. Ô nhiễm đất (rác thải sinh hoạt, chất thải rắn công nghiệp)\n4. Ô nhiễm tiếng ồn (karaoke, giao thông)\n5. Rác thải nhựa chưa được xử lý\n6. Vỏ thuốc bảo vệ thực vật thải bỏ\n7. Chất thải chăn nuôi xả thải trực tiếp\n8. Sử dụng quá mức phân bón hóa học"
+                  }
+                },
+                {
+                  "task_id": "b",
+                  "description": "Trình bày một số hoạt động của con người gây ra ảnh hưởng đến môi trường ở tỉnh Đắk Lắk theo gợi ý dưới đây:",
+                  "diagram": {
+                    "type": "impact_chart",
+                    "image": "/images/diagram_tac_dong_con_nguoi.png",
+                    "description": "Sơ đồ 3 loại tác động của con người đến môi trường",
+                    "answer": {
+                      "moi_truong_nuoc": "* Xả nước thải từ nhà máy chế biến nông lâm sản\n* Nước thải từ chăn nuôi\n* Nước thải sinh hoạt, y tế\n* Sử dụng thuốc bảo vệ thực vật, phân bón hóa học thấm xuống nguồn nước",
+                      "moi_truong_khong_khi": "* Khí thải, bụi từ giao thông vận tải\n* Khí thải từ sản xuất công nghiệp\n* Bụi từ hoạt động xây dựng\n* Đốt rác thải tuỳ tiện\n* Ô nhiễm tiếng ồn từ karaoke, giao thông",
+                      "moi_truong_dat": "* Chất thải rắn từ công nghiệp\n* Rác thải sinh hoạt chưa được thu gom, xử lý\n* Chất thải từ chăn nuôi\n* Vỏ thuốc bảo vệ thực vật thải bỏ\n* Sử dụng quá mức phân bón hóa học"
+                    }
+                  }
+                },
+                {
+                  "task_id": "c",
+                  "description": "Lựa chọn các từ trong khung cho phù hợp với các chỗ trống để hoàn thành khái niệm ô nhiễm môi trường sau đây:",
+                  "word_bank": ["ảnh hưởng xấu", "không phù hợp", "biến đổi", "ảnh hưởng tốt"],
+                  "fill_in_blank": {
+                    "text": "Ô nhiễm môi trường là sự …………….(1) tính chất vật lí, hoá học, sinh học của thành phần môi trường …………………….(2) với quy chuẩn kĩ thuật môi trường, tiêu chuẩn môi trường gây …………………..(3) đến sức khoẻ con người, sinh vật và tự nhiên.",
+                    "answer": "Ô nhiễm môi trường là sự biến đổi (1) tính chất vật lí, hoá học, sinh học của thành phần môi trường không phù hợp (2) với quy chuẩn kĩ thuật môi trường, tiêu chuẩn môi trường gây ảnh hưởng xấu (3) đến sức khoẻ con người, sinh vật và tự nhiên.",
+                    "source": "(Theo Luật Bảo vệ môi trường năm 2020)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_number": "2",
+          "title": "MỘT SỐ HOẠT ĐỘNG BẢO VỆ MÔI TRƯỜNG Ở ĐẮK LẮK",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Tỉnh Đắk Lắk rất chú trọng và tích cực triển khai, phổ biến, tuyên truyền người dân tham gia bảo vệ môi trường, thực hiện lối sống xanh, tiết kiệm năng lượng, trồng cây xanh,… Tỉnh đã ban hành và tổ chức triển khai thực hiện kế hoạch bảo vệ môi trường hàng năm nhằm hỗ trợ xử lí các điểm gây ô nhiễm môi trường ở địa phương; phòng ngừa, kiểm soát ô nhiễm; quản lí chất thải; bảo vệ đa dạng sinh học; tăng cường năng lực quản lí môi trường; tuyên truyền, nâng cao nhận thức về bảo vệ môi trường."
+            },
+            {
+              "type": "paragraph",
+              "text": "Một số mô hình bảo vệ môi trường đã được triển khai hiệu quả tốt trên địa bàn tỉnh như: mô hình \"Buôn tôi xanh – sạch – đẹp\", mô hình \"Đoạn đường hoa\", phong trào dọn dẹp vệ sinh đường làng, ngõ xóm, \"Ngôi nhà thu gom phế liệu\", phong trào \"Chống rác thải nhựa\", sử dụng giỏ nhựa, hoặc gùi đi chợ để hạn chế túi nilon, thu gom vỏ thuốc bảo vệ thực vật vào bể chứa, sử dụng hầm biogas xử lí chất thải chăn nuôi và tạo khí đốt,…"
+            },
+            {
+              "type": "note",
+              "content": "(Theo daklak.gov.vn và Báo cáo hiện trạng môi trường tỉnh Đắk Lắk giai đoạn 2016 – 2020, UBND tỉnh Đắk Lắk)"
+            },
+            {
+              "type": "image_group",
+              "images": [
+                {
+                  "src": "/images/don_dep_ve_sinh_duong_lang.png",
+                  "caption": "Hình 12.8. Người dân dọn dẹp vệ sinh đường làng, ngõ xóm ở huyện Krông Pắk",
+                  "alt": "Dọn dẹp vệ sinh đường làng"
+                },
+                {
+                  "src": "/images/doan_duong_hoa.png",
+                  "caption": "Hình 12.9. Người dân chăm sóc \"đoạn đường hoa\" làm đẹp cảnh quan môi trường ở huyện Cư M'gar",
+                  "alt": "Đoạn đường hoa"
+                },
+                {
+                  "src": "/images/tang_gio_di_cho.png",
+                  "caption": "Hình 12.10. Tặng giỏ đi chợ để hạn chế sử dụng túi nilon cho phụ nữ huyện Ea Kar",
+                  "alt": "Tặng giỏ đi chợ"
+                },
+                {
+                  "src": "/images/ham_biogas.png",
+                  "caption": "Hình 12.11. Sử dụng hầm biogas để xử lí chất thải chăn nuôi, tạo khí đốt cho gia đình ở Đắk Lắk",
+                  "alt": "Hầm biogas"
+                },
+                {
+                  "src": "/images/thu_gom_vo_thuoc_bao_ve_thuc_vat.png",
+                  "caption": "Hình 12.12. Thu gom bao gói thuốc bảo vệ thực vật sau sử dụng tại cánh đồng ở thị trấn Buôn Trấp",
+                  "alt": "Thu gom vỏ thuốc bảo vệ thực vật"
+                },
+                {
+                  "src": "/images/thu_gom_phe_lieu.png",
+                  "caption": "Hình 12.13. Thu gom vỏ lon quyên góp vào mô hình thu gom phế liệu ở thị trấn Quảng Phú",
+                  "alt": "Thu gom phế liệu"
+                }
+              ]
+            }
+          ],
+          "activities": [
+            {
+              "activity_id": "a",
+              "instruction": "Quan sát hình từ 12.8 đến 12.13, trình bày một số hoạt động của con người có tác động tích cực đến môi trường ở tỉnh Đắk Lắk.",
+              "answer": ""
+            },
+            {
+              "activity_id": "b",
+              "instruction": "Kể thêm một số hoạt động khác mà em biết.",
+              "answer": ""
+            }
+          ]
+        }
+      ]
+    },
+    "practice": {
+      "title": "LUYỆN TẬP",
+      "exercise": {
+        "title": "Tìm kiếm và chia sẻ thông tin cho thấy người dân địa phương có những tác động tích cực hoặc tiêu cực đến môi trường theo gợi ý dưới đây:",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Chuẩn bị:",
+            "description": "Chụp ảnh, quay clip, viết bài, hoặc sưu tầm qua sách báo,… về các hoạt động tích cực, tiêu cực với môi trường của người dân địa phương."
+          },
+          {
+            "step_number": 2,
+            "title": "Hoạt động nhóm:",
+            "description": "Phân loại các hoạt động tích cực, tiêu cực với môi trường của người dân địa phương theo gợi ý sau:",
+            "image": "/images/thu_gom_rac_thai_cu_sue.png"
+          },
+          {
+            "step_number": 3,
+            "title": "Chia sẻ sản phẩm của nhóm",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "application": {
+      "title": "VẬN DỤNG",
+      "project": {
+        "title": "Vẽ tranh tuyên truyền \"Bảo vệ môi trường ở địa phương em\".",
+        "steps": [
+          {
+            "step_number": 1,
+            "description": "Làm việc theo nhóm, đề xuất ý tưởng, vẽ tranh tuyên truyền."
+          },
+          {
+            "step_number": 2,
+            "description": "Vẽ tranh tuyên truyền"
+          },
+          {
+            "step_number": 3,
+            "description": "Chia sẻ sản phẩm"
+          }
+        ],
+        "image": {
+          "src": "/images/hoc_sinh_ve_tranh_bao_ve_moi_truong.png",
+          "caption": "Hình 12.15. Học sinh tỉnh Đắk Lắk tham gia hội thi vẽ tranh tuyên truyền bảo vệ môi trường",
+          "alt": "Học sinh vẽ tranh bảo vệ môi trường"
+        }
+      }
+    },
+    "additional_reading": {
+      "title": "TÌM HIỂU THÊM",
+      "topic": "MÔ HÌNH BẢO VỆ MÔI TRƯỜNG Ở ĐẮK LẮK",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Những \"Đoạn đường hoa\", \"Đoạn đường phụ nữ tự quản\", mô hình \"Thu gom rác thải\", \"Ngôi nhà thu gom phế liệu\".... là những hoạt động thiết thực bảo vệ môi trường, góp phần tạo cảnh quan môi trường xanh – sạch – đẹp trên địa bàn tỉnh Đắk Lắk."
+        },
+        {
+          "type": "paragraph",
+          "text": "\"Ngôi nhà thu gom phế liệu\" là một trong những mô hình sáng tạo, thiết thực trong công tác bảo vệ môi trường ở thị trấn Quảng Phú triển khai vào cuối năm 2020. Mô hình \"Đoạn đường hoa\" là một trong những điểm nhấn về bảo vệ môi trường ở huyện Cư M'gar. Trên các đoạn đường, người dân trồng nhiều loại hoa như: hoa giấy, hoàng yến, mười giờ, lạc dại, cây cau, chè tàu,... Qua đó, đã góp phần tạo mĩ quan xanh – sạch – đẹp, nâng cao ý thức bảo vệ môi trường của người dân ở địa phương. Nhiều đoạn đường đã trở thành điểm chụp ảnh yêu thích của nhiều người dân trên địa bàn, đặc biệt là giới trẻ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cuộc vận động \"Xây dựng gia đình 5 không, 3 sạch\". Theo đó, mỗi cơ sở hội lựa chọn những phần việc và triển khai các hoạt động cụ thể, thiết thực, phù hợp với đặc điểm, tình hình thực tế của mỗi địa phương như: mô hình \"Buôn tôi xanh – sạch – đẹp\", thu gom rác thải sinh hoạt trong khu dân cư, thôn xóm; trồng và chăm sóc cây xanh, đào hố rác tự hoại, sử dụng thùng đựng rác có nắp đậy; sử dụng làn nhựa, hoặc gùi đi chợ để hạn chế túi nilon; khôi phục hệ sinh thái, bảo vệ nguồn nước ngầm, giữ gìn và bảo tồn các bến nước, thác nước tại địa phương, góp phần xây dựng và giữ gìn môi trường xanh sạch đẹp,…"
+        },
+        {
+          "type": "note",
+          "content": "(Theo https://daklak.gov.vn/)"
+        }
+      ]
+    }
+  }
+}

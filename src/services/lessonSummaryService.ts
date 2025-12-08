@@ -15,40 +15,178 @@ const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/
  * Convert lesson JSON data to plain text for summarization
  */
 const convertLessonToText = (lessonData: any): string => {
-  let text = `${lessonData.tieu_de}\n\n`;
+  let text = '';
 
-  const extractText = (content: any): string => {
-    let result = '';
-
-    if (typeof content === 'string') {
-      return content + '\n';
+  // Handle new lesson structure
+  if (lessonData.lesson) {
+    const lesson = lessonData.lesson;
+    
+    // Add title
+    if (lesson.title) {
+      text += `${lesson.title}\n\n`;
     }
 
-    if (Array.isArray(content)) {
-      return content.map(item => extractText(item)).join('\n');
+    // Add learning objectives
+    if (lesson.learning_objectives && Array.isArray(lesson.learning_objectives)) {
+      text += "Mục tiêu học tập:\n";
+      lesson.learning_objectives.forEach((objective: string) => {
+        text += `- ${objective}\n`;
+      });
+      text += "\n";
     }
 
-    if (typeof content === 'object' && content !== null) {
-      Object.keys(content).forEach(key => {
-        const value = content[key];
-        
-        if (key === 'tieu_de') {
-          result += `\n${value}\n`;
-        } else if (key === 'noi_dung') {
-          result += extractText(value);
-        } else if (key === 'mo_dau') {
-          result += `${value}\n`;
-        } else if (key.startsWith('phan_') || key.startsWith('muc_') || key === 'cac_muc' || key === 'cac_phan') {
-          result += extractText(value);
+    // Add introduction
+    if (lesson.introduction) {
+      text += "Giới thiệu:\n";
+      
+      // Handle comparison structure for lesson 3
+      if (lesson.introduction.content && lesson.introduction.content.comparison) {
+        const comparison = lesson.introduction.content.comparison;
+        if (comparison.task) {
+          text += `${comparison.task}\n`;
         }
+      }
+      // Handle lesson 2 structure with content object
+      else if (lesson.introduction.content && typeof lesson.introduction.content === 'object') {
+        if (lesson.introduction.content.historical_sites) {
+          text += `Di tích lịch sử: ${lesson.introduction.content.historical_sites}\n`;
+        }
+        if (lesson.introduction.content.notable_figures) {
+          text += `Nhân vật tiêu biểu: ${lesson.introduction.content.notable_figures}\n`;
+        }
+        if (lesson.introduction.content.task) {
+          text += `${lesson.introduction.content.task}\n`;
+        }
+      }
+      // Handle old structure
+      else {
+        if (lesson.introduction.activity) {
+          text += `${lesson.introduction.activity}\n`;
+        }
+        if (lesson.introduction.task) {
+          text += `${lesson.introduction.task}\n`;
+        }
+      }
+      text += "\n";
+    }
+
+    // Add main content
+    if (lesson.main_content && Array.isArray(lesson.main_content)) {
+      lesson.main_content.forEach((section: any) => {
+        if (section.title) {
+          text += `${section.title}\n`;
+        }
+        
+        // Extract content from sections
+        if (section.content && Array.isArray(section.content)) {
+          section.content.forEach((item: any) => {
+            if (item.type === 'paragraph' && item.text) {
+              text += `${item.text}\n`;
+            }
+          });
+        }
+
+        // Extract content from subsections
+        if (section.subsections && Array.isArray(section.subsections)) {
+          section.subsections.forEach((subsection: any) => {
+            if (subsection.title) {
+              text += `${subsection.title}\n`;
+            }
+            
+            if (subsection.content && Array.isArray(subsection.content)) {
+              subsection.content.forEach((item: any) => {
+                if (item.type === 'paragraph' && item.text) {
+                  text += `${item.text}\n`;
+                }
+              });
+            }
+
+            // Extract questions and answers
+            if (subsection.questions && Array.isArray(subsection.questions)) {
+              subsection.questions.forEach((q: any) => {
+                if (q.question) {
+                  text += `Câu hỏi: ${q.question}\n`;
+                }
+                if (q.answer) {
+                  text += `Trả lời: ${q.answer}\n`;
+                }
+              });
+            }
+          });
+        }
+        text += "\n";
       });
     }
 
-    return result;
-  };
+    // Add practice section
+    if (lesson.practice) {
+      text += "Thực hành:\n";
+      if (lesson.practice.exercises && Array.isArray(lesson.practice.exercises)) {
+        lesson.practice.exercises.forEach((exercise: any) => {
+          if (exercise.question) {
+            text += `${exercise.question}\n`;
+          }
+          if (exercise.description) {
+            text += `${exercise.description}\n`;
+          }
+        });
+      }
+      text += "\n";
+    }
 
-  if (lessonData.noi_dung) {
-    text += extractText(lessonData.noi_dung);
+    // Add application section
+    if (lesson.application && lesson.application.project) {
+      text += "Vận dụng:\n";
+      if (lesson.application.project.title) {
+        text += `${lesson.application.project.title}\n`;
+      }
+      if (lesson.application.project.tasks && Array.isArray(lesson.application.project.tasks)) {
+        lesson.application.project.tasks.forEach((task: any) => {
+          if (task.description) {
+            text += `${task.description}\n`;
+          }
+        });
+      }
+    }
+  } else {
+    // Fallback to old structure
+    if (lessonData.tieu_de) {
+      text += `${lessonData.tieu_de}\n\n`;
+    }
+
+    const extractText = (content: any): string => {
+      let result = '';
+
+      if (typeof content === 'string') {
+        return content + '\n';
+      }
+
+      if (Array.isArray(content)) {
+        return content.map(item => extractText(item)).join('\n');
+      }
+
+      if (typeof content === 'object' && content !== null) {
+        Object.keys(content).forEach(key => {
+          const value = content[key];
+          
+          if (key === 'tieu_de') {
+            result += `\n${value}\n`;
+          } else if (key === 'noi_dung') {
+            result += extractText(value);
+          } else if (key === 'mo_dau') {
+            result += `${value}\n`;
+          } else if (key.startsWith('phan_') || key.startsWith('muc_') || key === 'cac_muc' || key === 'cac_phan') {
+            result += extractText(value);
+          }
+        });
+      }
+
+      return result;
+    };
+
+    if (lessonData.noi_dung) {
+      text += extractText(lessonData.noi_dung);
+    }
   }
 
   return text;

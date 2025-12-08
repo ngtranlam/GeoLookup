@@ -6,6 +6,34 @@ interface LessonContentProps {
   lessonData: any;
 }
 
+interface ContentItem {
+  type: string;
+  text?: string;
+  src?: string;
+  caption?: string;
+  alt?: string;
+}
+
+interface Question {
+  question: string;
+  answer: string;
+}
+
+interface Subsection {
+  subsection_id: string;
+  title: string;
+  content: ContentItem[];
+  questions?: Question[];
+}
+
+interface Section {
+  section_number: string;
+  title: string;
+  subsections?: Subsection[];
+  content?: ContentItem[];
+  questions?: Question[];
+}
+
 // Simple markdown parser for summary text
 const parseMarkdown = (text: string): React.ReactElement[] => {
   const lines = text.split('\n');
@@ -102,6 +130,9 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
   const [quizStartTime, setQuizStartTime] = useState<number>(0);
   const [quizDuration, setQuizDuration] = useState<number>(0);
 
+  // State for answer reveals
+  const [revealedAnswers, setRevealedAnswers] = useState<Set<string>>(new Set());
+
   // Reset summary and quiz when lesson changes
   useEffect(() => {
     setSummary('');
@@ -113,6 +144,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
     setUserAnswers({});
     setShowResults(false);
     setQuizError('');
+    setRevealedAnswers(new Set());
   }, [lessonData]);
 
   if (!lessonData) {
@@ -227,56 +259,1255 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
     return correct;
   };
 
-  const renderContent = (content: any): React.ReactElement[] => {
-    const elements: React.ReactElement[] = [];
-
-    if (typeof content === 'string') {
-      return [<p key="content" className="lesson-paragraph">{content}</p>];
-    }
-
-    if (Array.isArray(content)) {
-      return content.map((item, index) => (
-        <p key={index} className="lesson-paragraph">{item}</p>
-      ));
-    }
-
-    if (typeof content === 'object' && content !== null) {
-      Object.keys(content).forEach((key, index) => {
-        const value = content[key];
-
-        if (key === 'tieu_de') {
-          elements.push(
-            <h3 key={`title-${index}`} className="lesson-subtitle">
-              {value}
-            </h3>
-          );
-        } else if (key === 'noi_dung') {
-          elements.push(...renderContent(value));
-        } else if (key === 'mo_dau') {
-          elements.push(
-            <p key={`intro-${index}`} className="lesson-intro">
-              {value}
-            </p>
-          );
-        } else if (key.startsWith('phan_') || key.startsWith('muc_')) {
-          elements.push(
-            <div key={`section-${index}`} className="lesson-section">
-              {renderContent(value)}
-            </div>
-          );
-        } else if (key === 'cac_muc' || key === 'cac_phan') {
-          elements.push(...renderContent(value));
-        }
-      });
-    }
-
-    return elements;
+  const toggleAnswerReveal = (questionId: string) => {
+    setRevealedAnswers(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(questionId)) {
+        newSet.delete(questionId);
+      } else {
+        newSet.add(questionId);
+      }
+      return newSet;
+    });
   };
+
+  const renderContentItem = (item: any, index: number): React.ReactElement => {
+    switch (item.type) {
+      case 'paragraph':
+        return (
+          <p key={`paragraph-${index}`} className="lesson-paragraph">
+            {item.text}
+          </p>
+        );
+      case 'image':
+        return (
+          <div key={`image-${index}`} className="lesson-image-container">
+            <img 
+              src={item.src} 
+              alt={item.alt || ''} 
+              className="lesson-image"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const container = target.parentElement;
+                if (container) {
+                  const errorDiv = document.createElement('div');
+                  errorDiv.className = 'image-error';
+                  errorDiv.textContent = `Không thể tải hình ảnh: ${item.caption || item.alt || 'Hình ảnh'}`;
+                  container.appendChild(errorDiv);
+                }
+              }}
+            />
+            {item.caption && (
+              <p className="lesson-image-caption">{item.caption}</p>
+            )}
+          </div>
+        );
+      case 'image_group':
+        return (
+          <div key={`image-group-${index}`} className="lesson-image-group">
+            <div className="image-group-container">
+              {item.images && item.images.map((image: any, imgIndex: number) => (
+                <div key={`group-image-${imgIndex}`} className="group-image-item">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt || ''} 
+                    className="lesson-image"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const container = target.parentElement;
+                      if (container) {
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'image-error';
+                        errorDiv.textContent = `Không thể tải hình ảnh: ${image.caption || image.alt || 'Hình ảnh'}`;
+                        container.appendChild(errorDiv);
+                      }
+                    }}
+                  />
+                  {image.caption && (
+                    <p className="lesson-image-caption">{image.caption}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'table':
+        return (
+          <div key={`table-${index}`} className="lesson-table-container">
+            {item.title && <h4 className="table-title">{item.title}</h4>}
+            <table className="lesson-table">
+              {item.headers && (
+                <thead>
+                  <tr>
+                    {item.headers.map((header: string, headerIndex: number) => (
+                      <th key={headerIndex}>{header}</th>
+                    ))}
+                  </tr>
+                </thead>
+              )}
+              <tbody>
+                {item.data && item.data.map((row: any, rowIndex: number) => (
+                  <tr key={rowIndex}>
+                    <td className="table-category">{row.category}</td>
+                    {row.values && row.values.map((value: string, valueIndex: number) => (
+                      <td key={valueIndex} className="table-value">{value}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {item.note && (
+              <p className="table-note">{item.note}</p>
+            )}
+          </div>
+        );
+      case 'info_box':
+        return (
+          <div key={`info-box-${index}`} className="lesson-info-box">
+            {item.title && <h5 className="info-box-title">{item.title}</h5>}
+            <div className="info-box-content">
+              {item.content}
+            </div>
+          </div>
+        );
+      case 'note':
+        return (
+          <div key={`note-${index}`} className="lesson-note">
+            {item.content || item.text}
+          </div>
+        );
+      case 'list':
+        return (
+          <div key={`list-${index}`} className="lesson-list">
+            <ul>
+              {item.items && item.items.map((listItem: string, listIndex: number) => (
+                <li key={listIndex}>{listItem}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      case 'diagram':
+        return (
+          <div key={`diagram-${index}`} className="lesson-diagram">
+            {item.title && <h5 className="diagram-title">{item.title}</h5>}
+            {/* Show diagram image */}
+            {item.image_src && (
+              <div className="diagram-image">
+                <img 
+                  src={item.image_src} 
+                  alt={item.alt || item.title || 'Sơ đồ'} 
+                  className="diagram-img"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const container = target.parentElement;
+                    if (container) {
+                      const errorDiv = document.createElement('div');
+                      errorDiv.className = 'image-error';
+                      errorDiv.textContent = `Không thể tải sơ đồ: ${item.title || 'Sơ đồ'}`;
+                      container.appendChild(errorDiv);
+                    }
+                  }}
+                />
+              </div>
+            )}
+          </div>
+        );
+      case 'image_gallery':
+        return (
+          <div key={`gallery-${index}`} className="lesson-image-gallery">
+            <div className="gallery-grid">
+              {item.images && item.images.map((image: any, imgIndex: number) => (
+                <div key={`gallery-image-${imgIndex}`} className="gallery-image-item">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt || ''} 
+                    className="gallery-image"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const container = target.parentElement;
+                      if (container) {
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'image-error';
+                        errorDiv.textContent = `Không thể tải hình ảnh: ${image.caption || image.alt || 'Hình ảnh'}`;
+                        container.appendChild(errorDiv);
+                      }
+                    }}
+                  />
+                  {image.caption && (
+                    <p className="gallery-image-caption">{image.caption}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'chart':
+        return (
+          <div key={`chart-${index}`} className="lesson-chart">
+            {item.title && <h5 className="chart-title">{item.title}</h5>}
+            <div className="chart-image">
+              <img 
+                src={item.image_src} 
+                alt={item.alt || ''} 
+                className="chart-img"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const container = target.parentElement;
+                  if (container) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'image-error';
+                    errorDiv.textContent = `Không thể tải biểu đồ: ${item.caption || item.alt || 'Biểu đồ'}`;
+                    container.appendChild(errorDiv);
+                  }
+                }}
+              />
+              {item.caption && (
+                <p className="chart-caption">{item.caption}</p>
+              )}
+            </div>
+          </div>
+        );
+      case 'source':
+        return (
+          <div key={`source-${index}`} className="lesson-source">
+            <p className="source-text">{item.text}</p>
+          </div>
+        );
+      case 'note':
+        return (
+          <div key={`note-${index}`} className="lesson-note">
+            <p className="note-text">{item.content}</p>
+          </div>
+        );
+      case 'image_group':
+        return (
+          <div key={`image-group-${index}`} className="lesson-image-group">
+            <div className="image-group-grid">
+              {item.images && item.images.map((image: any, imgIndex: number) => (
+                <div key={`group-image-${imgIndex}`} className="image-group-item">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt || ''} 
+                    className="group-image"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const container = target.parentElement;
+                      if (container) {
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'image-error';
+                        errorDiv.textContent = `Không thể tải hình ảnh: ${image.caption || image.alt || 'Hình ảnh'}`;
+                        container.appendChild(errorDiv);
+                      }
+                    }}
+                  />
+                  {image.caption && (
+                    <p className="group-image-caption">{image.caption}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'literary_work':
+        return (
+          <div key={`literary-work-${index}`} className="literary-work">
+            <div className="work-header">
+              <h3 className="work-title">{item.title}</h3>
+              <p className="work-author">Tác giả: {item.author}</p>
+            </div>
+            <div className="work-content">
+              {item.text_parts && item.text_parts.map((part: string, partIndex: number) => (
+                <p key={partIndex} className="work-paragraph">{part}</p>
+              ))}
+            </div>
+            {item.source && (
+              <p className="work-source">{item.source}</p>
+            )}
+            {item.reading_guide && (
+              <div className="reading-guide">
+                <h4 className="guide-title">{item.reading_guide.title}</h4>
+                <div className="guide-questions">
+                  {item.reading_guide.questions.map((q: any, qIndex: number) => {
+                    const questionId = `guide-q${qIndex}`;
+                    const isRevealed = revealedAnswers.has(questionId);
+                    
+                    return (
+                      <div key={qIndex} className="guide-question-item">
+                        <p className="guide-question">
+                          <strong>Câu {q.question_number}:</strong> {q.question}
+                        </p>
+                        <button 
+                          className="reveal-answer-btn"
+                          onClick={() => toggleAnswerReveal(questionId)}
+                        >
+                          {isRevealed ? 'Ẩn đáp án' : 'Xem đáp án'}
+                        </button>
+                        {isRevealed && (
+                          <div className="guide-answer">
+                            {q.answer.split('\n').map((line: string, lineIndex: number) => (
+                              <p key={lineIndex} className="answer-line">{line}</p>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+            {item.remember && (
+              <div className="work-remember">
+                <h4 className="remember-title">{item.remember.title}</h4>
+                <p className="remember-content">{item.remember.content}</p>
+              </div>
+            )}
+          </div>
+        );
+      default:
+        return <div key={`unknown-${index}`}></div>;
+    }
+  };
+
+  const renderQuestions = (questions: Question[], sectionId: string): React.ReactElement[] => {
+    return questions.map((question, index) => {
+      const questionId = `${sectionId}-q${index}`;
+      const isRevealed = revealedAnswers.has(questionId);
+      
+      return (
+        <div key={questionId} className="lesson-question-container">
+          <div className="lesson-question">
+            <h4 className="question-title">Câu hỏi {(question as any).question_number || (index + 1)}:</h4>
+            <p className="question-text">{question.question}</p>
+            
+            {/* Handle sub_questions */}
+            {(question as any).sub_questions && (
+              <div className="sub-questions">
+                <ol>
+                  {(question as any).sub_questions.map((subQ: string, subIndex: number) => (
+                    <li key={subIndex} className="sub-question">{subQ}</li>
+                  ))}
+                </ol>
+              </div>
+            )}
+            
+            {/* Handle map */}
+            {(question as any).map && (
+              <div className="question-map">
+                <img 
+                  src={(question as any).map.image_src} 
+                  alt={(question as any).map.alt || ''} 
+                  className="map-image"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const container = target.parentElement;
+                    if (container) {
+                      const errorDiv = document.createElement('div');
+                      errorDiv.className = 'image-error';
+                      errorDiv.textContent = `Không thể tải bản đồ: ${(question as any).map.caption || (question as any).map.alt || 'Bản đồ'}`;
+                      container.appendChild(errorDiv);
+                    }
+                  }}
+                />
+                {(question as any).map.caption && (
+                  <p className="map-caption">{(question as any).map.caption}</p>
+                )}
+              </div>
+            )}
+            
+            {/* Show empty table template for table-type questions */}
+            {(question as any).answer_type === 'table' && typeof question.answer === 'object' && (
+              <div className="question-table-template">
+                <table className="lesson-table">
+                  <thead>
+                    <tr>
+                      {(question.answer as any).headers && (question.answer as any).headers.map((header: string, headerIndex: number) => (
+                        <th key={headerIndex}>{header}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(question.answer as any).rows && (question.answer as any).rows.map((row: any, rowIndex: number) => (
+                      <tr key={rowIndex}>
+                        <td>{row.name}</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            
+            <button 
+              className="reveal-answer-btn"
+              onClick={() => toggleAnswerReveal(questionId)}
+            >
+              {isRevealed ? 'Ẩn đáp án' : 'Xem đáp án'}
+            </button>
+            {isRevealed && (
+              <div className="question-answer">
+                <h5>Đáp án:</h5>
+                {(question as any).answer_type === 'table' && typeof question.answer === 'object' ? (
+                  <div className="answer-table">
+                    <table className="lesson-table">
+                      <thead>
+                        <tr>
+                          {(question.answer as any).headers && (question.answer as any).headers.map((header: string, headerIndex: number) => (
+                            <th key={headerIndex}>{header}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(question.answer as any).rows && (question.answer as any).rows.map((row: any, rowIndex: number) => (
+                          <tr key={rowIndex}>
+                            <td>{row.name}</td>
+                            <td>{row.location}</td>
+                            <td>{row.classification}</td>
+                            <td>{row.year}</td>
+                            <td>{row.features}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="answer-content">
+                    {(typeof question.answer === 'string' ? question.answer : '').split('\n').map((line: string, lineIndex: number) => {
+                      if (line.trim() === '') return <br key={lineIndex} />;
+                      
+                      // Handle bullet points
+                      if (line.trim().startsWith('*')) {
+                        return (
+                          <div key={lineIndex} className="answer-bullet-point">
+                            {line.trim().substring(1).trim()}
+                          </div>
+                        );
+                      }
+                      
+                      // Handle section headers (lines ending with colon)
+                      if (line.trim().endsWith(':')) {
+                        return (
+                          <div key={lineIndex} className="answer-section-header">
+                            {line.trim()}
+                          </div>
+                        );
+                      }
+                      
+                      // Regular lines
+                      return (
+                        <div key={lineIndex} className="answer-line">
+                          {line.trim()}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const renderSubsection = (subsection: any, sectionIndex: number, subsectionIndex: number): React.ReactElement => {
+    const subsectionId = `section-${sectionIndex}-subsection-${subsectionIndex}`;
+    
+    return (
+      <div key={subsectionId} className="lesson-subsection">
+        <h4 className="subsection-title">
+          {subsection.subsection_id}. {subsection.title}
+        </h4>
+        
+        {/* Handle location and classification for lesson 4 */}
+        {(subsection.location || subsection.classification) && (
+          <div className="subsection-metadata">
+            {subsection.location && (
+              <p className="subsection-location"><strong>Địa điểm:</strong> {subsection.location}</p>
+            )}
+            {subsection.classification && (
+              <p className="subsection-classification"><strong>Phân loại:</strong> {subsection.classification}</p>
+            )}
+          </div>
+        )}
+        
+        {/* Handle periods structure */}
+        {subsection.periods ? (
+          <div className="subsection-periods">
+            {subsection.periods.map((period: any, periodIndex: number) => (
+              <div key={`period-${periodIndex}`} className="lesson-period">
+                <h5 className="period-title">{period.period_title}</h5>
+                <div className="period-content">
+                  {period.content && period.content.map((item: any, index: number) => renderContentItem(item, index))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* Handle normal content structure */
+          <>
+            {subsection.content && (
+              <div className="subsection-content">
+                {subsection.content.map((item: any, index: number) => renderContentItem(item, index))}
+              </div>
+            )}
+          </>
+        )}
+        
+        {subsection.questions && subsection.questions.length > 0 && (
+          <div className="subsection-questions">
+            {renderQuestions(subsection.questions, subsectionId)}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderSection = (section: Section, index: number): React.ReactElement => {
+    const sectionId = `section-${index}`;
+    
+    return (
+      <div key={sectionId} className="lesson-section">
+        <h3 className="section-title">
+          {section.section_number}. {section.title}
+        </h3>
+        
+        {/* Handle intro field for lesson 8 */}
+        {(section as any).intro && (
+          <div className="section-intro">
+            <p>{(section as any).intro}</p>
+          </div>
+        )}
+        
+        {section.subsections && section.subsections.map((subsection, subsectionIndex) => 
+          renderSubsection(subsection, index, subsectionIndex)
+        )}
+        
+        {section.content && (
+          <div className="section-content">
+            {section.content.map((item, contentIndex) => renderContentItem(item, contentIndex))}
+          </div>
+        )}
+        
+        {section.questions && section.questions.length > 0 && (
+          <div className="section-questions">
+            {renderQuestions(section.questions, sectionId)}
+          </div>
+        )}
+        
+        {/* Handle activities for lesson 12 */}
+        {(section as any).activities && (section as any).activities.length > 0 && (
+          <div className="section-activities">
+            {(section as any).activities.map((activity: any, activityIndex: number) => (
+              <div key={`activity-${activityIndex}`} className="lesson-activity">
+                <h5 className="activity-title">Hoạt động {activity.activity_id}</h5>
+                <p className="activity-instruction">{activity.instruction}</p>
+                
+                {activity.tasks && activity.tasks.map((task: any, taskIndex: number) => (
+                  <div key={`task-${taskIndex}`} className="activity-task">
+                    <h6 className="task-title">Nhiệm vụ {task.task_id}:</h6>
+                    <p className="task-description">{task.description}</p>
+                    
+                    {/* Handle diagram in task */}
+                    {task.diagram && (
+                      <div className="task-diagram">
+                        {task.diagram.image && (
+                          <img 
+                            src={task.diagram.image} 
+                            alt={task.diagram.description || 'Sơ đồ'} 
+                            className="task-diagram-image"
+                          />
+                        )}
+                        {task.diagram.description && (
+                          <p className="diagram-description">{task.diagram.description}</p>
+                        )}
+                      </div>
+                    )}
+                    
+                    {/* Handle word bank and fill in blank */}
+                    {task.word_bank && (
+                      <div className="word-bank">
+                        <h6>Từ khóa:</h6>
+                        <div className="word-bank-items">
+                          {task.word_bank.map((word: string, wordIndex: number) => (
+                            <span key={wordIndex} className="word-bank-item">{word}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {task.fill_in_blank && (
+                      <div className="fill-in-blank">
+                        <p className="fill-text">{task.fill_in_blank.text}</p>
+                        {task.fill_in_blank.source && (
+                          <p className="fill-source">{task.fill_in_blank.source}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                
+                {activity.answer && (
+                  <div className="activity-answer">
+                    <p className="answer-placeholder">Câu trả lời: {activity.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderLearningObjectives = (objectives: string[]): React.ReactElement => {
+    return (
+      <div className="learning-objectives">
+        <h3 className="objectives-title">Mục tiêu bài học</h3>
+        <ul className="objectives-list">
+          {objectives.map((objective, index) => (
+            <li key={index} className="objective-item">{objective}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const renderIntroduction = (introduction: any): React.ReactElement => {
+    return (
+      <div className="lesson-introduction">
+        <h3 className="introduction-title">{introduction.title}</h3>
+        
+        {/* Handle comparison structure for lesson 3 */}
+        {introduction.content?.comparison ? (
+          <div className="introduction-comparison">
+            <div className="comparison-images">
+              <div className="comparison-image">
+                <img 
+                  src={introduction.content.comparison.image_before.src} 
+                  alt={introduction.content.comparison.image_before.alt}
+                />
+                <p className="image-caption">{introduction.content.comparison.image_before.caption}</p>
+              </div>
+              <div className="comparison-image">
+                <img 
+                  src={introduction.content.comparison.image_after.src} 
+                  alt={introduction.content.comparison.image_after.alt}
+                />
+                <p className="image-caption">{introduction.content.comparison.image_after.caption}</p>
+              </div>
+            </div>
+            <div className="comparison-task">
+              <p><strong>Nhiệm vụ:</strong> {introduction.content.comparison.task}</p>
+            </div>
+          </div>
+        ) : introduction.content?.task && introduction.content?.images ? (
+          /* Handle task + images structure for lesson 4 */
+          <div className="introduction-task-images">
+            <div className="task-description">
+              <p><strong>Nhiệm vụ:</strong> {introduction.content.task}</p>
+            </div>
+            <div className="task-images">
+              {introduction.content.images.map((image: any, index: number) => (
+                <div key={index} className="task-image">
+                  <img src={image.src} alt={image.alt} />
+                  <p className="image-caption">{image.caption}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : introduction.content?.task && introduction.content?.image ? (
+          /* Handle task + single image structure for Phú Yên lesson */
+          <div className="introduction-task-image">
+            <div className="task-description">
+              <p><strong>Nhiệm vụ:</strong> {introduction.content.task}</p>
+            </div>
+            <div className="task-single-image">
+              <img 
+                src={introduction.content.image.src} 
+                alt={introduction.content.image.alt}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const container = target.parentElement;
+                  if (container) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'image-error';
+                    errorDiv.textContent = `Không thể tải hình ảnh: ${introduction.content.image.caption || introduction.content.image.alt || 'Hình ảnh'}`;
+                    container.appendChild(errorDiv);
+                  }
+                }}
+              />
+              <p className="image-caption">{introduction.content.image.caption}</p>
+              {introduction.content.image.credit && (
+                <p className="image-credit">{introduction.content.image.credit}</p>
+              )}
+            </div>
+          </div>
+        ) : introduction.content?.questions && introduction.content?.images ? (
+          /* Handle lesson 12 questions + images structure */
+          <div className="introduction-content">
+            <div className="introduction-questions">
+              {introduction.content.questions.map((question: string, index: number) => (
+                <p key={index} className="introduction-question">
+                  <strong>Câu hỏi {index + 1}:</strong> {question}
+                </p>
+              ))}
+            </div>
+            <div className="introduction-images">
+              {introduction.content.images.map((image: any, index: number) => (
+                <div key={index} className="introduction-image-item">
+                  <img src={image.src} alt={image.alt} />
+                  <p className="image-caption">{image.caption}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : introduction.content?.matching_exercise ? (
+          /* Handle lesson 8 matching exercise structure */
+          <div className="introduction-content">
+            {introduction.content.task && (
+              <p className="introduction-task"><strong>Nhiệm vụ:</strong> {introduction.content.task}</p>
+            )}
+            <div className="matching-exercise">
+              <div className="matching-columns">
+                <div className="column-a">
+                  <h5>Cột A</h5>
+                  {introduction.content.matching_exercise.column_a && introduction.content.matching_exercise.column_a.map((item: any, index: number) => (
+                    <div key={index} className="matching-item">
+                      <span className="item-icon">{item.icon}</span>
+                      <span className="item-text">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="column-b">
+                  <h5>Cột B</h5>
+                  {introduction.content.matching_exercise.column_b && introduction.content.matching_exercise.column_b.map((item: string, index: number) => (
+                    <div key={index} className="matching-item">
+                      <span className="item-text">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {introduction.content.follow_up && (
+              <p className="introduction-followup"><strong>Câu hỏi tiếp theo:</strong> {introduction.content.follow_up}</p>
+            )}
+          </div>
+        ) : introduction.content?.activity && introduction.content?.sample_program ? (
+          /* Handle Phú Yên Topic 3 expert interview structure */
+          <div className="introduction-expert-interview">
+            <div className="interview-activity">
+              <h4 className="activity-title">{introduction.content.activity}</h4>
+              <p className="activity-description">{introduction.content.description}</p>
+              {introduction.content.steps && (
+                <div className="activity-steps">
+                  <h5>Các bước thực hiện:</h5>
+                  <ol>
+                    {introduction.content.steps.map((step: string, index: number) => (
+                      <li key={index}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+            <div className="sample-program">
+              <h4 className="program-title">{introduction.content.sample_program.title}</h4>
+              <div className="program-questions">
+                {introduction.content.sample_program.questions.map((qa: any, index: number) => (
+                  <div key={index} className="qa-pair">
+                    <p className="mc-question"><strong>MC:</strong> {qa.mc}</p>
+                    <p className="expert-answer"><strong>Chuyên gia:</strong> {qa.expert}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : introduction.content?.historical_sites || introduction.content?.notable_figures || introduction.content?.task ? (
+          /* Handle lesson 2 structure with content object */
+          <div className="introduction-content">
+            {introduction.content.historical_sites && (
+              <p className="introduction-activity"><strong>Di tích lịch sử:</strong> {introduction.content.historical_sites}</p>
+            )}
+            {introduction.content.notable_figures && (
+              <p className="introduction-activity"><strong>Nhân vật tiêu biểu:</strong> {introduction.content.notable_figures}</p>
+            )}
+            {introduction.content.task && (
+              <p className="introduction-task"><strong>Nhiệm vụ:</strong> {introduction.content.task}</p>
+            )}
+          </div>
+        ) : introduction.content?.content ? (
+          /* Handle nested content object */
+          <div className="introduction-content">
+            {Array.isArray(introduction.content.content) 
+              ? introduction.content.content.map((item: any, index: number) => renderContentItem(item, index))
+              : <p>{introduction.content.content}</p>
+            }
+          </div>
+        ) : (
+          /* Handle flat content array or string */
+          <div className="introduction-content">
+            {Array.isArray(introduction.content) 
+              ? introduction.content.map((item: any, index: number) => renderContentItem(item, index))
+              : <p>{introduction.content}</p>
+            }
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderMainContent = (mainContent: any): React.ReactElement => {
+    return (
+      <div className="main-content">
+        <h2 className="main-content-title">{mainContent.title}</h2>
+        <div className="main-content-sections">
+          {mainContent.sections.map((section: Section, index: number) => renderSection(section, index))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderLanguagePractice = (languagePractice: any): React.ReactElement => {
+    if (!languagePractice) return <div></div>;
+    
+    return (
+      <div className="language-practice">
+        <h2 className="language-practice-title">{languagePractice.title}</h2>
+        <div className="language-exercises">
+          {languagePractice.exercises && languagePractice.exercises.map((exercise: any, index: number) => (
+            <div key={index} className="language-exercise">
+              <h4 className="exercise-number">Bài tập {exercise.exercise_number}</h4>
+              <p className="exercise-description">{exercise.description}</p>
+              {exercise.text && (
+                <div className="exercise-text">
+                  <p className="text-content">{exercise.text}</p>
+                  {exercise.source && (
+                    <p className="text-source">{exercise.source}</p>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderPractice = (practice: any): React.ReactElement => {
+    if (!practice) return <div></div>;
+    
+    return (
+      <div className="lesson-practice">
+        <h2 className="practice-title">{practice.title}</h2>
+        {/* Handle single exercise with steps for lesson 12 */}
+        {practice.exercise && (
+          <div className="practice-single-exercise">
+            <h4 className="exercise-title">{practice.exercise.title}</h4>
+            {practice.exercise.steps && (
+              <div className="exercise-steps">
+                {practice.exercise.steps.map((step: any, stepIndex: number) => (
+                  <div key={`step-${stepIndex}`} className="exercise-step">
+                    <h5 className="step-title">Bước {step.step_number}: {step.title}</h5>
+                    <p className="step-description">{step.description}</p>
+                    
+                    {/* Handle image in step */}
+                    {step.image && (
+                      <div className="step-image">
+                        <img 
+                          src={step.image} 
+                          alt="Hình ảnh minh họa" 
+                          className="step-img"
+                        />
+                      </div>
+                    )}
+                    
+                    {/* Handle table in step */}
+                    {step.table && (
+                      <div className="step-table">
+                        {step.table.image && (
+                          <img 
+                            src={step.table.image} 
+                            alt="Bảng phân loại hoạt động" 
+                            className="table-diagram"
+                          />
+                        )}
+                        {step.table.headers && (
+                          <table className="lesson-table">
+                            <thead>
+                              <tr>
+                                {step.table.headers.map((header: string, headerIndex: number) => (
+                                  <th key={headerIndex}>{header}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {step.table.sample_rows && step.table.sample_rows.map((row: any, rowIndex: number) => (
+                                <tr key={rowIndex}>
+                                  <td>
+                                    {row.activity}
+                                    {row.image && (
+                                      <div className="row-image">
+                                        <img src={row.image} alt={row.activity} className="sample-image" />
+                                      </div>
+                                    )}
+                                  </td>
+                                  <td>{row.description}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        
+        <div className="practice-exercises">
+          {practice.exercises && practice.exercises.map((exercise: any, index: number) => (
+            <div key={`exercise-${index}`} className="practice-exercise">
+              <h4 className="exercise-title">Bài tập {exercise.exercise_number || (index + 1)}</h4>
+              {exercise.question && <p className="exercise-question">{exercise.question}</p>}
+              {exercise.description && <p className="exercise-description">{exercise.description}</p>}
+              
+              {/* Handle guidelines for Phú Yên Topic 3 */}
+              {exercise.guidelines && (
+                <div className="exercise-guidelines">
+                  <h5 className="guidelines-title">{exercise.guidelines.title}</h5>
+                  <div className="guidelines-steps">
+                    {exercise.guidelines.steps && exercise.guidelines.steps.map((step: any, stepIndex: number) => (
+                      <div key={stepIndex} className="guideline-step">
+                        <h6 className="step-title">{step.step}</h6>
+                        {step.tasks && (
+                          <ul className="step-tasks">
+                            {step.tasks.map((task: string, taskIndex: number) => (
+                              <li key={taskIndex} className="step-task">{task}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {step.requirements && (
+                          <div className="step-requirements">
+                            {step.requirements.map((req: string, reqIndex: number) => (
+                              <p key={reqIndex} className="step-requirement">{req}</p>
+                            ))}
+                          </div>
+                        )}
+                        {step.outline && (
+                          <div className="step-outline">
+                            {step.outline.map((item: string, outlineIndex: number) => (
+                              <p key={outlineIndex} className="outline-item">{item}</p>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {/* Handle table_format for Phú Yên Topic 3 */}
+              {exercise.table_format && (
+                <div className="exercise-table-format">
+                  <table className="format-table">
+                    <thead>
+                      <tr>
+                        {exercise.table_format.headers.map((header: string, headerIndex: number) => (
+                          <th key={headerIndex}>{header}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td colSpan={exercise.table_format.headers.length}>
+                          {exercise.table_format.note}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              
+              {/* Handle tasks array for lesson 8 */}
+              {exercise.tasks && (
+                <div className="exercise-tasks">
+                  <ol>
+                    {exercise.tasks.map((task: string, taskIndex: number) => (
+                      <li key={taskIndex} className="exercise-task">{task}</li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+              {exercise.timeline && (
+                <div className="exercise-timeline">
+                  <h5>{exercise.timeline.title}</h5>
+                  <div className="timeline-events">
+                    {exercise.timeline.events && exercise.timeline.events.map((event: any, eventIndex: number) => (
+                      <div key={eventIndex} className="timeline-event">
+                        <strong>{event.period || event.date}:</strong> 
+                        <span className="event-content">{event.event || "[Điền thông tin]"}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {exercise.table && (
+                <div className="exercise-mind-map">
+                  {exercise.table.title && <h5 className="mind-map-title">{exercise.table.title}</h5>}
+                  <div className="mind-map-container">
+                    <div className="mind-map-center">
+                      Đắk Lắk<br/>(1975-1985)
+                    </div>
+                    <div className="mind-map-branches">
+                      {exercise.table.categories && exercise.table.categories.map((category: any, catIndex: number) => (
+                        <div key={catIndex} className="mind-map-branch">
+                          <div className="branch-main">
+                            {category.category}
+                          </div>
+                          <div className="branch-items">
+                            {category.items && category.items.map((item: string, itemIndex: number) => (
+                              <div key={itemIndex} className="branch-item">{item}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {exercise.diagram && (
+                <div className="exercise-diagram">
+                  <div className="diagram-container">
+                    <div className="diagram-center">
+                      {exercise.diagram.center}
+                    </div>
+                    <div className="diagram-branches">
+                      {exercise.diagram.branches && exercise.diagram.branches.map((branch: string, branchIndex: number) => (
+                        <div key={branchIndex} className="diagram-branch">
+                          {branch}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {exercise.categories && (
+                <div className="exercise-categories">
+                  <div className="categories-container">
+                    {exercise.categories.should_do && (
+                      <div className="category-section">
+                        <h5 className="category-title">{exercise.categories.should_do.title}</h5>
+                        <ul className="category-list">
+                          {exercise.categories.should_do.items && exercise.categories.should_do.items.map((item: string, itemIndex: number) => (
+                            <li key={itemIndex} className="category-item should-do">{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {exercise.categories.should_not_do && (
+                      <div className="category-section">
+                        <h5 className="category-title">{exercise.categories.should_not_do.title}</h5>
+                        <ul className="category-list">
+                          {exercise.categories.should_not_do.items && exercise.categories.should_not_do.items.map((item: string, itemIndex: number) => (
+                            <li key={itemIndex} className="category-item should-not-do">{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              {exercise.title && exercise.areas && (
+                <div className="exercise-presentation">
+                  <h5>{exercise.title}</h5>
+                  <div className="presentation-areas">
+                    {exercise.areas.map((area: string, areaIndex: number) => (
+                      <div key={areaIndex} className="presentation-area">{area}</div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderApplication = (application: any): React.ReactElement => {
+    if (!application) return <div></div>;
+    
+    return (
+      <div className="lesson-application">
+        <h2 className="application-title">{application.title}</h2>
+        
+        {/* Handle single project structure (lesson 1-3, 8) */}
+        {application.project && (
+          <div className="application-project">
+            <h3 className="project-title">{application.project.title}</h3>
+            {application.project.description && <p className="project-description">{application.project.description}</p>}
+            
+            {/* Handle template structure for lesson 8 */}
+            {application.project.template && (
+              <div className="project-template">
+                <h4 className="template-title">{application.project.template.title}</h4>
+                <div className="template-fields">
+                  {application.project.template.fields && application.project.template.fields.map((field: string, fieldIndex: number) => (
+                    <div key={fieldIndex} className="template-field">
+                      <p>{field}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {/* Handle steps structure for lesson 12 */}
+            {application.project.steps && (
+              <div className="project-steps">
+                {application.project.steps.map((step: any, stepIndex: number) => (
+                  <div key={stepIndex} className="project-step">
+                    <h5 className="step-title">Bước {step.step_number}:</h5>
+                    <p className="step-description">{step.description}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {/* Handle image in project for lesson 12 */}
+            {application.project.image && (
+              <div className="project-image">
+                <img 
+                  src={application.project.image.src} 
+                  alt={application.project.image.alt || ''} 
+                  className="project-img"
+                />
+                {application.project.image.caption && (
+                  <p className="project-image-caption">{application.project.image.caption}</p>
+                )}
+              </div>
+            )}
+            
+            {/* Handle tasks structure */}
+            {application.project.tasks && (
+              <div className="project-tasks">
+                {application.project.tasks.map((task: any, index: number) => (
+                  <div key={`task-${index}`} className="project-task">
+                    <span className="task-number">{task.task_number}.</span>
+                    <span className="task-description">{task.description}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {/* Handle table structure */}
+            {application.project.table && (
+              <div className="project-table">
+                <table className="application-table">
+                  <thead>
+                    <tr>
+                      {application.project.table.headers.map((header: string, index: number) => (
+                        <th key={`header-${index}`}>{header}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {application.project.table.rows.map((row: string[], rowIndex: number) => (
+                      <tr key={`row-${rowIndex}`}>
+                        {row.map((cell: string, cellIndex: number) => (
+                          <td key={`cell-${rowIndex}-${cellIndex}`}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
+        
+        {/* Handle projects array structure (lesson 4) */}
+        {application.projects && (
+          <div className="application-projects">
+            {application.projects.map((project: any, projectIndex: number) => (
+              <div key={`project-${projectIndex}`} className="application-project">
+                <h3 className="project-title">Dự án {project.project_number}</h3>
+                {project.description && <p className="project-description">{project.description}</p>}
+                {project.question && <p className="project-question">{project.question}</p>}
+                
+                {/* Handle table structure */}
+                {project.table && (
+                  <div className="project-table">
+                    <table className="lesson-table">
+                      <thead>
+                        <tr>
+                          {project.table.headers && project.table.headers.map((header: string, headerIndex: number) => (
+                            <th key={headerIndex}>{header}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {project.table.sample_rows && project.table.sample_rows.map((row: string[], rowIndex: number) => (
+                          <tr key={`row-${rowIndex}`}>
+                            {row.map((cell: string, cellIndex: number) => (
+                              <td key={`cell-${rowIndex}-${cellIndex}`}>{cell}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderAdditionalReading = (additionalReading: any): React.ReactElement => {
+    if (!additionalReading) return <div></div>;
+    
+    return (
+      <div className="lesson-additional-reading">
+        <h2 className="additional-reading-title">{additionalReading.title}</h2>
+        {additionalReading.topic && (
+          <h3 className="additional-reading-topic">{additionalReading.topic}</h3>
+        )}
+        <div className="additional-reading-content">
+          {additionalReading.content && additionalReading.content.map((item: any, index: number) => renderContentItem(item, index))}
+        </div>
+      </div>
+    );
+  };
+
+  if (!lessonData || !lessonData.lesson) {
+    return (
+      <div className="lesson-content-empty">
+        <h2>Chọn một bài học để bắt đầu</h2>
+        <p>Vui lòng chọn một bài học từ danh sách bên trái</p>
+      </div>
+    );
+  }
+
+  const lesson = lessonData.lesson;
 
   return (
     <div className="lesson-content">
       <div className="lesson-header">
-        <h1 className="lesson-title">{lessonData.tieu_de}</h1>
+        <h1 className="lesson-title">{lesson.title}</h1>
         
         {/* Summary Button - Changes based on state */}
         <button 
@@ -547,7 +1778,26 @@ const LessonContent: React.FC<LessonContentProps> = ({ lessonData }) => {
           </div>
         ) : (
           <div className="lesson-body">
-            {lessonData.noi_dung && renderContent(lessonData.noi_dung)}
+            {/* Learning Objectives */}
+            {lesson.learning_objectives && renderLearningObjectives(lesson.learning_objectives)}
+            
+            {/* Introduction */}
+            {lesson.introduction && renderIntroduction(lesson.introduction)}
+            
+            {/* Main Content */}
+            {lesson.main_content && renderMainContent(lesson.main_content)}
+            
+            {/* Language Practice */}
+            {lesson.language_practice && renderLanguagePractice(lesson.language_practice)}
+            
+            {/* Practice */}
+            {lesson.practice && renderPractice(lesson.practice)}
+            
+            {/* Application */}
+            {lesson.application && renderApplication(lesson.application)}
+            
+            {/* Additional Reading */}
+            {lesson.additional_reading && renderAdditionalReading(lesson.additional_reading)}
             
             {/* Quiz Button at end of lesson content */}
             <div className="lesson-quiz-action">
