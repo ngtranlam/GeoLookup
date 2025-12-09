@@ -1,0 +1,497 @@
+{
+  "document": {
+    "id": "tongquan_phuyen",
+    "type": "reference_material",
+    "title": "Tổng quan về tỉnh Phú Yên trước sát nhập",
+    "description": "Tài liệu tổng quan về tỉnh Phú Yên, bao gồm thông tin về vị trí địa lý, điều kiện tự nhiên, dân số và đơn vị hành chính",
+    "overview": {
+      "introduction": "Tỉnh Phú Yên nằm ở vùng Duyên hải Nam Trung Bộ Việt Nam, có vị trí địa lý quan trọng trong hành lang kinh tế Đông – Tây và ven biển miền Trung.",
+      "basic_info": {
+        "area": "5.045,3 km²",
+        "population": "874.071 người (năm 2020)",
+        "capital": "Thành phố Tuy Hòa",
+        "coastline": "189 km",
+        "terrain_zones": [
+          "Vùng núi và trung du (phía tây)",
+          "Vùng đồng bằng (dọc sông Ba)",
+          "Vùng ven biển (phía đông)"
+        ]
+      }
+    },
+    "sections": [
+      {
+        "section_number": "1",
+        "title": "Vị trí địa lý",
+        "content": {
+          "borders": [
+            {
+              "direction": "Phía Bắc",
+              "adjacent": "1 phần tỉnh Đắk Lắk và tỉnh Bình Định",
+              "natural_border": "Dãy núi Cù Mông"
+            },
+            {
+              "direction": "Phía Nam",
+              "adjacent": "tỉnh Đắk Lắk và tỉnh Khánh Hòa",
+              "natural_border": "Dãy núi Đại Lãnh, đèo Cả (quốc lộ 1A)"
+            },
+            {
+              "direction": "Phía Tây",
+              "adjacent": "các tỉnh Gia Lai và Đắk Lắk",
+              "terrain": "Địa hình đồi núi chuyển tiếp từ cao nguyên xuống trung du và đồng bằng"
+            },
+            {
+              "direction": "Phía Đông",
+              "adjacent": "Biển Đông",
+              "coastline": "189 km"
+            }
+          ],
+          "extreme_points": {
+            "north": {
+              "location": "Xã Xuân Cảnh, thị xã Sông Cầu",
+              "note": "Tiếp giáp Bình Định"
+            },
+            "south": {
+              "location": "Gần khu vực Vũng Rô, xã Hòa Xuân Nam, thị xã Đông Hòa",
+              "note": "Giáp ranh Khánh Hòa"
+            },
+            "west": {
+              "location": "Giáp huyện Krông Pa của tỉnh Gia Lai, thuộc địa bàn xã Ea Lâm (huyện Sông Hinh)"
+            },
+            "east": {
+              "location": "Mũi Điện (Mũi Đại Lãnh), xã Hòa Tâm, thị xã Đông Hòa",
+              "note": "Một trong những điểm cực đông của đất liền Việt Nam, nơi đón ánh bình minh đầu tiên trên đất liền quốc gia"
+            }
+          }
+        }
+      },
+      {
+        "section_number": "2",
+        "title": "Địa hình",
+        "total_area": "5.045,3 km²",
+        "regions": [
+          {
+            "name": "Vùng núi và trung du",
+            "location": "Phía tây tỉnh",
+            "districts": [
+              "Sông Hinh",
+              "Sơn Hòa",
+              "Đồng Xuân"
+            ],
+            "characteristics": "Địa hình đồi núi thấp xen lẫn các thung lũng sông, thích hợp phát triển nông lâm nghiệp"
+          },
+          {
+            "name": "Vùng đồng bằng",
+            "location": "Dọc các con sông chính như sông Ba",
+            "characteristics": "Nơi tập trung dân cư đông đúc và các trung tâm hành chính – kinh tế lớn"
+          },
+          {
+            "name": "Vùng ven biển",
+            "location": "Phía đông",
+            "features": [
+              "Bãi biển Tuy Hòa",
+              "Vũng Rô",
+              "Bãi Môn",
+              "Hệ thống đầm phá và vịnh nhỏ"
+            ],
+            "advantages": "Thuận lợi cho nuôi trồng thủy sản và phát triển du lịch"
+          }
+        ]
+      },
+      {
+        "section_number": "3",
+        "title": "Dân số",
+        "year": 2020,
+        "total_population": "874.071 người",
+        "distribution": "Phân bố không đều, chủ yếu tập trung ở vùng đồng bằng và ven biển",
+        "main_population_centers": [
+          "TP Tuy Hòa",
+          "Thị xã Đông Hòa",
+          "Thị xã Sông Cầu"
+        ],
+        "characteristics": "Khu vực có hạ tầng phát triển, nhiều cơ hội việc làm và dịch vụ"
+      },
+      {
+        "section_number": "4",
+        "title": "Đơn vị hành chính",
+        "administrative_divisions": {
+          "district_level": {
+            "total": 9,
+            "breakdown": {
+              "cities": 1,
+              "towns": 2,
+              "districts": 6
+            },
+            "list": [
+              {
+                "type": "Thành phố",
+                "name": "Tuy Hòa"
+              },
+              {
+                "type": "Thị xã",
+                "names": [
+                  "Sông Cầu",
+                  "Đông Hòa"
+                ]
+              },
+              {
+                "type": "Huyện",
+                "names": [
+                  "Tuy An",
+                  "Đồng Xuân",
+                  "Sơn Hòa",
+                  "Sông Hinh",
+                  "Phú Hòa",
+                  "Tây Hòa"
+                ]
+              }
+            ],
+            "administrative_map": {
+              "title": "Bản đồ hành chính tỉnh Phú Yên trước sáp nhập",
+              "image_url": "images/tongquan_phuyen/hinh_1.png"
+            }
+          },
+          "commune_level": {
+            "total": 106,
+            "breakdown": {
+              "wards": 18,
+              "townships": 6,
+              "communes": 82
+            }
+          }
+        }
+      },
+      {
+        "section_number": "5",
+        "title": "Giao thông",
+        "description": "Tỉnh Phú Yên có hệ thống giao thông đa dạng, bao gồm đường bộ, đường sắt, đường thủy và đường hàng không, giúp kết nối tỉnh với các khu vực khác trong nước.",
+        "subsections": [
+          {
+            "title": "Đường bộ",
+            "routes": [
+              {
+                "name": "Quốc lộ 1A",
+                "description": "Tuyến đường huyết mạch chạy dọc qua Phú Yên",
+                "connection": "Nối tỉnh với Bình Định (phía Bắc) và Khánh Hòa (phía Nam)",
+                "importance": "Tuyến đường chính phục vụ cho việc di chuyển và vận tải hàng hóa"
+              },
+              {
+                "name": "Quốc lộ 25",
+                "connection": "Kết nối Phú Yên với tỉnh Gia Lai",
+                "importance": "Tạo điều kiện thuận lợi cho giao thương giữa vùng duyên hải Nam Trung Bộ và Tây Nguyên"
+              },
+              {
+                "name": "Quốc lộ 29",
+                "connection": "Liên kết Phú Yên với tỉnh Đắk Lắk",
+                "importance": "Tuyến đường quan trọng cho việc giao thương giữa các khu vực"
+              },
+              {
+                "name": "Đường tỉnh lộ và đường huyện",
+                "description": "Hệ thống đường tỉnh và đường huyện kết nối các xã, phường, thị trấn, đảm bảo việc di chuyển thuận lợi trong nội tỉnh"
+              }
+            ]
+          },
+          {
+            "title": "Đường sắt",
+            "railways": [
+              {
+                "name": "Tuyến đường sắt Bắc – Nam",
+                "description": "Chạy qua Phú Yên",
+                "main_station": "Ga Tuy Hòa",
+                "other_stations": [
+                  "Ga Đông Tác",
+                  "Ga Phú Hiệp"
+                ],
+                "function": "Phục vụ cho việc vận chuyển hành khách và hàng hóa",
+                "importance": "Một trong những tuyến giao thông quan trọng, giúp kết nối Phú Yên với các tỉnh từ Bắc vào Nam"
+              }
+            ]
+          }
+        ],
+        "transportation_map": {
+          "title": "Bản đồ giao thông tỉnh Phú Yên",
+          "image_url": "images/tongquan_phuyen/hinh_11.png"
+        }
+      }
+    ],
+    "detailed_districts": [
+      {
+        "district_number": 1,
+        "name": "Thành phố Tuy Hòa",
+        "type": "Thành phố",
+        "established": 2005,
+        "area": "106,82 km²",
+        "population": "155.920 người",
+        "subdivisions": {
+          "wards": [
+            "Phường 1",
+            "Phường 2",
+            "Phường 4",
+            "Phường 5",
+            "Phường 7",
+            "Phường 9",
+            "Phú Đông",
+            "Phú Lâm",
+            "Phú Thạnh"
+          ],
+          "communes": [
+            "An Phú",
+            "Bình Kiến",
+            "Hòa Kiến"
+          ]
+        },
+        "total_subdivisions": "9 phường và 3 xã",
+        "map": {
+          "title": "Bản đồ hành chính Thành phố Tuy Hòa",
+          "image_url": "images/tongquan_phuyen/hinh_2.jpg"
+        }
+      },
+      {
+        "district_number": 2,
+        "name": "Thị xã Sông Cầu",
+        "type": "Thị xã",
+        "established": 2009,
+        "area": "492,8 km²",
+        "population": "120.780 người",
+        "subdivisions": {
+          "wards": [
+            "Xuân Đài",
+            "Xuân Phú",
+            "Xuân Thành",
+            "Xuân Yên"
+          ],
+          "communes": [
+            "Xuân Bình",
+            "Xuân Cảnh",
+            "Xuân Hải",
+            "Xuân Lâm",
+            "Xuân Lộc",
+            "Xuân Phương",
+            "Xuân Thịnh",
+            "Xuân Thọ 1",
+            "Xuân Thọ 2"
+          ]
+        },
+        "total_subdivisions": "4 phường và 9 xã",
+        "map": {
+          "title": "Bản đồ hành chính Thị xã Sông Cầu",
+          "image_url": "images/tongquan_phuyen/hinh_3.png"
+        }
+      },
+      {
+        "district_number": 3,
+        "name": "Thị xã Đông Hòa",
+        "type": "Thị xã",
+        "established": 2020,
+        "area": "265,62 km²",
+        "population": "119.921 người",
+        "subdivisions": {
+          "wards": [
+            "Hòa Hiệp Bắc",
+            "Hòa Hiệp Nam",
+            "Hòa Hiệp Trung",
+            "Hòa Vinh",
+            "Hòa Xuân Tây"
+          ],
+          "communes": [
+            "Hòa Tâm",
+            "Hòa Tân Đông",
+            "Hòa Thành",
+            "Hòa Xuân Đông",
+            "Hòa Xuân Nam"
+          ]
+        },
+        "total_subdivisions": "5 phường và 5 xã",
+        "map": {
+          "title": "Bản đồ hành chính Thị xã Đông Hòa",
+          "image_url": "images/tongquan_phuyen/hinh_4.png"
+        }
+      },
+      {
+        "district_number": 4,
+        "name": "Huyện Tuy An",
+        "type": "Huyện",
+        "area": "435 km²",
+        "population": "133.000 người",
+        "subdivisions": {
+          "townships": [
+            "Chí Thạnh"
+          ],
+          "communes": [
+            "An Cư",
+            "An Chấn",
+            "An Dân",
+            "An Định",
+            "An Hải",
+            "An Hiệp",
+            "An Hòa Hải",
+            "An Lĩnh",
+            "An Mỹ",
+            "An Nghiệp",
+            "An Ninh Đông",
+            "An Ninh Tây",
+            "An Thạch",
+            "An Thọ",
+            "An Xuân"
+          ]
+        },
+        "total_subdivisions": "1 thị trấn và 15 xã",
+        "map": {
+          "title": "Bản đồ hành chính Huyện Tuy An",
+          "image_url": "images/tongquan_phuyen/hinh_5.png"
+        }
+      },
+      {
+        "district_number": 5,
+        "name": "Huyện Phú Hòa",
+        "type": "Huyện",
+        "established": 2002,
+        "area": "264,2 km²",
+        "population": "113.850 người",
+        "subdivisions": {
+          "townships": [
+            "Phú Hòa"
+          ],
+          "communes": [
+            "Hòa An",
+            "Hòa Định Đông",
+            "Hòa Định Tây",
+            "Hòa Hội",
+            "Hòa Quang Bắc",
+            "Hòa Quang Nam",
+            "Hòa Thắng",
+            "Hòa Trị"
+          ]
+        },
+        "total_subdivisions": "1 thị trấn và 8 xã",
+        "map": {
+          "title": "Bản đồ hành chính Huyện Phú Hòa",
+          "image_url": "images/tongquan_phuyen/hinh_6.png"
+        }
+      },
+      {
+        "district_number": 6,
+        "name": "Huyện Tây Hòa",
+        "type": "Huyện",
+        "established": 2005,
+        "area": "610,43 km²",
+        "population": "127.000 người",
+        "subdivisions": {
+          "townships": [
+            "Phú Thứ"
+          ],
+          "communes": [
+            "Hòa Bình 1",
+            "Hòa Đồng",
+            "Hòa Mỹ Đông",
+            "Hòa Mỹ Tây",
+            "Hòa Phong",
+            "Hòa Phú",
+            "Hòa Tân Tây",
+            "Hòa Thịnh",
+            "Sơn Thành Đông",
+            "Sơn Thành Tây"
+          ]
+        },
+        "total_subdivisions": "1 thị trấn và 10 xã",
+        "map": {
+          "title": "Bản đồ hành chính Huyện Tây Hòa",
+          "image_url": "images/tongquan_phuyen/hinh_7.png"
+        }
+      },
+      {
+        "district_number": 7,
+        "name": "Huyện Sơn Hòa",
+        "type": "Huyện",
+        "established": 1984,
+        "area": "950,33 km²",
+        "population": "60.290 người",
+        "subdivisions": {
+          "townships": [
+            "Củng Sơn"
+          ],
+          "communes": [
+            "Cà Lúi",
+            "Ea Chà Rang",
+            "Krông Pa",
+            "Phước Tân",
+            "Sơn Định",
+            "Sơn Hà",
+            "Sơn Hội",
+            "Sơn Long",
+            "Sơn Nguyên",
+            "Sơn Phước",
+            "Sơn Xuân",
+            "Suối Bạc",
+            "Suối Trai"
+          ]
+        },
+        "total_subdivisions": "1 thị trấn và 13 xã",
+        "map": {
+          "title": "Bản đồ hành chính Huyện Sơn Hòa",
+          "image_url": "images/tongquan_phuyen/hinh_8.png"
+        }
+      },
+      {
+        "district_number": 8,
+        "name": "Huyện Sông Hinh",
+        "type": "Huyện",
+        "established": 1985,
+        "area": "890,2 km²",
+        "population": "58.700 người",
+        "subdivisions": {
+          "townships": [
+            "Hai Riêng"
+          ],
+          "communes": [
+            "Đức Bình Đông",
+            "Đức Bình Tây",
+            "Ea Bá",
+            "Ea Bar",
+            "Ea Bia",
+            "Ea Lâm",
+            "Ea Ly",
+            "Ea Trol",
+            "Sông Hinh",
+            "Sơn Giang"
+          ]
+        },
+        "total_subdivisions": "1 thị trấn và 10 xã",
+        "map": {
+          "title": "Bản đồ hành chính Huyện Sông Hinh",
+          "image_url": "images/tongquan_phuyen/hinh_9.png"
+        }
+      },
+      {
+        "district_number": 9,
+        "name": "Huyện Đồng Xuân",
+        "type": "Huyện",
+        "established": 1611,
+        "area": "1.065,08 km²",
+        "population": "65.300 người",
+        "subdivisions": {
+          "townships": [
+            "La Hai"
+          ],
+          "communes": [
+            "Đa Lộc",
+            "Phú Mỡ",
+            "Xuân Lãnh",
+            "Xuân Long",
+            "Xuân Phước",
+            "Xuân Quang 1",
+            "Xuân Quang 2",
+            "Xuân Quang 3",
+            "Xuân Sơn Bắc",
+            "Xuân Sơn Nam"
+          ]
+        },
+        "total_subdivisions": "1 thị trấn và 10 xã",
+        "map": {
+          "title": "Bản đồ hành chính Huyện Đồng Xuân",
+          "image_url": "images/tongquan_phuyen/hinh_10.png"
+        }
+      }
+    ],
+    "note": "Đây là tài liệu tổng quan về tỉnh Phú Yên trước khi sát nhập. Các thông tin về dân số, diện tích được cập nhật năm 2020. Tài liệu không bao gồm câu hỏi hay bài tập, chỉ mang tính chất giới thiệu và tham khảo. Tất cả bản đồ hành chính và bản đồ giao thông được đính kèm với link hình ảnh tương ứng."
+  }
+}

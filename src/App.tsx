@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { searchLandmarkWithEnhancedAddress } from './services/enhancedGeminiService';
 import { searchMusicianWithGemini, MusicianResult as MusicianData } from './services/musicianGeminiService';
 import LandmarkResult from './components/LandmarkResult';
@@ -8,6 +8,9 @@ import MusicianDetailPopup from './components/MusicianDetailPopup';
 import LessonPage from './components/LessonPage';
 import DocumentsPage from './components/DocumentsPage';
 import ProvinceDetailPage from './components/ProvinceDetailPage';
+import DakLakOldPage from './components/DakLakOldPage';
+import DakLakNewPage from './components/DakLakNewPage';
+import PhuYenOldPage from './components/PhuYenOldPage';
 
 // Mock data cho demo
 const mockResults = [
@@ -37,8 +40,25 @@ function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [showMusicianPopup, setShowMusicianPopup] = useState(false);
   const [searchError, setSearchError] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<'explore' | 'lessons' | 'documents' | 'province-detail'>('explore');
+  const [currentPage, setCurrentPage] = useState<'explore' | 'lessons' | 'documents' | 'province-detail' | 'daklak-old' | 'daklak-new' | 'phuyen-old'>('explore');
   const [selectedProvince, setSelectedProvince] = useState<string | null>(null);
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
+
+  // Page transition effect
+  useEffect(() => {
+    setIsPageTransitioning(true);
+    const timer = setTimeout(() => {
+      setIsPageTransitioning(false);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [currentPage]);
+
+  const handlePageChange = (newPage: 'explore' | 'lessons' | 'documents' | 'province-detail' | 'daklak-old' | 'daklak-new' | 'phuyen-old') => {
+    setIsPageTransitioning(true);
+    setTimeout(() => {
+      setCurrentPage(newPage);
+    }, 150);
+  };
 
   // Detailed place information
   const placeDetails = {
@@ -199,19 +219,19 @@ function App() {
           <div className="nav-buttons">
             <button 
               className={`nav-btn ${currentPage === 'explore' ? 'nav-btn-active' : ''}`}
-              onClick={() => setCurrentPage('explore')}
+              onClick={() => handlePageChange('explore')}
             >
               Khám phá
             </button>
             <button 
               className={`nav-btn ${currentPage === 'lessons' ? 'nav-btn-active' : ''}`}
-              onClick={() => setCurrentPage('lessons')}
+              onClick={() => handlePageChange('lessons')}
             >
               Kiến thức
             </button>
             <button 
               className={`nav-btn ${currentPage === 'documents' ? 'nav-btn-active' : ''}`}
-              onClick={() => setCurrentPage('documents')}
+              onClick={() => handlePageChange('documents')}
             >
               Tư liệu
             </button>
@@ -219,35 +239,65 @@ function App() {
         </nav>
       </header>
 
+      {/* Page Loading Overlay */}
+      <div className={`page-loading-overlay ${isPageTransitioning ? 'active' : ''}`}>
+        <div className="page-loading-spinner"></div>
+      </div>
+
       {/* Conditional Content Based on Current Page */}
-      {currentPage === 'province-detail' && selectedProvince ? (
-        /* Province Detail Page */
-        <>
-          <ProvinceDetailPage 
-            provinceId={selectedProvince}
-            onBack={() => {
-              setCurrentPage('explore');
-              setSelectedProvince(null);
-            }}
-          />
-        </>
-      ) : currentPage === 'lessons' ? (
-        /* Lessons Page Content */
-        <>
-          <LessonPage />
-        </>
-      ) : currentPage === 'documents' ? (
-        /* Documents Page Content */
-        <>
-          <DocumentsPage 
-            onSelectProvince={(provinceId) => {
-              setSelectedProvince(provinceId);
-              setCurrentPage('province-detail');
-            }}
-          />
-        </>
-      ) : (
-        <>
+      <div className={`page-container ${isPageTransitioning ? 'page-transition-exit-active' : 'page-transition-enter-active'}`}>
+        {currentPage === 'phuyen-old' ? (
+          /* Phu Yen Old Page */
+          <div className="page-content" style={{ animation: 'slideInFromBottom 0.6s ease-out' }}>
+            <PhuYenOldPage />
+          </div>
+        ) : currentPage === 'daklak-old' ? (
+          /* Dak Lak Old Page */
+          <div className="page-content" style={{ animation: 'slideInFromBottom 0.6s ease-out' }}>
+            <DakLakOldPage />
+          </div>
+        ) : currentPage === 'daklak-new' ? (
+          /* Dak Lak New Page */
+          <div className="page-content" style={{ animation: 'slideInFromBottom 0.6s ease-out' }}>
+            <DakLakNewPage />
+          </div>
+        ) : currentPage === 'province-detail' && selectedProvince ? (
+          /* Province Detail Page */
+          <div className="page-content" style={{ animation: 'slideInFromRight 0.6s ease-out' }}>
+            <ProvinceDetailPage 
+              provinceId={selectedProvince}
+              onBack={() => {
+                handlePageChange('explore');
+                setSelectedProvince(null);
+              }}
+            />
+          </div>
+        ) : currentPage === 'lessons' ? (
+          /* Lessons Page Content */
+          <div className="page-content" style={{ animation: 'fadeInLeft 0.6s ease-out' }}>
+            <LessonPage />
+          </div>
+        ) : currentPage === 'documents' ? (
+          /* Documents Page Content */
+          <div className="page-content" style={{ animation: 'fadeInRight 0.6s ease-out' }}>
+            <DocumentsPage 
+              onSelectProvince={(provinceId) => {
+                setSelectedProvince(provinceId);
+                handlePageChange('province-detail');
+              }}
+              onNavigateToDakLakOld={() => {
+                handlePageChange('daklak-old');
+              }}
+              onNavigateToDakLakNew={() => {
+                handlePageChange('daklak-new');
+              }}
+              onNavigateToPhuyenOld={() => {
+                handlePageChange('phuyen-old');
+              }}
+            />
+          </div>
+        ) : (
+          <div className="page-content" style={{ animation: 'scaleIn 0.6s ease-out' }}>
           {/* Hero Section */}
           <section className="hero citizenship-hero">
         <div className="container">
@@ -533,8 +583,9 @@ function App() {
           </div>
         </div>
       </section>
-        </>
-      )}
+          </div>
+        )}
+      </div>
 
       {/* Floating 3D Sphere - Fixed Position - TEMPORARILY DISABLED */}
       {/*

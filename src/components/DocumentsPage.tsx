@@ -22,9 +22,12 @@ interface DocumentLink {
 
 interface DocumentsPageProps {
   onSelectProvince?: (provinceId: string) => void;
+  onNavigateToDakLakOld?: () => void;
+  onNavigateToDakLakNew?: () => void;
+  onNavigateToPhuyenOld?: () => void;
 }
 
-const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince }) => {
+const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavigateToDakLakOld, onNavigateToDakLakNew, onNavigateToPhuyenOld }) => {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [previewFile, setPreviewFile] = useState<UploadedFile | null>(null);
@@ -338,7 +341,7 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince }) => {
         <div className="quick-actions">
           <h2>Tư liệu nổi bật</h2>
           <div className="action-cards">
-            <div className="action-card" onClick={() => onSelectProvince?.('daklak-old')}>
+            <div className="action-card" onClick={() => onNavigateToDakLakOld?.()}>
               <div className="action-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
@@ -348,7 +351,7 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince }) => {
               <p>Tài liệu trước sáp nhập</p>
             </div>
             
-            <div className="action-card" onClick={() => onSelectProvince?.('phuyen-old')}>
+            <div className="action-card" onClick={() => onNavigateToPhuyenOld?.()}>
               <div className="action-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
@@ -358,7 +361,7 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince }) => {
               <p>Tài liệu trước sáp nhập</p>
             </div>
             
-            <div className="action-card" onClick={() => onSelectProvince?.('daklak-new')}>
+            <div className="action-card" onClick={() => onNavigateToDakLakNew?.()}>
               <div className="action-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-5H18V4c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v2H9V4c0-.55-.45-1-1-1H7c-.55 0-1 .45-1 1v2H4.5c-.83 0-1.5.67-1.5 1.5v1c0 .28.22.5.5.5h16c.28 0 .5-.22.5-.5v-1c0-.83-.67-1.5-1.5-1.5z" fill="currentColor"/>

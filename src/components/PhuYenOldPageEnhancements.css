@@ -1,0 +1,683 @@
+/* Phú Yên Old Page Professional Enhancements */
+
+/* Modern District Cards */
+.district-card-modern {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.district-card-modern:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: rgba(30, 60, 114, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.district-card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.district-card-modern:hover .district-card-background {
+  opacity: 1;
+}
+
+.district-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+}
+
+.district-header-modern {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.district-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(30, 60, 114, 0.05) 100%);
+  border-radius: 16px;
+  color: #1e3c72;
+  transition: all 0.3s ease;
+}
+
+.district-card-modern:hover .district-icon {
+  transform: rotate(5deg) scale(1.1);
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.2) 0%, rgba(30, 60, 114, 0.1) 100%);
+}
+
+.district-title-section {
+  flex: 1;
+}
+
+.district-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.district-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.district-type-badge.thành-phố {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+}
+
+.district-type-badge.thị-xã {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #fff;
+}
+
+.district-type-badge.huyện {
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: #fff;
+}
+
+.district-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-item-modern {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(30, 60, 114, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(30, 60, 114, 0.1);
+}
+
+.stat-item-modern:hover {
+  background: rgba(30, 60, 114, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(30, 60, 114, 0.2);
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(30, 60, 114, 0.1);
+  border-radius: 10px;
+  color: #1e3c72;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value-modern {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3c72;
+  line-height: 1;
+}
+
+.stat-label-modern {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.district-action-modern {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0 -1.5rem -1.5rem -1.5rem;
+  background: rgba(30, 60, 114, 0.05);
+  border-top: 1px solid rgba(30, 60, 114, 0.1);
+  transition: all 0.3s ease;
+}
+
+.district-card-modern:hover .district-action-modern {
+  background: rgba(30, 60, 114, 0.1);
+}
+
+.action-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1e3c72;
+}
+
+.district-action-modern svg {
+  color: rgba(30, 60, 114, 0.7);
+  transition: all 0.3s ease;
+}
+
+.district-card-modern:hover .district-action-modern svg {
+  transform: translateX(4px);
+  color: #1e3c72;
+}
+
+/* Transport Map Enhancements */
+.transport-map-section {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.transport-map-section:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(30, 60, 114, 0.2);
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.map-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 0.5rem 0;
+}
+
+.map-header p {
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+.transport-map-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.map-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.map-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.legend-item span {
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.transport-map-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.transport-map-container:hover .transport-map-image {
+  transform: scale(1.02);
+}
+
+.map-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.map-caption svg {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .district-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .district-header-modern {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .district-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .map-overlay {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  
+  .map-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Transport Section Enhancements */
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.transport-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.transport-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(30, 60, 114, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.transport-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(30, 60, 114, 0.05) 100%);
+  border-radius: 20px;
+  color: #1e3c72;
+  margin: 0 auto 1.5rem auto;
+  transition: all 0.3s ease;
+}
+
+.transport-card:hover .transport-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.2) 0%, rgba(30, 60, 114, 0.1) 100%);
+}
+
+.transport-card h4 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 1.5rem 0;
+}
+
+.transport-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transport-card li {
+  background: rgba(30, 60, 114, 0.05);
+  border: 1px solid rgba(30, 60, 114, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.transport-card li:hover {
+  background: rgba(30, 60, 114, 0.1);
+  border-color: rgba(30, 60, 114, 0.2);
+  transform: translateX(5px);
+}
+
+.transport-card li:last-child {
+  margin-bottom: 0;
+}
+
+.transport-card strong {
+  color: #1e3c72;
+  font-weight: 600;
+}
+
+/* District Modal Enhancements */
+.district-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.district-modal {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  max-width: 1000px;
+  max-height: 85vh;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: modalSlideIn 0.4s ease-out;
+  margin: auto;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(30, 60, 114, 0.1);
+}
+
+.modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0;
+}
+
+.modal-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(30, 60, 114, 0.1);
+  color: #1e3c72;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(30, 60, 114, 0.2);
+  transform: scale(1.1);
+}
+
+.modal-content {
+  padding: 0;
+  overflow-y: auto;
+  max-height: calc(85vh - 100px);
+  display: flex;
+}
+
+.modal-info {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-details {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.modal-details h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(30, 60, 114, 0.1);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  background: rgba(30, 60, 114, 0.05);
+  border: 1px solid rgba(30, 60, 114, 0.1);
+  border-radius: 12px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3c72;
+}
+
+.subdivisions-section {
+  margin-bottom: 1rem;
+}
+
+.subdivisions-section h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subdivisions-section h5::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  border-radius: 2px;
+}
+
+.subdivisions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.subdivision-item {
+  background: rgba(30, 60, 114, 0.1);
+  color: #1e3c72;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(30, 60, 114, 0.2);
+  transition: all 0.3s ease;
+}
+
+.subdivision-item:hover {
+  background: rgba(30, 60, 114, 0.2);
+  transform: translateY(-2px);
+}
+
+.modal-map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(245, 247, 250, 0.5);
+  border-left: 1px solid rgba(30, 60, 114, 0.1);
+}
+
+.district-map-image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.district-map-image:hover {
+  transform: scale(1.02);
+}
+
+.modal-map .map-caption {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 1rem;
+  background: rgba(30, 60, 114, 0.05);
+  border-radius: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .district-modal {
+    margin: 1rem;
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-content {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+  }
+  
+  .modal-info {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-map {
+    order: -1;
+  }
+}
+
+/* Summary Stats Styling */
+.summary-stat .stat-number {
+  color: #1e3c72 !important;
+  font-weight: 700 !important;
+}
+
+.summary-stat .stat-label {
+  color: #1e3c72 !important;
+  font-weight: 500 !important;
+}
+
+/* Animation delays for staggered entrance */
+.district-card-modern:nth-child(1) { animation-delay: 0.1s; }
+.district-card-modern:nth-child(2) { animation-delay: 0.2s; }
+.district-card-modern:nth-child(3) { animation-delay: 0.3s; }
+.district-card-modern:nth-child(4) { animation-delay: 0.4s; }
+.district-card-modern:nth-child(5) { animation-delay: 0.5s; }
+.district-card-modern:nth-child(6) { animation-delay: 0.6s; }
+.district-card-modern:nth-child(7) { animation-delay: 0.7s; }
+.district-card-modern:nth-child(8) { animation-delay: 0.8s; }
+.district-card-modern:nth-child(9) { animation-delay: 0.9s; }

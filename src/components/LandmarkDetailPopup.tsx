@@ -9,12 +9,21 @@ interface LandmarkDetailPopupProps {
 const LandmarkDetailPopup: React.FC<LandmarkDetailPopupProps> = ({ landmark, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isClosing, setIsClosing] = useState(false);
+  const [animationState, setAnimationState] = useState<'entering' | 'open' | 'exiting'>('entering');
   
   // Get all images (thumbnail + additional images)
   const allImages = [
     landmark.image || '/thu-duc.jpeg',
     ...(landmark.images || [])
   ].filter(Boolean);
+
+  // Initialize animation state
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationState('open');
+    }, 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Auto-advance slideshow every 4 seconds
   useEffect(() => {
@@ -29,10 +38,11 @@ const LandmarkDetailPopup: React.FC<LandmarkDetailPopupProps> = ({ landmark, onC
 
   // Handle close with animation
   const handleClose = () => {
+    setAnimationState('exiting');
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 300); // Match animation duration
+    }, 400); // Match animation duration
   };
 
   // Handle click outside to close

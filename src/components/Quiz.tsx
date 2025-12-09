@@ -13,13 +13,11 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
   const [showReview, setShowReview] = useState(false);
   const [showConfirmPopup, setShowConfirmPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showLoadingPopup, setShowLoadingPopup] = useState(false);
-  const [quizReady, setQuizReady] = useState(false);
   const [error, setError] = useState<string>('');
   const [quizStarted, setQuizStarted] = useState(false);
 
   const loadQuiz = async () => {
-    setShowLoadingPopup(true);
+    setIsLoading(true);
     setError('');
     
     try {
@@ -34,21 +32,16 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
       if (quiz && quiz.questions && quiz.questions.length > 0) {
         setQuizData(quiz);
         setSelectedAnswers(new Array(quiz.questions.length).fill(-1));
-        setShowLoadingPopup(false);
-        setQuizReady(true);
+        setIsLoading(false);
+        setQuizStarted(true);
       } else {
         throw new Error('Không thể tạo câu hỏi từ nội dung bài học');
       }
     } catch (err) {
       console.error('Error loading quiz:', err);
       setError(err instanceof Error ? err.message : 'Đã xảy ra lỗi khi tải bài tập');
-      setShowLoadingPopup(false);
+      setIsLoading(false);
     }
-  };
-
-  const startQuiz = () => {
-    setQuizReady(false);
-    setQuizStarted(true);
   };
 
   const handleAnswerSelect = (answerIndex: number) => {
@@ -102,58 +95,10 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
     setShowResults(false);
     setShowReview(false);
     setQuizStarted(false);
-    setQuizReady(false);
-    setShowLoadingPopup(false);
+    setIsLoading(false);
     setError('');
   };
 
-  // Loading popup
-  if (showLoadingPopup) {
-    return (
-      <div className="quiz-container">
-        <div className="loading-popup-overlay">
-          <div className="loading-popup">
-            <div className="loading-content">
-              <div className="loading-spinner-large"></div>
-              <h2>Đang tạo bài tập</h2>
-              <p>Vui lòng chờ trong giây lát...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Quiz ready screen
-  if (quizReady) {
-    return (
-      <div className="quiz-container">
-        <div className="quiz-ready">
-          <div className="ready-header">
-            <h1>10 câu hỏi đã sẵn sàng</h1>
-            <p>Hãy thử thách bản thân với những câu hỏi về quê hương!</p>
-          </div>
-          
-          <div className="questions-preview">
-            {quizData?.questions.map((_, index) => (
-              <div key={index} className="question-item">
-                <span className="question-number">{index + 1}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="ready-actions">
-            <button className="start-quiz-btn" onClick={startQuiz}>
-              Bắt đầu làm bài
-            </button>
-            <button className="back-btn" onClick={resetQuiz}>
-              Quay lại
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (!quizStarted) {
     return (
@@ -193,60 +138,42 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
 
           <div className="start-section">
             <button 
-              className="start-btn"
+              className={`start-btn-modern ${isLoading ? 'loading' : ''}`}
               onClick={loadQuiz}
+              disabled={isLoading}
             >
-              Sẵn sàng
+              <div className="btn-content">
+                {isLoading ? (
+                  <>
+                    <div className="icon-container">
+                      <svg className="loading-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                    <span className="btn-text">Đang tạo bài tập</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="icon-container">
+                      <svg className="ready-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="btn-text">Sẵn sàng</span>
+                  </>
+                )}
+              </div>
+              <div className="btn-glow"></div>
             </button>
-            <p className="start-note">Nhấn để bắt đầu luyện tập</p>
+            <p className="start-note-modern">
+              {isLoading ? 'Vui lòng chờ trong giây lát...' : 'Nhấn để bắt đầu luyện tập'}
+            </p>
           </div>
         </div>
       </div>
     );
   }
 
-  if (showConfirmPopup) {
-    return (
-      <div className="quiz-container">
-        <div className="confirm-popup-overlay">
-          <div className="confirm-popup">
-            <div className="confirm-header">
-              <h2>Xác nhận nộp bài</h2>
-              <p>Vui lòng kiểm tra lại đáp án của bạn trước khi nộp bài:</p>
-            </div>
-            
-            <div className="confirm-answers">
-              {quizData?.questions.map((question, index) => (
-                <div key={index} className="confirm-answer-simple">
-                  <span className="answer-text">
-                    Câu {index + 1}. {selectedAnswers[index] !== -1 
-                      ? String.fromCharCode(65 + selectedAnswers[index])
-                      : '?'
-                    }
-                  </span>
-                </div>
-              ))}
-            </div>
-            
-            <div className="confirm-actions">
-              <button 
-                className="quiz-btn quiz-btn-secondary"
-                onClick={handleCancelSubmit}
-              >
-                ← Quay lại
-              </button>
-              <button 
-                className="quiz-btn quiz-btn-success"
-                onClick={handleConfirmSubmit}
-              >
-                Xác nhận nộp bài
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (showReview) {
     console.log('Rendering review page, showReview:', showReview);
@@ -337,136 +264,69 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
     
     return (
       <div className="quiz-container">
-        <div className="results-modern">
-          {/* Header */}
-          <div className="results-header">
-            <h1 className="results-title">Hoàn thành bài tập!</h1>
-            <p className="results-subtitle">Kết quả của bạn đã được ghi nhận</p>
-          </div>
-
-          {/* Score Card chính */}
-          <div className="score-card-main">
-            <div className="score-visual">
-              <div className="score-ring">
-                <svg className="score-progress" viewBox="0 0 120 120">
-                  <defs>
-                    <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#667eea" />
-                      <stop offset="100%" stopColor="#764ba2" />
-                    </linearGradient>
-                  </defs>
-                  <circle cx="60" cy="60" r="50" className="score-bg"/>
-                  <circle 
-                    cx="60" 
-                    cy="60" 
-                    r="50" 
-                    className="score-fill"
-                    style={{
-                      strokeDasharray: `${percentage * 3.14} 314`,
-                      strokeDashoffset: 0
-                    }}
-                  />
-                </svg>
-                <div className="score-content">
-                  <span className="score-big">{score}</span>
-                  <span className="score-divider">/</span>
-                  <span className="score-total">{quizData?.totalQuestions}</span>
-                </div>
+        <div className="results-horizontal">
+          {/* Main Results Card */}
+          <div className="results-card-horizontal">
+            {/* Score Section */}
+            <div className="score-section-horizontal">
+              <div className="score-display-horizontal">
+                <span className="score-number-horizontal">{score}</span>
+                <span className="score-divider-horizontal">/</span>
+                <span className="score-total-horizontal">{quizData?.totalQuestions}</span>
               </div>
-              <div className="percentage-badge">{percentage}%</div>
+              <div className="percentage-horizontal">{percentage}%</div>
             </div>
-            
-            <div className="score-details">
-              <h3>Phân tích kết quả</h3>
-              <div className="stats-grid">
-                <div className="stat-item correct">
-                  <div className="stat-number">{score}</div>
-                  <div className="stat-label">Câu đúng</div>
-                </div>
-                <div className="stat-item incorrect">
-                  <div className="stat-number">{(quizData?.totalQuestions || 0) - score}</div>
-                  <div className="stat-label">Câu sai</div>
-                </div>
-                <div className="stat-item accuracy">
-                  <div className="stat-number">{percentage}%</div>
-                  <div className="stat-label">Độ chính xác</div>
-                </div>
+
+            {/* Stats Section */}
+            <div className="stats-section-horizontal">
+              <div className="stat-item-horizontal">
+                <span className="stat-label-horizontal">SỐ CÂU ĐÚNG:</span>
+                <span className="stat-value-horizontal correct">{score}</span>
+              </div>
+              <div className="stat-item-horizontal">
+                <span className="stat-label-horizontal">SỐ CÂU SAI:</span>
+                <span className="stat-value-horizontal incorrect">{(quizData?.totalQuestions || 0) - score}</span>
+              </div>
+              <div className="stat-item-horizontal">
+                <span className="stat-label-horizontal">THỜI GIAN:</span>
+                <span className="stat-value-horizontal time">16 giây</span>
               </div>
             </div>
-          </div>
 
-          {/* Achievement Badge */}
-          {percentage >= 70 && (
-            <div className="achievement-modern">
-              <div className={`achievement-card ${
-                percentage >= 90 ? 'gold' : 
-                percentage >= 80 ? 'silver' : 'bronze'
-              }`}>
-                <div className="achievement-info">
-                  <h4>
-                    {percentage >= 90 ? 'Xuất sắc!' : 
-                     percentage >= 80 ? 'Rất tốt!' : 'Khá tốt!'}
-                  </h4>
-                  <p>
-                    {percentage >= 90 ? 'Bạn đã thành thạo kiến thức' : 
-                     percentage >= 80 ? 'Kết quả ấn tượng' : 'Tiếp tục cố gắng nhé!'}
-                  </p>
-                </div>
-              </div>
+            {/* Message Section */}
+            <div className="message-section-horizontal">
+              <div className="message-icon-horizontal">💡</div>
+              <span>Cần cố gắng thêm! Hãy đọc lại bài học để nắm chắc kiến thức.</span>
             </div>
-          )}
 
-          {/* Nhận xét theo kết quả */}
-          <div className="results-message">
-            {percentage >= 90 && (
-              <div className="message excellent">
-                <p>Chúc mừng bạn! Với {score}/{quizData?.totalQuestions} câu đúng ({percentage}%), bạn đã thể hiện sự hiểu biết xuất sắc về lịch sử Việt Nam. Kiến thức vững chắc của bạn thật đáng ngưỡng mộ!</p>
-              </div>
-            )}
-            {percentage >= 80 && percentage < 90 && (
-              <div className="message good">
-                <p>Rất tốt! Bạn đã trả lời đúng {score}/{quizData?.totalQuestions} câu hỏi ({percentage}%). Đây là một kết quả ấn tượng cho thấy bạn đã nắm vững phần lớn kiến thức. Hãy tiếp tục phát huy!</p>
-              </div>
-            )}
-            {percentage >= 70 && percentage < 80 && (
-              <div className="message good">
-                <p>Khá tốt! Với {score}/{quizData?.totalQuestions} câu đúng ({percentage}%), bạn đã cho thấy nền tảng kiến thức khá vững. Hãy ôn lại một số phần để đạt kết quả cao hơn.</p>
-              </div>
-            )}
-            {percentage >= 60 && percentage < 70 && (
-              <div className="message average">
-                <p>Bạn đã trả lời đúng {score}/{quizData?.totalQuestions} câu ({percentage}%). Đây là khởi đầu tốt! Hãy xem lại những câu sai và ôn tập thêm để cải thiện kết quả.</p>
-              </div>
-            )}
-            {percentage >= 50 && percentage < 60 && (
-              <div className="message average">
-                <p>Kết quả {score}/{quizData?.totalQuestions} câu đúng ({percentage}%) cho thấy bạn cần ôn tập thêm. Đừng nản lòng! Hãy xem chi tiết đáp án và học thêm để cải thiện.</p>
-              </div>
-            )}
-            {percentage < 50 && (
-              <div className="message needs-work">
-                <p>Với {score}/{quizData?.totalQuestions} câu đúng ({percentage}%), bạn cần dành thêm thời gian ôn tập. Đây là cơ hội tuyệt vời để học hỏi! Hãy xem lại đáp án và thử lại.</p>
-              </div>
-            )}
-          </div>
-
-          {/* Action buttons */}
-          <div className="results-actions">
-            <button 
-              className="action-btn secondary"
-              onClick={resetQuiz}
-            >
-              Làm lại bài tập
-            </button>
-            <button 
-              className="action-btn primary"
-              onClick={() => {
-                setShowResults(false);
-                setShowReview(true);
-              }}
-            >
-              Xem chi tiết đáp án
-            </button>
+            {/* Action Buttons */}
+            <div className="action-buttons-horizontal">
+              <button 
+                className="action-btn-horizontal secondary"
+                onClick={() => {
+                  setShowResults(false);
+                  setShowReview(true);
+                }}
+              >
+                <div className="btn-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11H15M9 15H15M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5858C12.851 3 13.1054 3.10536 13.2929 3.29289L19.7071 9.70711C19.8946 9.89464 20 10.149 20 10.4142V19C20 20.1046 19.1046 21 18 21H17Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span>Xem đáp án</span>
+              </button>
+              <button 
+                className="action-btn-horizontal primary"
+                onClick={resetQuiz}
+              >
+                <div className="btn-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 4V10H7M23 20V14H17M20.49 9A9 9 0 0 0 5.64 5.64L1 10M3.51 15A9 9 0 0 0 18.36 18.36L23 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span>Làm lại bài tập</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -556,6 +416,36 @@ const Quiz: React.FC<QuizProps> = ({ onBack }) => {
           </button>
         )}
       </div>
+
+      {/* Confirmation Popup Overlay */}
+      {showConfirmPopup && (
+        <div className="confirm-popup-overlay">
+          <div className="confirm-popup-simple">
+            <div className="confirm-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3>Xác nhận nộp bài</h3>
+            <p>Bạn có chắc chắn muốn nộp bài không?</p>
+            
+            <div className="confirm-actions-simple">
+              <button 
+                className="btn-cancel"
+                onClick={handleCancelSubmit}
+              >
+                Hủy
+              </button>
+              <button 
+                className="btn-confirm"
+                onClick={handleConfirmSubmit}
+              >
+                Nộp bài
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

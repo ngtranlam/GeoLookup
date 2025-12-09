@@ -1,0 +1,923 @@
+{
+  "document": {
+    "id": "tongquan_daklak_moi_2025",
+    "type": "reference_material",
+    "title": "Tổng quan tỉnh Đắk Lắk mới sau khi sáp nhập",
+    "effective_date": "01/07/2025",
+    "legal_basis": "Nghị quyết số 1660/NQ-UBTVQH15 ngày 16/6/2025 của Ủy ban Thường vụ Quốc hội",
+    "description": "Tài liệu tổng quan về tỉnh Đắk Lắk mới sau khi hợp nhất với tỉnh Phú Yên theo Nghị quyết số 1660/NQ-UBTVQH15",
+    "overview": {
+      "merger_process": {
+        "title": "Quá trình sáp nhập và tổ chức lại hành chính",
+        "content": "Thực hiện Nghị quyết số 1660/NQ-UBTVQH15 ngày 16/6/2025 của Ủy ban Thường vụ Quốc hội, tỉnh Đắk Lắk chính thức được hợp nhất với tỉnh Phú Yên thành một đơn vị hành chính mới mang tên tỉnh Đắk Lắk. Trung tâm hành chính – chính trị được đặt tại thành phố Buôn Ma Thuột, thủ phủ cũ của tỉnh Đắk Lắk.",
+        "administrative_reform": {
+          "before": {
+            "total_commune_level": 180,
+            "source": "Tỉnh Đắk Lắk cũ"
+          },
+          "after": {
+            "total_commune_level": 102,
+            "breakdown": {
+              "communes": 88,
+              "wards": 14
+            },
+            "details": {
+              "newly_merged": {
+                "communes": 82,
+                "wards": 14,
+                "method": "Hình thành mới thông qua việc sáp nhập, điều chỉnh địa giới, đổi tên hoặc nâng cấp"
+              },
+              "unchanged": {
+                "communes": 6,
+                "reason": "Đặc điểm dân cư rải rác, vùng sâu – vùng xa, đảm bảo phù hợp thực tiễn quản lý địa phương"
+              }
+            }
+          },
+          "significance": "Một trong những cuộc sắp xếp cấp xã quy mô lớn nhất cả nước năm 2025"
+        }
+      },
+      "basic_info": {
+        "area": "18.096,4 km²",
+        "area_note": "Gấp khoảng 2,26 lần tiêu chuẩn tối thiểu theo quy định của trung ương",
+        "area_composition": [
+          "Phần cao nguyên phía Tây (nguyên tỉnh Đắk Lắk)",
+          "Phần đồng bằng – ven biển phía Đông (nguyên tỉnh Phú Yên)"
+        ],
+        "population": "3.346.853 người",
+        "population_rank": "Nhóm các tỉnh có quy mô dân số lớn nhất khu vực Nam Trung Bộ và Tây Nguyên",
+        "capital": "Thành phố Buôn Ma Thuột",
+        "ethnic_composition": {
+          "highland_minorities": [
+            "Ê-đê",
+            "M'nông",
+            "Gia Rai",
+            "Tày",
+            "Nùng"
+          ],
+          "location": "Vùng cao nguyên",
+          "lowland_kinh": {
+            "ethnicity": "Người Kinh",
+            "location": "Khu vực đồng bằng ven biển"
+          },
+          "characteristics": "Tạo nên bản sắc văn hóa phong phú và đa dạng về nguồn lực phát triển nhân văn, du lịch cộng đồng"
+        },
+        "advantages": [
+          "Lực lượng lao động trẻ",
+          "Thị trường tiêu dùng lớn",
+          "Dư địa quy hoạch đô thị, công nghiệp, dịch vụ, nông nghiệp công nghệ cao"
+        ]
+      },
+      "administrative_structure": {
+        "title": "Cơ cấu tổ chức đơn vị hành chính cấp xã",
+        "total": 102,
+        "breakdown": {
+          "communes": 88,
+          "wards": 14
+        },
+        "formation_details": {
+          "newly_formed": {
+            "communes": 82,
+            "wards": 14,
+            "method": "Sáp nhập, điều chỉnh địa giới, đổi tên hoặc nâng cấp"
+          },
+          "unchanged": {
+            "communes": 6,
+            "reason": "Dân cư rải rác, vùng sâu – vùng xa"
+          }
+        },
+        "design_principles": [
+          "Bảo đảm quy mô dân số hợp lý (trên 10.000 dân/xã đối với nông thôn, trên 15.000 dân/phường đối với đô thị)",
+          "Không gian địa lý kết nối tốt",
+          "Tính kế thừa văn hóa – lịch sử – tên gọi quen thuộc với người dân"
+        ]
+      },
+      "administrative_map": {
+        "title": "Bản đồ đơn vị hành chính Tỉnh Đắk Lắk",
+        "image_url": "images/daklak_moi_2025/hinh_1.png"
+      }
+    },
+    "sections": [
+      {
+        "section_number": "1",
+        "title": "Vị trí địa lý của tỉnh Đắk Lắk sau khi sát nhập",
+        "overview": "Tỉnh Đắk Lắk mới sở hữu vị trí địa lý mang tính kết nối liên vùng chiến lược, trải dài từ Tây Nguyên đến Duyên hải Nam Trung Bộ, kết hợp các hệ sinh thái tự nhiên đa dạng: rừng – núi – cao nguyên – đồng bằng – biển.",
+        "borders": [
+          {
+            "direction": "Phía Đông",
+            "adjacent": "Biển Đông"
+          },
+          {
+            "direction": "Phía Tây",
+            "adjacent": "Campuchia"
+          },
+          {
+            "direction": "Phía Bắc",
+            "adjacent": "Tỉnh Gia Lai"
+          },
+          {
+            "direction": "Phía Nam",
+            "adjacent": "Các tỉnh Lâm Đồng và Khánh Hòa"
+          }
+        ],
+        "strategic_advantages": {
+          "infrastructure": "Xây dựng hệ thống giao thông liên vùng",
+          "logistics": "Phát triển chuỗi logistics cao nguyên – cảng biển",
+          "economic_zones": "Phát triển các khu kinh tế, đô thị vùng trung tâm – ven biển",
+          "industry": "Khu công nghiệp – nông nghiệp công nghệ cao",
+          "tourism": "Du lịch sinh thái, du lịch văn hóa",
+          "synergy": "Sự kết hợp giữa tiềm năng nội sinh của cao nguyên Đắk Lắk với lợi thế hạ tầng và kết nối biển của Phú Yên"
+        },
+        "future_vision": "Được kỳ vọng sẽ tạo nên một cực tăng trưởng mới, góp phần tái định hình lại trục phát triển chiến lược của khu vực miền Trung – Tây Nguyên trong những năm tới"
+      },
+      {
+        "section_number": "2",
+        "title": "Danh sách đơn vị hành chính cấp xã, phường tỉnh Đắk Lắk sau khi sáp nhập",
+        "introduction": "Việc sáp nhập tỉnh Phú Yên vào Đắk Lắk và sắp xếp toàn diện hệ thống đơn vị hành chính cấp xã đã tạo ra một cơ cấu tổ chức chính quyền cơ sở hoàn toàn mới cho tỉnh Đắk Lắk từ ngày 1/7/2025. Dưới sự chỉ đạo của Trung ương và theo Nghị quyết số 1660/NQ-UBTVQH15, toàn tỉnh đã tinh gọn bộ máy từ 180 xuống còn 102 đơn vị hành chính cấp xã, trong đó gồm 88 xã và 14 phường.",
+        "table": {
+          "title": "Bảng danh sách các đơn vị hành chính cấp xã sau sáp nhập",
+          "headers": [
+            "STT",
+            "Đơn vị hành chính sáp nhập",
+            "Tên đơn vị hành chính mới",
+            "Diện tích (Km²)",
+            "Dân số (Người)"
+          ],
+          "data": [
+            {
+              "stt": 1,
+              "units_merged": "Xã Hòa Phú, Hòa Xuân, Hòa Khánh",
+              "new_unit_name": "Xã Hòa Phú",
+              "area_km2": "109.07",
+              "population": "48,822"
+            },
+            {
+              "stt": 2,
+              "units_merged": "Phường Thành Công, Tân Tiến, Tân Thành, Tự An, Tân Lợi, xã Cư Êbur",
+              "new_unit_name": "Phường Buôn Ma Thuột",
+              "area_km2": "71.99",
+              "population": "169,596"
+            },
+            {
+              "stt": 3,
+              "units_merged": "Phường Tân An, xã Ea Tu, Hòa Thuận",
+              "new_unit_name": "Phường Tân An",
+              "area_km2": "56.41",
+              "population": "64,122"
+            },
+            {
+              "stt": 4,
+              "units_merged": "Phường Tân Hòa, Tân Lập, xã Hòa Thắng",
+              "new_unit_name": "Phường Tân Lập",
+              "area_km2": "46.70",
+              "population": "73,316"
+            },
+            {
+              "stt": 5,
+              "units_merged": "Phường Khánh Xuân, Thành Nhất",
+              "new_unit_name": "Phường Thành Nhất",
+              "area_km2": "32.22",
+              "population": "52,466"
+            },
+            {
+              "stt": 6,
+              "units_merged": "Phường Ea Tam, xã Ea Kao",
+              "new_unit_name": "Phường Ea Kao",
+              "area_km2": "60.70",
+              "population": "57,070"
+            },
+            {
+              "stt": 7,
+              "units_merged": "Xã Ea Siên, Ea Drông",
+              "new_unit_name": "Xã Ea Drông",
+              "area_km2": "111.13",
+              "population": "23,951"
+            },
+            {
+              "stt": 8,
+              "units_merged": "Phường Đạt Hiếu, An Bình, An Lạc, Thiện An, Thống Nhất, Đoàn Kết",
+              "new_unit_name": "Phường Buôn Hồ",
+              "area_km2": "66.54",
+              "population": "62,780"
+            },
+            {
+              "stt": 9,
+              "units_merged": "Phường Bình Tân, xã Bình Thuận, Cư Bao",
+              "new_unit_name": "Phường Cư Bao",
+              "area_km2": "104.94",
+              "population": "36,911"
+            },
+            {
+              "stt": 10,
+              "units_merged": "Thị trấn Ea Súp, xã Cư M’Lan, Ea Lê",
+              "new_unit_name": "Xã Ea Súp",
+              "area_km2": "418.72",
+              "population": "30,762"
+            },
+            {
+              "stt": 11,
+              "units_merged": "Xã Ia Jlơi, Cư Kbang, Ea Rốk",
+              "new_unit_name": "Xã Ea Rốk",
+              "area_km2": "544.60",
+              "population": "28,785"
+            },
+            {
+              "stt": 12,
+              "units_merged": "Xã Ya Tờ Mốt, Ea Bung",
+              "new_unit_name": "Xã Ea Bung",
+              "area_km2": "390.08",
+              "population": "9,677"
+            },
+            {
+              "stt": 13,
+              "units_merged": "Xã Ia Rvê (giữ nguyên)",
+              "new_unit_name": "Xã Ia Rvê",
+              "area_km2": "217.83",
+              "population": "6,847"
+            },
+            {
+              "stt": 14,
+              "units_merged": "Xã Ia Lốp (giữ nguyên)",
+              "new_unit_name": "Xã Ia Lốp",
+              "area_km2": "194.09",
+              "population": "6,502"
+            },
+            {
+              "stt": 15,
+              "units_merged": "Xã Ea Huar, Tân Hòa, Ea Wer",
+              "new_unit_name": "Xã Ea Wer",
+              "area_km2": "184.61",
+              "population": "29,708"
+            },
+            {
+              "stt": 16,
+              "units_merged": "Xã Ea Bar (Buôn Đôn), Cuôr Knia, Ea Nuôl",
+              "new_unit_name": "Xã Ea Nuôl",
+              "area_km2": "111.74",
+              "population": "43,706"
+            },
+            {
+              "stt": 17,
+              "units_merged": "Xã Krông Na",
+              "new_unit_name": "Xã Buôn Đôn",
+              "area_km2": "1,113.79",
+              "population": "6,582"
+            },
+            {
+              "stt": 18,
+              "units_merged": "Xã Ea Kuêh, Ea Kiết",
+              "new_unit_name": "Xã Ea Kiết",
+              "area_km2": "201.83",
+              "population": "20,177"
+            },
+            {
+              "stt": 19,
+              "units_merged": "Xã Quảng Hiệp, Ea M’nang, Ea M’Droh",
+              "new_unit_name": "Xã Ea M’Droh",
+              "area_km2": "134.00",
+              "population": "33,268"
+            },
+            {
+              "stt": 20,
+              "units_merged": "Thị trấn Quảng Phú, Ea Pốk, xã Cư Suê, Quảng Tiến",
+              "new_unit_name": "Xã Quảng Phú",
+              "area_km2": "111.34",
+              "population": "61,104"
+            },
+            {
+              "stt": 21,
+              "units_merged": "Xã Ea Drơng, Cuôr Đăng",
+              "new_unit_name": "Xã Cuôr Đăng",
+              "area_km2": "102.84",
+              "population": "28,804"
+            },
+            {
+              "stt": 22,
+              "units_merged": "Xã Ea H’đing, Ea Kpam, Cư M’gar",
+              "new_unit_name": "Xã Cư M’gar",
+              "area_km2": "114.98",
+              "population": "32,368"
+            },
+            {
+              "stt": 23,
+              "units_merged": "Xã Ea Tar, Cư Dliê Mnông, Ea Tul",
+              "new_unit_name": "Xã Ea Tul",
+              "area_km2": "159.51",
+              "population": "34,876"
+            },
+            {
+              "stt": 24,
+              "units_merged": "Thị trấn Pơng Drang, xã Ea Ngai, Tân Lập",
+              "new_unit_name": "Xã Pơng Drang",
+              "area_km2": "85.03",
+              "population": "30,208"
+            },
+            {
+              "stt": 25,
+              "units_merged": "Xã Cư Né, Chứ Kbô",
+              "new_unit_name": "Xã Krông Búk",
+              "area_km2": "134.83",
+              "population": "30,822"
+            },
+            {
+              "stt": 26,
+              "units_merged": "Xã Ea Sin, Cư Pơng",
+              "new_unit_name": "Xã Cư Pơng",
+              "area_km2": "137.81",
+              "population": "17,687"
+            },
+            {
+              "stt": 27,
+              "units_merged": "Xã Ea Nam, Ea Tir, Ea Khăl",
+              "new_unit_name": "Xã Ea Khăl",
+              "area_km2": "247.05",
+              "population": "29,956"
+            },
+            {
+              "stt": 28,
+              "units_merged": "Thị trấn Ea Drăng, xã Ea Ral, Dliê Yang",
+              "new_unit_name": "Xã Ea Drăng",
+              "area_km2": "171.34",
+              "population": "54,475"
+            },
+            {
+              "stt": 29,
+              "units_merged": "Xã Cư A Mung, Cư Mốt, Ea Wy",
+              "new_unit_name": "Xã Ea Wy",
+              "area_km2": "213.94",
+              "population": "28,567"
+            },
+            {
+              "stt": 30,
+              "units_merged": "Xã Ea H’leo (giữ nguyên)",
+              "new_unit_name": "Xã Ea H’leo",
+              "area_km2": "340.06",
+              "population": "16,235"
+            },
+            {
+              "stt": 31,
+              "units_merged": "Xã Ea Sol, Ea Hiao",
+              "new_unit_name": "Xã Ea Hiao",
+              "area_km2": "361.69",
+              "population": "30,796"
+            },
+            {
+              "stt": 32,
+              "units_merged": "Thị trấn Krông Năng, xã Phú Lộc, Ea Hồ",
+              "new_unit_name": "Xã Krông Năng",
+              "area_km2": "98.34",
+              "population": "43,678"
+            },
+            {
+              "stt": 33,
+              "units_merged": "Xã Ea Tóh, Ea Tân, Dliê Ya",
+              "new_unit_name": "Xã Dliê Ya",
+              "area_km2": "179.73",
+              "population": "46,569"
+            },
+            {
+              "stt": 34,
+              "units_merged": "Xã Ea Tam, Cư Klông, Tam Giang",
+              "new_unit_name": "Xã Tam Giang",
+              "area_km2": "195.80",
+              "population": "25,470"
+            },
+            {
+              "stt": 35,
+              "units_merged": "Xã Ea Púk, Ea Dăh, Phú Xuân",
+              "new_unit_name": "Xã Phú Xuân",
+              "area_km2": "140.74",
+              "population": "34,836"
+            },
+            {
+              "stt": 36,
+              "units_merged": "Thị trấn Phước An, xã Hòa An (Krông Pắc), Ea Yông, Hòa Tiến",
+              "new_unit_name": "Xã Krông Pắc",
+              "area_km2": "112.52",
+              "population": "68,682"
+            },
+            {
+              "stt": 37,
+              "units_merged": "Xã Hòa Đông, Ea Kênh, Ea Knuếc",
+              "new_unit_name": "Xã Ea Knuếc",
+              "area_km2": "122.39",
+              "population": "43,748"
+            },
+            {
+              "stt": 38,
+              "units_merged": "Xã Ea Yiêng, Ea Uy, Tân Tiến",
+              "new_unit_name": "Xã Tân Tiến",
+              "area_km2": "89.43",
+              "population": "28,767"
+            },
+            {
+              "stt": 39,
+              "units_merged": "Xã Ea Kuăng, Ea Hiu, Ea Phê",
+              "new_unit_name": "Xã Ea Phê",
+              "area_km2": "84.66",
+              "population": "48,605"
+            },
+            {
+              "stt": 40,
+              "units_merged": "Xã Krông Búk, Ea Kly",
+              "new_unit_name": "Xã Ea Kly",
+              "area_km2": "107.63",
+              "population": "40,161"
+            },
+            {
+              "stt": 41,
+              "units_merged": "Xã Vụ Bổn (giữ nguyên)",
+              "new_unit_name": "Xã Vụ Bổn",
+              "area_km2": "109.13",
+              "population": "18,111"
+            },
+            {
+              "stt": 42,
+              "units_merged": "Thị trấn Ea Kar, xã Cư Huê, Ea Đar, Ea Kmút, Cư Ni, Xuân Phú",
+              "new_unit_name": "Xã Ea Kar",
+              "area_km2": "198.67",
+              "population": "87,972"
+            },
+            {
+              "stt": 43,
+              "units_merged": "Xã Cư Elang, Ea Ô",
+              "new_unit_name": "Xã Ea Ô",
+              "area_km2": "137.73",
+              "population": "23,852"
+            },
+            {
+              "stt": 44,
+              "units_merged": "Thị trấn Ea Knốp, xã Ea Tih, Ea Sô, Ea Sar",
+              "new_unit_name": "Xã Ea Knốp",
+              "area_km2": "448.65",
+              "population": "37,016"
+            },
+            {
+              "stt": 45,
+              "units_merged": "Xã Cư Bông, Cư Yang",
+              "new_unit_name": "Xã Cư Yang",
+              "area_km2": "149.43",
+              "population": "16,682"
+            },
+            {
+              "stt": 46,
+              "units_merged": "Xã Cư Prông, Ea Păl",
+              "new_unit_name": "Xã Ea Păl",
+              "area_km2": "102.52",
+              "population": "15,049"
+            },
+            {
+              "stt": 47,
+              "units_merged": "Thị trấn M’Drắk, xã Krông Jing, Ea Lai",
+              "new_unit_name": "Xã M’Drắk",
+              "area_km2": "151.87",
+              "population": "22,808"
+            },
+            {
+              "stt": 48,
+              "units_merged": "Xã Ea H’Mlay, Ea M’Doal, Ea Riêng",
+              "new_unit_name": "Xã Ea Riêng",
+              "area_km2": "167.56",
+              "population": "15,719"
+            },
+            {
+              "stt": 49,
+              "units_merged": "Xã Cư Króa, Cư M’ta",
+              "new_unit_name": "Xã Cư M’ta",
+              "area_km2": "261.06",
+              "population": "13,592"
+            },
+            {
+              "stt": 50,
+              "units_merged": "Xã Cư San, Krông Á",
+              "new_unit_name": "Xã Krông Á",
+              "area_km2": "291.60",
+              "population": "12,900"
+            },
+            {
+              "stt": 51,
+              "units_merged": "Xã Ea Pil, Cư Prao",
+              "new_unit_name": "Xã Cư Prao",
+              "area_km2": "204.89",
+              "population": "13,765"
+            },
+            {
+              "stt": 52,
+              "units_merged": "Xã Ea Trang (giữ nguyên)",
+              "new_unit_name": "Xã Ea Trang",
+              "area_km2": "207.40",
+              "population": "6,585"
+            },
+            {
+              "stt": 53,
+              "units_merged": "Xã Yang Reh, Ea Trul, Hòa Sơn",
+              "new_unit_name": "Xã Hòa Sơn",
+              "area_km2": "108.55",
+              "population": "25,392"
+            },
+            {
+              "stt": 54,
+              "units_merged": "Xã Hòa Thành (Krông Bông), Cư Kty, Dang Kang",
+              "new_unit_name": "Xã Dang Kang",
+              "area_km2": "105.91",
+              "population": "21,301"
+            },
+            {
+              "stt": 55,
+              "units_merged": "Thị trấn Krông Kmar, xã Hòa Lễ, Khuê Ngọc Điền",
+              "new_unit_name": "Xã Krông Bông",
+              "area_km2": "166.03",
+              "population": "23,168"
+            },
+            {
+              "stt": 56,
+              "units_merged": "Xã Cư Drăm, Yang Mao",
+              "new_unit_name": "Xã Yang Mao",
+              "area_km2": "562.38",
+              "population": "16,970"
+            },
+            {
+              "stt": 57,
+              "units_merged": "Xã Hòa Phong (Krông Bông), Cư Pui",
+              "new_unit_name": "Xã Cư Pui",
+              "area_km2": "314.08",
+              "population": "27,561"
+            },
+            {
+              "stt": 58,
+              "units_merged": "Thị trấn Liên Sơn, xã Yang Tao, Bông Krang",
+              "new_unit_name": "Xã Liên Sơn Lắk",
+              "area_km2": "398.82",
+              "population": "26,772"
+            },
+            {
+              "stt": 59,
+              "units_merged": "Xã Buôn Tría, Buôn Triết, Đắk Liêng",
+              "new_unit_name": "Xã Đắk Liêng",
+              "area_km2": "135.55",
+              "population": "22,881"
+            },
+            {
+              "stt": 60,
+              "units_merged": "Xã Ea Rbin, Nam Ka",
+              "new_unit_name": "Xã Nam Ka",
+              "area_km2": "172.86",
+              "population": "6,424"
+            },
+            {
+              "stt": 61,
+              "units_merged": "Xã Đắk Nuê, Đắk Phơi",
+              "new_unit_name": "Xã Đắk Phơi",
+              "area_km2": "266.83",
+              "population": "14,726"
+            },
+            {
+              "stt": 62,
+              "units_merged": "Xã Krông Nô (giữ nguyên)",
+              "new_unit_name": "Xã Krông Nô",
+              "area_km2": "282.01",
+              "population": "10,301"
+            },
+            {
+              "stt": 63,
+              "units_merged": "Xã Cư Êwi, Ea Hu, Ea Ning",
+              "new_unit_name": "Xã Ea Ning",
+              "area_km2": "86.21",
+              "population": "34,175"
+            },
+            {
+              "stt": 64,
+              "units_merged": "Xã Hòa Hiệp, Dray Bhăng, một phần xã Ea Bhốk",
+              "new_unit_name": "Xã Dray Bhăng",
+              "area_km2": "101.37",
+              "population": "39,801"
+            },
+            {
+              "stt": 65,
+              "units_merged": "Xã Ea Tiêu, Ea Ktang, phần còn lại xã Ea Bhốk",
+              "new_unit_name": "Xã Ea Ktur",
+              "area_km2": "100.72",
+              "population": "54,269"
+            },
+            {
+              "stt": 66,
+              "units_merged": "Thị trấn Buôn Trấp, xã Bình Hòa, Quảng Điền",
+              "new_unit_name": "Xã Krông Ana",
+              "area_km2": "107.23",
+              "population": "48,491"
+            },
+            {
+              "stt": 67,
+              "units_merged": "Xã Băng A Drênh, Dur Kmăl",
+              "new_unit_name": "Xã Dur Kmăl",
+              "area_km2": "114.49",
+              "population": "12,594"
+            },
+            {
+              "stt": 68,
+              "units_merged": "Xã Ea Bông, Dray Sáp, Ea Na",
+              "new_unit_name": "Xã Ea Na",
+              "area_km2": "134.18",
+              "population": "42,164"
+            },
+            {
+              "stt": 69,
+              "units_merged": "Phường 1, 2, 4, 5, 7, một phần Phường 9, phần còn lại của xã Hòa An, Hòa Trị",
+              "new_unit_name": "Phường Tuy Hòa",
+              "area_km2": "33.77",
+              "population": "126,118"
+            },
+            {
+              "stt": 70,
+              "units_merged": "Phường Phú Đông, Phú Lâm, Phú Thạnh, xã Hòa Thành, một phần phường Hòa Hiệp Bắc, phần còn lại xã Hòa Bình 1",
+              "new_unit_name": "Phường Phú Yên",
+              "area_km2": "44.04",
+              "population": "61,832"
+            },
+            {
+              "stt": 71,
+              "units_merged": "Xã An Phú, Hòa Kiến, Bình Kiến, phần còn lại Phường 9",
+              "new_unit_name": "Phường Bình Kiến",
+              "area_km2": "73.71",
+              "population": "44,406"
+            },
+            {
+              "stt": 72,
+              "units_merged": "Xã Xuân Lâm, Xuân Thọ 1, Xuân Thọ 2",
+              "new_unit_name": "Xã Xuân Thọ",
+              "area_km2": "192.12",
+              "population": "10,793"
+            },
+            {
+              "stt": 73,
+              "units_merged": "Xã Xuân Bình, Xuân Cảnh",
+              "new_unit_name": "Xã Xuân Cảnh",
+              "area_km2": "83.81",
+              "population": "23,972"
+            },
+            {
+              "stt": 74,
+              "units_merged": "Xã Xuân Hải, Xuân Lộc",
+              "new_unit_name": "Xã Xuân Lộc",
+              "area_km2": "114.01",
+              "population": "27.34"
+            },
+            {
+              "stt": 75,
+              "units_merged": "Phường Xuân Thành, Xuân Đài",
+              "new_unit_name": "Phường Xuân Đài",
+              "area_km2": "13.44",
+              "population": "21,574"
+            },
+            {
+              "stt": 76,
+              "units_merged": "Phường Xuân Yên, Xuân Phú, xã Xuân Phương, Xuân Thịnh",
+              "new_unit_name": "Phường Sông Cầu",
+              "area_km2": "90.49",
+              "population": "38,891"
+            },
+            {
+              "stt": 77,
+              "units_merged": "Xã Hòa Tâm, Hòa Xuân Đông, Hòa Xuân Nam",
+              "new_unit_name": "Xã Hòa Xuân",
+              "area_km2": "129.33",
+              "population": "22,962"
+            },
+            {
+              "stt": 78,
+              "units_merged": "Phường Hòa Vinh, Hòa Xuân Tây, xã Hòa Tân Đông",
+              "new_unit_name": "Phường Đông Hòa",
+              "area_km2": "77.54",
+              "population": "47,632"
+            },
+            {
+              "stt": 79,
+              "units_merged": "Phường Hòa Hiệp Trung, Hòa Hiệp Nam, phần còn lại phường Hòa Hiệp Bắc",
+              "new_unit_name": "Phường Hòa Hiệp",
+              "area_km2": "40.81",
+              "population": "53,597"
+            },
+            {
+              "stt": 80,
+              "units_merged": "Thị trấn Chí Thạnh, xã An Dân, An Định",
+              "new_unit_name": "Xã Tuy An Bắc",
+              "area_km2": "52.32",
+              "population": "26,174"
+            },
+            {
+              "stt": 81,
+              "units_merged": "Xã An Ninh Đông, An Ninh Tây, An Thạch",
+              "new_unit_name": "Xã Tuy An Đông",
+              "area_km2": "46.05",
+              "population": "40,108"
+            },
+            {
+              "stt": 82,
+              "units_merged": "Xã An Hiệp, Hòa Hòa An, An Cư",
+              "new_unit_name": "Xã Ô Loan",
+              "area_km2": "103,48",
+              "population": "40,278"
+            },
+            {
+              "stt": 83,
+              "units_merged": "Xã An Thọ, Thanh Mỹ, An Chấn",
+              "new_unit_name": "Xã Tuy An Nam",
+              "area_km2": "69.99",
+              "population": "29,805"
+            },
+            {
+              "stt": 84,
+              "units_merged": "Xã An Nghiệp, An Xuân, An Lĩnh",
+              "new_unit_name": "Xã Tuy An Tây",
+              "area_km2": "136,20",
+              "population": "12,913"
+            },
+            {
+              "stt": 85,
+              "units_merged": "Thị trấn Phú Hòa, xã Hòa Thắng, Hòa Định Đông, Hòa Định Tây, Hòa Hội, một phần xã Hòa An",
+              "new_unit_name": "",
+              "area_km2": "Xã Phú Hòa 1",
+              "population": "142,54"
+            },
+            {
+              "stt": 86,
+              "units_merged": "Xã Hòa Quang Nam, Hòa Quang Bắc, một phần xã Hòa Trị",
+              "new_unit_name": "Xã Phú Hòa 2",
+              "area_km2": "95,78",
+              "population": "38,691"
+            },
+            {
+              "stt": 87,
+              "units_merged": "Thị trấn Phú Thứ, xã Hòa Phong, Hòa Tân Tây, một phần xã Hòa Bình 1",
+              "new_unit_name": "Xã Tây Hòa",
+              "area_km2": "55,14",
+              "population": "49,720"
+            },
+            {
+              "stt": 88,
+              "units_merged": "Xã Đồng, Hòa Thịnh",
+              "new_unit_name": "Xã Hòa Thịnh",
+              "area_km2": "30,602",
+              "population": ""
+            },
+            {
+              "stt": 89,
+              "units_merged": "Xã Hòa Mỹ Đông, Hòa Mỹ Tây",
+              "new_unit_name": "Xã Hòa Mỹ",
+              "area_km2": "190,14",
+              "population": "26,530"
+            },
+            {
+              "stt": 90,
+              "units_merged": "Xã Hòa Phú, Sơn Thành Đông, Sơn Thành Tây",
+              "new_unit_name": "Xã Sơn Thành",
+              "area_km2": "218,11",
+              "population": "27,838"
+            },
+            {
+              "stt": 91,
+              "units_merged": "Thị trấn Củng Sơn, xã Suối Bạc, Sơn Hà, Sơn Nguyên, Sơn Phúc",
+              "new_unit_name": "Xã Sơn Hòa",
+              "area_km2": "267,39",
+              "population": "40,825"
+            },
+            {
+              "stt": 92,
+              "units_merged": "Xã Sơn Long, Sơn Xuân, Sơn Định",
+              "new_unit_name": "Xã Vân Hòa",
+              "area_km2": "151,47",
+              "population": "6,661"
+            },
+            {
+              "stt": 93,
+              "units_merged": "Xã Sơn Hội, Cà Lúi, Phước Tân",
+              "new_unit_name": "Xã Tây Sơn",
+              "area_km2": "334,62",
+              "population": "11,052"
+            },
+            {
+              "stt": 94,
+              "units_merged": "Xã Ea Chà Rang, Krông Pa, Suối Trai",
+              "new_unit_name": "Xã Suối Trai",
+              "area_km2": "186,95",
+              "population": "11,387"
+            },
+            {
+              "stt": 95,
+              "units_merged": "Xã Ea Lâm, Ea Ly, một phần xã Ea Bar",
+              "new_unit_name": "Xã Ea Ly",
+              "area_km2": "140,35",
+              "population": "12,104"
+            },
+            {
+              "stt": 96,
+              "units_merged": "Xã Bà, phần còn lại của xã Ea Bar",
+              "new_unit_name": "Xã Ea Bá",
+              "area_km2": "131,79",
+              "population": "8,316"
+            },
+            {
+              "stt": 97,
+              "units_merged": "Xã Sơn, Đức Bình Đông, Đức Bình Tây, một phần xã Ea Bia",
+              "new_unit_name": "Xã Đức Bình",
+              "area_km2": "160,36",
+              "population": "15,896"
+            },
+            {
+              "stt": 98,
+              "units_merged": "Thị trấn Hai Riêng, xã Ea Trol, Sông Hinh, phần còn lại xã Ea Bia",
+              "new_unit_name": "Xã Sông Hinh",
+              "area_km2": "460,13",
+              "population": "23,841"
+            },
+            {
+              "stt": 99,
+              "units_merged": "Xã Đa Lộc, Xuân Lãnh",
+              "new_unit_name": "Xã Xuân Lãnh",
+              "area_km2": "174,65",
+              "population": "15,933"
+            },
+            {
+              "stt": 100,
+              "units_merged": "Xã Xuân Quang 1, Phú Mỡ",
+              "new_unit_name": "Xã Phú Mỡ",
+              "area_km2": "547,20",
+              "population": "9,007"
+            },
+            {
+              "stt": 101,
+              "units_merged": "Xã Xuân Quang 3, Xuân Phước",
+              "new_unit_name": "Xã Xuân Phước",
+              "area_km2": "102,81",
+              "population": "16,197"
+            },
+            {
+              "stt": 102,
+              "units_merged": "Thị trấn La Hai, xã Xuân Sơn Nam, Xuân Sơn Bắc, Xuân Long, Xuân Quang 2",
+              "new_unit_name": "Xã Đồng Xuân",
+              "area_km2": "206,26",
+              "population": "26,907"
+            }
+          ]
+        }
+      }
+    ],
+    "infographics": {
+      "title": "TỈNH ĐẮK LẮK (MỚI) SAU HỢP NHẤT TỈNH ĐẮK LẮK VÀ TỈNH PHÚ YÊN",
+      "description": "Thực hiện chủ trương của Đảng, Nhà nước về sắp xếp đơn vị hành chính, tỉnh Đắk Lắk và tỉnh Phú Yên sáp nhập thành tỉnh Đắk Lắk (mới). Việc sáp nhập này không chỉ tạo không gian cho chiến lược phát triển mà còn là cơ hội, sứ mệnh lịch sử cho tỉnh Đắk Lắk sau khi hợp nhất thành trung tâm kinh tế, văn hóa, đổi mới sáng tạo và được kỳ vọng sẽ là một cực tăng trưởng mới của khu vực Nam Trung bộ và Tây Nguyên.",
+      "images": [
+        {
+          "image_number": 2,
+          "title": "Infographic tổng quan tỉnh Đắk Lắk mới - Phần 1",
+          "image_url": "images/daklak_moi_2025/hinh_2.png"
+        },
+        {
+          "image_number": 3,
+          "title": "Infographic tổng quan tỉnh Đắk Lắk mới - Phần 2",
+          "image_url": "images/daklak_moi_2025/hinh_3.png"
+        },
+        {
+          "image_number": 4,
+          "title": "Infographic tổng quan tỉnh Đắk Lắk mới - Phần 3",
+          "image_url": "images/daklak_moi_2025/hinh_4.png"
+        }
+      ]
+    },
+    "summary": {
+      "merger_date": "16/6/2025",
+      "effective_date": "01/7/2025",
+      "legal_document": "Nghị quyết số 1660/NQ-UBTVQH15",
+      "new_province_name": "Tỉnh Đắk Lắk",
+      "formed_from": [
+        "Tỉnh Đắk Lắk (cũ)",
+        "Tỉnh Phú Yên"
+      ],
+      "capital": "Thành phố Buôn Ma Thuột",
+      "total_area": "18.096,4 km²",
+      "total_population": "3.346.853 người",
+      "administrative_units": {
+        "commune_level_before": 180,
+        "commune_level_after": 102,
+        "reduction": 78,
+        "breakdown": {
+          "communes": 88,
+          "wards": 14
+        }
+      },
+      "strategic_position": "Từ Tây Nguyên đến Duyên hải Nam Trung Bộ",
+      "ecosystems": [
+        "Rừng",
+        "Núi",
+        "Cao nguyên",
+        "Đồng bằng",
+        "Biển"
+      ],
+      "development_goals": [
+        "Trung tâm kinh tế khu vực",
+        "Trung tâm văn hóa",
+        "Trung tâm đổi mới sáng tạo",
+        "Cực tăng trưởng mới của Nam Trung Bộ và Tây Nguyên"
+      ]
+    },
+    "note": "Đây là tài liệu tổng quan về tỉnh Đắk Lắk mới sau khi sáp nhập với tỉnh Phú Yên theo Nghị quyết số 1660/NQ-UBTVQH15 ngày 16/6/2025, có hiệu lực từ 01/7/2025. Tài liệu bao gồm 1 bản đồ hành chính, 3 infographic và bảng chi tiết 102 đơn vị hành chính cấp xã sau sắp xếp."
+  }
+}
