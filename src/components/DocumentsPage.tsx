@@ -1,15 +1,4 @@
-import React, { useState, useRef } from 'react';
-
-interface UploadedFile {
-  id: string;
-  name: string;
-  type: string;
-  size: number;
-  url: string;
-  uploadDate: Date;
-  title: string;
-  description: string;
-}
+import React, { useState, useEffect } from 'react';
 
 interface DocumentLink {
   id: string;
@@ -18,6 +7,18 @@ interface DocumentLink {
   description: string;
   domain: string;
   addedDate: Date;
+}
+
+interface UploadedFile {
+  id: string;
+  title: string;
+  description: string;
+  type: 'image' | 'video' | 'pdf' | 'link';
+  url: string;
+  file?: File;
+  thumbnail?: string;
+  size?: string;
+  uploadDate: Date;
 }
 
 interface DocumentsPageProps {
@@ -29,18 +30,19 @@ interface DocumentsPageProps {
 
 const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavigateToDakLakOld, onNavigateToDakLakNew, onNavigateToPhuyenOld }) => {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
-  const [isDragging, setIsDragging] = useState(false);
-  const [previewFile, setPreviewFile] = useState<UploadedFile | null>(null);
+  const [showUploadPopup, setShowUploadPopup] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
-  const [isClosingPreview, setIsClosingPreview] = useState(false);
-  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
-  const [showUploadForm, setShowUploadForm] = useState(false);
-  const [isClosingUpload, setIsClosingUpload] = useState(false);
+  const [previewFile, setPreviewFile] = useState<UploadedFile | null>(null);
   const [uploadTitle, setUploadTitle] = useState('');
   const [uploadDescription, setUploadDescription] = useState('');
-  const [uploadUrl, setUploadUrl] = useState('');
   const [uploadType, setUploadType] = useState<'file' | 'link'>('file');
-  const [documentLinks, setDocumentLinks] = useState<DocumentLink[]>([
+  const [uploadUrl, setUploadUrl] = useState('');
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [fileToDelete, setFileToDelete] = useState<string | null>(null);
+
+  const documentLinks: DocumentLink[] = [
     {
       id: '1',
       title: 'Thông tin 102 xã phường tỉnh Đắk Lắk',
@@ -89,195 +91,181 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavig
       domain: 'xaydungchinhsach.chinhphu.vn',
       addedDate: new Date()
     }
-  ]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  ];
 
-  const handleFileSelection = (files: FileList | null) => {
-    if (!files) return;
-
-    const validFiles: File[] = [];
-    
-    Array.from(files).forEach((file) => {
-      // Check file type
-      const allowedTypes = [
-        'image/', 'video/', 
-        'application/pdf', 
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-      ];
-      
-      const isAllowed = allowedTypes.some(type => file.type.startsWith(type));
-      
-      if (isAllowed) {
-        validFiles.push(file);
-      }
-    });
-
-    if (validFiles.length > 0) {
-      setPendingFiles(prev => [...prev, ...validFiles]);
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setPendingFiles(Array.from(e.target.files));
     }
-  };
-
-  const handleConfirmUpload = () => {
-    if (!uploadTitle.trim()) {
-      alert('Vui lòng nhập tiêu đề tài liệu');
-      return;
-    }
-
-    if (uploadType === 'link') {
-      if (!uploadUrl.trim()) {
-        alert('Vui lòng nhập URL tài liệu');
-        return;
-      }
-
-      try {
-        const url = new URL(uploadUrl.trim());
-        const newLink: DocumentLink = {
-          id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
-          title: uploadTitle.trim(),
-          url: uploadUrl.trim(),
-          description: uploadDescription.trim(),
-          domain: url.hostname,
-          addedDate: new Date()
-        };
-
-        setDocumentLinks(prev => [...prev, newLink]);
-      } catch (error) {
-        alert('URL không hợp lệ');
-        return;
-      }
-    } else {
-      const newFiles: UploadedFile[] = pendingFiles.map((file) => {
-        const fileUrl = URL.createObjectURL(file);
-        return {
-          id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
-          name: file.name,
-          type: file.type,
-          size: file.size,
-          url: fileUrl,
-          uploadDate: new Date(),
-          title: uploadTitle.trim(),
-          description: uploadDescription.trim()
-        };
-      });
-
-      setUploadedFiles(prev => [...prev, ...newFiles]);
-    }
-    
-    // Reset form with animation
-    setIsClosingUpload(true);
-    setTimeout(() => {
-      setPendingFiles([]);
-      setShowUploadForm(false);
-      setUploadTitle('');
-      setUploadDescription('');
-      setUploadUrl('');
-      setUploadType('file');
-      setIsClosingUpload(false);
-    }, 400);
-  };
-
-  const handleCancelUpload = () => {
-    setIsClosingUpload(true);
-    setTimeout(() => {
-      setPendingFiles([]);
-      setShowUploadForm(false);
-      setUploadTitle('');
-      setUploadDescription('');
-      setUploadUrl('');
-      setUploadType('file');
-      setIsClosingUpload(false);
-    }, 400); // Match the animation duration
   };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(true);
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(false);
   };
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(false);
-    handleFileSelection(e.dataTransfer.files);
-  };
-
-  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleFileSelection(e.target.files);
-  };
-
-  const handleDownload = (file: UploadedFile) => {
-    const link = document.createElement('a');
-    link.href = file.url;
-    link.download = file.name;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const handleDeleteFile = (fileId: string) => {
-    setUploadedFiles(prev => {
-      const fileToDelete = prev.find(f => f.id === fileId);
-      if (fileToDelete) {
-        URL.revokeObjectURL(fileToDelete.url);
-      }
-      return prev.filter(f => f.id !== fileId);
-    });
-  };
-
-  const handlePreview = (file: UploadedFile) => {
-    if (file.type.startsWith('image/') || file.type.startsWith('video/') || file.type === 'application/pdf') {
-      setPreviewFile(file);
-      setShowPreview(true);
+    
+    const files = Array.from(e.dataTransfer.files);
+    const validFiles = files.filter(file => 
+      file.type.startsWith('image/') || 
+      file.type.startsWith('video/') || 
+      file.type === 'application/pdf'
+    );
+    
+    if (validFiles.length > 0) {
+      setPendingFiles(validFiles);
     }
   };
 
-  const closePreview = () => {
-    setIsClosingPreview(true);
-    setTimeout(() => {
-      setShowPreview(false);
-      setPreviewFile(null);
-      setIsClosingPreview(false);
-    }, 400); // Match the animation duration
+  const handleUpload = () => {
+    if (uploadType === 'file' && pendingFiles.length > 0) {
+      const newFiles: UploadedFile[] = pendingFiles.map((file, index) => {
+        const fileType = file.type.startsWith('image/') ? 'image' 
+          : file.type.startsWith('video/') ? 'video'
+          : file.type === 'application/pdf' ? 'pdf'
+          : 'image';
+        
+        const fileUrl = URL.createObjectURL(file);
+        const fileSize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+
+        return {
+          id: Date.now().toString() + index,
+          title: uploadTitle,
+          description: uploadDescription,
+          type: fileType,
+          url: fileUrl,
+          file: file,
+          thumbnail: fileUrl, // Use fileUrl for all types (image, video, pdf)
+          size: fileSize,
+          uploadDate: new Date()
+        };
+      });
+
+      setUploadedFiles([...uploadedFiles, ...newFiles]);
+    } else if (uploadType === 'link' && uploadUrl.trim()) {
+      const newLink: UploadedFile = {
+        id: Date.now().toString(),
+        title: uploadTitle,
+        description: uploadDescription,
+        type: 'link',
+        url: uploadUrl,
+        uploadDate: new Date()
+      };
+
+      setUploadedFiles([...uploadedFiles, newLink]);
+    }
+
+    // Reset form
+    setUploadTitle('');
+    setUploadDescription('');
+    setUploadUrl('');
+    setPendingFiles([]);
+    setShowUploadPopup(false);
   };
 
-  const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  const handlePreview = (file: UploadedFile) => {
+    setPreviewFile(file);
+    setShowPreview(true);
+  };
+
+  // Auto-scroll to center when popups open
+  useEffect(() => {
+    if (showUploadPopup || showPreview || showDeleteConfirm) {
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+      
+      // Small delay to ensure popup is rendered
+      setTimeout(() => {
+        const popup = document.querySelector('.upload-popup, .preview-popup, .delete-confirm-dialog') as HTMLElement;
+        if (popup) {
+          popup.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+          });
+        }
+      }, 150);
+    } else {
+      // Restore body scroll
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showUploadPopup, showPreview, showDeleteConfirm]);
+
+  const handleDeleteClick = (fileId: string) => {
+    setFileToDelete(fileId);
+    // Close preview popup if open, then show delete confirm
+    if (showPreview) {
+      setShowPreview(false);
+      // Small delay to let preview close before showing delete confirm
+      setTimeout(() => {
+        setShowDeleteConfirm(true);
+      }, 100);
+    } else {
+      setShowDeleteConfirm(true);
+    }
+  };
+
+  const handleDeleteConfirm = () => {
+    if (fileToDelete) {
+      setUploadedFiles(uploadedFiles.filter(f => f.id !== fileToDelete));
+      if (previewFile?.id === fileToDelete) {
+        setShowPreview(false);
+        setPreviewFile(null);
+      }
+    }
+    setShowDeleteConfirm(false);
+    setFileToDelete(null);
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteConfirm(false);
+    setFileToDelete(null);
   };
 
   const getFileIcon = (type: string) => {
-    if (type.startsWith('image/')) {
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor"/>
-        </svg>
-      );
-    } else if (type.startsWith('video/')) {
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" fill="currentColor"/>
-        </svg>
-      );
-    } else if (type === 'application/pdf') {
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v1h-1.5V7h3v1.5zM9 10.5h1V8.5H9v2z" fill="currentColor"/>
-        </svg>
-      );
-    } else {
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
-        </svg>
-      );
+    switch(type) {
+      case 'image':
+        return (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21,19V5c0,-1.1 -0.9,-2 -2,-2H5c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2zM8.5,13.5l2.5,3.01L14.5,12l4.5,6H5l3.5,-4.5z" fill="currentColor"/>
+          </svg>
+        );
+      case 'video':
+        return (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17,10.5V7c0,-0.55 -0.45,-1 -1,-1H4c-0.55,0 -1,0.45 -1,1v10c0,0.55 0.45,1 1,1h12c0.55,0 1,-0.45 1,-1v-3.5l4,4v-11l-4,4z" fill="currentColor"/>
+          </svg>
+        );
+      case 'pdf':
+        return (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
+          </svg>
+        );
+      case 'link':
+        return (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" fill="currentColor"/>
+          </svg>
+        );
+      default:
+        return null;
     }
   };
 
@@ -291,12 +279,12 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavig
             <p>Kho lưu trữ tài liệu, hình ảnh và video về lịch sử địa phương Đắk Lắk - Phú Yên</p>
             <div className="hero-stats">
               <div className="stat-item">
-                <span className="stat-number">{uploadedFiles.length}</span>
-                <span className="stat-label">Tài liệu</span>
-              </div>
-              <div className="stat-item">
                 <span className="stat-number">{documentLinks.length}</span>
                 <span className="stat-label">Liên kết</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">{uploadedFiles.length}</span>
+                <span className="stat-label">Tải lên</span>
               </div>
               <div className="stat-item">
                 <span className="stat-number">3</span>
@@ -373,187 +361,6 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavig
           </div>
         </div>
 
-        {/* Floating Upload Button */}
-        <button 
-          className="floating-upload-btn"
-          onClick={() => setShowUploadForm(true)}
-          title="Tải lên tài liệu"
-        >
-          <div className="upload-icon-container">
-            <div className="upload-ripple"></div>
-            <div className="upload-ripple-2"></div>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="upload-main-icon">
-              <path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </button>
-
-        <input
-          ref={fileInputRef}
-          type="file"
-          multiple
-          accept="image/*,video/*,.pdf,.doc,.docx"
-          onChange={handleFileInputChange}
-          style={{ display: 'none' }}
-        />
-
-        {/* Upload Form Popup */}
-        {showUploadForm && (
-          <div className={`popup-overlay ${isClosingUpload ? 'closing' : ''}`} onClick={handleCancelUpload}>
-            <div className={`popup-container upload-popup ${isClosingUpload ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
-              <div className="popup-header">
-                <h2>Tải lên tài liệu</h2>
-                <button className="popup-close-btn" onClick={handleCancelUpload}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
-                  </svg>
-                </button>
-              </div>
-              
-              <div className="popup-body">
-                {/* Upload Type Selection */}
-                <div className="upload-type-selection">
-                  <div className="type-tabs">
-                    <button 
-                      className={`type-tab ${uploadType === 'file' ? 'active' : ''}`}
-                      onClick={() => setUploadType('file')}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
-                      </svg>
-                      Tải lên file
-                    </button>
-                    <button 
-                      className={`type-tab ${uploadType === 'link' ? 'active' : ''}`}
-                      onClick={() => setUploadType('link')}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" fill="currentColor"/>
-                      </svg>
-                      Thêm liên kết
-                    </button>
-                  </div>
-                </div>
-
-                {/* File Upload Area */}
-                {uploadType === 'file' && (
-                  <div className="upload-area-popup">
-                    <div 
-                      className={`upload-drop-area ${isDragging ? 'dragging' : ''}`}
-                      onDragOver={handleDragOver}
-                      onDragLeave={handleDragLeave}
-                      onDrop={handleDrop}
-                      onClick={() => fileInputRef.current?.click()}
-                    >
-                      <div className="upload-icon-large">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" fill="currentColor"/>
-                        </svg>
-                      </div>
-                      <h3>Kéo thả file vào đây hoặc click để chọn</h3>
-                      <p>Hỗ trợ: Hình ảnh, Video, PDF, Word (.doc, .docx)</p>
-                      <p>Kích thước tối đa: 100MB</p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Link Input Area */}
-                {uploadType === 'link' && (
-                  <div className="link-input-area">
-                    <div className="link-input-container">
-                      <div className="link-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" fill="currentColor"/>
-                        </svg>
-                      </div>
-                      <div className="link-input-content">
-                        <h3>Thêm liên kết tài liệu</h3>
-                        <p>Nhập URL của trang web hoặc tài liệu trực tuyến</p>
-                        <input
-                          type="url"
-                          value={uploadUrl}
-                          onChange={(e) => setUploadUrl(e.target.value)}
-                          placeholder="https://example.com/document"
-                          className="form-input url-input"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Selected Files */}
-                {uploadType === 'file' && pendingFiles.length > 0 && (
-                  <div className="selected-files-section">
-                    <h4>File đã chọn ({pendingFiles.length}):</h4>
-                    <div className="selected-files-list">
-                      {pendingFiles.map((file, index) => (
-                        <div key={index} className="selected-file-item">
-                          <div className="file-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
-                            </svg>
-                          </div>
-                          <div className="file-info">
-                            <span className="file-name">{file.name}</span>
-                            <span className="file-size">{formatFileSize(file.size)}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                
-                {/* Document Information Form */}
-                <div className="document-form-section">
-                  <div className="form-group">
-                    <label htmlFor="upload-title">Tiêu đề tài liệu *</label>
-                    <input
-                      id="upload-title"
-                      type="text"
-                      value={uploadTitle}
-                      onChange={(e) => setUploadTitle(e.target.value)}
-                      placeholder="Nhập tiêu đề cho tài liệu..."
-                      className="form-input"
-                      maxLength={100}
-                    />
-                    <span className="char-count">{uploadTitle.length}/100</span>
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="upload-description">Mô tả tài liệu</label>
-                    <textarea
-                      id="upload-description"
-                      value={uploadDescription}
-                      onChange={(e) => setUploadDescription(e.target.value)}
-                      placeholder="Nhập mô tả chi tiết về tài liệu..."
-                      className="form-textarea"
-                      rows={4}
-                      maxLength={500}
-                    />
-                    <span className="char-count">{uploadDescription.length}/500</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="popup-footer">
-                <button 
-                  className="btn-secondary"
-                  onClick={handleCancelUpload}
-                >
-                  Hủy
-                </button>
-                <button 
-                  className="btn-primary"
-                  onClick={handleConfirmUpload}
-                  disabled={!uploadTitle.trim() || (uploadType === 'file' ? pendingFiles.length === 0 : !uploadUrl.trim())}
-                >
-                  {uploadType === 'file' ? `Tải lên (${pendingFiles.length} file)` : 'Thêm liên kết'}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Document Links Section */}
         {documentLinks.length > 0 && (
           <div className="content-section">
@@ -593,78 +400,69 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavig
           </div>
         )}
 
-        {/* Uploaded Files */}
+        {/* Uploaded Files Section */}
         {uploadedFiles.length > 0 && (
           <div className="content-section">
             <div className="section-header">
               <h2>Tài liệu đã tải lên</h2>
               <span className="section-count">{uploadedFiles.length} tài liệu</span>
             </div>
-            <div className="files-professional-grid">
+            <div className="uploaded-files-grid">
               {uploadedFiles.map((file) => (
-                <div key={file.id} className="file-card-modern">
+                <div key={file.id} className="file-card" onClick={() => handlePreview(file)}>
                   <div className="file-card-header">
                     <div className="file-type-badge">
                       {getFileIcon(file.type)}
-                      <span>{file.type.split('/')[1]?.toUpperCase() || 'FILE'}</span>
+                      <span>{file.type.toUpperCase()}</span>
                     </div>
                     <button 
-                      className="delete-btn-modern"
-                      onClick={() => handleDeleteFile(file.id)}
-                      title="Xóa file"
+                      className="file-delete-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteClick(file.id);
+                      }}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="currentColor"/>
                       </svg>
                     </button>
                   </div>
-                  
-                  <div className="file-preview-modern" onClick={() => handlePreview(file)}>
-                    {file.type.startsWith('image/') && (
-                      <img src={file.url} alt={file.name} />
+                  <div className="file-preview">
+                    {file.type === 'image' && file.thumbnail && (
+                      <img src={file.thumbnail} alt={file.title} />
                     )}
-                    
-                    {file.type.startsWith('video/') && (
+                    {file.type === 'video' && file.thumbnail && (
                       <>
-                        <video src={file.url} />
-                        <div className="video-overlay-modern">
-                          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="white"/>
+                        <video src={file.thumbnail} className="video-thumbnail" />
+                        <div className="video-play-overlay">
+                          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.6)" />
+                            <path d="M10,8.5v7l6,-3.5l-6,-3.5Z" fill="white"/>
                           </svg>
                         </div>
                       </>
                     )}
-                    
-                    {file.type === 'application/pdf' && (
-                      <div className="pdf-preview-modern">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v1h-1.5V7h3v1.5zM9 10.5h1V8.5H9v2z" fill="currentColor"/>
+                    {file.type === 'pdf' && file.thumbnail && (
+                      <>
+                        <iframe src={file.thumbnail} className="pdf-thumbnail" title={file.title} />
+                        <div className="pdf-overlay">
+                          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="white"/>
+                          </svg>
+                          <span className="pdf-label">PDF</span>
+                        </div>
+                      </>
+                    )}
+                    {file.type === 'link' && (
+                      <div className="link-preview">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" fill="white"/>
                         </svg>
                       </div>
                     )}
-                    
-                    {!file.type.startsWith('image/') && !file.type.startsWith('video/') && file.type !== 'application/pdf' && (
-                      <div className="file-generic-preview">
-                        {getFileIcon(file.type)}
-                      </div>
-                    )}
                   </div>
-                  
-                  <div className="file-info-modern">
+                  <div className="file-info">
                     <h4 className="file-title">{file.title}</h4>
-                    <div className="file-meta">
-                      <span className="file-size">{formatFileSize(file.size)}</span>
-                      <span className="file-date">{new Date(file.uploadDate).toLocaleDateString('vi-VN')}</span>
-                    </div>
-                    <button 
-                      className="download-btn-modern"
-                      onClick={() => handleDownload(file)}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" fill="currentColor"/>
-                      </svg>
-                      Tải về
-                    </button>
                   </div>
                 </div>
               ))}
@@ -672,110 +470,289 @@ const DocumentsPage: React.FC<DocumentsPageProps> = ({ onSelectProvince, onNavig
           </div>
         )}
 
-        {/* Preview Popup */}
-        {showPreview && previewFile && (
-          <div className={`popup-overlay ${isClosingPreview ? 'closing' : ''}`} onClick={closePreview}>
-            <div className={`popup-container preview-popup ${isClosingPreview ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
-              <div className="popup-header">
-                <h2>{previewFile.title}</h2>
-                <button className="popup-close-btn" onClick={closePreview}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+      </div>
+
+      {/* Floating Upload Button */}
+      <button 
+        className="floating-upload-btn"
+        onClick={() => setShowUploadPopup(true)}
+      >
+        <div className="ripple-effect"></div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" fill="currentColor"/>
+        </svg>
+      </button>
+
+      {/* Upload Popup */}
+      {showUploadPopup && (
+        <div className="upload-popup-overlay" onClick={() => setShowUploadPopup(false)}>
+          <div className="upload-popup" onClick={(e) => e.stopPropagation()}>
+            <div className="upload-popup-header">
+              <h3>Tải lên tài liệu</h3>
+              <button 
+                className="popup-close-btn"
+                onClick={() => setShowUploadPopup(false)}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="upload-popup-body">
+              <div className="upload-type-selector">
+                <button 
+                  className={`type-btn ${uploadType === 'file' ? 'active' : ''}`}
+                  onClick={() => setUploadType('file')}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
                   </svg>
+                  Tải file
+                </button>
+                <button 
+                  className={`type-btn ${uploadType === 'link' ? 'active' : ''}`}
+                  onClick={() => setUploadType('link')}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" fill="currentColor"/>
+                  </svg>
+                  Thêm link
                 </button>
               </div>
-              
-              <div className="popup-body preview-body">
-                {/* Media Section - Left Side */}
-                <div className="preview-media-section">
-                  {previewFile.type.startsWith('image/') && (
-                    <img 
-                      src={previewFile.url} 
-                      alt={previewFile.title}
-                      className="preview-media-image"
-                    />
-                  )}
-                  
-                  {previewFile.type.startsWith('video/') && (
-                    <video 
-                      src={previewFile.url}
-                      controls
-                      className="preview-media-video"
-                      autoPlay
-                    />
-                  )}
-                  
-                  {previewFile.type === 'application/pdf' && (
-                    <div className="pdf-viewer-container">
-                      <embed 
-                        src={previewFile.url}
-                        type="application/pdf"
-                        className="preview-pdf-embed"
-                        title={previewFile.title}
-                      />
-                      <div className="pdf-fallback">
-                        <div className="pdf-fallback-content">
-                          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
-                          </svg>
-                          <h4>Không thể hiển thị PDF</h4>
-                          <p>Trình duyệt không hỗ trợ xem PDF trực tiếp</p>
-                          <button 
-                            className="btn-primary"
-                            onClick={() => handleDownload(previewFile)}
-                          >
-                            Tải về để xem
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                
-                {/* Document Info Section - Right Side */}
-                <div className="preview-info-section">
-                  <div className="document-info-content">
-                    <div className="document-title-section">
-                      <h4>Thông tin tài liệu</h4>
-                      <p className="document-filename">{previewFile.title}</p>
-                    </div>
-                    
-                    {previewFile.description && (
-                      <div className="document-description">
-                        <h5>Mô tả</h5>
-                        <p>{previewFile.description}</p>
-                      </div>
-                    )}
-                    
-                    <div className="document-details">
-                      <div className="detail-item">
-                        <span className="detail-label">Kích thước</span>
-                        <span className="detail-value">{formatFileSize(previewFile.size)}</span>
-                      </div>
-                      <div className="detail-item">
-                        <span className="detail-label">Ngày tải lên</span>
-                        <span className="detail-value">{previewFile.uploadDate.toLocaleDateString('vi-VN')}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+              <div className="form-group">
+                <label>Tiêu đề *</label>
+                <input 
+                  type="text"
+                  value={uploadTitle}
+                  onChange={(e) => setUploadTitle(e.target.value)}
+                  placeholder="Nhập tiêu đề tài liệu"
+                  className="form-input"
+                />
               </div>
-              
-              <div className="popup-footer">
+
+              <div className="form-group">
+                <label>Mô tả</label>
+                <textarea 
+                  value={uploadDescription}
+                  onChange={(e) => setUploadDescription(e.target.value)}
+                  placeholder="Nhập mô tả chi tiết về tài liệu"
+                  className="form-textarea"
+                  rows={4}
+                />
+              </div>
+
+              {uploadType === 'file' ? (
+                <div className="form-group">
+                  <label>Chọn file hoặc kéo thả (Ảnh, Video, PDF)</label>
+                  <div 
+                    className={`file-input-wrapper drag-drop-zone ${isDragging ? 'dragging' : ''}`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                  >
+                    <input 
+                      type="file"
+                      onChange={handleFileSelect}
+                      accept="image/*,video/*,.pdf"
+                      multiple
+                      className="file-input"
+                      id="file-upload"
+                    />
+                    <label htmlFor="file-upload" className="file-input-label">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor" opacity="0.3"/>
+                        <path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" fill="currentColor"/>
+                      </svg>
+                      <div className="upload-text">
+                        <span className="upload-main-text">
+                          {pendingFiles.length > 0 ? `${pendingFiles.length} file đã chọn` : isDragging ? 'Thả file vào đây' : 'Kéo thả file hoặc click để chọn'}
+                        </span>
+                        <span className="upload-sub-text">Hỗ trợ: JPG, PNG, MP4, PDF</span>
+                      </div>
+                    </label>
+                  </div>
+                  {pendingFiles.length > 0 && (
+                    <div className="selected-files">
+                      {pendingFiles.map((file, index) => (
+                        <div key={index} className="selected-file-item">
+                          <span>{file.name}</span>
+                          <span className="file-size-small">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="form-group">
+                  <label>URL liên kết</label>
+                  <input 
+                    type="url"
+                    value={uploadUrl}
+                    onChange={(e) => setUploadUrl(e.target.value)}
+                    placeholder="https://example.com"
+                    className="form-input"
+                  />
+                </div>
+              )}
+
+              <div className="upload-popup-actions">
                 <button 
-                  className="btn-primary"
-                  onClick={() => handleDownload(previewFile)}
+                  className="btn-cancel"
+                  onClick={() => {
+                    setShowUploadPopup(false);
+                    setUploadTitle('');
+                    setUploadDescription('');
+                    setUploadUrl('');
+                    setPendingFiles([]);
+                  }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" fill="currentColor"/>
-                  </svg>
-                  Tải về tài liệu
+                  Hủy
+                </button>
+                <button 
+                  className="btn-upload"
+                  onClick={handleUpload}
+                  disabled={!uploadTitle.trim() || (uploadType === 'file' ? pendingFiles.length === 0 : !uploadUrl.trim())}
+                >
+                  {uploadType === 'file' ? `Tải lên (${pendingFiles.length} file)` : 'Thêm liên kết'}
                 </button>
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Preview Popup */}
+      {showPreview && previewFile && (
+        <div className="preview-popup-overlay" onClick={() => setShowPreview(false)}>
+          <div className="preview-popup" onClick={(e) => e.stopPropagation()}>
+            <div className="preview-popup-header">
+              <div className="preview-file-type">
+                {getFileIcon(previewFile.type)}
+                <span>{previewFile.type.toUpperCase()}</span>
+              </div>
+              <button 
+                className="popup-close-btn"
+                onClick={() => setShowPreview(false)}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="preview-popup-body">
+              <div className="preview-content">
+                {previewFile.type === 'image' && (
+                  <img src={previewFile.url} alt={previewFile.title} className="preview-image" />
+                )}
+                {previewFile.type === 'video' && (
+                  <video src={previewFile.url} controls className="preview-video" />
+                )}
+                {previewFile.type === 'pdf' && (
+                  <iframe src={previewFile.url} className="preview-pdf" title={previewFile.title} />
+                )}
+                {previewFile.type === 'link' && (
+                  <div className="preview-link">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" fill="currentColor"/>
+                    </svg>
+                    <a href={previewFile.url} target="_blank" rel="noopener noreferrer" className="preview-link-url">
+                      {previewFile.url}
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              <div className="preview-info">
+                <h3 className="preview-title">{previewFile.title}</h3>
+                {previewFile.description && (
+                  <p className="preview-description">{previewFile.description}</p>
+                )}
+                <div className="preview-meta">
+                  {previewFile.size && (
+                    <div className="meta-item">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
+                      </svg>
+                      <span>{previewFile.size}</span>
+                    </div>
+                  )}
+                  <div className="meta-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" fill="currentColor"/>
+                    </svg>
+                    <span>{previewFile.uploadDate.toLocaleDateString('vi-VN')}</span>
+                  </div>
+                </div>
+                <div className="preview-actions">
+                  {previewFile.type !== 'link' && previewFile.url && (
+                    <a 
+                      href={previewFile.url}
+                      download={previewFile.file?.name || previewFile.title}
+                      className="btn-download"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" fill="currentColor"/>
+                      </svg>
+                      Tải xuống
+                    </a>
+                  )}
+                  {previewFile.type === 'link' && (
+                    <a 
+                      href={previewFile.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-download"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" fill="currentColor"/>
+                      </svg>
+                      Mở liên kết
+                    </a>
+                  )}
+                  <button 
+                    className="btn-delete"
+                    onClick={() => handleDeleteClick(previewFile.id)}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="currentColor"/>
+                    </svg>
+                    Xóa
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Dialog */}
+      {showDeleteConfirm && (
+        <div className="delete-confirm-overlay" onClick={handleDeleteCancel}>
+          <div className="delete-confirm-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="delete-confirm-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>Xác nhận xóa</h3>
+            <p>Bạn có chắc chắn muốn xóa tài liệu này? Hành động này không thể hoàn tác.</p>
+            <div className="delete-confirm-actions">
+              <button className="btn-cancel-delete" onClick={handleDeleteCancel}>
+                Hủy
+              </button>
+              <button className="btn-confirm-delete" onClick={handleDeleteConfirm}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="currentColor"/>
+                </svg>
+                Xóa
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
