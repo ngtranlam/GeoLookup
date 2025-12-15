@@ -205,7 +205,12 @@ function App() {
       {/* Header */}
       <header className="header header-full-width">
         <nav className="nav nav-full-width">
-          <div className="logo">
+          <a 
+            href="https://c2nguyenbinhkhiem-cumgar.daklak.edu.vn/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="logo"
+          >
             <img 
               src="/logo-nbk.png" 
               alt="Logo THCS Nguyễn Bình Khiêm" 
@@ -215,7 +220,7 @@ function App() {
               <div className="logo-main">THCS Nguyễn Bình Khiêm</div>
               <div className="logo-sub">Học hiện đại – Sáng tương lai</div>
             </div>
-          </div>
+          </a>
           <div className="nav-buttons">
             <button 
               className={`nav-btn ${currentPage === 'explore' ? 'nav-btn-active' : ''}`}
