@@ -9,7 +9,7 @@ interface GeminiResponse {
 }
 
 const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY || 'AIzaSyCO0Y5O6NCjfso8A1CLHT3txzqHz2JrqW4';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent?key=${GEMINI_API_KEY}`;
 
 /**
  * Convert lesson JSON data to plain text for summarization
@@ -247,7 +247,9 @@ Hãy tóm tắt bài học trên (không cần lời chào):`;
         temperature: 0.7,
         topK: 40,
         topP: 0.95,
-        maxOutputTokens: 1024,
+        maxOutputTokens: 4096,
+        candidateCount: 1,
+        stopSequences: []
       }
     };
 
@@ -265,10 +267,19 @@ Hãy tóm tắt bài học trên (không cần lời chào):`;
 
     const data: GeminiResponse = await response.json();
     
+    console.log('📊 Gemini API Response:', data);
+    
     if (data.candidates && data.candidates.length > 0) {
       const summary = data.candidates[0].content.parts[0].text;
+      console.log('📝 Raw summary length:', summary.length);
+      console.log('📝 Raw summary:', summary);
+      
       // Clean the summary text to remove any greetings
-      return cleanSummaryText(summary);
+      const cleanedSummary = cleanSummaryText(summary);
+      console.log('✨ Cleaned summary length:', cleanedSummary.length);
+      console.log('✨ Cleaned summary:', cleanedSummary);
+      
+      return cleanedSummary;
     }
 
     throw new Error('No summary generated');
@@ -308,7 +319,9 @@ Hãy liệt kê các điểm chính:`;
         temperature: 0.5,
         topK: 40,
         topP: 0.95,
-        maxOutputTokens: 512,
+        maxOutputTokens: 2048,
+        candidateCount: 1,
+        stopSequences: []
       }
     };
 

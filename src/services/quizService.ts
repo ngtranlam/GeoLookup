@@ -17,7 +17,7 @@ interface QuizData {
 }
 
 const GEMINI_API_KEY = 'AIzaSyCO0Y5O6NCjfso8A1CLHT3txzqHz2JrqW4';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent?key=${GEMINI_API_KEY}`;
 
 // Function to load lesson content from JSON files
 export const loadLessonContent = async (): Promise<LessonContent[]> => {

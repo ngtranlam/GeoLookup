@@ -1,7 +1,7 @@
 import { musicianDataService } from './musicianDataService';
 
 const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY || 'AIzaSyCO0Y5O6NCjfso8A1CLHT3txzqHz2JrqW4';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent?key=${GEMINI_API_KEY}`;
 
 interface GeminiResponse {
   candidates: Array<{
