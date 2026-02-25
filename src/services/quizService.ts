@@ -16,7 +16,7 @@ interface QuizData {
   totalQuestions: number;
 }
 
-const GEMINI_API_KEY = 'AIzaSyAldSnqUMuPuxSU3D3G_yniibLgTWYngNA';
+const GEMINI_API_KEY = 'AIzaSyCO0Y5O6NCjfso8A1CLHT3txzqHz2JrqW4';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${GEMINI_API_KEY}`;
 
 // Function to load lesson content from JSON files
